@@ -1,0 +1,365 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="伊成个人站-热衷于技术分享，源码分享的个人博客网站">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+	<!--baidu tongji-->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?11f6f08fada932368f71e76bd659b783";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
+    <link rel="dns-prefetch" href="http://www.devcheng.net">
+    <!--SEO-->
+
+<meta name="description" content="伊成个人站 www.devcheng.net 一个致力于技术分享，源码分享及工作经历分享的个人博客网站">
+
+
+
+<meta name="keywords" content="伊成个人站,技术分享,源码分享,代码分享,java代码,源代码">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+<title>	认识Java RandomAccessFile类-伊成个人站</title>
+
+    <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人博客网站" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+       ◉◡◉ 您好，欢迎到访伊成个人站!
+    </div>
+</header>
+    
+<nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.devcheng.net">伊成个人站-热衷于技术分享，源码分享的个人博客网站</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">				
+                    <ul class="menu">						
+						<a href="/"><img border="0" src="/img/logo2020.png" alt="伊成个人站" title="伊成个人站"></a>						
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa fa-home"></i>&nbsp;首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/blogshare/"><i class="fa fa-codepen"></i>&nbsp;技术分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codeshare/"><i class="fa fa-code"></i>&nbsp;源码分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codelife/"><i class="fa fa-pagelines"></i>&nbsp;程序人生</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives"><i class="fa fa-history"></i>&nbsp;时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about"><i class="fa fa-connectdevelop"></i>&nbsp;关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="认识Java RandomAccessFile类">
+            
+	            认识Java RandomAccessFile类
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/blogshare">
+            blogshare
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/Java" title="Java">
+                        Java
+                    </a>
+                
+                    <a href="/tags/RandomAccessFile类" title="RandomAccessFile类">
+                        RandomAccessFile类
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/07/26</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>RandomAccessFile既可以读取文件内容，也可以向文件输出数据。同时，RandomAccessFile支持“随机访问”的方式，程序快可以直接跳转到文件的任意地方来读写数据。</p>
+<p>由于RandomAccessFile可以自由访问文件的任意位置，所以如果需要访问文件的部分内容，而不是把文件从头读到尾，使用RandomAccessFile将是更好的选择。</p>
+<p>与OutputStream、Writer等输出流不同的是，RandomAccessFile允许自由定义文件记录指针，RandomAccessFile可以不从开始的地方开始输出，因此RandomAccessFile可以向已存在的文件后追加内容。如果程序需要向已存在的文件后追加内容，则应该使用RandomAccessFile。</p>
+<h2 id="一个构造函数"><a href="#一个构造函数" class="headerlink" title="一个构造函数"></a>一个构造函数</h2><p>RandomAccessFile类有两个构造函数，其实这两个构造函数基本相同，只不过是指定文件的形式不同</p>
+<ul>
+<li><p>一个需要使用String参数来指定文件名</p>
+</li>
+<li><p>一个使用File参数来指定文件本身</p>
+</li>
+</ul>
+<p>同时还需要指定一个mode参数，该参数指定RandomAccessFile的访问模式，一共有4种模式。</p>
+<p>具体如下：</p>
+<p>模式 | 说明<br>|:—:|:—<br>r | 以只读方式打开。调用结果对象的任何 write 方法都将导致抛出 IOException<br>rw | 打开以便读取和写入<br>rws | 打开以便读取和写入。相对于 “rw”，”rws” 还要求对“文件的内容”或“元数据”的每个更新都同步写入到基础存储设备<br>rwd | 打开以便读取和写入，相对于 “rw”，”rwd” 还要求对“文件的内容”的每个更新都同步写入到基础存储设备</p>
+<h2 id="两个重要的方法"><a href="#两个重要的方法" class="headerlink" title="两个重要的方法"></a>两个重要的方法</h2><p>由以上介绍得知RandomAccessFile既可以读文件，也可以写文件，所以类似于InputStream的read()方法，以及类似于OutputStream的write()方法，RandomAccessFile都具备。除此之外，RandomAccessFile具备两个特有的方法，来支持其随机访问的特性。</p>
+<p>RandomAccessFile对象包含了一个记录指针，用以标识当前读写处的位置，当程序新创建一个RandomAccessFile对象时，该对象的文件指针记录位于文件头，当读/写了n个字节后，文件记录指针将会后移n个字节。除此之外，RandomAccessFile还可以自由移动该记录指针。</p>
+<p>下面就是RandomAccessFile具有的两个特殊方法，来操作记录指针，实现随机访问：</p>
+<ul>
+<li>long getFilePointer( ) // 返回文件记录指针的当前位置</li>
+<li>void seek(long pos )   // 将文件指针定位到pos位置</li>
+</ul>
+<h2 id="写方法"><a href="#写方法" class="headerlink" title="写方法"></a>写方法</h2><p>主要有：write(),writeBoolean(),writeByte(),writeBytes(),writeChar(),writeChars()</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">byte</span>[] b)</span> </span></span><br><span class="line"><span class="function">          <span class="comment">//将 b.length 个字节从指定 byte 数组写入到此文件，并从当前文件指针开始。</span></span></span><br><span class="line"><span class="function">          </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">byte</span>[] b, <span class="keyword">int</span> off, <span class="keyword">int</span> len)</span> </span></span><br><span class="line"><span class="function">         <span class="comment">//将 len 个字节从指定 byte 数组写入到此文件，并从偏移量 off 处开始。 </span></span></span><br><span class="line"><span class="function">         </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">int</span> b)</span> </span></span><br><span class="line"><span class="function">          <span class="comment">//向此文件写入指定的字节。 </span></span></span><br><span class="line"><span class="function">          </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">writeBoolean</span><span class="params">(<span class="keyword">boolean</span> v)</span> </span></span><br><span class="line"><span class="function">          <span class="comment">//按单字节值将 boolean 写入该文件。 </span></span></span><br><span class="line"><span class="function">          </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">writeByte</span><span class="params">(<span class="keyword">int</span> v)</span> </span></span><br><span class="line"><span class="function">          <span class="comment">//按单字节值将 byte 写入该文件。 </span></span></span><br><span class="line"><span class="function">          </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">writeBytes</span><span class="params">(String s)</span> </span></span><br><span class="line"><span class="function">          <span class="comment">//按字节序列将该字符串写入该文件。 </span></span></span><br><span class="line"><span class="function">          </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">writeChar</span><span class="params">(<span class="keyword">int</span> v)</span> </span></span><br><span class="line"><span class="function">          <span class="comment">//按双字节值将 char 写入该文件，先写高字节。 </span></span></span><br><span class="line"><span class="function">          </span></span><br><span class="line"><span class="function"> <span class="keyword">void</span> <span class="title">writeChars</span><span class="params">(String s)</span> </span></span><br><span class="line"><span class="function">          <span class="comment">//按字符序列将一个字符串写入该文件。 </span></span></span><br><span class="line"><span class="function">          </span></span><br><span class="line"><span class="function"> <span class="keyword">void</span> <span class="title">writeDouble</span><span class="params">(<span class="keyword">double</span> v)</span> </span></span><br><span class="line"><span class="function">          <span class="comment">//使用 Double 类中的 doubleToLongBits 方法将双精度参数转换为一个 long，然后按八字节数量将该 long 值写入该文件，先定高字节。 </span></span></span><br><span class="line"><span class="function">          </span></span><br><span class="line"><span class="function"> <span class="keyword">void</span> <span class="title">writeFloat</span><span class="params">(<span class="keyword">float</span> v)</span> </span></span><br><span class="line"><span class="function">          <span class="comment">//使用 Float 类中的 floatToIntBits 方法将浮点参数转换为一个 int，然后按四字</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="读方法"><a href="#读方法" class="headerlink" title="读方法"></a>读方法</h2><p>主要有： read(),readBoolean(),readByte(),readChar(),readDouble(),readFloat(),readFully(),readInt(),readLine()</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">          从此文件中读取一个数据字节。 </span></span><br><span class="line"><span class="function">          </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">(<span class="keyword">byte</span>[] b)</span> </span></span><br><span class="line"><span class="function">          将最多 b.length 个数据字节从此文件读入 <span class="keyword">byte</span> 数组。</span></span><br><span class="line"><span class="function">          </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">(<span class="keyword">byte</span>[] b, <span class="keyword">int</span> off, <span class="keyword">int</span> len)</span> </span></span><br><span class="line"><span class="function">          将最多 len 个数据字节从此文件读入 <span class="keyword">byte</span> 数组。 </span></span><br><span class="line"><span class="function">          </span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">readBoolean</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">          从此文件读取一个 <span class="keyword">boolean</span>。 </span></span><br><span class="line"><span class="function">          </span></span><br><span class="line"><span class="function"><span class="keyword">byte</span> <span class="title">readByte</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">          从此文件读取一个有符号的八位值。 </span></span><br><span class="line"><span class="function">          </span></span><br><span class="line"><span class="function"><span class="keyword">char</span> <span class="title">readChar</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">          从此文件读取一个字符。 </span></span><br><span class="line"><span class="function">          </span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">readDouble</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">          从此文件读取一个 <span class="keyword">double</span>。 </span></span><br><span class="line"><span class="function">          </span></span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">readFloat</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">          从此文件读取一个 <span class="keyword">float</span>。 </span></span><br><span class="line"><span class="function">          </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">readFully</span><span class="params">(<span class="keyword">byte</span>[] b)</span> </span></span><br><span class="line"><span class="function">          将 b.length 个字节从此文件读入 <span class="keyword">byte</span> 数组，并从当前文件指针开始。 </span></span><br><span class="line"><span class="function">          </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">readFully</span><span class="params">(<span class="keyword">byte</span>[] b, <span class="keyword">int</span> off, <span class="keyword">int</span> len)</span> </span></span><br><span class="line"><span class="function">          将正好 len 个字节从此文件读入 <span class="keyword">byte</span> 数组，并从当前文件指针开始。 </span></span><br><span class="line"><span class="function">          </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">readInt</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">          从此文件读取一个有符号的 32 位整数。 </span></span><br><span class="line"><span class="function">          </span></span><br><span class="line"><span class="function">String <span class="title">readLine</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">          从此文件读取文本的下一行。 </span></span><br><span class="line"><span class="function">          </span></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">readLong</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">          从此文件读取一个有符号的 64 位整数。 </span></span><br><span class="line"><span class="function">          </span></span><br><span class="line"><span class="function"><span class="keyword">short</span> <span class="title">readShort</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">          从此文件读取一个有符号的 16 位数。 </span></span><br><span class="line"><span class="function">          </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">readUnsignedByte</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">          从此文件读取一个无符号的八位数。 </span></span><br><span class="line"><span class="function">          </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">readUnsignedShort</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">          从此文件读取一个无符号的 16 位数。 </span></span><br><span class="line"><span class="function">          </span></span><br><span class="line"><span class="function">String <span class="title">readUTF</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">          从此文件读取一个字符串。</span></span><br></pre></td></tr></table></figure>
+<h2 id="demo1"><a href="#demo1" class="headerlink" title="demo1"></a>demo1</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.RandomAccessFile;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">testWrite</span><span class="params">()</span> <span class="keyword">throws</span> IOException	</span>&#123;</span><br><span class="line">		File file=<span class="keyword">new</span> File(<span class="string">"D:\\test.txt"</span>);</span><br><span class="line">		<span class="keyword">if</span>(!file.exists())&#123;</span><br><span class="line">			file.createNewFile();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		RandomAccessFile raf=<span class="keyword">new</span> RandomAccessFile(file, <span class="string">"rw"</span>);</span><br><span class="line">		System.out.println(<span class="string">"文件指针位置："</span>+raf.getFilePointer());</span><br><span class="line">		raf.writeInt(<span class="number">20</span>);<span class="comment">//写入一个int</span></span><br><span class="line">		System.out.println(<span class="string">"文件指针位置："</span>+raf.getFilePointer());</span><br><span class="line">		raf.writeBoolean(<span class="keyword">true</span>);<span class="comment">//写入一boolean</span></span><br><span class="line">		raf.close();<span class="comment">//关闭文件</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">TestRead</span><span class="params">()</span> <span class="keyword">throws</span> IOException</span>&#123;</span><br><span class="line">		File file=<span class="keyword">new</span> File(<span class="string">"D:\\test.txt"</span>);</span><br><span class="line">		<span class="comment">//随机文件对象</span></span><br><span class="line">		RandomAccessFile raf=<span class="keyword">new</span> RandomAccessFile(file, <span class="string">"rw"</span>);</span><br><span class="line">		<span class="comment">//写入一个int</span></span><br><span class="line">		<span class="keyword">int</span> in = raf.readInt();</span><br><span class="line">		System.out.println(in);</span><br><span class="line">		<span class="comment">//写入一boolean</span></span><br><span class="line">		<span class="keyword">boolean</span> flag= raf.readBoolean();</span><br><span class="line">		System.out.println(flag);</span><br><span class="line">		raf.close();<span class="comment">//关闭文件</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException</span>&#123;</span><br><span class="line">		testWrite();</span><br><span class="line">		TestRead();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">文件指针位置：0</span><br><span class="line">文件指针位置：4</span><br><span class="line">20</span><br><span class="line">true</span><br></pre></td></tr></table></figure></p>
+<h2 id="demo2"><a href="#demo2" class="headerlink" title="demo2"></a>demo2</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.FileNotFoundException;  </span><br><span class="line"><span class="keyword">import</span> java.io.RandomAccessFile;  </span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test2</span> </span>&#123;  </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">try</span> &#123;  </span><br><span class="line">            <span class="comment">//实例化随机存储流,不需要创建文件的路径  </span></span><br><span class="line">            RandomAccessFile Raf = <span class="keyword">new</span> RandomAccessFile(<span class="string">"file"</span>, <span class="string">"rw"</span>);  </span><br><span class="line">            <span class="comment">//创建一个字符串数组并初始化  </span></span><br><span class="line">            String[] name = <span class="keyword">new</span> String[<span class="number">3</span>];  </span><br><span class="line">            name[<span class="number">0</span>] = <span class="string">"JAVA"</span>;  </span><br><span class="line">            name[<span class="number">1</span>] = <span class="string">"android"</span>;  </span><br><span class="line">            name[<span class="number">2</span>] = <span class="string">"C++"</span>;  </span><br><span class="line">            <span class="comment">//遍历数组  </span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;name.length;i++)&#123;  </span><br><span class="line">                <span class="comment">//使用随机流将数组写出去  </span></span><br><span class="line">                Raf.writeUTF(name[i]);    </span><br><span class="line">            &#125;  </span><br><span class="line">              </span><br><span class="line">            <span class="comment">//添加元素  </span></span><br><span class="line">            Raf.seek(Raf.length());  </span><br><span class="line">            Raf.writeUTF(<span class="string">"SSH"</span>);  </span><br><span class="line">              </span><br><span class="line">            <span class="comment">//使用seek将Raf.length()执行数组的第一个  </span></span><br><span class="line">            Raf.seek(<span class="number">0</span>);  </span><br><span class="line">              </span><br><span class="line">            <span class="comment">//遍历使用偏移量来遍历,每移动一下就打印出数据  </span></span><br><span class="line">            <span class="keyword">while</span>(Raf.getFilePointer()&lt;Raf.length())&#123;  </span><br><span class="line">                System.out.println(Raf.readUTF());  </span><br><span class="line">            &#125;  </span><br><span class="line">                      </span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;  </span><br><span class="line">            <span class="comment">// TODO Auto-generated catch block  </span></span><br><span class="line">            e.printStackTrace();  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">JAVA</span><br><span class="line">android</span><br><span class="line">C++</span><br><span class="line">SSH</span><br></pre></td></tr></table></figure></p>
+<h2 id="运用场景"><a href="#运用场景" class="headerlink" title="运用场景"></a>运用场景</h2><ol>
+<li>断点续传</li>
+<li>快速定位文件某一行</li>
+<li>…</li>
+</ol>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/reward-alipay.png"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/reward-wepay.png"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">如果本文对你有所帮助，请打赏 1元就足够感动我 :）</p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处！
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/post/b3bd5165.html" class="pre-post btn btn-default" title="浅谈ByteBuffer和ByteBuf的区别">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">浅谈ByteBuffer和ByteBuf的区别</span>
+        </a>
+    
+    
+        <a href="/post/c36d1898.html" class="next-post btn btn-default" title="程序员30 岁之后：如何实现质的突破">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">程序员30 岁之后：如何实现质的突破</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({           
+            el: '#vcomments',
+            appId: 'sbQDWnkLFsRjJS2BGzfKc4rL-gzGzoHsz',
+            appKey: '5u9C0UUmzRe3unr9iLzheHjk',
+            placeholder: '文明社会,理性评论留言 ^_^……',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一个构造函数"><span class="toc-text">一个构造函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#两个重要的方法"><span class="toc-text">两个重要的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写方法"><span class="toc-text">写方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#读方法"><span class="toc-text">读方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#demo1"><span class="toc-text">demo1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#demo2"><span class="toc-text">demo2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运用场景"><span class="toc-text">运用场景</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018 - 2020
+                </span> | .<font color="#f1607d">伊</font><font color="#ffa500">成</font><font color="#e5e802">个</font><font color="#3bff23">人</font><font color="#ffa503">站</font><font color="#29c8ec"> devcheng</font><font color="#4f9cfa">.net</font>. |
+                <span>
+                    基于 Hexo 搭建
+                </span> |
+                <span>
+                     <a href="/sitemap.xml" class="copyright-links" target="_blank" rel="nofollow">博客地图</a>
+                </span> |
+				<span>
+					 <a href="/atom.xml" class="copyright-links" target="_blank" rel="nofollow">RSS订阅</a> 
+				</span> |
+				<span>
+                    湘ICP备20010839号
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

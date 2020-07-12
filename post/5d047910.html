@@ -1,0 +1,350 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="伊成个人站-热衷于技术分享，源码分享的个人博客网站">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+	<!--baidu tongji-->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?11f6f08fada932368f71e76bd659b783";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
+    <link rel="dns-prefetch" href="http://www.devcheng.net">
+    <!--SEO-->
+
+<meta name="description" content="伊成个人站 www.devcheng.net 一个致力于技术分享，源码分享及工作经历分享的个人博客网站">
+
+
+
+<meta name="keywords" content="伊成个人站,技术分享,源码分享,代码分享,java代码,源代码">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+<title>	ElasticSearch-实战代码3-伊成个人站</title>
+
+    <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人博客网站" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+       ◉◡◉ 您好，欢迎到访伊成个人站!
+    </div>
+</header>
+    
+<nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.devcheng.net">伊成个人站-热衷于技术分享，源码分享的个人博客网站</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">				
+                    <ul class="menu">						
+						<a href="/"><img border="0" src="/img/logo2020.png" alt="伊成个人站" title="伊成个人站"></a>						
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa fa-home"></i>&nbsp;首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/blogshare/"><i class="fa fa-codepen"></i>&nbsp;技术分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codeshare/"><i class="fa fa-code"></i>&nbsp;源码分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codelife/"><i class="fa fa-pagelines"></i>&nbsp;程序人生</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives"><i class="fa fa-history"></i>&nbsp;时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about"><i class="fa fa-connectdevelop"></i>&nbsp;关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="ElasticSearch-实战代码3">
+            
+	            ElasticSearch-实战代码3
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/blogshare">
+            blogshare
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/ElasticSearch" title="ElasticSearch">
+                        ElasticSearch
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/02/26</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p><img src="/images/devcheng_es.jpg" alt="“ElasticSearch-实战代码3”"></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h3><p>学习了几天ElasticSearch，简单的做了一个实战项目，把学习过程中的各个用法简单的在项目里面体现出来。</p>
+<h3 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a><strong>开发环境</strong></h3><p>IntelliJ IDEA , JDK 1.8</p>
+<h3 id="ElasticSearch版本"><a href="#ElasticSearch版本" class="headerlink" title="ElasticSearch版本"></a><strong>ElasticSearch版本</strong></h3><p>5.6.2</p>
+<h3 id="前端页面模块"><a href="#前端页面模块" class="headerlink" title="前端页面模块"></a><strong>前端页面模块</strong></h3><p>采用的是 闲言轻博客模板 （<code>https://fly.layui.com/store/layuiXianyan/</code>）</p>
+<h3 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a><strong>技术栈</strong></h3><p>spring boot , elasticSearch , layui …<br>为了让大家更加直观的看见本项目中使用的版本，直接把项目里面的pom.xml 文件给提供出来！</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;project xmlns=<span class="string">"http://maven.apache.org/POM/4.0.0"</span> xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">         xsi:schemaLocation=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span><br><span class="line">    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line"></span><br><span class="line">    &lt;groupId&gt;com.lvoyee&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;esblog&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</span><br><span class="line">    &lt;name&gt;esblog&lt;/name&gt;</span><br><span class="line">    &lt;description&gt;lvoyee_es_blog&lt;/description&gt;</span><br><span class="line"></span><br><span class="line">    &lt;parent&gt;</span><br><span class="line">        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;2.0.2.RELEASE&lt;/version&gt;</span><br><span class="line">        &lt;relativePath /&gt; &lt;!-- lookup parent from repository --&gt;</span><br><span class="line">    &lt;/parent&gt;</span><br><span class="line"></span><br><span class="line">    &lt;properties&gt;</span><br><span class="line">        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</span><br><span class="line">        &lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;</span><br><span class="line">        &lt;java.version&gt;1.8&lt;/java.version&gt;</span><br><span class="line">        &lt;!--&lt;thymeleaf.version&gt;3.0.2.RELEASE&lt;/thymeleaf.version&gt;</span><br><span class="line">        &lt;thymeleaf-layout-dialect.version&gt;2.1.1&lt;/thymeleaf-layout-dialect.version&gt;--&gt;</span><br><span class="line">    &lt;/properties&gt;</span><br><span class="line"></span><br><span class="line">    &lt;dependencies&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-starter-data-elasticsearch&lt;/artifactId&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-starter-tomcat&lt;/artifactId&gt;</span><br><span class="line">            &lt;scope&gt;provided&lt;/scope&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.elasticsearch.plugin&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;transport-netty3-client&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;5.6.10&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">            &lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.webjars&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;jquery&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;3.3.1&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- https:<span class="comment">//mvnrepository.com/artifact/org.apache.commons/commons-lang3 --&gt;</span></span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;commons-lang3&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;3.7&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/dependencies&gt;</span><br><span class="line"></span><br><span class="line">    &lt;build&gt;</span><br><span class="line">        &lt;plugins&gt;</span><br><span class="line">            &lt;plugin&gt;</span><br><span class="line">                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">            &lt;/plugin&gt;</span><br><span class="line">        &lt;/plugins&gt;</span><br><span class="line">    &lt;/build&gt;</span><br><span class="line"></span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="代码结构截图"><a href="#代码结构截图" class="headerlink" title="代码结构截图"></a><strong>代码结构截图</strong></h3><p><img src="/images/devcheng_es1.png" alt="“ElasticSearch-实战代码3”"></p>
+<h3 id="项目运行截图"><a href="#项目运行截图" class="headerlink" title="项目运行截图"></a><strong>项目运行截图</strong></h3><p>首页<br><img src="/images/devcheng_es4.png" alt="“ElasticSearch-实战代码3”"></p>
+<p>登录<br><img src="/images/devcheng_es2.png" alt="“ElasticSearch-实战代码3”"></p>
+<p>文章详情<br><img src="/images/devcheng_es3.png" alt="“ElasticSearch-实战代码3”"></p>
+<h3 id="已经完成的功能"><a href="#已经完成的功能" class="headerlink" title="已经完成的功能"></a><strong>已经完成的功能</strong></h3><p>1.登录<br>2.首页<br>3.文章显示<br>4.点赞<br>5.关于</p>
+<h3 id="未完成的功能"><a href="#未完成的功能" class="headerlink" title="未完成的功能"></a><strong>未完成的功能</strong></h3><p>1.退出<br>2.留言<br>3.搜索</p>
+<h3 id="项目如何启动"><a href="#项目如何启动" class="headerlink" title="项目如何启动"></a><strong>项目如何启动</strong></h3><p>在启动项目之前，务必需要安装好了 elasticsearch,必要的环境细节不多赘述了。</p>
+<p>1.找到 elasticsearch 的bin目录下面的 elasticsearch.bat<br>2.启动 grunt servet<br>3.找到项目的 EsblogApplication 启动即可</p>
+<p>访问 <code>http://localhost:8080</code></p>
+<h3 id="mapping结构"><a href="#mapping结构" class="headerlink" title="mapping结构"></a><strong>mapping结构</strong></h3><h3 id="关于的mapping"><a href="#关于的mapping" class="headerlink" title="关于的mapping"></a><strong>关于的mapping</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;mappings&quot;: &#123;</span><br><span class="line">    &quot;about&quot;: &#123;</span><br><span class="line">      &quot;dynamic&quot;: false,</span><br><span class="line">      &quot;properties&quot;: &#123;</span><br><span class="line">        &quot;title&quot;: &#123;</span><br><span class="line">          &quot;type&quot;: &quot;text&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;content&quot;: &#123;</span><br><span class="line">          &quot;type&quot;: &quot;text&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;num&quot;: &#123;</span><br><span class="line">          &quot;type&quot;: &quot;integer&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;likenum&quot;:&#123;</span><br><span class="line">        	&quot;type&quot;:&quot;integer&quot;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="登录用户的mapping"><a href="#登录用户的mapping" class="headerlink" title="登录用户的mapping"></a><strong>登录用户的mapping</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&quot;mappings&quot;: &#123;</span><br><span class="line">	&quot;user&quot;: &#123;</span><br><span class="line">	&quot;properties&quot;: &#123;</span><br><span class="line">		&quot;password&quot;: &#123;</span><br><span class="line">			&quot;type&quot;: &quot;text&quot;</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;nickName&quot;: &#123;</span><br><span class="line">			&quot;type&quot;: &quot;text&quot;</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;sex&quot;: &#123;</span><br><span class="line">			&quot;type&quot;: &quot;integer&quot;</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;userName&quot;: &#123;</span><br><span class="line">			&quot;type&quot;: &quot;text&quot;</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;createDate&quot;: &#123;</span><br><span class="line">			&quot;format&quot;: &quot;yyyy-MM-dd || epoch_millis&quot;,</span><br><span class="line">			&quot;type&quot;: &quot;date&quot;</span><br><span class="line">		&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="文章的mapping"><a href="#文章的mapping" class="headerlink" title="文章的mapping"></a><strong>文章的mapping</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">	&quot;mappings&quot;:&#123;</span><br><span class="line">		&quot;article&quot;:&#123;</span><br><span class="line">			&quot;properties&quot;:&#123;</span><br><span class="line">				&quot;like&quot;:&#123;</span><br><span class="line">					&quot;type&quot;: &quot;integer&quot;</span><br><span class="line">				&#125;,</span><br><span class="line">				&quot;author&quot;:&#123;</span><br><span class="line">					 &quot;type&quot;: &quot;text&quot;</span><br><span class="line">				&#125;,</span><br><span class="line">				&quot;title&quot;:&#123;</span><br><span class="line">					&quot;type&quot;: &quot;text&quot;</span><br><span class="line">				&#125;,</span><br><span class="line">				&quot;content&quot;:&#123;</span><br><span class="line">					&quot;type&quot;:&quot;text&quot;</span><br><span class="line">				&#125;,</span><br><span class="line">				&quot;publish_date&quot;:&#123;</span><br><span class="line">					&quot;type&quot;: &quot;date&quot;,</span><br><span class="line">					&quot;format&quot;: &quot;yyyy-MM-dd HH:mm:ss || yyyy-MM-dd || epoch_millis&quot;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a><strong>小结</strong></h3><p>在这个项目中所有的后台功能都是基于elasticsearch 做的，目的就是为了学习如何用 elasticsearch 做数据的 CURD,仅此而已。</p>
+<p>还有一些未完成的功能，希望看了我写的代码可以自行学习补加完成，该项目本着学习 elasticsearch 的使用制作而成，多又瑕疵，还望多多包涵。</p>
+<p> <strong>需要源码的小伙伴，可以加入QQ群领取即可！</strong></p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/reward-alipay.png"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/reward-wepay.png"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">如果本文对你有所帮助，请打赏 1元就足够感动我 :）</p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处！
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/post/1c93cf.html" class="pre-post btn btn-default" title="不寻常的String To Map的转换">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">不寻常的String To Map的转换</span>
+        </a>
+    
+    
+        <a href="/post/2a034986.html" class="next-post btn btn-default" title="ElasticSearch-实战代码2">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">ElasticSearch-实战代码2</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({           
+            el: '#vcomments',
+            appId: 'sbQDWnkLFsRjJS2BGzfKc4rL-gzGzoHsz',
+            appKey: '5u9C0UUmzRe3unr9iLzheHjk',
+            placeholder: '文明社会,理性评论留言 ^_^……',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开发环境"><span class="toc-text">开发环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ElasticSearch版本"><span class="toc-text">ElasticSearch版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前端页面模块"><span class="toc-text">前端页面模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#技术栈"><span class="toc-text">技术栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码结构截图"><span class="toc-text">代码结构截图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目运行截图"><span class="toc-text">项目运行截图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#已经完成的功能"><span class="toc-text">已经完成的功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#未完成的功能"><span class="toc-text">未完成的功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目如何启动"><span class="toc-text">项目如何启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mapping结构"><span class="toc-text">mapping结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于的mapping"><span class="toc-text">关于的mapping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#登录用户的mapping"><span class="toc-text">登录用户的mapping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文章的mapping"><span class="toc-text">文章的mapping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-text">小结</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018 - 2020
+                </span> | .<font color="#f1607d">伊</font><font color="#ffa500">成</font><font color="#e5e802">个</font><font color="#3bff23">人</font><font color="#ffa503">站</font><font color="#29c8ec"> devcheng</font><font color="#4f9cfa">.net</font>. |
+                <span>
+                    基于 Hexo 搭建
+                </span> |
+                <span>
+                     <a href="/sitemap.xml" class="copyright-links" target="_blank" rel="nofollow">博客地图</a>
+                </span> |
+				<span>
+					 <a href="/atom.xml" class="copyright-links" target="_blank" rel="nofollow">RSS订阅</a> 
+				</span> |
+				<span>
+                    湘ICP备20010839号
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

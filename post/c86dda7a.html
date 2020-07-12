@@ -1,0 +1,379 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="伊成个人站-热衷于技术分享，源码分享的个人博客网站">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+	<!--baidu tongji-->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?11f6f08fada932368f71e76bd659b783";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
+    <link rel="dns-prefetch" href="http://www.devcheng.net">
+    <!--SEO-->
+
+<meta name="description" content="伊成个人站 www.devcheng.net 一个致力于技术分享，源码分享及工作经历分享的个人博客网站">
+
+
+
+<meta name="keywords" content="伊成个人站,技术分享,源码分享,代码分享,java代码,源代码">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+<title>	oracle中for update和for update nowait的区别-伊成个人站</title>
+
+    <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人博客网站" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+       ◉◡◉ 您好，欢迎到访伊成个人站!
+    </div>
+</header>
+    
+<nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.devcheng.net">伊成个人站-热衷于技术分享，源码分享的个人博客网站</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">				
+                    <ul class="menu">						
+						<a href="/"><img border="0" src="/img/logo2020.png" alt="伊成个人站" title="伊成个人站"></a>						
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa fa-home"></i>&nbsp;首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/blogshare/"><i class="fa fa-codepen"></i>&nbsp;技术分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codeshare/"><i class="fa fa-code"></i>&nbsp;源码分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codelife/"><i class="fa fa-pagelines"></i>&nbsp;程序人生</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives"><i class="fa fa-history"></i>&nbsp;时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about"><i class="fa fa-connectdevelop"></i>&nbsp;关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="oracle中for update和for update nowait的区别">
+            
+	            oracle中for update和for update nowait的区别
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/blogshare">
+            blogshare
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/for update" title="for update">
+                        for update
+                    </a>
+                
+                    <a href="/tags/oracle" title="oracle">
+                        oracle
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/03/30</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p><img src="/images/devcheng_net_oracle.jpg" alt="“oracle中for update和for update nowait的区别”"></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h3><p>首先一点，如果只是select 的话，Oracle是不会加任何锁的，也就是Oracle对 select 读到的数据不会有任何限制，虽然这时候有可能另外一个进程正在修改表中的数据，并且修改的结果可能影响到你目前select语句的结果，但是因为没有锁，所以select结果为当前时刻表中记录的状态。</p>
+<p>如果加入了for update， 则Oracle一旦发现（符合查询条件的）这批数据正在被修改，则不会发出该select语句查询，直到数据被修改结束（被commit），马上自动执行这个select语句。</p>
+<p>同样，如果该查询语句发出后，有人需要修改这批数据（中的一条或几条），它也必须等到查询结束后（commit）后，才能修改。</p>
+<p>for update nowait和 for update 都会对所查询到得结果集进行加锁，所不同的是，如果另外一个线程正在修改结果集中的数据，</p>
+<p>for update nowait 不会进行资源等待，只要发现结果集中有些数据被加锁，立刻返回 “ORA-00054错误，内容是资源正忙, 但指定以 NOWAIT 方式获取资源”。</p>
+<p>for update 和 for update nowait 加上的是一个行级锁，也就是只有符合where条件的数据被加锁。<br>如果仅仅用update语句来更改数据时，可能会因为加不上锁而没有响应地、莫名其妙地等待，但如果在此之前，<br>for update NOWAIT语句将要更改的数据试探性地加锁，就可以通过立即返回的错误提示而明白其中的道理，或许这就是For Update和NOWAIT的意义之所在。</p>
+<p>经过测试，以for update 或 for update nowait方式进行查询加锁，在select的结果集中，只要有任何一个记录在加锁，则整个结果集都在等待系统资源（如果是nowait，则抛出相应的异常）。</p>
+<h3 id="for-update-nowait-与-for-update-的目的"><a href="#for-update-nowait-与-for-update-的目的" class="headerlink" title="for update nowait 与 for update 的目的"></a><strong>for update nowait 与 for update 的目的</strong></h3><p>锁定表的所有行，排斥其他针对这个表的写操作。确保只有当前事务对指定表进行写操作。 </p>
+<h3 id="for-update-nowait和-for-update的区别"><a href="#for-update-nowait和-for-update的区别" class="headerlink" title="for update nowait和 for update的区别"></a><strong>for update nowait和 for update的区别</strong></h3><p>别的事务要对这个表进行写操作时，是等待一段时间还是马上就被数据库系统拒绝而返回.制定采用nowait方式来进行检索，<br>所以当发现数据被别的session锁定中的时候，就会迅速返回ORA-00054错误，内容是资源正忙, 但指定以 NOWAIT 方式获取资源。</p>
+<p>所以在程序中我们可以采用nowait方式迅速判断当前数据是否被锁定中，如果锁定中的话，就要采取相应的业务措施进行处理。<br>如何理解上面的话. 开启一会话 (就是开一个sqlwindow)<br>select empno,ename from emp where empno=’7369’ for update nowait ; </p>
+<p>得到下面结果集: empno ename 7369 smith<br>开启另一会话<br>select empno,ename from emp where empno=’7369’ for update nowait ;<br>返回RA-00054错误，内容是资源正忙, 但指定以 NOWAIT 方式获取资源 上面会话都提交commit;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">开启一会话, </span><br><span class="line">  select  empno,ename from emp where empno=&apos;7369&apos; for update ; </span><br><span class="line">得到下面结果集: </span><br><span class="line">    empno  ename </span><br><span class="line">    7369    smith </span><br><span class="line">开启另一会话 </span><br><span class="line">  select  empno,ename from emp where empno=&apos;7369&apos; for update;</span><br><span class="line"></span><br><span class="line">阻塞，不返回错误。 </span><br><span class="line">提交第一个会话，第二个回话自动执行 </span><br><span class="line">提交第二个会话</span><br></pre></td></tr></table></figure>
+<h4 id="for-update"><a href="#for-update" class="headerlink" title="for update: "></a><strong>for update: </strong></h4><p>当第一个session最后commit或者rollback之后，第二个session中的检索结果就是自动跳出来，并且也把数据锁定住. 开启一会话：<br>select empno,ename from emp where empno=”7369” for update；<br>得到下面结果集: empno ename 7369 smith 开启另一个会话， </p>
+<p>pdate emp set ename=’ALLEN’ where empno=”7396”; 阻塞。<br>提交第一个会话，</p>
+<p>update 语句执行<br>再开启一会话<br>update emp set ename=”SMITH” where empno=’7396’;<br>同样阻塞，虽然第一个会话因为提交而释放了锁，但是第二个会话中的update 又给这一行加锁了;</p>
+<h4 id="for-update-nowait"><a href="#for-update-nowait" class="headerlink" title="for update nowait:"></a><strong>for update nowait:</strong></h4><p>当你第一个session放开锁定以后,第二个session才能正常运行。<br>当你第二个session语句运行后，数据又被你第二个session语句锁定住了，<br>这个时候只要你第二个session语句后还没有commit，别的session照样不能对数据进行锁定更新等等。</p>
+<p>对比区别：<br>select * from TTable</p>
+<ol>
+<li>for update 锁定表的所有行，只能读不能写 </li>
+<li>select * from TTable1 where pkid = 1 for update 只锁定pkid=1的行 </li>
+<li>select * from Table1 a join Table2 b on a.pkid=b.pkid for update 锁定两个表的所有记录 </li>
+<li>select * from Table1 a join Table2 b on a.pkid=b.pkid where a.pkid = 10 for update 锁定两个表的中满足条件的行 </li>
+<li>select * from Table1 a join Table2 b on a.pkid=b.pkid where a.pkid = 10 for update of a.pkid 只锁定Table1中满足条件的行 </li>
+<li>for update 是把所有的表都锁点 for update of 根据of 后表的条件锁定相对应的表</li>
+</ol>
+<p>关于NOWAIT(如果一定要用FOR UPDATE，我更建议加上NOWAIT) 当有LOCK冲突时会提示错误并结束STATEMENT而不是在那里等待<br>(比如:要查的行已经被其它事务锁了,当前的锁事务与之冲突,加上nowait,当前的事务会结束会提示错误并立即结束 STATEMENT而不再等待). </p>
+<p>如果加了for update后 该语句用来锁定特定的行（如果有where子句，就是满足where条件的那些行）。<br>当这些行被锁定后，其他会话可以选择这些行，但不能更改或删除这些行，直到该语句的事务被commit语句或rollback语句结束为止。 </p>
+<p>因为FOR UPDATE子句获得了锁，所以COMMIT将释放这些锁。当锁释放了，该游标就无效了。<br>就是这些区别了关于oracle中的select…for update of columns 问题，<br>如下：select * from emp where empno = 7369 for update; 会对表中员工编号为7369的记录进行上锁。<br>其他用户无法对该记录进行操作，只能查询。</p>
+<p>select * from emp where empno = 7369 for update of sal;<br>这条语句是不是意味着只对表中的7369 这一行的sal字段的数据进行了上锁，其他数据则可以被其他用户做更新操作呢。<br>学员测试结果为二条语句的效果是一样的。其他用户对整行都无法更新，那么是不是意味着 for update of columns这句没有什么意义呢？</p>
+<p>从单独一张表的操作来看，上面二条语句的效果确实是相同的。但是如果涉及到多表操作的时候 for update of columns就起到了非常大的作用了。<br>现假定有二个用户，scott和mm ,</p>
+<p>scott执行语句：select <em> from emp e,dept d where e.deptno = d.deptno for update; –对二张表都进行了整表锁定<br>mm执行语句：select </em> from scott.dept for update wait 3; –试图锁定scott用户的dept表</p>
+<p>结果是： ERROR 位于第 1 行: ORA-30006: 资源已被占用; 执行操作时出现 WAIT 超时<br>现在，scott用户先进行解锁rollback,再在for update语句后面加上of columns，进行测试</p>
+<p>scott执行语句：select <em> from emp e,dept d where e.deptno = d.deptno for update of sal ;<br> mm执行语句：select </em> from scott.dept for update wait 3;</p>
+<p>结果是： 成功锁定了dept表的数据.<br>mm再次执行语句：select * from scott.emp for update wait 3;<br>结果是： ERROR 位于第 1 行: ORA-30006: 资源已被占用; 执行操作时出现 WAIT 超时</p>
+<p>通过这段代码案例，我们可以得到结论，for update of columns 用在多表连接锁定时，可以指定要锁定的是哪几张表，而如果表中的列没有在for update of 后面出现的话，就意味着这张表其实并没有被锁定，其他用户是可以对这些表的数据进行update操作的。这种情况经常会出现在用户对带有连接查询的视图进行操作场景下。用户只锁定相关表的数据，其他用户仍然可以对视图中其他原始表的数据来进行操作。</p>
+<h4 id="Oracle-的for-update行锁-SELECT…FOR-UPDATE-语句的语法如下："><a href="#Oracle-的for-update行锁-SELECT…FOR-UPDATE-语句的语法如下：" class="headerlink" title="Oracle 的for update行锁 SELECT…FOR UPDATE 语句的语法如下： "></a><strong>Oracle 的for update行锁 SELECT…FOR UPDATE 语句的语法如下： </strong></h4><p>SELECT … FOR UPDATE [OF column_list][WAIT n|NOWAIT][SKIP LOCKED];<br>其中： OF 子句用于指定即将更新的列，即锁定行上的特定列。<br>WAIT 子句指定等待其他用户释放锁的秒数，防止无限期的等待。</p>
+<p>“使用FOR UPDATE WAIT”子句的<strong>优点</strong>如下：<br>１防止无限期地等待被锁定的行；<br>２允许应用程序中对锁的等待时间进行更多的控制。<br>３对于交互式应用程序非常有用，因为这些用户不能等待不确定<br>４若使用了skip locked，则可以越过锁定的行，不会报告由wait n 引发的‘资源忙’异常报告</p>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h4><p>create table t(a varchar2(20),b varchar2(20));<br>insert into t values(‘1’,’1’);<br>insert into t values(‘2’,’2’);<br>insert into t values(‘3’,’3’);<br>insert into t values(‘4’,’4’);</p>
+<p>现在执行如下操作：<br>在plsql develope中打开两个sql窗口，<br>在1窗口中运行sql select * from t where a=’1’ for update;<br>在2窗口中运行sql1</p>
+<p>select * from t where a=’1’;<br>这一点问题也没有，因为行级锁不会影响纯粹的select语句 再运行sql2</p>
+<p>select * from t where a=’1’ for update;<br>则这一句sql在执行时，永远处于等待状态，除非窗口1中sql被提交或回滚。<br>如何才能让sql2不等待或等待指定的时间呢？ 我们再运行sql3</p>
+<p>select <em> from t where a=’1’ for update nowait; 则在执行此sql时，直接报资源忙的异常。<br>若执行 select </em> from t where a=’1’ for update wait 6; 则在等待6秒后，报 资源忙的异常。 如果我们执行sql4</p>
+<p>select * from t where a=’1’ for update nowait skip Locked; 则执行sql时，即不等待，也不报资源忙异常。 现在我们看看执行如下操作将会发生什么呢？ 在窗口1中执行：</p>
+<p>select * from t where rownum&lt;=3 nowait skip Locked; 在窗口2中执行：</p>
+<p>select * from t where rownum&lt;=6 nowait skip Locked; select for update 也就如此了吧，<br>insert、update、delete操作默认加行级锁，其原理和操作与select for update并无两样。</p>
+<p>select for update of，这个of子句在牵连到多个表时，具有较大作用，如不使用of指定锁定的表的列，则所有表的相关行均被锁定，若在of中指定了需修改的列，则只有与这些列相关的表的行才会被锁定。</p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/reward-alipay.png"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/reward-wepay.png"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">如果本文对你有所帮助，请打赏 1元就足够感动我 :）</p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处！
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/post/43e98a4d.html" class="pre-post btn btn-default" title="离开了公司，你还有什么">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">离开了公司，你还有什么</span>
+        </a>
+    
+    
+        <a href="/post/faee62e7.html" class="next-post btn btn-default" title="Java阻塞队列(BlockingQueue)">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Java阻塞队列(BlockingQueue)</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({           
+            el: '#vcomments',
+            appId: 'sbQDWnkLFsRjJS2BGzfKc4rL-gzGzoHsz',
+            appKey: '5u9C0UUmzRe3unr9iLzheHjk',
+            placeholder: '文明社会,理性评论留言 ^_^……',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#for-update-nowait-与-for-update-的目的"><span class="toc-text">for update nowait 与 for update 的目的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#for-update-nowait和-for-update的区别"><span class="toc-text">for update nowait和 for update的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#for-update"><span class="toc-text">for update: </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#for-update-nowait"><span class="toc-text">for update nowait:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Oracle-的for-update行锁-SELECT…FOR-UPDATE-语句的语法如下："><span class="toc-text">Oracle 的for update行锁 SELECT…FOR UPDATE 语句的语法如下： </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#示例"><span class="toc-text">示例:</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018 - 2020
+                </span> | .<font color="#f1607d">伊</font><font color="#ffa500">成</font><font color="#e5e802">个</font><font color="#3bff23">人</font><font color="#ffa503">站</font><font color="#29c8ec"> devcheng</font><font color="#4f9cfa">.net</font>. |
+                <span>
+                    基于 Hexo 搭建
+                </span> |
+                <span>
+                     <a href="/sitemap.xml" class="copyright-links" target="_blank" rel="nofollow">博客地图</a>
+                </span> |
+				<span>
+					 <a href="/atom.xml" class="copyright-links" target="_blank" rel="nofollow">RSS订阅</a> 
+				</span> |
+				<span>
+                    湘ICP备20010839号
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

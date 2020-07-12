@@ -1,0 +1,370 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="伊成个人站-热衷于技术分享，源码分享的个人博客网站">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+	<!--baidu tongji-->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?11f6f08fada932368f71e76bd659b783";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
+    <link rel="dns-prefetch" href="http://www.devcheng.net">
+    <!--SEO-->
+
+<meta name="description" content="伊成个人站 www.devcheng.net 一个致力于技术分享，源码分享及工作经历分享的个人博客网站">
+
+
+
+<meta name="keywords" content="伊成个人站,技术分享,源码分享,代码分享,java代码,源代码">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+<title>	centos7.x搭建ftp服务及创建用户-伊成个人站</title>
+
+    <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人博客网站" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+       ◉◡◉ 您好，欢迎到访伊成个人站!
+    </div>
+</header>
+    
+<nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.devcheng.net">伊成个人站-热衷于技术分享，源码分享的个人博客网站</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">				
+                    <ul class="menu">						
+						<a href="/"><img border="0" src="/img/logo2020.png" alt="伊成个人站" title="伊成个人站"></a>						
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa fa-home"></i>&nbsp;首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/blogshare/"><i class="fa fa-codepen"></i>&nbsp;技术分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codeshare/"><i class="fa fa-code"></i>&nbsp;源码分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codelife/"><i class="fa fa-pagelines"></i>&nbsp;程序人生</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives"><i class="fa fa-history"></i>&nbsp;时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about"><i class="fa fa-connectdevelop"></i>&nbsp;关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="centos7.x搭建ftp服务及创建用户">
+            
+	            centos7.x搭建ftp服务及创建用户
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/blogshare">
+            blogshare
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/centos7" title="centos7">
+                        centos7
+                    </a>
+                
+                    <a href="/tags/搭建ftp服务" title="搭建ftp服务">
+                        搭建ftp服务
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2020/04/18</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="FTP是什么东东？"><a href="#FTP是什么东东？" class="headerlink" title="FTP是什么东东？"></a>FTP是什么东东？</h2><p>FTP是 File Transfer Protocol 文件传输协议的英文名称,用于在Internet上控制文件的双向传输. 同时它也是一个应用程序.一般的Linux系统默认带有ftp软件或者是vsftpd。</p>
+<h2 id="为何搭建？"><a href="#为何搭建？" class="headerlink" title="为何搭建？"></a>为何搭建？</h2><p>目的是从window系统中上传文件到linux系统的服务器里。</p>
+<p>##安装步骤<br>提前使用终端工具连接上对应的服务器，这里我们以Xshell 为例</p>
+<p><strong> 步骤一 </strong><br>登录到服务器后，先切换为 root 用户<br>切换到 home 文件夹下（可以换任意一个你喜欢的文件夹下，这里以home文件夹为例）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home</span><br></pre></td></tr></table></figure></p>
+<p><strong> 步骤二 </strong><br>接着，输入以下命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm</span><br></pre></td></tr></table></figure></p>
+<p><strong> 步骤三 </strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh epel-release-6-8.noarch.rpm</span><br></pre></td></tr></table></figure></p>
+<p><strong> 步骤四 </strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install vsftpd</span><br></pre></td></tr></table></figure></p>
+<p>注意： 安装完成后，找到 /etc/vsftpd/vsftpd.conf 文件，是vsftp的配置文件。</p>
+<p><strong> 步骤五 </strong><br>修改selinux<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getsebool -a | grep ftp</span><br></pre></td></tr></table></figure></p>
+<p> <img src="/images/devcheng_net_ftp2.png" alt="“伊成博客”"></p>
+<p>执行上面命令，从返回的结果看到 ftpd_full_access 和 tftp_home_dir两行都是off，说明没有开启外网的访问。</p>
+<p><strong> 步骤六 </strong><br>开启外网的访问</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@bogon ~]<span class="comment"># setsebool -P ftpd_full_access on</span></span><br><span class="line">[root@bogon ~]<span class="comment"># setsebool -P tftp_home_dir on</span></span><br></pre></td></tr></table></figure>
+<p>  <img src="/images/devcheng_net_ftp3.png" alt="“伊成博客”"></p>
+<p><strong> 步骤七 </strong><br>关闭匿名访问<br>修改 /etc/vsftpd/vsftpd.conf文件：<br>找到 anonymous_enable=NO  #将YES改为NO</p>
+<p>到此基本配置都完成了，使用以下命令重启 ftp 服务<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart vsftpd.service</span><br></pre></td></tr></table></figure></p>
+<p>另外设置一下 开机启动 ftp 服务<br>使用以下命令即可<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> vsftpd.service</span><br></pre></td></tr></table></figure></p>
+<p>通过以上的几个步骤，ftp 服务就已经搭建完毕，接着我们还需要创建用户并指定对应的目录</p>
+<h2 id="创建目录以及用户"><a href="#创建目录以及用户" class="headerlink" title="创建目录以及用户"></a>创建目录以及用户</h2><p>在/var 目录下创建一个 www 文件夹,www文件夹中创建一个site文件夹一个da文件夹<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /var</span><br><span class="line">mkdir www</span><br><span class="line"><span class="built_in">cd</span> www</span><br><span class="line">mkdir site</span><br><span class="line">mkdir da</span><br></pre></td></tr></table></figure></p>
+<h3 id="创建用户da并指定用户目录为-var-www-da"><a href="#创建用户da并指定用户目录为-var-www-da" class="headerlink" title="创建用户da并指定用户目录为/var/www/da"></a>创建用户da并指定用户目录为/var/www/da</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd -d /var/www/da da</span><br><span class="line">passwd da</span><br></pre></td></tr></table></figure>
+<p>修改xiao用户的用户目录为/var/www/site<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -d /var/www/site xiao</span><br></pre></td></tr></table></figure></p>
+<h3 id="查看新创建的用户的信息"><a href="#查看新创建的用户的信息" class="headerlink" title="查看新创建的用户的信息"></a>查看新创建的用户的信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail /etc/passwd</span><br></pre></td></tr></table></figure>
+<p><img src="/images/devcheng_net_ftp4.png" alt="“伊成博客”"></p>
+<h3 id="修改-etc-vsftpd-vsftpd-conf文件"><a href="#修改-etc-vsftpd-vsftpd-conf文件" class="headerlink" title="修改/etc/vsftpd/vsftpd.conf文件"></a>修改/etc/vsftpd/vsftpd.conf文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi vsftpd.conf</span><br></pre></td></tr></table></figure>
+<p>找到 userlist_enable=YES 在这句后面换行追加以下内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">userlist_deny=NO       </span><br><span class="line">userlist_file=/etc/vsftpd/user_list</span><br></pre></td></tr></table></figure></p>
+<p>完成 vsftpd.conf 文件修改之后保存退出。</p>
+<h3 id="编辑-user-list-文件"><a href="#编辑-user-list-文件" class="headerlink" title="编辑 user_list 文件"></a>编辑 user_list 文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi user_list</span><br></pre></td></tr></table></figure>
+<p>把上面的两个用户 一行一个用户名,输入 da 和xiao<br>按下esc键退出输入模式进入命令模式<br>输入:wq 保存并退出</p>
+<h3 id="配置文件夹权限"><a href="#配置文件夹权限" class="headerlink" title="配置文件夹权限"></a>配置文件夹权限</h3><p>切换到 /var/www 目录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /var/www</span><br></pre></td></tr></table></figure></p>
+<h3 id="更改www里面两个文件夹的权限"><a href="#更改www里面两个文件夹的权限" class="headerlink" title="更改www里面两个文件夹的权限"></a>更改www里面两个文件夹的权限</h3><p>输入以下命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chown da:da da</span><br><span class="line">chown xiao:xiao site</span><br></pre></td></tr></table></figure></p>
+<h3 id="修改da用户的所属用户组-并修改site文件夹的权限"><a href="#修改da用户的所属用户组-并修改site文件夹的权限" class="headerlink" title="修改da用户的所属用户组,并修改site文件夹的权限"></a>修改da用户的所属用户组,并修改site文件夹的权限</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -g xiao da</span><br></pre></td></tr></table></figure>
+<p><img src="/images/devcheng_net_ftp5.png" alt="“伊成博客”"></p>
+<p>修改site文件夹的权限,允许同一个用户组的用户拥有rwx权限<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 775 site</span><br></pre></td></tr></table></figure></p>
+<p>到此搭建ftp和创建目录和创建对应用户都全部完成！<br>接下来在代码中验证一下</p>
+<p>使用springboot的配置文件application.yml 配置对应信息，如下<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ftp:</span><br><span class="line">  host: 192.168.43.41 #你服务器的ip</span><br><span class="line">  port: 21            #端口</span><br><span class="line">  userName: da        #以上创建的ftp用户名</span><br><span class="line">  password: da        #以上创建的ftp密码</span><br><span class="line">  basePath: /var/www/da #文件存放目录</span><br></pre></td></tr></table></figure></p>
+<p><strong>上传文件 代码段 </strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">uploadFile</span><span class="params">(String host, <span class="keyword">int</span> port, String username, String password, String basePath,</span></span></span><br><span class="line"><span class="function"><span class="params">                                 String filePath, String filename, InputStream input)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> result = <span class="keyword">false</span>;</span><br><span class="line">    FTPClient ftp = <span class="keyword">new</span> FTPClient();</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> reply;</span><br><span class="line">        ftp.connect(host, port);<span class="comment">// 连接FTP服务器</span></span><br><span class="line">        <span class="comment">// 如果采用默认端口，可以使用ftp.connect(host)的方式直接连接FTP服务器</span></span><br><span class="line">        ftp.login(username, password);<span class="comment">// 登录</span></span><br><span class="line">        reply = ftp.getReplyCode();</span><br><span class="line">        <span class="keyword">if</span> (!FTPReply.isPositiveCompletion(reply)) &#123;</span><br><span class="line">            ftp.disconnect();</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//切换到上传目录</span></span><br><span class="line">        <span class="keyword">if</span> (!ftp.changeWorkingDirectory(basePath + filePath)) &#123;</span><br><span class="line">            <span class="comment">//如果目录不存在创建目录</span></span><br><span class="line">            String[] dirs = filePath.split(<span class="string">"/"</span>);</span><br><span class="line">            String tempPath = basePath;</span><br><span class="line">            <span class="keyword">for</span> (String dir : dirs) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">null</span> == dir || <span class="string">""</span>.equals(dir)) <span class="keyword">continue</span>;</span><br><span class="line">                tempPath += <span class="string">"/"</span> + dir;</span><br><span class="line">                <span class="keyword">if</span> (!ftp.changeWorkingDirectory(tempPath)) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (!ftp.makeDirectory(tempPath)) &#123;</span><br><span class="line">                        <span class="keyword">return</span> result;</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        ftp.changeWorkingDirectory(tempPath);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//设置上传文件的类型为二进制类型</span></span><br><span class="line">        ftp.setFileType(FTP.BINARY_FILE_TYPE);</span><br><span class="line">        <span class="comment">//上传文件</span></span><br><span class="line">        <span class="keyword">if</span> (!ftp.storeFile(filename, input)) &#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        input.close();</span><br><span class="line">        ftp.logout();</span><br><span class="line">        result = <span class="keyword">true</span>;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (ftp.isConnected()) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                ftp.disconnect();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException ioe) &#123;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/devcheng_net_ftp6.png" alt="“伊成博客”"></p>
+<p>看到这里说明以上的配置都没问题，到此本文告一段落了！</p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/reward-alipay.png"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/reward-wepay.png"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">如果本文对你有所帮助，请打赏 1元就足够感动我 :）</p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处！
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/post/1129f657.html" class="pre-post btn btn-default" title="基于Spring Boot开发的毕业论文管理系统">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">基于Spring Boot开发的毕业论文管理系统</span>
+        </a>
+    
+    
+        <a href="/post/87dbd908.html" class="next-post btn btn-default" title="win10怎么把两张图片合并为一张">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">win10怎么把两张图片合并为一张</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({           
+            el: '#vcomments',
+            appId: 'sbQDWnkLFsRjJS2BGzfKc4rL-gzGzoHsz',
+            appKey: '5u9C0UUmzRe3unr9iLzheHjk',
+            placeholder: '文明社会,理性评论留言 ^_^……',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#FTP是什么东东？"><span class="toc-text">FTP是什么东东？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为何搭建？"><span class="toc-text">为何搭建？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建目录以及用户"><span class="toc-text">创建目录以及用户</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建用户da并指定用户目录为-var-www-da"><span class="toc-text">创建用户da并指定用户目录为/var/www/da</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看新创建的用户的信息"><span class="toc-text">查看新创建的用户的信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改-etc-vsftpd-vsftpd-conf文件"><span class="toc-text">修改/etc/vsftpd/vsftpd.conf文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编辑-user-list-文件"><span class="toc-text">编辑 user_list 文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置文件夹权限"><span class="toc-text">配置文件夹权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更改www里面两个文件夹的权限"><span class="toc-text">更改www里面两个文件夹的权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改da用户的所属用户组-并修改site文件夹的权限"><span class="toc-text">修改da用户的所属用户组,并修改site文件夹的权限</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018 - 2020
+                </span> | .<font color="#f1607d">伊</font><font color="#ffa500">成</font><font color="#e5e802">个</font><font color="#3bff23">人</font><font color="#ffa503">站</font><font color="#29c8ec"> devcheng</font><font color="#4f9cfa">.net</font>. |
+                <span>
+                    基于 Hexo 搭建
+                </span> |
+                <span>
+                     <a href="/sitemap.xml" class="copyright-links" target="_blank" rel="nofollow">博客地图</a>
+                </span> |
+				<span>
+					 <a href="/atom.xml" class="copyright-links" target="_blank" rel="nofollow">RSS订阅</a> 
+				</span> |
+				<span>
+                    湘ICP备20010839号
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="伊成个人站-热衷于技术分享，源码分享的个人博客网站">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+	<!--baidu tongji-->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?11f6f08fada932368f71e76bd659b783";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
+    <link rel="dns-prefetch" href="http://www.devcheng.net">
+    <!--SEO-->
+
+<meta name="description" content="伊成个人站 www.devcheng.net 一个致力于技术分享，源码分享及工作经历分享的个人博客网站">
+
+
+
+<meta name="keywords" content="伊成个人站,技术分享,源码分享,代码分享,java代码,源代码">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+<title>	Java阻塞队列(BlockingQueue)-伊成个人站</title>
+
+    <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人博客网站" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+       ◉◡◉ 您好，欢迎到访伊成个人站!
+    </div>
+</header>
+    
+<nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.devcheng.net">伊成个人站-热衷于技术分享，源码分享的个人博客网站</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">				
+                    <ul class="menu">						
+						<a href="/"><img border="0" src="/img/logo2020.png" alt="伊成个人站" title="伊成个人站"></a>						
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa fa-home"></i>&nbsp;首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/blogshare/"><i class="fa fa-codepen"></i>&nbsp;技术分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codeshare/"><i class="fa fa-code"></i>&nbsp;源码分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codelife/"><i class="fa fa-pagelines"></i>&nbsp;程序人生</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives"><i class="fa fa-history"></i>&nbsp;时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about"><i class="fa fa-connectdevelop"></i>&nbsp;关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Java阻塞队列(BlockingQueue)">
+            
+	            Java阻塞队列(BlockingQueue)
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/blogshare">
+            blogshare
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/BlockingQueue" title="BlockingQueue">
+                        BlockingQueue
+                    </a>
+                
+                    <a href="/tags/Java阻塞队列" title="Java阻塞队列">
+                        Java阻塞队列
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/03/23</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p><img src="/images/devcheng_net_queue.jpg" alt="“Java阻塞队列(BlockingQueue)”"></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h3><p> 在新增的Concurrent包中，BlockingQueue很好的解决了多线程中，如何高效安全“传输”数据的问题。<br> 通过这些高效并且线程安全的队列类，为我们快速搭建高质量的多线程程序带来极大的便利。<br> 本文详细介绍了BlockingQueue家庭中的所有成员，包括他们各自的功能以及常见使用场景。</p>
+<h3 id="认识BlockingQueue"><a href="#认识BlockingQueue" class="headerlink" title="认识BlockingQueue"></a><strong>认识BlockingQueue</strong></h3><p>阻塞队列，顾名思义，首先它是一个队列，而一个队列在数据结构中所起的作用大致如下图所示：<br><img src="http://wx4.sinaimg.cn/large/007GIDuUgy1g1cmjak64rj305x060dfo.jpg" alt="image"></p>
+<p>从上图我们可以很清楚看到，通过一个共享的队列，可以使得数据由队列的一端输入，从另外一端输出；<br>常用的队列主要有以下两种：（当然通过不同的实现方式，还可以延伸出很多不同类型的队列，DelayQueue就是其中的一种）<br>　　<br><strong>先进先出（FIFO）</strong>：先插入的队列的元素也最先出队列，类似于排队的功能。从某种程度上来说这种队列也体现了一种公平性。<br><strong>后进先出（LIFO）</strong>：后插入队列的元素最先出队列，这种队列优先处理最近发生的事件。</p>
+<p>多线程环境中，通过队列可以很容易实现数据共享，比如经典的“生产者”和“消费者”模型中，通过队列可以很便利地实现两者之间的数据共享。假设我们有若干生产者线程，另外又有若干个消费者线程。如果生产者线程需要把准备好的数据共享给消费者线程，利用队列的方式来传递数据，就可以很方便地解决他们之间的数据共享问题。但如果生产者和消费者在某个时间段内，万一发生数据处理速度不匹配的情况呢？理想情况下，如果生产者产出数据的速度大于消费者消费的速度，并且当生产出来的数据累积到一定程度的时候，那么生产者必须暂停等待一下（阻塞生产者线程），以便等待消费者线程把累积的数据处理完毕，反之亦然。然而，在concurrent包发布以前，在多线程环境下，我们每个程序员都必须去自己控制这些细节，尤其还要兼顾效率和线程安全，而这会给我们的程序带来不小的复杂度。好在此时，强大的concurrent包横空出世了，而他也给我们带来了强大的BlockingQueue。（在多线程领域：所谓阻塞，在某些情况下会挂起线程（即阻塞），一旦条件满足，被挂起的线程又会自动被唤醒）<br>下面两幅图演示了BlockingQueue的两个常见阻塞场景：<br><img src="http://ws2.sinaimg.cn/large/007GIDuUgy1g1cmmbfz9wj304p04k3yc.jpg" alt="image"></p>
+<p>如上图所示：当队列中没有数据的情况下，消费者端的所有线程都会被自动阻塞（挂起），直到有数据放入队列。<br><img src="http://wx1.sinaimg.cn/large/007GIDuUgy1g1cmmsiki4j306k04j3yd.jpg" alt="image"></p>
+<p>如上图所示：当队列中填满数据的情况下，生产者端的所有线程都会被自动阻塞（挂起），直到队列中有空的位置，线程被自动唤醒。<br>这也是我们在多线程环境下，为什么需要BlockingQueue的原因。作为BlockingQueue的使用者，我们再也不需要关心什么时候需要阻塞线程，什么时候需要唤醒线程，因为这一切BlockingQueue都给你一手包办了。既然BlockingQueue如此神通广大，让我们一起来见识下它的常用方法：</p>
+<p><strong>BlockingQueue的核心方法：</strong></p>
+<p>放入数据：<br>　　offer(anObject):表示如果可能的话,将anObject加到BlockingQueue里,即如果BlockingQueue可以容纳,则返回true,否则返回false.（本方法不阻塞当前执行方法的线程）</p>
+<p>　　offer(E o, long timeout, TimeUnit unit),可以设定等待的时间，如果在指定的时间内，还不能往队列中加入BlockingQueue，则返回失败。</p>
+<p>　　put(anObject):把anObject加到BlockingQueue里,如果BlockQueue没有空间,则调用此方法的线程被阻断直到BlockingQueue里面有空间再继续。</p>
+<p>获取数据：<br>　　poll(time):取走BlockingQueue里排在首位的对象,若不能立即取出,则可以等time参数规定的时间,取不到时返回null;</p>
+<p>　　poll(long timeout, TimeUnit unit)：从BlockingQueue取出一个队首的对象，如果在指定时间内,队列一旦有数据可取，则立即返回队列中的数据。否则知道时间超时还没有数据可取，返回失败。</p>
+<p>　　take():取走BlockingQueue里排在首位的对象,若BlockingQueue为空,阻断进入等待状态直到BlockingQueue有新的数据被加入; </p>
+<p>　　drainTo():一次性从BlockingQueue获取所有可用的数据对象（还可以指定获取数据的个数）,通过该方法，可以提升获取数据效率；不需要多次分批加锁或释放锁。</p>
+<p><strong>常见BlockingQueue</strong></p>
+<p>在了解了BlockingQueue的基本功能后，让我们来看看BlockingQueue家庭大致有哪些成员？<br><img src="http://wx2.sinaimg.cn/large/007GIDuUgy1g1cmnr88xoj30my052jrt.jpg" alt="image"></p>
+<h3 id="BlockingQueue成员详细介绍"><a href="#BlockingQueue成员详细介绍" class="headerlink" title="BlockingQueue成员详细介绍"></a><strong>BlockingQueue成员详细介绍</strong></h3><ol>
+<li><p>ArrayBlockingQueue<br>   基于数组的阻塞队列实现，在ArrayBlockingQueue内部，维护了一个定长数组，以便缓存队列中的数据对象，这是一个常用的阻塞队列，除了一个定长数组外，ArrayBlockingQueue内部还保存着两个整形变量，分别标识着队列的头部和尾部在数组中的位置。<br>　　ArrayBlockingQueue在生产者放入数据和消费者获取数据，都是共用同一个锁对象，由此也意味着两者无法真正并行运行，这点尤其不同于LinkedBlockingQueue；按照实现原理来分析，ArrayBlockingQueue完全可以采用分离锁，从而实现生产者和消费者操作的完全并行运行。Doug Lea之所以没这样去做，也许是因为ArrayBlockingQueue的数据写入和获取操作已经足够轻巧，以至于引入独立的锁机制，除了给代码带来额外的复杂性外，其在性能上完全占不到任何便宜。 ArrayBlockingQueue和LinkedBlockingQueue间还有一个明显的不同之处在于，前者在插入或删除元素时不会产生或销毁任何额外的对象实例，而后者则会生成一个额外的Node对象。这在长时间内需要高效并发地处理大批量数据的系统中，其对于GC的影响还是存在一定的区别。而在创建ArrayBlockingQueue时，我们还可以控制对象的内部锁是否采用公平锁，默认采用非公平锁。</p>
+</li>
+<li><p>LinkedBlockingQueue<br>   基于链表的阻塞队列，同ArrayListBlockingQueue类似，其内部也维持着一个数据缓冲队列（该队列由一个链表构成），当生产者往队列中放入一个数据时，队列会从生产者手中获取数据，并缓存在队列内部，而生产者立即返回；只有当队列缓冲区达到最大值缓存容量时（LinkedBlockingQueue可以通过构造函数指定该值），才会阻塞生产者队列，直到消费者从队列中消费掉一份数据，生产者线程会被唤醒，反之对于消费者这端的处理也基于同样的原理。而LinkedBlockingQueue之所以能够高效的处理并发数据，还因为其对于生产者端和消费者端分别采用了独立的锁来控制数据同步，这也意味着在高并发的情况下生产者和消费者可以并行地操作队列中的数据，以此来提高整个队列的并发性能。<br>作为开发者，我们需要注意的是，如果构造一个LinkedBlockingQueue对象，而没有指定其容量大小，LinkedBlockingQueue会默认一个类似无限大小的容量（Integer.MAX_VALUE），这样的话，如果生产者的速度一旦大于消费者的速度，也许还没有等到队列满阻塞产生，系统内存就有可能已被消耗殆尽了。</p>
+</li>
+</ol>
+<p>ArrayBlockingQueue和LinkedBlockingQueue是两个最普通也是最常用的阻塞队列，一般情况下，在处理多线程间的生产者消费者问题，使用这两个类足以。</p>
+<p>下面的代码演示了如何使用BlockingQueue：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Producer</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">boolean</span>      isRunning               = <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">private</span> BlockingQueue queue;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> AtomicInteger  count                   = <span class="keyword">new</span> AtomicInteger();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span>      DEFAULT_RANGE_FOR_SLEEP = <span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Producer</span><span class="params">(BlockingQueue queue)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.queue = queue;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String data = <span class="keyword">null</span>;</span><br><span class="line">        Random r = <span class="keyword">new</span> Random();</span><br><span class="line"> </span><br><span class="line">        System.out.println(<span class="string">"启动生产者线程！"</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">while</span> (isRunning) &#123;</span><br><span class="line">                System.out.println(<span class="string">"正在生产数据..."</span>);</span><br><span class="line">                Thread.sleep(r.nextInt(DEFAULT_RANGE_FOR_SLEEP));</span><br><span class="line"> </span><br><span class="line">                data = <span class="string">"data:"</span> + count.incrementAndGet();</span><br><span class="line">                System.out.println(<span class="string">"将数据："</span> + data + <span class="string">"放入队列..."</span>);</span><br><span class="line">                <span class="keyword">if</span> (!queue.offer(data, <span class="number">2</span>, TimeUnit.SECONDS)) &#123;</span><br><span class="line">                    System.out.println(<span class="string">"放入数据失败："</span> + data);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            Thread.currentThread().interrupt();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"退出生产者线程！"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        isRunning = <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br><span class="line">   </span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 消费者线程</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Consumer</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">private</span> BlockingQueue&lt;String&gt; queue;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span>      DEFAULT_RANGE_FOR_SLEEP = <span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Consumer</span><span class="params">(BlockingQueue&lt;String&gt; queue)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.queue = queue;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"启动消费者线程！"</span>);</span><br><span class="line">        Random r = <span class="keyword">new</span> Random();</span><br><span class="line">        <span class="keyword">boolean</span> isRunning = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">while</span> (isRunning) &#123;</span><br><span class="line">                System.out.println(<span class="string">"正从队列获取数据..."</span>);</span><br><span class="line">                String data = queue.poll(<span class="number">2</span>, TimeUnit.SECONDS);</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">null</span> != data) &#123;</span><br><span class="line">                    System.out.println(<span class="string">"拿到数据："</span> + data);</span><br><span class="line">                    System.out.println(<span class="string">"正在消费数据："</span> + data);</span><br><span class="line">                    Thread.sleep(r.nextInt(DEFAULT_RANGE_FOR_SLEEP));</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">// 超过2s还没数据，认为所有生产线程都已经退出，自动退出消费线程。</span></span><br><span class="line">                    isRunning = <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            Thread.currentThread().interrupt();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"退出消费者线程！"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 测试类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BlockingQueueTest</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        <span class="comment">// 声明一个容量为10的缓存队列</span></span><br><span class="line">        BlockingQueue&lt;String&gt; queue = <span class="keyword">new</span> LinkedBlockingQueue&lt;String&gt;(<span class="number">10</span>);</span><br><span class="line"> </span><br><span class="line">        Producer producer1 = <span class="keyword">new</span> Producer(queue);</span><br><span class="line">        Producer producer2 = <span class="keyword">new</span> Producer(queue);</span><br><span class="line">        Producer producer3 = <span class="keyword">new</span> Producer(queue);</span><br><span class="line">        Consumer consumer = <span class="keyword">new</span> Consumer(queue);</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// 借助Executors</span></span><br><span class="line">        ExecutorService service = Executors.newCachedThreadPool();</span><br><span class="line">        <span class="comment">// 启动线程</span></span><br><span class="line">        service.execute(producer1);</span><br><span class="line">        service.execute(producer2);</span><br><span class="line">        service.execute(producer3);</span><br><span class="line">        service.execute(consumer);</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// 执行10s</span></span><br><span class="line">        Thread.sleep(<span class="number">10</span> * <span class="number">1000</span>);</span><br><span class="line">        producer1.stop();</span><br><span class="line">        producer2.stop();</span><br><span class="line">        producer3.stop();</span><br><span class="line"> </span><br><span class="line">        Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">        <span class="comment">// 退出Executor</span></span><br><span class="line">        service.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><p>DelayQueue<br>   DelayQueue中的元素只有当其指定的延迟时间到了，才能够从队列中获取到该元素。DelayQueue是一个没有大小限制的队列，因此往队列中插入数据的操作（生产者）永远不会被阻塞，而只有获取数据的操作（消费者）才会被阻塞。<br>使用场景：<br>　　DelayQueue使用场景较少，但都相当巧妙，常见的例子比如使用一个DelayQueue来管理一个超时未响应的连接队列。</p>
+</li>
+<li><p>PriorityBlockingQueue<br>   基于优先级的阻塞队列（优先级的判断通过构造函数传入的Compator对象来决定），但需要注意的是PriorityBlockingQueue并不会阻塞数据生产者，而只会在没有可消费的数据时，阻塞数据的消费者。因此使用的时候要特别注意，生产者生产数据的速度绝对不能快于消费者消费数据的速度，否则时间一长，会最终耗尽所有的可用堆内存空间。在实现PriorityBlockingQueue时，内部控制线程同步的锁采用的是公平锁。</p>
+</li>
+<li><p>SynchronousQueue<br>   一种无缓冲的等待队列，类似于无中介的直接交易，有点像原始社会中的生产者和消费者，生产者拿着产品去集市销售给产品的最终消费者，而消费者必须亲自去集市找到所要商品的直接生产者，如果一方没有找到合适的目标，那么对不起，大家都在集市等待。相对于有缓冲的BlockingQueue来说，少了一个中间经销商的环节（缓冲区），如果有经销商，生产者直接把产品批发给经销商，而无需在意经销商最终会将这些产品卖给那些消费者，由于经销商可以库存一部分商品，因此相对于直接交易模式，总体来说采用中间经销商的模式会吞吐量高一些（可以批量买卖）；但另一方面，又因为经销商的引入，使得产品从生产者到消费者中间增加了额外的交易环节，单个产品的及时响应性能可能会降低。<br>　　声明一个SynchronousQueue有两种不同的方式，它们之间有着不太一样的行为。公平模式和非公平模式的区别:<br>　　如果采用公平模式：SynchronousQueue会采用公平锁，并配合一个FIFO队列来阻塞多余的生产者和消费者，从而体系整体的公平策略；<br>　　但如果是非公平模式（SynchronousQueue默认）：SynchronousQueue采用非公平锁，同时配合一个LIFO队列来管理多余的生产者和消费者，而后一种模式，如果生产者和消费者的处理速度有差距，则很容易出现饥渴的情况，即可能有某些生产者或者是消费者的数据永远都得不到处理。</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a><strong>小结</strong></h3><p>　　BlockingQueue不光实现了一个完整队列所具有的基本功能，同时在多线程环境下，他还自动管理了多线间的自动等待于唤醒功能，从而使得程序员可以忽略这些细节，关注更高级的功能。</p>
+</li>
+</ol>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/reward-alipay.png"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/reward-wepay.png"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">如果本文对你有所帮助，请打赏 1元就足够感动我 :）</p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处！
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/post/c86dda7a.html" class="pre-post btn btn-default" title="oracle中for update和for update nowait的区别">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">oracle中for update和for update nowait的区别</span>
+        </a>
+    
+    
+        <a href="/post/2af67ce4.html" class="next-post btn btn-default" title="Intellij IDEA使用@Autowired 注解标红报错解决办法">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Intellij IDEA使用@Autowired 注解标红报错解决办法</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({           
+            el: '#vcomments',
+            appId: 'sbQDWnkLFsRjJS2BGzfKc4rL-gzGzoHsz',
+            appKey: '5u9C0UUmzRe3unr9iLzheHjk',
+            placeholder: '文明社会,理性评论留言 ^_^……',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#认识BlockingQueue"><span class="toc-text">认识BlockingQueue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BlockingQueue成员详细介绍"><span class="toc-text">BlockingQueue成员详细介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-text">小结</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018 - 2020
+                </span> | .<font color="#f1607d">伊</font><font color="#ffa500">成</font><font color="#e5e802">个</font><font color="#3bff23">人</font><font color="#ffa503">站</font><font color="#29c8ec"> devcheng</font><font color="#4f9cfa">.net</font>. |
+                <span>
+                    基于 Hexo 搭建
+                </span> |
+                <span>
+                     <a href="/sitemap.xml" class="copyright-links" target="_blank" rel="nofollow">博客地图</a>
+                </span> |
+				<span>
+					 <a href="/atom.xml" class="copyright-links" target="_blank" rel="nofollow">RSS订阅</a> 
+				</span> |
+				<span>
+                    湘ICP备20010839号
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

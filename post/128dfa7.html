@@ -1,0 +1,343 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="伊成个人站-热衷于技术分享，源码分享的个人博客网站">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+	<!--baidu tongji-->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?11f6f08fada932368f71e76bd659b783";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
+    <link rel="dns-prefetch" href="http://www.devcheng.net">
+    <!--SEO-->
+
+<meta name="description" content="伊成个人站 www.devcheng.net 一个致力于技术分享，源码分享及工作经历分享的个人博客网站">
+
+
+
+<meta name="keywords" content="伊成个人站,技术分享,源码分享,代码分享,java代码,源代码">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+<title>	org.springframework.amqp.support.converter.MessageConversionExcep异常-伊成个人站</title>
+
+    <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人博客网站" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+       ◉◡◉ 您好，欢迎到访伊成个人站!
+    </div>
+</header>
+    
+<nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.devcheng.net">伊成个人站-热衷于技术分享，源码分享的个人博客网站</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">				
+                    <ul class="menu">						
+						<a href="/"><img border="0" src="/img/logo2020.png" alt="伊成个人站" title="伊成个人站"></a>						
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa fa-home"></i>&nbsp;首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/blogshare/"><i class="fa fa-codepen"></i>&nbsp;技术分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codeshare/"><i class="fa fa-code"></i>&nbsp;源码分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codelife/"><i class="fa fa-pagelines"></i>&nbsp;程序人生</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives"><i class="fa fa-history"></i>&nbsp;时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about"><i class="fa fa-connectdevelop"></i>&nbsp;关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="org.springframework.amqp.support.converter.MessageConversionExcep异常">
+            
+	            org.springframework.amqp.support.converter.MessageConversionExcep异常
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/blogshare">
+            blogshare
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/rabbitMQ" title="rabbitMQ">
+                        rabbitMQ
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2020/02/22</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a><strong>背景</strong></h2><p>最近，在用Spring Boot+rabbitMQ整合的过程中，测试生产者发送单条字符串消息到消费者消费这个过程没出现任何问题。</p>
+<p>可是在实际应用中，往往在生产中不可能只生产字符串的，更多时候需要生产一个对象发送到队列，消费者从队列里面获取一个对象进行消费。</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a><strong>准备工作</strong></h2><p>先定义一个对象<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Order</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Order</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Order</span><span class="params">(String id, String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(String id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>从代码中，可以发现定义对象的时候已经做了序列化了。</p>
+<p>生产者代码:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//发送消息方法调用: 构建自定义对象消息</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendOrder</span><span class="params">(Order order)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    rabbitTemplate.setConfirmCallback(confirmCallback);</span><br><span class="line">    rabbitTemplate.setReturnCallback(returnCallback);</span><br><span class="line">    <span class="comment">//id + 时间戳 全局唯一 </span></span><br><span class="line">    CorrelationData correlationData = <span class="keyword">new</span> CorrelationData(<span class="string">"0987654321"</span>);</span><br><span class="line">    rabbitTemplate.convertAndSend(<span class="string">"exchange-2"</span>, <span class="string">"springboot.def"</span>, order, correlationData);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>测试生产者发送代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSender2</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">     Order order = <span class="keyword">new</span> Order(<span class="string">"001"</span>, <span class="string">"第一个订单"</span>);</span><br><span class="line">     rabbitSender.sendOrder(order);</span><br><span class="line">     <span class="comment">//防止资源提前关闭，ConfirmCallback异步回调失败</span></span><br><span class="line">     Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>消费者代码:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">RabbitListener(bindings = <span class="meta">@QueueBinding</span>(</span><br><span class="line">            value = <span class="meta">@Queue</span>(value = <span class="string">"$&#123;spring.rabbitmq.listener.order.queue.name&#125;"</span>, </span><br><span class="line">            durable=<span class="string">"$&#123;spring.rabbitmq.listener.order.queue.durable&#125;"</span>),</span><br><span class="line">            exchange = <span class="meta">@Exchange</span>(value = <span class="string">"$&#123;spring.rabbitmq.listener.order.exchange.name&#125;"</span>, </span><br><span class="line">            durable=<span class="string">"$&#123;spring.rabbitmq.listener.order.exchange.durable&#125;"</span>, </span><br><span class="line">            type= <span class="string">"$&#123;spring.rabbitmq.listener.order.exchange.type&#125;"</span>, </span><br><span class="line">            ignoreDeclarationExceptions = <span class="string">"$&#123;spring.rabbitmq.listener.order.exchange.ignoreDeclarationExceptions&#125;"</span>),</span><br><span class="line">            key = <span class="string">"$&#123;spring.rabbitmq.listener.order.key&#125;"</span></span><br><span class="line">            )</span><br><span class="line">    )</span><br><span class="line">    <span class="meta">@RabbitHandler</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onOrderMessage</span><span class="params">(@Payload Order order, </span></span></span><br><span class="line"><span class="function"><span class="params">            Channel channel, </span></span></span><br><span class="line"><span class="function"><span class="params">            @Headers Map&lt;String, Object&gt; headers)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"--------------------------------------"</span>);</span><br><span class="line">        System.err.println(<span class="string">"消费端order: "</span> + order.getId());</span><br><span class="line">        Long deliveryTag = (Long)headers.get(AmqpHeaders.DELIVERY_TAG);</span><br><span class="line">        <span class="comment">//手工ACK</span></span><br><span class="line">        channel.basicAck(deliveryTag, <span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>当生产者有数据发送到队列的时候，消费者这端代码报了一个异常。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">org.springframework.amqp.rabbit.listener.exception.ListenerExecutionFailedException: Listener method could not be invoked with the incoming message</span><br><span class="line">Endpoint handler details:</span><br><span class="line">Method [public void com.rabbit.producer.RabbitProducer.receiver.OrderRecevier.onOrderMessage(com.rabbit.producer.RabbitProducer.entity.Order,com.rabbitmq.client.Channel,java.util.Map&lt;java.lang.String, java.lang.Object&gt;) throws java.lang.Exception]</span><br><span class="line">Bean [com.rabbit.producer.RabbitProducer.receiver.OrderRecevier@600b7b3d]</span><br><span class="line">	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:185) ~[spring-rabbit-2.0.5.RELEASE.jar:2.0.5.RELEASE]</span><br><span class="line">	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:120) ~[spring-rabbit-2.0.5.RELEASE.jar:2.0.5.RELEASE]</span><br><span class="line">	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:1414) ~[spring-rabbit-2.0.5.RELEASE.jar:2.0.5.RELEASE]</span><br><span class="line">	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.actualInvokeListener(AbstractMessageListenerContainer.java:1337) ~[spring-rabbit-2.0.5.RELEASE.jar:2.0.5.RELEASE]</span><br><span class="line">	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:1324) ~[spring-rabbit-2.0.5.RELEASE.jar:2.0.5.RELEASE]</span><br><span class="line">	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.executeListener(AbstractMessageListenerContainer.java:1303) ~[spring-rabbit-2.0.5.RELEASE.jar:2.0.5.RELEASE]</span><br><span class="line">	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.doReceiveAndExecute(SimpleMessageListenerContainer.java:817) [spring-rabbit-2.0.5.RELEASE.jar:2.0.5.RELEASE]</span><br><span class="line">	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.receiveAndExecute(SimpleMessageListenerContainer.java:801) [spring-rabbit-2.0.5.RELEASE.jar:2.0.5.RELEASE]</span><br><span class="line">	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.access$700(SimpleMessageListenerContainer.java:77) [spring-rabbit-2.0.5.RELEASE.jar:2.0.5.RELEASE]</span><br><span class="line">	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1042) [spring-rabbit-2.0.5.RELEASE.jar:2.0.5.RELEASE]</span><br><span class="line">	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_71]</span><br><span class="line">Caused by: org.springframework.messaging.converter.MessageConversionException: Cannot convert from [com.rabbit.Springboot4RabbitMQ.entity.Order] to [com.rabbit.producer.RabbitProducer.entity.Order] for GenericMessage [payload=Order [id=RabbitMQTestId0002, name=HelloWorld, messageId=1538919928275$0836e0e7-4976-457e-92fb-44b937255855], headers=&#123;amqp_receivedDeliveryMode=PERSISTENT, amqp_receivedRoutingKey=order.ABC, amqp_receivedExchange=order-exchange, amqp_deliveryTag=1, amqp_consumerQueue=order-queue, amqp_redelivered=false, id=0ffe4dcd-048f-f274-bca9-5550f9ecebb1, amqp_consumerTag=amq.ctag-82Oo3kl1I138E2pvVRsczA, contentType=application/x-java-serialized-object, timestamp=1538919929083&#125;]</span><br><span class="line">	at org.springframework.messaging.handler.annotation.support.PayloadArgumentResolver.resolveArgument(PayloadArgumentResolver.java:144) ~[spring-messaging-5.0.8.RELEASE.jar:5.0.8.RELEASE]</span><br><span class="line">	at org.springframework.messaging.handler.invocation.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:116) ~[spring-messaging-5.0.8.RELEASE.jar:5.0.8.RELEASE]</span><br><span class="line">	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:137) ~[spring-messaging-5.0.8.RELEASE.jar:5.0.8.RELEASE]</span><br><span class="line">	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:109) ~[spring-messaging-5.0.8.RELEASE.jar:5.0.8.RELEASE]</span><br><span class="line">	at org.springframework.amqp.rabbit.listener.adapter.HandlerAdapter.invoke(HandlerAdapter.java:51) ~[spring-rabbit-2.0.5.RELEASE.jar:2.0.5.RELEASE]</span><br><span class="line">	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:182) ~[spring-rabbit-2.0.5.RELEASE.jar:2.0.5.RELEASE]</span><br><span class="line">	... 10 common frames omitted</span><br></pre></td></tr></table></figure></p>
+<p>从异常信息中可以看到是消费者对消息反序列化的时候失败了。虽然两个项目中的Order类是完全一样的，但在进行反序列化的时候还是失败了!</p>
+<p>于是找了一番解决方案··</p>
+<p><strong>第一种</strong>：<br>消费者引用生产者项目中的消息体即Order.java</p>
+<p>在消费者项目上【右键】-&gt;【Bulid Path】-&gt;【Configure Build Path】-&gt;【Projects】-&gt;【Add】 选择生产者项目，然后消费者项目就可以引用生产者项目中类，这样完全保证了两个项目中JavaBean是一致的，所以能解决反序列失败的问题。</p>
+<p><strong>第二种</strong>：<br>生产者在发送消息前将消息体转换为JSONObject，消费者以JSONObject接收消息，再转换为对应的实体类。</p>
+<p>生产者的代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//发送消息方法调用: 构建自定义对象消息</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendOrder</span><span class="params">(Order order)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    rabbitTemplate.setConfirmCallback(confirmCallback);</span><br><span class="line">    rabbitTemplate.setReturnCallback(returnCallback);</span><br><span class="line">    <span class="comment">//id + 时间戳 全局唯一 </span></span><br><span class="line">    CorrelationData correlationData = <span class="keyword">new</span> CorrelationData(<span class="string">"0987654321"</span>);</span><br><span class="line">    rabbitTemplate.convertAndSend(<span class="string">"exchange-2"</span>, <span class="string">"springboot.def"</span>, FastJsonConvertUtil.toJsonObject(order), correlationData);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>消费者的代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RabbitListener</span>(bindings = <span class="meta">@QueueBinding</span>(value = <span class="meta">@Queue</span>(value = <span class="string">"$&#123;spring.rabbitmq.listener.order.queue.name&#125;"</span>, durable = <span class="string">"$&#123;spring.rabbitmq.listener.order.queue.durable&#125;"</span>), exchange = <span class="meta">@Exchange</span>(value = <span class="string">"$&#123;spring.rabbitmq.listener.order.exchange.name&#125;"</span>, durable = <span class="string">"$&#123;spring.rabbitmq.listener.order.exchange.durable&#125;"</span>, type = <span class="string">"$&#123;spring.rabbitmq.listener.order.exchange.type&#125;"</span>, ignoreDeclarationExceptions = <span class="string">"$&#123;spring.rabbitmq.listener.order.exchange.ignoreDeclarationeExceptions&#125;"</span>), key = <span class="string">"$&#123;spring.rabbitmq.listener.order.key&#125;"</span>))</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onOrderMessage</span><span class="params">(@Payload JSONObject object, Channel channel, @Headers Map&lt;String, Object&gt; headers)</span></span></span><br><span class="line"><span class="function">        <span class="keyword">throws</span> Exception</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"----------------------------------"</span>);</span><br><span class="line">        Order order = JsonConvertUtils.convertJSONToObject(object);</span><br><span class="line">        System.err.println(<span class="string">"消费端Order: "</span> + order.toString());</span><br><span class="line">        Long deliveryTag = (Long)headers.get(AmqpHeaders.DELIVERY_TAG);</span><br><span class="line">        channel.basicAck(deliveryTag, <span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/reward-alipay.png"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/reward-wepay.png"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">如果本文对你有所帮助，请打赏 1元就足够感动我 :）</p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处！
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/post/55e45d5a.html" class="pre-post btn btn-default" title="Java8日期和时间段的计算">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Java8日期和时间段的计算</span>
+        </a>
+    
+    
+        <a href="/post/fb5a8cfd.html" class="next-post btn btn-default" title="基于Spring Boot后台管理系统">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">基于Spring Boot后台管理系统</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({           
+            el: '#vcomments',
+            appId: 'sbQDWnkLFsRjJS2BGzfKc4rL-gzGzoHsz',
+            appKey: '5u9C0UUmzRe3unr9iLzheHjk',
+            placeholder: '文明社会,理性评论留言 ^_^……',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备工作"><span class="toc-text">准备工作</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018 - 2020
+                </span> | .<font color="#f1607d">伊</font><font color="#ffa500">成</font><font color="#e5e802">个</font><font color="#3bff23">人</font><font color="#ffa503">站</font><font color="#29c8ec"> devcheng</font><font color="#4f9cfa">.net</font>. |
+                <span>
+                    基于 Hexo 搭建
+                </span> |
+                <span>
+                     <a href="/sitemap.xml" class="copyright-links" target="_blank" rel="nofollow">博客地图</a>
+                </span> |
+				<span>
+					 <a href="/atom.xml" class="copyright-links" target="_blank" rel="nofollow">RSS订阅</a> 
+				</span> |
+				<span>
+                    湘ICP备20010839号
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

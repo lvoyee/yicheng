@@ -1,0 +1,340 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="伊成个人站-热衷于技术分享，源码分享的个人博客网站">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+	<!--baidu tongji-->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?11f6f08fada932368f71e76bd659b783";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
+    <link rel="dns-prefetch" href="http://www.devcheng.net">
+    <!--SEO-->
+
+<meta name="description" content="伊成个人站 www.devcheng.net 一个致力于技术分享，源码分享及工作经历分享的个人博客网站">
+
+
+
+<meta name="keywords" content="伊成个人站,技术分享,源码分享,代码分享,java代码,源代码">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+<title>	java通过反射获取注解@Column中的信息-伊成个人站</title>
+
+    <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人博客网站" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+       ◉◡◉ 您好，欢迎到访伊成个人站!
+    </div>
+</header>
+    
+<nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.devcheng.net">伊成个人站-热衷于技术分享，源码分享的个人博客网站</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">				
+                    <ul class="menu">						
+						<a href="/"><img border="0" src="/img/logo2020.png" alt="伊成个人站" title="伊成个人站"></a>						
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa fa-home"></i>&nbsp;首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/blogshare/"><i class="fa fa-codepen"></i>&nbsp;技术分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codeshare/"><i class="fa fa-code"></i>&nbsp;源码分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codelife/"><i class="fa fa-pagelines"></i>&nbsp;程序人生</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives"><i class="fa fa-history"></i>&nbsp;时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about"><i class="fa fa-connectdevelop"></i>&nbsp;关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="java通过反射获取注解@Column中的信息">
+            
+	            java通过反射获取注解@Column中的信息
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/blogshare">
+            blogshare
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/java反射" title="java反射">
+                        java反射
+                    </a>
+                
+                    <a href="/tags/Column注解" title="Column注解">
+                        Column注解
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2020/06/20</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在工作中需要从实体类的@Column注解中获取对应的信息，先一个实体类的上代码，如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.devcheng.demo.restful.data.service.model.entity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.databind.annotation.JsonDeserialize;</span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.databind.annotation.JsonSerialize;</span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;</span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.persistence.Column;</span><br><span class="line"><span class="keyword">import</span> javax.persistence.Entity;</span><br><span class="line"><span class="keyword">import</span> javax.persistence.Id;</span><br><span class="line"><span class="keyword">import</span> javax.persistence.Table;</span><br><span class="line"><span class="keyword">import</span> java.time.LocalDateTime;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table</span>(name = <span class="string">"DEV_CHENG_FILE_DEMO"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DiscloseFileEntity</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"ID"</span>,columnDefinition = <span class="string">"ID"</span>)</span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"APPLY_NO"</span>,columnDefinition = <span class="string">"申请号"</span>)</span><br><span class="line">    <span class="keyword">private</span> String applyNo;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"FILE_NAME"</span>,columnDefinition = <span class="string">"文件名称"</span>)</span><br><span class="line">    <span class="keyword">private</span> String fileName;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"FILE_SIZE"</span>,columnDefinition = <span class="string">"文件大小"</span>)</span><br><span class="line">    <span class="keyword">private</span> String fileSize;</span><br><span class="line">   </span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"TITLE"</span>,columnDefinition = <span class="string">"标题"</span>)</span><br><span class="line">    <span class="keyword">private</span> String title;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"IS_VALID"</span>,columnDefinition = <span class="string">"是否有效"</span>)</span><br><span class="line">    <span class="keyword">private</span> String isValid;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"SAVE_DATE"</span>,columnDefinition = <span class="string">"保存日期"</span>)    </span><br><span class="line">    <span class="keyword">private</span> LocalDateTime saveDate;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>由上得知，需要从 @Column 注解中获取 name和columnDefinition 中的信息，那如何可以获取到对应的信息？</p>
+<p>在获取 @Column 注解中的信息之前，先看看 columnDefinition是啥意思?</p>
+<h2 id="columnDefinition"><a href="#columnDefinition" class="headerlink" title="columnDefinition"></a>columnDefinition</h2><p>columnDefinition属性表示创建表时，该字段创建的SQL语句，一般用于通过Entity生成表定义时使用，如果数据库中表已经建好，该属性没有必要使用。</p>
+<p>值得注意的一点是：在编程语言中字符串一般都用String表示，但是数据库中varcahr数值类型有长度限制，一旦需要大文本，则需要text数值类型。但是String类型默认映射的数值类型是varchar，columnDefinition可以进行额外指定。</p>
+<h2 id="获取注解-Column中的信息"><a href="#获取注解-Column中的信息" class="headerlink" title="获取注解@Column中的信息"></a>获取注解@Column中的信息</h2><p>实现思路：通过类路径利用反射获取到对应的注解信息，从而获取到对应@Column中的信息<br>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;TableColumnsVO&gt; <span class="title">getFiledAndAnnotateInfo</span><span class="params">(String entityPath)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        List&lt;TableColumnsVO&gt; tableColumnsLists = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Class&lt;?&gt; aClass = Class.forName(entityPath);</span><br><span class="line">            Field[] fields = aClass.getDeclaredFields();</span><br><span class="line"></span><br><span class="line">            Column presentColumn;</span><br><span class="line">            <span class="keyword">for</span> (Field field:fields)</span><br><span class="line">            &#123;</span><br><span class="line">                field.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">                <span class="keyword">if</span>(field.isAnnotationPresent(Column.class))</span><br><span class="line">                &#123;</span><br><span class="line">                    presentColumn = field.getDeclaredAnnotation(Column.class);</span><br><span class="line">                    TableColumnsVO tableData = <span class="keyword">new</span> TableColumnsVO();</span><br><span class="line">                    tableData.setColumnName(presentColumn.name());</span><br><span class="line">                    tableData.setColumnDefinationInfo(presentColumn.columnDefinition());</span><br><span class="line">                    tableColumnsLists.add(tableData);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">            log.info(String.format(<span class="string">"获取字段和注释异常：%s"</span>, entityPath));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> tableColumnsLists;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>对应的 TableColumnsVO代码如下:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TableColumnsVO</span></span>&#123;</span><br><span class="line">    <span class="comment">//列名</span></span><br><span class="line">    <span class="keyword">private</span> String columnName;</span><br><span class="line">    <span class="comment">//ColumnDefinationInfo信息</span></span><br><span class="line">    <span class="keyword">private</span> String columnDefinationInfo;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/reward-alipay.png"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/reward-wepay.png"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">如果本文对你有所帮助，请打赏 1元就足够感动我 :）</p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处！
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/post/e200ec64.html" class="pre-post btn btn-default" title="Java中三大构建工具的发展历程（Ant、Maven和Gradle）">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Java中三大构建工具的发展历程（Ant、Maven和Gradle）</span>
+        </a>
+    
+    
+        <a href="/post/64102a3b.html" class="next-post btn btn-default" title="墙裂推荐一款redis客户端可视化工具之RedisPlus">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">墙裂推荐一款redis客户端可视化工具之RedisPlus</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({           
+            el: '#vcomments',
+            appId: 'sbQDWnkLFsRjJS2BGzfKc4rL-gzGzoHsz',
+            appKey: '5u9C0UUmzRe3unr9iLzheHjk',
+            placeholder: '文明社会,理性评论留言 ^_^……',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#columnDefinition"><span class="toc-text">columnDefinition</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取注解-Column中的信息"><span class="toc-text">获取注解@Column中的信息</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018 - 2020
+                </span> | .<font color="#f1607d">伊</font><font color="#ffa500">成</font><font color="#e5e802">个</font><font color="#3bff23">人</font><font color="#ffa503">站</font><font color="#29c8ec"> devcheng</font><font color="#4f9cfa">.net</font>. |
+                <span>
+                    基于 Hexo 搭建
+                </span> |
+                <span>
+                     <a href="/sitemap.xml" class="copyright-links" target="_blank" rel="nofollow">博客地图</a>
+                </span> |
+				<span>
+					 <a href="/atom.xml" class="copyright-links" target="_blank" rel="nofollow">RSS订阅</a> 
+				</span> |
+				<span>
+                    湘ICP备20010839号
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

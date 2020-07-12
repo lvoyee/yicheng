@@ -1,0 +1,433 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="伊成个人站-热衷于技术分享，源码分享的个人博客网站">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+	<!--baidu tongji-->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?11f6f08fada932368f71e76bd659b783";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
+    <link rel="dns-prefetch" href="http://www.devcheng.net">
+    <!--SEO-->
+
+<meta name="description" content="伊成个人站 www.devcheng.net 一个致力于技术分享，源码分享及工作经历分享的个人博客网站">
+
+
+
+<meta name="keywords" content="伊成个人站,技术分享,源码分享,代码分享,java代码,源代码">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+<title>	Redis常问面试题整理-伊成个人站</title>
+
+    <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人博客网站" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+       ◉◡◉ 您好，欢迎到访伊成个人站!
+    </div>
+</header>
+    
+<nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.devcheng.net">伊成个人站-热衷于技术分享，源码分享的个人博客网站</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">				
+                    <ul class="menu">						
+						<a href="/"><img border="0" src="/img/logo2020.png" alt="伊成个人站" title="伊成个人站"></a>						
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa fa-home"></i>&nbsp;首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/blogshare/"><i class="fa fa-codepen"></i>&nbsp;技术分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codeshare/"><i class="fa fa-code"></i>&nbsp;源码分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codelife/"><i class="fa fa-pagelines"></i>&nbsp;程序人生</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives"><i class="fa fa-history"></i>&nbsp;时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about"><i class="fa fa-connectdevelop"></i>&nbsp;关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Redis常问面试题整理">
+            
+	            Redis常问面试题整理
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/blogshare">
+            blogshare
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/redis" title="redis">
+                        redis
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2020/03/29</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Redis 是一个开源的使用 ANSI C 语言编写、遵守 BSD 协议、支持网络、可基于内存亦可持久化的日志型、Key-Value 数据库，并提供多种语言的 API的非关系型数据库。<br>传统数据库遵循 ACID 规则。而 Nosql（Not Only SQL 的缩写，是对不同于传统的关系型数据库的数据库管理系统的统称） 一般为分布式而分布式一般遵循 <a href="https://baike.baidu.com/item/CAP%E5%8E%9F%E5%88%99/5712863?fr=aladdin" target="_blank" rel="noopener">CAP 定理</a></p>
+<h2 id="1-Redis支持哪几种数据类型？"><a href="#1-Redis支持哪几种数据类型？" class="headerlink" title="1.Redis支持哪几种数据类型？"></a>1.Redis支持哪几种数据类型？</h2><p>1.string：最基本的数据类型，二进制安全的字符串，最大512M。<br>2.list：按照添加顺序保持顺序的字符串列表。<br>3.set：无序的字符串集合，不存在重复的元素。<br>4.sorted set：已排序的字符串集合。<br>5.hash：key-value对的一种集合。<br><img src="/images/devcheng_net_redis1.png" alt="“伊成博客”"></p>
+<p>另外还有四种特殊的 数据类型<br>1.BloomFilter<br>2.HyperLogLog<br>3.BitMap<br>4.Geo</p>
+<p>这几种数据类型的具体介绍。立即了解redis其他的数据类型 : <a href="https://developer.51cto.com/art/201911/605731.htm" target="_blank" rel="noopener">https://developer.51cto.com/art/201911/605731.htm</a></p>
+<p><strong> 注意 关于数据类型多说两句：</strong></p>
+<p>redis里存的都是二进制数据，其实就是字节数组（byte[]），这些字节数据是没有数据类型的，只有把它们按照合理的格式解码后，可以变成一个字符串，整数或对象，此时才具有数据类型。</p>
+<p>这一点必须要记住。<strong> 所以任何东西只要能转化成字节数组（byte[]）的，都可以存到redis里</strong>。管你是字符串、数字、对象、图片、声音、视频、还是文件，只要变成byte数组。</p>
+<ul>
+<li>关键字（Keys）是用于标识一段数据的一个字符串</li>
+<li>值（Values）是一段任意的字节序列，Redis不会关注它们实质上是什么</li>
+</ul>
+<p><strong> 关于key </strong></p>
+<ul>
+<li>key不要太长，尽量不要超过1024字节，这不仅消耗内存，而且会降低查找的效率</li>
+<li>key也不要太短，太短的话，key的可读性会降低</li>
+<li>在一个项目中，key最好使用统一的命名模式，例如 user:10000:passwd</li>
+</ul>
+<h2 id="2-Redis是单进程单线程的吗？"><a href="#2-Redis是单进程单线程的吗？" class="headerlink" title="2.Redis是单进程单线程的吗？"></a>2.Redis是单进程单线程的吗？</h2><p>Redis是单进程单线程的，Redis利用队列技术将并发访问变为串行访问，消除了传统数据库串行控制的开销。</p>
+<h2 id="3-Redis为什么是单线程的？"><a href="#3-Redis为什么是单线程的？" class="headerlink" title="3.Redis为什么是单线程的？"></a>3.Redis为什么是单线程的？</h2><p>多线程处理会涉及到锁，而且多线程处理会涉及到线程切换而消耗CPU。<br>因为CPU不是Redis的瓶颈，Redis的瓶颈最有可能是机器内存或者网络带宽。<br>单线程无法发挥多核CPU性能，不过可以通过在单机开多个Redis实例来解决。</p>
+<p>补充额外知识点 ：其它开源软件采用的模型<br>Nginx：多进程单线程模型<br>Memcached：单进程多线程模型</p>
+<h2 id="4-Memcache与Redis的区别都有哪些？"><a href="#4-Memcache与Redis的区别都有哪些？" class="headerlink" title="4.Memcache与Redis的区别都有哪些？"></a>4.Memcache与Redis的区别都有哪些？</h2><p><strong> Memcache （MC）</strong></p>
+<p>看看 MC 的特点：<br>MC 处理请求时使用多线程异步 IO 的方式，可以合理利用 CPU 多核的优势，性能非常优秀；<br>MC 功能简单，使用内存存储数据；<br>MC 的内存结构以及钙化问题我就不细说了，大家可以查看官网了解下；<br>MC 对缓存的数据可以设置失效期，过期后的数据会被清除；<br>失效的策略采用延迟失效，就是当再次使用数据时检查是否失效；<br>当容量存满时，会对缓存中的数据进行剔除，剔除时除了会对过期 key 进行清理，还会按 LRU 策略对数据进行剔除。</p>
+<p>另外，使用 MC 有一些限制，这些限制在现在的互联网场景下很致命，成为大家选择Redis、MongoDB的重要原因：<br>key 不能超过 250 个字节；<br>value 不能超过 1M 字节；<br>key 的最大失效时间是 30 天；<br>只支持 K-V 结构，不提供持久化和主从同步功能。</p>
+<p><strong> Redis </strong></p>
+<p>先简单说一下 Redis 的特点，方便和 MC 比较。</p>
+<ul>
+<li>与 MC 不同的是，Redis 采用单线程模式处理请求。<br>这样做的原因有 2 个：<br>一个是因为采用了非阻塞的异步事件处理机制；<br>另一个是缓存数据都是内存操作 IO 时间不会太长，单线程可以避免线程上下文切换产生的代价。</li>
+<li>Redis 支持持久化，所以 Redis 不仅仅可以用作缓存，也可以用作 NoSQL 数据库。</li>
+<li>相比 MC，Redis 还有一个非常大的优势，就是除了 K-V 之外，还支持多种数据格式，例如 list、set、sorted set、hash 等。</li>
+<li>Redis 提供主从同步机制，以及 Cluster 集群部署能力，能够提供高可用服务。</li>
+</ul>
+<h2 id="5-什么是Redis数据持久？方式都有哪些，各自的优缺点是什么？"><a href="#5-什么是Redis数据持久？方式都有哪些，各自的优缺点是什么？" class="headerlink" title="5.什么是Redis数据持久？方式都有哪些，各自的优缺点是什么？"></a>5.什么是Redis数据持久？方式都有哪些，各自的优缺点是什么？</h2><p>1.redis持久化就是把内存的数据写到磁盘中去，防止服务器宕机了内存数据丢失。<br>2.数据持久化的方式有2种：    RDB(默认)  和 AOF 。</p>
+<p><strong> RDB （redis database）</strong><br>    核心函数rdbSave(生成RDB文件)和rdbLoad（从文件加载内存）两个函数<br><img src="/images/devcheng_net_redis2.png" alt="“伊成博客”"></p>
+<p><strong> AOF （append-only file）</strong><br>每当执行服务器(定时)任务或者函数时flushAppendOnlyFile 函数都会被调用， 这个函数执行以下两个工作<br>AOF 写入保存。</p>
+<p>存储的内容是 redis通讯协议格式命令的命令文本存储。点击立即了解  —&gt;  <a href="https://www.cnblogs.com/nele/p/8908298.html" target="_blank" rel="noopener">https://www.cnblogs.com/nele/p/8908298.html</a></p>
+<p>WRITE：根据条件，将 aof_buf 中的缓存写入到 AOF 文件<br>SAVE：根据条件，调用 fsync 或 fdatasync 函数，将 AOF 文件保存到磁盘中。<br><img src="/images/devcheng_net_redis3.png" alt="“伊成博客”"></p>
+<p>区别：<br>1、AOF 文件比 RDB 更新频率高，优先使用 AOF 还原数据。<br>2、AOF 比 RDB 更安全也更大<br>3、RDB 性能比 AOF 好<br>4、如果两个都配了优先加载AOF</p>
+<h2 id="6-说说-Redis-的淘汰策略？"><a href="#6-说说-Redis-的淘汰策略？" class="headerlink" title="6.说说 Redis 的淘汰策略？"></a>6.说说 Redis 的淘汰策略？</h2><p>Redis提供了6中淘汰策略。</p>
+<ul>
+<li>volatile-lru：从已设置过期时间的数据集（server.db[i].expires）中挑选最近最少使用的数据淘汰</li>
+<li>volatile-ttl：从已设置过期时间的数据集（server.db[i].expires）中挑选将要过期的数据淘汰</li>
+<li>volatile-random：从已设置过期时间的数据集（server.db[i].expires）中任意选择数据淘汰</li>
+<li>allkeys-lru：从数据集（server.db[i].dict）中挑选最近最少使用的数据淘汰</li>
+<li>allkeys-random：从数据集（server.db[i].dict）中任意选择数据淘汰</li>
+<li>no-enviction（驱逐）：禁止驱逐数据</li>
+</ul>
+<p><strong> 使用策略规则：</strong><br>1、如果数据呈现幂律分布，也就是一部分数据访问频率高，一部分数据访问频率低，则使用allkeys-lru<br>2、如果数据呈现平等分布，也就是所有的数据访问频率都相同，则使用allkeys-random</p>
+<h2 id="7-什么是缓存穿透，缓存击穿，缓存雪崩？"><a href="#7-什么是缓存穿透，缓存击穿，缓存雪崩？" class="headerlink" title="7. 什么是缓存穿透，缓存击穿，缓存雪崩？"></a>7. 什么是缓存穿透，缓存击穿，缓存雪崩？</h2><p><strong> 缓存穿透</strong><br>描述： 缓存穿透是指缓存和数据库中都没有的数据，而用户不断发起请求，如发起为id为“-1”的数据或id为特别大不存在的数据。这时的用户很可能是攻击者，攻击会导致数据库压力过大。</p>
+<p>解决方案：</p>
+<p>接口层增加校验，如用户鉴权校验，id做基础校验，id&lt;=0的直接拦截；<br>从缓存取不到的数据，在数据库中也没有取到，这时也可以将key-value对写为key-null，缓存有效时间可以设置短点，如30秒（设置太长会导致正常情况也没法使用）。这样可以防止攻击用户反复用同一个id暴力攻击</p>
+<p><strong> 缓存击穿 </strong></p>
+<p>描述：缓存击穿是指缓存中没有但数据库中有的数据（一般是缓存时间到期），这时由于并发用户特别多，同时读缓存没读到数据，又同时去数据库去取数据，引起数据库压力瞬间增大，造成过大压力</p>
+<p>解决方案：</p>
+<p>设置热点数据永远不过期。<br>加互斥锁，互斥锁参考代码如下：<br><img src="/images/devcheng_net_redis4.png" alt="“伊成博客”"></p>
+<p>说明：</p>
+<p>1）缓存中有数据，直接走上述代码13行后就返回结果了</p>
+<p>2）缓存中没有数据，第1个进入的线程，获取锁并从数据库去取数据，没释放锁之前，其他并行进入的线程会等待100ms，再重新去缓存取数据。这样就防止都去数据库重复取数据，重复往缓存中更新数据情况出现。</p>
+<p>3）当然这是简化处理，理论上如果能根据key值加锁就更好了，就是线程A从数据库取key1的数据并不妨碍线程B取key2的数据，上面代码明显做不到这点。</p>
+<p><strong> 缓存雪崩</strong> </p>
+<p>描述： 缓存雪崩是指缓存中数据大批量到过期时间，而查询数据量巨大，引起数据库压力过大甚至down机。和缓存击穿不同的是，        缓存击穿指并发查同一条数据，缓存雪崩是不同数据都过期了，很多数据都查不到从而查数据库。</p>
+<p>解决方案：</p>
+<p>缓存数据的过期时间设置随机，防止同一时间大量数据过期现象发生。<br>如果缓存数据库是分布式部署，将热点数据均匀分布在不同搞得缓存数据库中。<br>设置热点数据永远不过期。</p>
+<h2 id="8-Redis-架构模式有哪些？讲讲各自的特点？"><a href="#8-Redis-架构模式有哪些？讲讲各自的特点？" class="headerlink" title="8. Redis 架构模式有哪些？讲讲各自的特点？"></a>8. Redis 架构模式有哪些？讲讲各自的特点？</h2><p><img src="/images/devcheng_net_redis5.png" alt="“伊成博客”"></p>
+<p><img src="/images/devcheng_net_redis6.png" alt="“伊成博客”"></p>
+<p><img src="/images/devcheng_net_redis7.png" alt="“伊成博客”"></p>
+<p><img src="/images/devcheng_net_redis8.png" alt="“伊成博客”"></p>
+<p><img src="/images/devcheng_net_redis9.png" alt="“伊成博客”"></p>
+<h2 id="9-redis-集群方案都有哪些？"><a href="#9-redis-集群方案都有哪些？" class="headerlink" title="9. redis 集群方案都有哪些？"></a>9. redis 集群方案都有哪些？</h2><p>1.twemproxy，大概概念是，它类似于一个代理方式， 使用时在本需要连接 redis 的地方改为连接 twemproxy， 它会以一个代理的身份接收请求并使用一致性 hash 算法，将请求转接到具体 redis，将结果再返回 twemproxy。<br>缺点： twemproxy 自身单端口实例的压力，使用一致性 hash 后，对 redis 节点数量改变时候的计算值的改变，数据无法自动移动到新的节点。</p>
+<p>2.codis，目前用的最多的集群方案，基本和 twemproxy 一致的效果，但它支持在 节点数量改变情况下，旧节点数据可恢复到新 hash 节点</p>
+<p>3.redis cluster3.0 自带的集群，特点在于他的分布式算法不是一致性 hash，而是 hash 槽的概念，以及自身支持节点设置从节点。具体看官方文档介绍。</p>
+<h2 id="10-在Redis中如何保证只存20W的热点数据？"><a href="#10-在Redis中如何保证只存20W的热点数据？" class="headerlink" title="10. 在Redis中如何保证只存20W的热点数据？"></a>10. 在Redis中如何保证只存20W的热点数据？</h2><p>先计算出20W数据需要占用数据的空间，然后设置数据淘汰策略为 allkey-lru 回收最少使用策略。</p>
+<h2 id="11-Redis支持的Java客户端都有哪些？官方推荐使用哪个？"><a href="#11-Redis支持的Java客户端都有哪些？官方推荐使用哪个？" class="headerlink" title="11.Redis支持的Java客户端都有哪些？官方推荐使用哪个？"></a>11.Redis支持的Java客户端都有哪些？官方推荐使用哪个？</h2><p>Redisson、Jedis、lettuce等等，官方推荐使用Redisson。</p>
+<h2 id="12-Redis和Redisson有什么关系？"><a href="#12-Redis和Redisson有什么关系？" class="headerlink" title="12.Redis和Redisson有什么关系？"></a>12.Redis和Redisson有什么关系？</h2><p>Redisson是一个高级的分布式协调Redis客服端，能帮助用户在分布式环境中轻松实现一些Java的对象<br> (Bloom filter, BitSet, Set, SetMultimap, ScoredSortedSet, SortedSet, Map, ConcurrentMap, List, ListMultimap, Queue, BlockingQueue, Deque, BlockingDeque, Semaphore, Lock, ReadWriteLock, AtomicLong, CountDownLatch, Publish / Subscribe, HyperLogLog)。</p>
+<h2 id="13-Jedis与Redisson对比有什么优缺点？"><a href="#13-Jedis与Redisson对比有什么优缺点？" class="headerlink" title="13.Jedis与Redisson对比有什么优缺点？"></a>13.Jedis与Redisson对比有什么优缺点？</h2><p>Jedis是Redis的Java实现的客户端，其API提供了比较全面的Redis命令的支持；</p>
+<p>Redisson实现了分布式和可扩展的Java数据结构，和Jedis相比，功能较为简单，不支持字符串操作，不支持排序、事务、管道、分区等Redis特性。<br>Redisson的宗旨是促进使用者对Redis的关注分离，从而让使用者能够将精力更集中地放在处理业务逻辑上。</p>
+<h2 id="14-Redis支持事务吗？"><a href="#14-Redis支持事务吗？" class="headerlink" title="14.Redis支持事务吗？"></a>14.Redis支持事务吗？</h2><p>支持 , 表现为多条命令，要么都执行，要么都不执行。</p>
+<p>redis的事务可以分为两步，定义事务和执行事务。<br>使用multi命令开启一个事务，然后把要执行的所有命令都依次排上去。<br>这就定义好了一个事务。此时使用exec命令来执行这个事务，或使用discard命令来放弃这个事务。<br>你可能希望在你的事务开始前，你关心的key不想被别人操作，那么可以使用watch命令来监视这些key，<br>如果开始执行前这些key被其它命令操作了则会取消事务的。也可以使用unwatch命令来取消对这些key的监视。</p>
+<p>redis事务具有以下特点：<br>1、如果开始执行事务前出错，则所有命令都不执行<br>2、一旦开始，则保证所有命令一次性按顺序执行完而不被打断<br>3、如果执行过程中遇到错误，会继续执行下去，不会停止的<br>4、对于执行过程中遇到错误，是不会进行回滚的</p>
+<p>很显然，这并不是我们通常认为的事务，因为它连原子性都保证不了。保证不了原子性是因为redis不支持回滚，不过它也给出了不支持的理由。</p>
+<p>不支持回滚的理由：<br>1、redis认为，失败都是由命令使用不当造成<br>2、redis这样做，是为了保持内部实现简单快速<br>3、redis还认为，回滚并不能解决所有问题<br>因此 , 使用redis事务的不太多</p>
+<h2 id="15-Redis分布式锁如何续期？"><a href="#15-Redis分布式锁如何续期？" class="headerlink" title="15. Redis分布式锁如何续期？"></a>15. Redis分布式锁如何续期？</h2><p><a href="https://zhuanlan.zhihu.com/p/71185118" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/71185118</a></p>
+<p>16.Redis分布式锁如何防止死锁<br> 方法1 ， 编写2个方法一个加锁，一个解锁</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String LOCK_SUCCESS = <span class="string">"OK"</span>;</span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String SET_IF_NOT_EXIST = <span class="string">"NX"</span>;</span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String SET_WITH_EXPIRE_TIME = <span class="string">"PX"</span>;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 尝试获取分布式锁</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> jedis Redis客户端</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> lockKey 锁</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> requestId 请求标识</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> expireTime 超期时间</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> 是否获取成功</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">tryGetDistributedLock</span><span class="params">(Jedis jedis, String lockKey, String requestId, <span class="keyword">int</span> expireTime)</span> </span>&#123;</span><br><span class="line">        String result = jedis.set(lockKey, requestId, SET_IF_NOT_EXIST, SET_WITH_EXPIRE_TIME, expireTime);</span><br><span class="line">        <span class="keyword">if</span> (LOCK_SUCCESS.equals(result)) &#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到，我们加锁就一行代码：jedis.set(String key, String value, String nxxx, String expx, int time)，这个set()方法一共有五个形参：</p>
+<ul>
+<li>第一个为key，我们使用key来当锁，因为key是唯一的。</li>
+<li>第二个为value，我们传的是requestId，很多童鞋可能不明白，有key作为锁不就够了吗，为什么还要用到value？原因就是我们在上面讲到可靠性时，分布式锁要满足第四个条件解铃还须系铃人，通过给value赋值为requestId，我们就知道这把锁是哪个请求加的了，在解锁的时候就可以有依据。requestId可以使用UUID.randomUUID().toString()方法生成。</li>
+<li>第三个为nxxx，这个参数我们填的是NX，意思是SET IF NOT EXIST，即当key不存在时，我们进行set操作；若key已经存在，则不做任何操作；</li>
+<li>第四个为expx，这个参数我们传的是PX，意思是我们要给这个key加一个过期的设置，具体时间由第五个参数决定。</li>
+<li>第五个为time，与第四个参数相呼应，代表key的过期时间。</li>
+</ul>
+<p>总的来说，执行上面的set()方法就只会导致两种结果：</p>
+<ol>
+<li>当前没有锁（key不存在），那么就进行加锁操作，并对锁设置个有效期，同时value表示加锁的客户端。</li>
+<li>已有锁存在，不做任何操作。</li>
+</ol>
+<p><strong> 解锁代码</strong><br> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Long RELEASE_SUCCESS = <span class="number">1L</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 释放分布式锁</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> jedis Redis客户端</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> lockKey 锁</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> requestId 请求标识</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> 是否释放成功</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">releaseDistributedLock</span><span class="params">(Jedis jedis, String lockKey, String requestId)</span> </span>&#123;</span><br><span class="line">       String script = <span class="string">"if redis.call('get', KEYS[1]) == ARGV[1] then return redis.call('del', KEYS[1]) else return 0 end"</span>;</span><br><span class="line">       Object result = jedis.eval(script, Collections.singletonList(lockKey), Collections.singletonList(requestId));</span><br><span class="line">       <span class="keyword">if</span> (RELEASE_SUCCESS.equals(result)) &#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以看到，我们解锁只需要两行代码就搞定了！第一行代码，我们写了一个简单的Lua脚本代码，没想到这次居然用上了。<br>第二行代码，我们将Lua代码传到jedis.eval()方法里，并使参数KEYS[1]赋值为lockKey，ARGV[1]赋值为requestId。<br>eval()方法是将Lua代码交给Redis服务端执行</p>
+<p><strong> Redis常用命令及介绍 </strong><br><strong> 字符串：</strong><br>setnx(key,value)  只在键 key 不存在的情况下， 将键 key 的值设置为 value 。key存在,不做任何操作。<br>setex(key,seconds,value)   将key设置及生存时间seconds秒,原值存在覆盖。<br>psetex(key,milliseconds,value) 与setex同样,只是单位是毫秒。<br>getset(key,value)   设置新值并返回旧值,不存在返回nil<br>setrange(key,offset,value) 从偏移量开始offset开始<br>mset 同时给多个key复制</p>
+<p><strong> 哈希表(map)：</strong><br>hset(hash field value)  将哈希表 hash 中域 field 的值设置为 value<br>hmset key field value [field value …] 同时将多个 field-value (域-值)对设置到哈希表 key 中。<br>hget hash field  返回哈希表中给定域的值。<br>hgetall key      返回哈希表 key 中，所有的域和值。</p>
+<p><strong> 队列(queue):</strong><br>lpush key value [value …] 将一个或多个值 value 插入到列表 key 的表头<br>lpop key   移除并返回列表 key 的头元素,不存在返回nil<br>lset key index value  将列表 key 下标为 index 的元素的值设置为 value 。<br>brpop key [key …]  timeout 在超时时间内移除列表尾元素，阻塞的。</p>
+<p><strong> 集合：</strong><br>sadd key member [member …]  将一个或多个 member 元素加入到集合 key 当中，已经存在于集合的 member 元素将被忽略<br>sismember key member  如果 member 元素是集合的成员，返回 1 。 如果 member 元素不是集合的成员，或 key 不存在，返回 0 。<br>spop key  移除集合key的随机元素<br>smembers key  返回集合 key 中的所有成员。<br>sdiff key [key …]  返回给定多个集合之间的差集。</p>
+<p><strong> 有序集合：</strong><br>zadd key score member [[score member] [score member] …]   将一个或多个 member 元素及其 score 值加入到有序集 key 当中。<br>zscore key member 返回有序集 key 中，成员 member 的 score 值。<br>zcount key min max   score 值在 min 和 max 之间的成员的数量。<br>zrange key start stop [withscores]  返回有序集 key 中，指定区间内的成员(从小到大)。<br>zrank key member  返回有序集 key 中成员 member 的排名。其中有序集成员按 score 值递增(从小到大)顺序排列。<br>zrem key member [member …]   移除有序集 key 中的一个或多个成员，不存在的成员将被忽略。</p>
+<p>时效性：<br>expire(key,seconds) 为给定 key 设置生存时间，当 key 过期时(生存时间为 0 )，它会被自动删除。<br>expireat( key,timestamp) 设置过期时间戳,expireatcache1355292000# 这个 key 将在 2012.12.12 过期<br>ttl(key) 返回剩余时间<br>persist key 移除key有效期，转换成永久的</p>
+<p>数据指令：<br>keys pattern   符合给定模式的 key 列表。阻塞的<br>scan  异步的  有重复 </p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/reward-alipay.png"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/reward-wepay.png"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">如果本文对你有所帮助，请打赏 1元就足够感动我 :）</p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处！
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/post/87dbd908.html" class="pre-post btn btn-default" title="win10怎么把两张图片合并为一张">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">win10怎么把两张图片合并为一张</span>
+        </a>
+    
+    
+        <a href="/post/536e3846.html" class="next-post btn btn-default" title="基于Spring Boot开发的动漫商城系统源码分享">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">基于Spring Boot开发的动漫商城系统源码分享</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({           
+            el: '#vcomments',
+            appId: 'sbQDWnkLFsRjJS2BGzfKc4rL-gzGzoHsz',
+            appKey: '5u9C0UUmzRe3unr9iLzheHjk',
+            placeholder: '文明社会,理性评论留言 ^_^……',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Redis支持哪几种数据类型？"><span class="toc-text">1.Redis支持哪几种数据类型？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Redis是单进程单线程的吗？"><span class="toc-text">2.Redis是单进程单线程的吗？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Redis为什么是单线程的？"><span class="toc-text">3.Redis为什么是单线程的？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Memcache与Redis的区别都有哪些？"><span class="toc-text">4.Memcache与Redis的区别都有哪些？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-什么是Redis数据持久？方式都有哪些，各自的优缺点是什么？"><span class="toc-text">5.什么是Redis数据持久？方式都有哪些，各自的优缺点是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-说说-Redis-的淘汰策略？"><span class="toc-text">6.说说 Redis 的淘汰策略？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-什么是缓存穿透，缓存击穿，缓存雪崩？"><span class="toc-text">7. 什么是缓存穿透，缓存击穿，缓存雪崩？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-Redis-架构模式有哪些？讲讲各自的特点？"><span class="toc-text">8. Redis 架构模式有哪些？讲讲各自的特点？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-redis-集群方案都有哪些？"><span class="toc-text">9. redis 集群方案都有哪些？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-在Redis中如何保证只存20W的热点数据？"><span class="toc-text">10. 在Redis中如何保证只存20W的热点数据？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-Redis支持的Java客户端都有哪些？官方推荐使用哪个？"><span class="toc-text">11.Redis支持的Java客户端都有哪些？官方推荐使用哪个？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-Redis和Redisson有什么关系？"><span class="toc-text">12.Redis和Redisson有什么关系？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-Jedis与Redisson对比有什么优缺点？"><span class="toc-text">13.Jedis与Redisson对比有什么优缺点？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-Redis支持事务吗？"><span class="toc-text">14.Redis支持事务吗？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-Redis分布式锁如何续期？"><span class="toc-text">15. Redis分布式锁如何续期？</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018 - 2020
+                </span> | .<font color="#f1607d">伊</font><font color="#ffa500">成</font><font color="#e5e802">个</font><font color="#3bff23">人</font><font color="#ffa503">站</font><font color="#29c8ec"> devcheng</font><font color="#4f9cfa">.net</font>. |
+                <span>
+                    基于 Hexo 搭建
+                </span> |
+                <span>
+                     <a href="/sitemap.xml" class="copyright-links" target="_blank" rel="nofollow">博客地图</a>
+                </span> |
+				<span>
+					 <a href="/atom.xml" class="copyright-links" target="_blank" rel="nofollow">RSS订阅</a> 
+				</span> |
+				<span>
+                    湘ICP备20010839号
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

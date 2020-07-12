@@ -1,0 +1,373 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="伊成个人站-热衷于技术分享，源码分享的个人博客网站">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+	<!--baidu tongji-->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?11f6f08fada932368f71e76bd659b783";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
+    <link rel="dns-prefetch" href="http://www.devcheng.net">
+    <!--SEO-->
+
+<meta name="description" content="伊成个人站 www.devcheng.net 一个致力于技术分享，源码分享及工作经历分享的个人博客网站">
+
+
+
+<meta name="keywords" content="伊成个人站,技术分享,源码分享,代码分享,java代码,源代码">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+<title>	基于Spring Boot + MyBatis + Maven论坛内容管理系统源码-伊成个人站</title>
+
+    <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人博客网站" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+       ◉◡◉ 您好，欢迎到访伊成个人站!
+    </div>
+</header>
+    
+<nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.devcheng.net">伊成个人站-热衷于技术分享，源码分享的个人博客网站</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">				
+                    <ul class="menu">						
+						<a href="/"><img border="0" src="/img/logo2020.png" alt="伊成个人站" title="伊成个人站"></a>						
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa fa-home"></i>&nbsp;首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/blogshare/"><i class="fa fa-codepen"></i>&nbsp;技术分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codeshare/"><i class="fa fa-code"></i>&nbsp;源码分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codelife/"><i class="fa fa-pagelines"></i>&nbsp;程序人生</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives"><i class="fa fa-history"></i>&nbsp;时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about"><i class="fa fa-connectdevelop"></i>&nbsp;关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="基于Spring Boot + MyBatis + Maven论坛内容管理系统源码">
+            
+	            基于Spring Boot + MyBatis + Maven论坛内容管理系统源码
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/codeshare">
+            codeshare
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/Spring Boot" title="Spring Boot">
+                        Spring Boot
+                    </a>
+                
+                    <a href="/tags/论坛内容管理系统" title="论坛内容管理系统">
+                        论坛内容管理系统
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2020/03/02</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="毕设描述"><a href="#毕设描述" class="headerlink" title="毕设描述"></a><strong>毕设描述</strong></h2><p>xxxForum是一个基于Spring Boot + MyBatis + Maven开发的一个论坛内容管理系统，主要实现了的功能有：</p>
+<ul>
+<li>前台页面展示数据、广告展示</li>
+<li>内容模块：发帖、评论、帖子分类、分页、回帖统计、访问统计、表单验证</li>
+<li>用户模块：权限、资料、头像、邮箱验证</li>
+<li>管理：后台管理、统计图表、帖子/分类管理</li>
+</ul>
+<h2 id="开发环境（运行环境）"><a href="#开发环境（运行环境）" class="headerlink" title="开发环境（运行环境）"></a><strong>开发环境（运行环境）</strong></h2><p>windows 7 , jdk 1.8</p>
+<h2 id="项目采用技术"><a href="#项目采用技术" class="headerlink" title="项目采用技术"></a><strong>项目采用技术</strong></h2><h3 id="后端"><a href="#后端" class="headerlink" title="后端"></a><strong>后端</strong></h3><ul>
+<li>Spring Boot 1.5.5</li>
+<li>Spring Security 4</li>
+<li>Mybatis(mybatis-spring-boot-starter 1.3.1)</li>
+<li>Maven 3.X</li>
+</ul>
+<h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a><strong>前端</strong></h3><ul>
+<li>Thymeleaf</li>
+<li>Bootstrap</li>
+<li>jQuery</li>
+<li>Chart.js</li>
+<li>bootstrap-select</li>
+<li>daterangepicker</li>
+</ul>
+<h2 id="数据库文件"><a href="#数据库文件" class="headerlink" title="数据库文件"></a><strong>数据库文件</strong></h2><p>在项目文件里面</p>
+<h2 id="项目截图"><a href="#项目截图" class="headerlink" title="项目截图"></a><strong>项目截图</strong></h2><p><img src="/images/shouye1.png" alt="“论坛内容管理系统”"></p>
+<p><img src="/images/tiezidetail2.png" alt="“论坛内容管理系统”"></p>
+<p><img src="/images/login3.png" alt="“论坛内容管理系统”"></p>
+<p><img src="/images/zhuce4.png" alt="“论坛内容管理系统”"></p>
+<p><img src="/images/table5.png" alt="“论坛内容管理系统”"></p>
+<p><img src="/images/user6.png" alt="“论坛内容管理系统”"></p>
+<p><img src="/images/fenlei9.png" alt="“论坛内容管理系统”"></p>
+<p><img src="/images/run1.png" alt="“论坛内容管理系统”"></p>
+<h2 id="登录地址"><a href="#登录地址" class="headerlink" title="登录地址"></a><strong>登录地址</strong></h2><p><a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a></p>
+<p>登录用户名和密码</p>
+<p>admin / admin </p>
+<h2 id="联系我们"><a href="#联系我们" class="headerlink" title="联系我们"></a><strong>联系我们</strong></h2><p>QQ 搜索我们的群号：816175200</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a><strong>注意事项</strong></h2><ol>
+<li>头像如何配置？<br>在电脑选一个盘，新建一个文件夹 例如：在C盘新建一个avatar文件夹，里面存放你的头像图片。<br>找到 application.properties 配置文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># ==============================</span><br><span class="line"># avator location</span><br><span class="line"># ==============================</span><br><span class="line">resource.staticResourceLocation=C:/avatar/</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>写好配置，找到 StaticResourceConfig 类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public void addResourceHandlers(ResourceHandlerRegistry registry) &#123;</span><br><span class="line">   //这里也要和之前的对应起来</span><br><span class="line">   registry.addResourceHandler(&quot;/avatar/**&quot;).addResourceLocations(&quot;file:C:/avatar/&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>数据库里面和这对应就可以了！</p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/reward-alipay.png"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/reward-wepay.png"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">如果本文对你有所帮助，请打赏 1元就足够感动我 :）</p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处！
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/post/536e3846.html" class="pre-post btn btn-default" title="基于Spring Boot开发的动漫商城系统源码分享">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">基于Spring Boot开发的动漫商城系统源码分享</span>
+        </a>
+    
+    
+        <a href="/post/55e45d5a.html" class="next-post btn btn-default" title="Java8日期和时间段的计算">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Java8日期和时间段的计算</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({           
+            el: '#vcomments',
+            appId: 'sbQDWnkLFsRjJS2BGzfKc4rL-gzGzoHsz',
+            appKey: '5u9C0UUmzRe3unr9iLzheHjk',
+            placeholder: '文明社会,理性评论留言 ^_^……',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#毕设描述"><span class="toc-text">毕设描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开发环境（运行环境）"><span class="toc-text">开发环境（运行环境）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目采用技术"><span class="toc-text">项目采用技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#后端"><span class="toc-text">后端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前端"><span class="toc-text">前端</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库文件"><span class="toc-text">数据库文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目截图"><span class="toc-text">项目截图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#登录地址"><span class="toc-text">登录地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#联系我们"><span class="toc-text">联系我们</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意事项"><span class="toc-text">注意事项</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018 - 2020
+                </span> | .<font color="#f1607d">伊</font><font color="#ffa500">成</font><font color="#e5e802">个</font><font color="#3bff23">人</font><font color="#ffa503">站</font><font color="#29c8ec"> devcheng</font><font color="#4f9cfa">.net</font>. |
+                <span>
+                    基于 Hexo 搭建
+                </span> |
+                <span>
+                     <a href="/sitemap.xml" class="copyright-links" target="_blank" rel="nofollow">博客地图</a>
+                </span> |
+				<span>
+					 <a href="/atom.xml" class="copyright-links" target="_blank" rel="nofollow">RSS订阅</a> 
+				</span> |
+				<span>
+                    湘ICP备20010839号
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

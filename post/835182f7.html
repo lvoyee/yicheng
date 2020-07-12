@@ -1,0 +1,345 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="伊成个人站-热衷于技术分享，源码分享的个人博客网站">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+	<!--baidu tongji-->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?11f6f08fada932368f71e76bd659b783";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
+    <link rel="dns-prefetch" href="http://www.devcheng.net">
+    <!--SEO-->
+
+<meta name="description" content="伊成个人站 www.devcheng.net 一个致力于技术分享，源码分享及工作经历分享的个人博客网站">
+
+
+
+<meta name="keywords" content="伊成个人站,技术分享,源码分享,代码分享,java代码,源代码">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+<title>	Java8中列表的排序(升序、降序)-伊成个人站</title>
+
+    <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人博客网站" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+       ◉◡◉ 您好，欢迎到访伊成个人站!
+    </div>
+</header>
+    
+<nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.devcheng.net">伊成个人站-热衷于技术分享，源码分享的个人博客网站</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">				
+                    <ul class="menu">						
+						<a href="/"><img border="0" src="/img/logo2020.png" alt="伊成个人站" title="伊成个人站"></a>						
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa fa-home"></i>&nbsp;首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/blogshare/"><i class="fa fa-codepen"></i>&nbsp;技术分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codeshare/"><i class="fa fa-code"></i>&nbsp;源码分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codelife/"><i class="fa fa-pagelines"></i>&nbsp;程序人生</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives"><i class="fa fa-history"></i>&nbsp;时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about"><i class="fa fa-connectdevelop"></i>&nbsp;关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Java8中列表的排序(升序、降序)">
+            
+	            Java8中列表的排序(升序、降序)
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/blogshare">
+            blogshare
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/Java8" title="Java8">
+                        Java8
+                    </a>
+                
+                    <a href="/tags/排序" title="排序">
+                        排序
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2020/07/02</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>还记得几年前，那时候查询数据基本都是在数据库中把查询的数据做好排序。举个栗子，在查询User表的时候按照创建时间升序查询出来。</p>
+<p>时过境迁，现在的项目中采用了Spring Data JPa,当然也支持排序。但本文中的主角可不是它，在很多情况下我们查询出来的List数据没有排序好或是需要二次按照某字段排序，这个时候，我们就可以使用Java8对其排序。</p>
+<p>首先，看个基础语法，如下：</p>
+<h3 id="单个字段排序"><a href="#单个字段排序" class="headerlink" title="单个字段排序"></a>单个字段排序</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">List&lt;类&gt; list; 代表某集合</span><br><span class="line"> </span><br><span class="line"><span class="comment">//返回 对象集合以类属性一升序排序</span></span><br><span class="line">list.stream().sorted(Comparator.comparing(类::属性一));</span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 返回 对象集合以类属性一降序排序 注意两种写法</span></span><br><span class="line"><span class="comment">**</span></span><br><span class="line"><span class="comment">//先以属性一升序,结果进行属性一降序</span></span><br><span class="line"><span class="comment">list.stream().sorted(Comparator.comparing(类::属性一).reversed());</span></span><br><span class="line"><span class="comment">//以属性一降序 </span></span><br><span class="line"><span class="comment">list.stream().sorted(Comparator.comparing(类::属性一,Comparator.reverseOrder()));</span></span><br></pre></td></tr></table></figure>
+<h3 id="多个字段排序"><a href="#多个字段排序" class="headerlink" title="多个字段排序"></a>多个字段排序</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 返回 对象集合以类属性一升序 属性二升序</span></span><br><span class="line">list.stream().sorted(Comparator.comparing(类::属性一).thenComparing(类::属性二));</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="comment">//先以属性一升序,升序结果进行属性一降序,再进行属性二升序</span></span><br><span class="line"> list.stream().sorted(Comparator.comparing(类::属性一).reversed().thenComparing(类::属性二));</span><br><span class="line"> </span><br><span class="line"><span class="comment">//先以属性一降序,再进行属性二升序</span></span><br><span class="line">list.stream().sorted(Comparator.comparing(类::属性一,Comparator.reverseOrder()).thenComparing(类::属性二));</span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 返回 对象集合以类属性一降序 属性二降序 注意两种写法</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//先以属性一升序,升序结果进行属性一降序,再进行属性二降序</span></span><br><span class="line">list.stream().sorted(Comparator.comparing(类::属性一).reversed().thenComparing(类::属性二,Comparator.reverseOrder()));</span><br><span class="line"><span class="comment">//先以属性一降序,再进行属性二降序</span></span><br><span class="line">list.stream().sorted(Comparator.comparing(类::属性一,Comparator.reverseOrder()).thenComparing(类::属性二,Comparator.reverseOrder()));</span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 返回 对象集合以类属性一升序 属性二降序 注意两种写法</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//先以属性一升序,升序结果进行属性一降序,再进行属性二升序,结果进行属性一降序属性二降序 </span></span><br><span class="line">list.stream().sorted(Comparator.comparing(类::属性一).reversed().thenComparing(类::属性二).reversed());</span><br><span class="line"> </span><br><span class="line"><span class="comment">//先以属性一升序,再进行属性二降序 </span></span><br><span class="line">list.stream().sorted(Comparator.comparing(类::属性一).thenComparing(类::属性二,Comparator.reverseOrder()));</span><br></pre></td></tr></table></figure>
+<h2 id="实例代码"><a href="#实例代码" class="headerlink" title="实例代码"></a>实例代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//根据User对象的id字段降序排序</span></span><br><span class="line">userList.sort(Comparator.comparing(User::getId).reversed());</span><br><span class="line"></span><br><span class="line"><span class="comment">//根据User对象的id字段降序排序</span></span><br><span class="line">userList.sort(User::getId,Comparator.reverseOrder());</span><br></pre></td></tr></table></figure>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>通过以实例代码我们可以发现</p>
+<p>写法一： Comparator.comparing(类::属性一).reversed();</p>
+<p>写法二： Comparator.comparing(类::属性一,Comparator.reverseOrder());</p>
+<p>两种排序是完全不一样的,一定要区分开来。</p>
+<p>写法一是得到排序结果后再排序；</p>
+<p>写法二是直接进行排序,很多人会混淆导致理解出错,但写法二更好理解,建议使用写法二。</p>
+<h2 id="完整例子demo"><a href="#完整例子demo" class="headerlink" title="完整例子demo"></a>完整例子demo</h2><p>最后贴一个完整的例子，供大家参考<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    User user1 = <span class="keyword">new</span> User(<span class="number">22</span>,<span class="string">"张X"</span>);</span><br><span class="line">    User user2 = <span class="keyword">new</span> User(<span class="number">27</span>,<span class="string">"李X"</span>);</span><br><span class="line">    User user3 = <span class="keyword">new</span> User(<span class="number">21</span>,<span class="string">"王X"</span>);</span><br><span class="line">    User user4 = <span class="keyword">new</span> User(<span class="number">18</span>,<span class="string">"赵X"</span>);</span><br><span class="line">    List&lt;User&gt; list = <span class="keyword">new</span> ArrayList&lt;User&gt;();</span><br><span class="line">    list.add(user1);</span><br><span class="line">    list.add(user2);</span><br><span class="line">    list.add(user3);</span><br><span class="line">    list.add(user4);</span><br><span class="line">    <span class="keyword">for</span>(User u :list)&#123;</span><br><span class="line">        System.out.println(u);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    List&lt;User&gt; newList = list.stream().sorted(Comparator.comparing(User::getAge))</span><br><span class="line">                .collect(Collectors.toList());</span><br><span class="line">    <span class="keyword">for</span>(User u :newList)&#123;</span><br><span class="line">        System.out.println(u);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/reward-alipay.png"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/reward-wepay.png"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">如果本文对你有所帮助，请打赏 1元就足够感动我 :）</p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处！
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/post/4dfd5416.html" class="pre-post btn btn-default" title="MySQL中按字段查询重复数据">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">MySQL中按字段查询重复数据</span>
+        </a>
+    
+    
+        <a href="/post/e200ec64.html" class="next-post btn btn-default" title="Java中三大构建工具的发展历程（Ant、Maven和Gradle）">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Java中三大构建工具的发展历程（Ant、Maven和Gradle）</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({           
+            el: '#vcomments',
+            appId: 'sbQDWnkLFsRjJS2BGzfKc4rL-gzGzoHsz',
+            appKey: '5u9C0UUmzRe3unr9iLzheHjk',
+            placeholder: '文明社会,理性评论留言 ^_^……',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#写在前面"><span class="toc-text">写在前面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单个字段排序"><span class="toc-text">单个字段排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多个字段排序"><span class="toc-text">多个字段排序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例代码"><span class="toc-text">实例代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小结"><span class="toc-text">小结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完整例子demo"><span class="toc-text">完整例子demo</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018 - 2020
+                </span> | .<font color="#f1607d">伊</font><font color="#ffa500">成</font><font color="#e5e802">个</font><font color="#3bff23">人</font><font color="#ffa503">站</font><font color="#29c8ec"> devcheng</font><font color="#4f9cfa">.net</font>. |
+                <span>
+                    基于 Hexo 搭建
+                </span> |
+                <span>
+                     <a href="/sitemap.xml" class="copyright-links" target="_blank" rel="nofollow">博客地图</a>
+                </span> |
+				<span>
+					 <a href="/atom.xml" class="copyright-links" target="_blank" rel="nofollow">RSS订阅</a> 
+				</span> |
+				<span>
+                    湘ICP备20010839号
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

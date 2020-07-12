@@ -1,0 +1,13 @@
+# hexo robots.txt
+User-agent: *
+Allow: /categories/blogshare/
+Allow: /categories/codeshare/
+Allow: /categories/codelife/
+
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /about/
+
+Sitemap: http://www.devcheng.net/sitemap.xml
+Sitemap: http://www.devcheng.net/baidusitemap.xml

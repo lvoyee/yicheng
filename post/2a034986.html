@@ -1,0 +1,547 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="伊成个人站-热衷于技术分享，源码分享的个人博客网站">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+	<!--baidu tongji-->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?11f6f08fada932368f71e76bd659b783";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
+    <link rel="dns-prefetch" href="http://www.devcheng.net">
+    <!--SEO-->
+
+<meta name="description" content="伊成个人站 www.devcheng.net 一个致力于技术分享，源码分享及工作经历分享的个人博客网站">
+
+
+
+<meta name="keywords" content="伊成个人站,技术分享,源码分享,代码分享,java代码,源代码">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+<title>	ElasticSearch-实战代码2-伊成个人站</title>
+
+    <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人博客网站" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+       ◉◡◉ 您好，欢迎到访伊成个人站!
+    </div>
+</header>
+    
+<nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.devcheng.net">伊成个人站-热衷于技术分享，源码分享的个人博客网站</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">				
+                    <ul class="menu">						
+						<a href="/"><img border="0" src="/img/logo2020.png" alt="伊成个人站" title="伊成个人站"></a>						
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa fa-home"></i>&nbsp;首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/blogshare/"><i class="fa fa-codepen"></i>&nbsp;技术分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codeshare/"><i class="fa fa-code"></i>&nbsp;源码分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codelife/"><i class="fa fa-pagelines"></i>&nbsp;程序人生</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives"><i class="fa fa-history"></i>&nbsp;时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about"><i class="fa fa-connectdevelop"></i>&nbsp;关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="ElasticSearch-实战代码2">
+            
+	            ElasticSearch-实战代码2
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/blogshare">
+            blogshare
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/ElasticSearch" title="ElasticSearch">
+                        ElasticSearch
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/02/24</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p><img src="/images/devcheng_es.jpg" alt="“BeanUtils.copyProperties()用法及区别”"></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h3><p>ElasticSearch提供Json格式的基于HTTP的RESTful API，可通过CURL命令直接请求，也能非常简便的在任何编程语言中使用，官方提供的常用语言客户端可在 <code>https://www.elastic.co/guide/en/elasticsearch/client/index.html</code> 查询下载。</p>
+<h3 id="接口请求"><a href="#接口请求" class="headerlink" title="接口请求"></a><strong>接口请求</strong></h3><p>请求格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X &lt;VERB&gt; &apos;&lt;PROTOCOL&gt;://&lt;HOST&gt;:&lt;PORT&gt;/&lt;PATH&gt;?&lt;QUERY_STRING&gt;&apos; -d &apos;&lt;BODY&gt;&apos;</span><br></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">VERB</td>
+<td style="text-align:left">HTTP方法 : GET、 POST、 PUT、 HEAD 或者 DELETE</td>
+</tr>
+<tr>
+<td style="text-align:left">PROTOCOL</td>
+<td style="text-align:left">http 或者 https</td>
+</tr>
+<tr>
+<td style="text-align:left">HOST</td>
+<td style="text-align:left">集群中任意节点的主机名</td>
+</tr>
+<tr>
+<td style="text-align:left">PORT</td>
+<td style="text-align:left">端口号，默认是 9200</td>
+</tr>
+<tr>
+<td style="text-align:left">PATH</td>
+<td style="text-align:left">API 的终端路径</td>
+</tr>
+<tr>
+<td style="text-align:left">QUERY_STRING</td>
+<td style="text-align:left">任意可选的查询字符串参数</td>
+</tr>
+<tr>
+<td style="text-align:left">BODY</td>
+<td style="text-align:left">JSON格式的请求体 (如果需要)</td>
+</tr>
+</tbody>
+</table>
+<p>请求示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -X GET &apos;http://localhost:9200/_count?pretty&apos; -d &apos;</span><br><span class="line">&#123;</span><br><span class="line">    &quot;query&quot;: &#123;</span><br><span class="line">        &quot;match_all&quot;: &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>接口响应<br>Elasticsearch接口返回一个HTTP状态码（如：200 OK）和一个JSON格式的返回值（HEAD请求除外）。上面的CURL请求将返回一个像下面一样的 JSON 体：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;count&quot; : 0,</span><br><span class="line">  &quot;_shards&quot; : &#123;</span><br><span class="line">    &quot;total&quot; : 0,</span><br><span class="line">    &quot;successful&quot; : 0,</span><br><span class="line">    &quot;skipped&quot; : 0,</span><br><span class="line">    &quot;failed&quot; : 0</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如需显示状态码可以使用<code>curl</code>命令的<code>-i</code>参数。</p>
+<h3 id="ElasticSearch存储结构与概念"><a href="#ElasticSearch存储结构与概念" class="headerlink" title="ElasticSearch存储结构与概念"></a><strong>ElasticSearch存储结构与概念</strong></h3><h4 id="文档-Document"><a href="#文档-Document" class="headerlink" title="文档 Document"></a><strong>文档 Document</strong></h4><p>Elasticsearch是面向文档的，使用JSON作为序列化格式存储整个对象。user对象文档示例如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;email&quot;:      &quot;john@smith.com&quot;,</span><br><span class="line">    &quot;first_name&quot;: &quot;John&quot;,</span><br><span class="line">    &quot;last_name&quot;:  &quot;Smith&quot;,</span><br><span class="line">    &quot;info&quot;: &#123;</span><br><span class="line">        &quot;bio&quot;:         &quot;Eco-warrior and defender of the weak&quot;,</span><br><span class="line">        &quot;age&quot;:         25,</span><br><span class="line">        &quot;interests&quot;: [ &quot;dolphins&quot;, &quot;whales&quot; ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;join_date&quot;: &quot;2014/05/01&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>实际存储的文档还包含文档的元数据，元数据中的常见元素：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">元素</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">_index</td>
+<td style="text-align:left">文档在哪个索引存放</td>
+</tr>
+<tr>
+<td style="text-align:left">_type</td>
+<td style="text-align:left">文档对象类型</td>
+</tr>
+<tr>
+<td style="text-align:left">_id</td>
+<td style="text-align:left">文档唯一标识</td>
+</tr>
+<tr>
+<td style="text-align:left">_version</td>
+<td style="text-align:left">数据版本</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意：Type只是Index中的虚拟逻辑分组，不同的Type应该有相似的结构。6.x版只允许每个Index包含一个Type，7.x 版将会彻底移除 Type。</strong></p>
+<h4 id="索引-Index"><a href="#索引-Index" class="headerlink" title="索引 Index"></a><strong>索引 Index</strong></h4><p>索引（Index）在ElasticSearch中是多义词：<br>1、类似数据库概念的存储文档集合的地方叫做索引（名词）<br>2、存储数据到Elasticsearch的行为也叫做索引（动词）<br>3、为了提升数据检索速度使用的倒排索引结构<br>ElasticSearch默认给索引(1)中每个文档的每个属性建立倒排索引(3)使之可以被快速检索。</p>
+<h4 id="节点-Node、集群-Cluster和分片-Shards"><a href="#节点-Node、集群-Cluster和分片-Shards" class="headerlink" title="节点 Node、集群 Cluster和分片 Shards"></a><strong>节点 Node、集群 Cluster和分片 Shards</strong></h4><p>ElasticSearch是分布式数据库，允许多台服务器协同工作，每台服务器可以运行多个实例。单个实例称为一个节点（node），一组节点构成一个集群（cluster）。分片是底层的工作单元，文档保存在分片内，分片又被分配到集群内的各个节点里，每个分片仅保存全部数据的一部分。</p>
+<h4 id="Elasticsearch-关键字与SQL关键字对比总结"><a href="#Elasticsearch-关键字与SQL关键字对比总结" class="headerlink" title="Elasticsearch 关键字与SQL关键字对比总结"></a><strong>Elasticsearch 关键字与SQL关键字对比总结</strong></h4><p>由于Elasticsearch和MongoDB/Redis/Memcache一样，是非关系型数据库。而平常使用的MySql，Oracle，SQLServer 等为关系型数据库，二者有着本质的区别，Es查询语句使用的是DSL语言，关系式数据库使用的是T-SQL，虽然语言不同，但是有时候，一些功能还是有些相似的，为此，整理了一些ES与 关系型数据库中的功能关键字做一下对比。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">SQL关键字</th>
+<th style="text-align:left">Elastsearch 关键字</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">DataBase</td>
+<td style="text-align:left">Index</td>
+<td style="text-align:left">数据库名称</td>
+</tr>
+<tr>
+<td style="text-align:left">Table</td>
+<td style="text-align:left">type　　　　</td>
+<td style="text-align:left">表名称</td>
+</tr>
+<tr>
+<td style="text-align:left">Row</td>
+<td style="text-align:left">Document</td>
+<td style="text-align:left">文档</td>
+</tr>
+<tr>
+<td style="text-align:left">Column</td>
+<td style="text-align:left">Field</td>
+<td style="text-align:left">字段</td>
+</tr>
+<tr>
+<td style="text-align:left">T-SQL　　　　</td>
+<td style="text-align:left">Query DSL</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">_source</td>
+<td style="text-align:left">返回指定的列</td>
+</tr>
+<tr>
+<td style="text-align:left">SELECT * FROM table</td>
+<td style="text-align:left">GET http://…</td>
+<td style="text-align:left">从……中查询</td>
+</tr>
+<tr>
+<td style="text-align:left">UPDATE table SET</td>
+<td style="text-align:left">PUT http://…</td>
+<td style="text-align:left">从……中更新</td>
+</tr>
+<tr>
+<td style="text-align:left">Where</td>
+<td style="text-align:left">Query</td>
+<td style="text-align:left">查询范围</td>
+</tr>
+<tr>
+<td style="text-align:left">ORDER BY</td>
+<td style="text-align:left">Sort</td>
+<td style="text-align:left">升序ASC、倒序Desc相同</td>
+</tr>
+<tr>
+<td style="text-align:left">=</td>
+<td style="text-align:left">term</td>
+<td style="text-align:left">判断等值，精确值查找，用它处理数字（numbers）、布尔值（Booleans）、日期（dates）以及文本（text）</td>
+</tr>
+<tr>
+<td style="text-align:left">In</td>
+<td style="text-align:left">terms</td>
+<td style="text-align:left">限定一定范围</td>
+</tr>
+<tr>
+<td style="text-align:left">Not NULL</td>
+<td style="text-align:left">exists</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">IS NULL</td>
+<td style="text-align:left">missing</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">range</td>
+<td style="text-align:left">限定查询范围，可用于数值或者日期限定</td>
+</tr>
+<tr>
+<td style="text-align:left">&gt;</td>
+<td style="text-align:left">gt</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">&lt;</td>
+<td style="text-align:left">lt</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">&gt;=　　　　　　　　　</td>
+<td style="text-align:left">gte</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">&lt;=</td>
+<td style="text-align:left">lte</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">bool</td>
+<td style="text-align:left">组合过滤器</td>
+</tr>
+<tr>
+<td style="text-align:left">AND</td>
+<td style="text-align:left">must</td>
+<td style="text-align:left">必须包含</td>
+</tr>
+<tr>
+<td style="text-align:left">NOT</td>
+<td style="text-align:left">must_not</td>
+<td style="text-align:left">不能包含</td>
+</tr>
+<tr>
+<td style="text-align:left">OR</td>
+<td style="text-align:left">should</td>
+<td style="text-align:left">至少有一个匹配</td>
+</tr>
+<tr>
+<td style="text-align:left">TOP　　　　　　　</td>
+<td style="text-align:left">size</td>
+<td style="text-align:left">指定返回多少条，ES默认是10条，搭配From可以实现翻页效果</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">collapse</td>
+<td style="text-align:left">字段折叠</td>
+</tr>
+<tr>
+<td style="text-align:left">Join</td>
+<td style="text-align:left">inner_hits</td>
+<td style="text-align:left">嵌套子查询</td>
+</tr>
+</tbody>
+</table>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a><strong>结语</strong></h3><p>现在，你已经基本了解ElasticSearch简单概念了，但请不要止步于此；<br>ElasticSearch有着深刻的内涵和丰富的功能等待着你去发现，<br>官方文档是最新最全最好的学习材料了，需要的点击<br><code>https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html</code></p>
+<p>参考链接 : <code>https://www.cnblogs.com/softidea/p/6119354.html</code></p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/reward-alipay.png"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/reward-wepay.png"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">如果本文对你有所帮助，请打赏 1元就足够感动我 :）</p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处！
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/post/5d047910.html" class="pre-post btn btn-default" title="ElasticSearch-实战代码3">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">ElasticSearch-实战代码3</span>
+        </a>
+    
+    
+        <a href="/post/b30a183c.html" class="next-post btn btn-default" title="ElasticSearch-实战代码1">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">ElasticSearch-实战代码1</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({           
+            el: '#vcomments',
+            appId: 'sbQDWnkLFsRjJS2BGzfKc4rL-gzGzoHsz',
+            appKey: '5u9C0UUmzRe3unr9iLzheHjk',
+            placeholder: '文明社会,理性评论留言 ^_^……',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#接口请求"><span class="toc-text">接口请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ElasticSearch存储结构与概念"><span class="toc-text">ElasticSearch存储结构与概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#文档-Document"><span class="toc-text">文档 Document</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#索引-Index"><span class="toc-text">索引 Index</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#节点-Node、集群-Cluster和分片-Shards"><span class="toc-text">节点 Node、集群 Cluster和分片 Shards</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Elasticsearch-关键字与SQL关键字对比总结"><span class="toc-text">Elasticsearch 关键字与SQL关键字对比总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结语"><span class="toc-text">结语</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018 - 2020
+                </span> | .<font color="#f1607d">伊</font><font color="#ffa500">成</font><font color="#e5e802">个</font><font color="#3bff23">人</font><font color="#ffa503">站</font><font color="#29c8ec"> devcheng</font><font color="#4f9cfa">.net</font>. |
+                <span>
+                    基于 Hexo 搭建
+                </span> |
+                <span>
+                     <a href="/sitemap.xml" class="copyright-links" target="_blank" rel="nofollow">博客地图</a>
+                </span> |
+				<span>
+					 <a href="/atom.xml" class="copyright-links" target="_blank" rel="nofollow">RSS订阅</a> 
+				</span> |
+				<span>
+                    湘ICP备20010839号
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

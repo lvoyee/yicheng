@@ -1,0 +1,403 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="伊成个人站-热衷于技术分享，源码分享的个人博客网站">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+	<!--baidu tongji-->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?11f6f08fada932368f71e76bd659b783";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
+    <link rel="dns-prefetch" href="http://www.devcheng.net">
+    <!--SEO-->
+
+<meta name="description" content="伊成个人站 www.devcheng.net 一个致力于技术分享，源码分享及工作经历分享的个人博客网站">
+
+
+
+<meta name="keywords" content="伊成个人站,技术分享,源码分享,代码分享,java代码,源代码">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+<title>	浅谈ByteBuffer和ByteBuf的区别-伊成个人站</title>
+
+    <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人博客网站" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+       ◉◡◉ 您好，欢迎到访伊成个人站!
+    </div>
+</header>
+    
+<nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.devcheng.net">伊成个人站-热衷于技术分享，源码分享的个人博客网站</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">				
+                    <ul class="menu">						
+						<a href="/"><img border="0" src="/img/logo2020.png" alt="伊成个人站" title="伊成个人站"></a>						
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa fa-home"></i>&nbsp;首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/blogshare/"><i class="fa fa-codepen"></i>&nbsp;技术分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codeshare/"><i class="fa fa-code"></i>&nbsp;源码分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codelife/"><i class="fa fa-pagelines"></i>&nbsp;程序人生</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives"><i class="fa fa-history"></i>&nbsp;时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about"><i class="fa fa-connectdevelop"></i>&nbsp;关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="浅谈ByteBuffer和ByteBuf的区别">
+            
+	            浅谈ByteBuffer和ByteBuf的区别
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/blogshare">
+            blogshare
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/ByteBuffer" title="ByteBuffer">
+                        ByteBuffer
+                    </a>
+                
+                    <a href="/tags/ByteBuf" title="ByteBuf">
+                        ByteBuf
+                    </a>
+                
+                    <a href="/tags/Java NIO" title="Java NIO">
+                        Java NIO
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/07/27</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>最近这段时间接触到了netty,在做消息的编解码的过程中认识了bytebuf初次见面尚未深入认识，看见bytebuf的第一眼让我一下就联想到了bytebuffer这‘家伙’。</p>
+<p>进过一段时间的使用，今天写一篇博客总结总结！</p>
+<h2 id="ByteBuffer"><a href="#ByteBuffer" class="headerlink" title="ByteBuffer"></a>ByteBuffer</h2><p>bytebuffer 是Java NIO里面提供的字节容器。有一个指针用于处理读写操作，每次读写的时候都需要调用flip()或是clear()方法，不然将会报异常。</p>
+<p>部分源码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">*</span><br><span class="line"> *</span><br><span class="line"> * <span class="meta">@author</span> Mark Reinhold</span><br><span class="line"> * <span class="meta">@author</span> JSR-<span class="number">51</span> Expert Group</span><br><span class="line"> * <span class="meta">@since</span> <span class="number">1.4</span></span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">ByteBuffer</span></span></span><br><span class="line"><span class="class">    <span class="keyword">extends</span> <span class="title">Buffer</span></span></span><br><span class="line"><span class="class">    <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">ByteBuffer</span>&gt;</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// These fields are declared here rather than in Heap-X-Buffer in order to</span></span><br><span class="line">    <span class="comment">// reduce the number of virtual method invocations needed to access these</span></span><br><span class="line">    <span class="comment">// values, which is especially costly when coding small buffers.</span></span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">byte</span>[] hb;                  <span class="comment">// Non-null only for heap buffers</span></span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> offset;</span><br><span class="line">    <span class="keyword">boolean</span> isReadOnly;                 <span class="comment">// Valid only for heap buffers</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Creates a new buffer with the given mark, position, limit, capacity,</span></span><br><span class="line">    <span class="comment">// backing array, and array offset</span></span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">    ByteBuffer(<span class="keyword">int</span> mark, <span class="keyword">int</span> pos, <span class="keyword">int</span> lim, <span class="keyword">int</span> cap,   <span class="comment">// package-private</span></span><br><span class="line">                 <span class="keyword">byte</span>[] hb, <span class="keyword">int</span> offset)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">super</span>(mark, pos, lim, cap);</span><br><span class="line">        <span class="keyword">this</span>.hb = hb;</span><br><span class="line">        <span class="keyword">this</span>.offset = offset;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Buffer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The characteristics of Spliterators that traverse and split elements</span></span><br><span class="line"><span class="comment">     * maintained in Buffers.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> SPLITERATOR_CHARACTERISTICS =</span><br><span class="line">        Spliterator.SIZED | Spliterator.SUBSIZED | Spliterator.ORDERED;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Invariants: mark &lt;= position &lt;= limit &lt;= capacity</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mark = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> position = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> limit;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> capacity;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">mark</td>
+<td style="text-align:left">调用mark()方法的话，mark值将存储当前position的值，等下次调用reset()方法时，会设定position的值为之前的标记值</td>
+</tr>
+<tr>
+<td style="text-align:left">position</td>
+<td style="text-align:left">用来表示bytes的容量，那么可以想像capacity就等于bytes.size()，此值在初始化bytes后，<strong>是不可变的</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">limit</td>
+<td style="text-align:left">用来表示bytes实际装了多少数据，可以容易想像得到limit &lt;= capacity，此值是可灵活变动的</td>
+</tr>
+<tr>
+<td style="text-align:left">capacity</td>
+<td style="text-align:left">用来表示在哪个位置开始往bytes写数据或是读数据，此值是可灵活变动的</td>
+</tr>
+</tbody>
+</table>
+<p>他们之间的关系：mark &lt;= position &lt;= limit &lt;= capacity</p>
+<h3 id="创建一个bytebuffer"><a href="#创建一个bytebuffer" class="headerlink" title="创建一个bytebuffer"></a>创建一个bytebuffer</h3><p>ByteBuffer bf = ByteBuffer.allocate(10);</p>
+<p>position,limit和capacity图解如下：</p>
+<p><img src="/images/20190727165401.png" alt="image"></p>
+<p>tips:创建一个bytebuffer有两个方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ByteBuffer <span class="title">allocate</span><span class="params">(<span class="keyword">int</span> capacity)</span>  </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ByteBuffer <span class="title">allocateDirect</span><span class="params">(<span class="keyword">int</span> capacity)</span></span></span><br></pre></td></tr></table></figure></p>
+<p>allocate和allocateDirect的区别，可以参考以下博文</p>
+<p><a href="https://blog.51cto.com/xingej/1967948" target="_blank" rel="noopener">https://blog.51cto.com/xingej/1967948</a><br><a href="https://www.jianshu.com/p/03054776bc60" target="_blank" rel="noopener">https://www.jianshu.com/p/03054776bc60</a></p>
+<h3 id="写入数据到bytebuffer"><a href="#写入数据到bytebuffer" class="headerlink" title="写入数据到bytebuffer"></a>写入数据到bytebuffer</h3><p>bf.put((byte)’H’)<br>.put((byte)’e’)<br>.put((byte)’l’)<br>.put((byte)’l’)<br>.put((byte)’o’)</p>
+<p>在操作bytebuffer的时候，每次往里面写入一个byte,position则会后移一位。</p>
+<p><img src="/images/20190727165642.png" alt="image"></p>
+<h3 id="使用flip-刷新缓冲区为-读模式"><a href="#使用flip-刷新缓冲区为-读模式" class="headerlink" title="使用flip() 刷新缓冲区为 读模式"></a>使用flip() 刷新缓冲区为 读模式</h3><p>bf.flip()</p>
+<p>bytebuffer有两种模式，分别是写模式和读模式，这两种模式通过使用flip方法进行模式。</p>
+<p>如上将缓冲区切换为读模式，则position变成了初值位置0，而limit变成了写模式下position位置。<br><img src="/images/20190727165713.png" alt="image"></p>
+<h3 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h3><p>bf.get()</p>
+<p>调用get()获取缓冲区中的一个byte。</p>
+<h3 id="清除缓冲区"><a href="#清除缓冲区" class="headerlink" title="清除缓冲区"></a>清除缓冲区</h3><p>bf.clear()</p>
+<p><strong>tips</strong>: 这个方法简单理解就是复位（Reset） 但不会清除数据（position=0, limit=capacity）</p>
+<h2 id="ByteBuf"><a href="#ByteBuf" class="headerlink" title="ByteBuf"></a>ByteBuf</h2><p>bytebuf 是Netty里的封装的数据缓存区，区别于bytebuffer里需要position、limit、capacity等属性来操作bytebuffer数据读写，而 bytebuf 里面则是通过 两个指针协助缓存区的读写操作，分别为 readIndex 和 writerIndex 。</p>
+<p>在创建bytebuf 的时候，readIndex 和 writerIndex 的值都是0，但随着有数据被写入 writerIndex会增加，读取数据的时候 readIndex也会增加， 但是readIndex 不会超过 writerIndex。</p>
+<h3 id="创建一个bytebuf"><a href="#创建一个bytebuf" class="headerlink" title="创建一个bytebuf"></a>创建一个bytebuf</h3><p> ByteBuf bf= Unpooled.buffer(10,100)     </p>
+<p><img src="/images/20190727165744.png" alt="image"></p>
+<p> write：写入N个字节之后ByteBuf</p>
+<p> <img src="/images/20190727165805.png" alt="image"></p>
+<p>  read：读取M个字节后(M&lt;N)<br>  <img src="/images/20190727165926.png" alt="image"></p>
+<h2 id="ByteBuffer和ByteBuf的区别"><a href="#ByteBuffer和ByteBuf的区别" class="headerlink" title="ByteBuffer和ByteBuf的区别"></a>ByteBuffer和ByteBuf的区别</h2><ul>
+<li><p>Netty的ByteBuf采用了读写索引分离的策略（readerIndex与writerIndex），一个初始化（里面尚未有任何数据）的ByteBuf的readerIndex与writerIndex值都为0</p>
+</li>
+<li><p>当读索引与写索引处于同一个位置时，如果继续读取，那么就会抛出IndexOutOfBoundsException。</p>
+</li>
+<li><p>ByteBuffer只有一个标识位置的指针，读写的时候需要手动的调用flip()和rewind()等，否则很容易导致程序处理失败。而ByteBuf有两个标识位置的指针，一个写writerIndex，一个读readerIndex,读写的时候不需要调用额外的方法。</p>
+</li>
+<li><p>ByteBuffer必须自己长度固定，一旦分配完成，它的容量不能动态扩展和收缩；ByteBuf默认容器大小为256，支持动态扩容，在允许的最大扩容范围内（Integer.MAX_VALUE）。</p>
+</li>
+<li><p>NIO的SocketChannel进行网络读写时，操作的对象是JDK标准的java.nio.byteBuffer。由于Netty使用统一的ByteBuf替代JDK原生的java.nio.ByteBuffer，所以ByteBuf中定义了ByteBuffer nioBuffer()方法将ByteBuf转换成ByteBuffer。</p>
+</li>
+</ul>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/reward-alipay.png"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/reward-wepay.png"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">如果本文对你有所帮助，请打赏 1元就足够感动我 :）</p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处！
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/post/dc31a844.html" class="pre-post btn btn-default" title="如何在 Spring boot中使用 @Value注入map、List，yaml格式">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">如何在 Spring boot中使用 @Value注入map、List，yaml格式</span>
+        </a>
+    
+    
+        <a href="/post/ab99a0bd.html" class="next-post btn btn-default" title="认识Java RandomAccessFile类">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">认识Java RandomAccessFile类</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({           
+            el: '#vcomments',
+            appId: 'sbQDWnkLFsRjJS2BGzfKc4rL-gzGzoHsz',
+            appKey: '5u9C0UUmzRe3unr9iLzheHjk',
+            placeholder: '文明社会,理性评论留言 ^_^……',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#写在前面"><span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ByteBuffer"><span class="toc-text">ByteBuffer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建一个bytebuffer"><span class="toc-text">创建一个bytebuffer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#写入数据到bytebuffer"><span class="toc-text">写入数据到bytebuffer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用flip-刷新缓冲区为-读模式"><span class="toc-text">使用flip() 刷新缓冲区为 读模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#读取数据"><span class="toc-text">读取数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#清除缓冲区"><span class="toc-text">清除缓冲区</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ByteBuf"><span class="toc-text">ByteBuf</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建一个bytebuf"><span class="toc-text">创建一个bytebuf</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ByteBuffer和ByteBuf的区别"><span class="toc-text">ByteBuffer和ByteBuf的区别</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018 - 2020
+                </span> | .<font color="#f1607d">伊</font><font color="#ffa500">成</font><font color="#e5e802">个</font><font color="#3bff23">人</font><font color="#ffa503">站</font><font color="#29c8ec"> devcheng</font><font color="#4f9cfa">.net</font>. |
+                <span>
+                    基于 Hexo 搭建
+                </span> |
+                <span>
+                     <a href="/sitemap.xml" class="copyright-links" target="_blank" rel="nofollow">博客地图</a>
+                </span> |
+				<span>
+					 <a href="/atom.xml" class="copyright-links" target="_blank" rel="nofollow">RSS订阅</a> 
+				</span> |
+				<span>
+                    湘ICP备20010839号
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="伊成个人站-热衷于技术分享，源码分享的个人博客网站">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+	<!--baidu tongji-->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?11f6f08fada932368f71e76bd659b783";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
+    <link rel="dns-prefetch" href="http://www.devcheng.net">
+    <!--SEO-->
+
+<meta name="description" content="伊成个人站 www.devcheng.net 一个致力于技术分享，源码分享及工作经历分享的个人博客网站">
+
+
+
+<meta name="keywords" content="伊成个人站,技术分享,源码分享,代码分享,java代码,源代码">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+<title>	基于SpringBoot1.5 + MyBatis + Thymeleaf 开发的个人博客源码分享-伊成个人站</title>
+
+    <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人博客网站" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+       ◉◡◉ 您好，欢迎到访伊成个人站!
+    </div>
+</header>
+    
+<nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.devcheng.net">伊成个人站-热衷于技术分享，源码分享的个人博客网站</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">				
+                    <ul class="menu">						
+						<a href="/"><img border="0" src="/img/logo2020.png" alt="伊成个人站" title="伊成个人站"></a>						
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa fa-home"></i>&nbsp;首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/blogshare/"><i class="fa fa-codepen"></i>&nbsp;技术分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codeshare/"><i class="fa fa-code"></i>&nbsp;源码分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codelife/"><i class="fa fa-pagelines"></i>&nbsp;程序人生</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives"><i class="fa fa-history"></i>&nbsp;时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about"><i class="fa fa-connectdevelop"></i>&nbsp;关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="基于SpringBoot1.5 + MyBatis + Thymeleaf 开发的个人博客源码分享">
+            
+	            基于SpringBoot1.5 + MyBatis + Thymeleaf 开发的个人博客源码分享
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/codeshare">
+            codeshare
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/Spring Boot" title="Spring Boot">
+                        Spring Boot
+                    </a>
+                
+                    <a href="/tags/个人博客源码" title="个人博客源码">
+                        个人博客源码
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/05/11</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="毕设描述"><a href="#毕设描述" class="headerlink" title="毕设描述"></a><strong>毕设描述</strong></h2><p>这个博客由SpringBoot1.5 + MyBatis + Thymeleaf等技术实现的个人网站，分为前台和完整的后台功能，喜欢的话就赶紧来下载！</p>
+<h2 id="开发环境（运行环境）"><a href="#开发环境（运行环境）" class="headerlink" title="开发环境（运行环境）"></a><strong>开发环境（运行环境）</strong></h2><p>jdk8+mysql+IntelliJ IDEA+maven</p>
+<h2 id="项目采用技术"><a href="#项目采用技术" class="headerlink" title="项目采用技术"></a><strong>项目采用技术</strong></h2><h3 id="后端"><a href="#后端" class="headerlink" title="后端"></a><strong>后端</strong></h3><ul>
+<li>核心框架：SpringBoot</li>
+<li>持久层框架：MyBatis</li>
+<li>模板框架：Thymeleaf</li>
+<li>分页插件：PageHelper</li>
+<li>缓存框架：Ehcache</li>
+<li>Markdown：Commonmark</li>
+<li>… </li>
+</ul>
+<h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a><strong>前端</strong></h3><ul>
+<li>JS框架：Jquery</li>
+<li>CSS框架：Bootstrap</li>
+<li>富文本编辑器：editor.md</li>
+<li>文件上传：dropzone</li>
+<li>弹框插件：sweetalert</li>
+</ul>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a><strong>其他</strong></h3><ul>
+<li>七牛云</li>
+<li>百度统计</li>
+<li>algolia</li>
+</ul>
+<h2 id="数据库文件"><a href="#数据库文件" class="headerlink" title="数据库文件"></a><strong>数据库文件</strong></h2><p>在项目文件里面</p>
+<h2 id="项目截图"><a href="#项目截图" class="headerlink" title="项目截图"></a><strong>项目截图</strong></h2><p><img src="http://static.zuidaima.com/images/1/201905/20190510172403595_w_650x309.png" alt="“基于SpringBoot1.5 + MyBatis + Thymeleaf 开发的个人博客源码分享”"></p>
+<p><img src="http://static.zuidaima.com/images/11829/201905/20190509230132498_w_650x355.png" alt="“基于SpringBoot1.5 + MyBatis + Thymeleaf 开发的个人博客源码分享”"></p>
+<h2 id="运行截图"><a href="#运行截图" class="headerlink" title="运行截图"></a><strong>运行截图</strong></h2><p><a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a><br><img src="http://static.zuidaima.com/images/11829/201905/20190509225616760_w_362x650.png" alt="“基于SpringBoot1.5 + MyBatis + Thymeleaf 开发的个人博客源码分享”"></p>
+<p><img src="http://static.zuidaima.com/images/11829/201905/20190509225646109_w_402x650.png" alt="“基于SpringBoot1.5 + MyBatis + Thymeleaf 开发的个人博客源码分享”"></p>
+<p><img src="http://static.zuidaima.com/images/11829/201905/20190509225712208_w_650x389.png" alt="“基于SpringBoot1.5 + MyBatis + Thymeleaf 开发的个人博客源码分享”"></p>
+<p><img src="http://static.zuidaima.com/images/1/201905/20190510171908217_w_650x402.png" alt="“基于SpringBoot1.5 + MyBatis + Thymeleaf 开发的个人博客源码分享”"></p>
+<p><img src="http://static.zuidaima.com/images/1/201905/20190510172021551_w_650x170.png" alt="“基于SpringBoot1.5 + MyBatis + Thymeleaf 开发的个人博客源码分享”"></p>
+<p><img src="http://static.zuidaima.com/images/11829/201905/20190509225725746_w_650x352.png" alt="“基于SpringBoot1.5 + MyBatis + Thymeleaf 开发的个人博客源码分享”"></p>
+<p><img src="http://static.zuidaima.com/images/11829/201905/20190509225739400_w_650x328.png" alt="“基于SpringBoot1.5 + MyBatis + Thymeleaf 开发的个人博客源码分享”"></p>
+<p><img src="http://static.zuidaima.com/images/11829/201905/20190509225756959_w_650x392.png" alt="“基于SpringBoot1.5 + MyBatis + Thymeleaf 开发的个人博客源码分享”"></p>
+<p><img src="http://static.zuidaima.com/images/11829/201905/20190509225817314_w_650x351.png" alt="“基于SpringBoot1.5 + MyBatis + Thymeleaf 开发的个人博客源码分享”"></p>
+<p><img src="http://static.zuidaima.com/images/11829/201905/20190509225837511_w_650x328.png" alt="“基于SpringBoot1.5 + MyBatis + Thymeleaf 开发的个人博客源码分享”"></p>
+<p><img src="http://static.zuidaima.com/images/11829/201905/20190509225853268_w_650x328.png" alt="“基于SpringBoot1.5 + MyBatis + Thymeleaf 开发的个人博客源码分享”"></p>
+<p><img src="http://static.zuidaima.com/images/11829/201905/20190509225912743_w_650x328.png" alt="“基于SpringBoot1.5 + MyBatis + Thymeleaf 开发的个人博客源码分享”"></p>
+<p><img src="http://static.zuidaima.com/images/11829/201905/20190509225938027_w_650x311.png" alt="“基于SpringBoot1.5 + MyBatis + Thymeleaf 开发的个人博客源码分享”"></p>
+<p><img src="http://static.zuidaima.com/images/1/201905/20190510171938161_w_650x235.png" alt="“基于SpringBoot1.5 + MyBatis + Thymeleaf 开发的个人博客源码分享”"></p>
+<p><img src="http://static.zuidaima.com/images/11829/201905/20190509230012515_w_650x311.png" alt="“基于SpringBoot1.5 + MyBatis + Thymeleaf 开发的个人博客源码分享”"></p>
+<p><img src="http://static.zuidaima.com/images/11829/201905/20190509230023225_w_650x311.png" alt="“基于SpringBoot1.5 + MyBatis + Thymeleaf 开发的个人博客源码分享”"></p>
+<p><img src="http://static.zuidaima.com/images/11829/201905/20190509230036945_w_650x328.png" alt="“基于SpringBoot1.5 + MyBatis + Thymeleaf 开发的个人博客源码分享”"></p>
+<p><img src="http://static.zuidaima.com/images/11829/201905/20190509230116844_w_650x328.png" alt="“基于SpringBoot1.5 + MyBatis + Thymeleaf 开发的个人博客源码分享”"></p>
+<h2 id="登录地址"><a href="#登录地址" class="headerlink" title="登录地址"></a><strong>登录地址</strong></h2><p><a href="http://localhost:8080/admin/login" target="_blank" rel="noopener">http://localhost:8080/admin/login</a></p>
+<p>登录用户名和密码<br>admin / 111111</p>
+<h2 id="是否免费"><a href="#是否免费" class="headerlink" title="是否免费"></a><strong>是否免费</strong></h2><p><strong>收费</strong><br>写码不易，付费后给代码并且提供对应的技术服务支持。</p>
+<h2 id="联系我们"><a href="#联系我们" class="headerlink" title="联系我们"></a><strong>联系我们</strong></h2><p>QQ 搜索我们的群号：816175200</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a><strong>注意事项</strong></h2><p>1.添加了 搜索功能，使用 algolia </p>
+<p>2.修复 无配置数据时，页面无法正常打开</p>
+<p>3.修复 七牛云上传图片之后，无法正常显示问题</p>
+<p>4.添加 新建文章数据保存至 algolia</p>
+<p>5.修复 部分其他页面问题</p>
+<p>注意点1</p>
+<p>下载代码之后，建议更改 七牛云 对应的配置，默认我会开放使用，但不保证我不会改这部分配置！</p>
+<p>注意点2</p>
+<p>下载代码之后，建议更改 algolia 对应的配置，默认我会开放使用，但不保证我不会改这部分配置！</p>
+<p>有任何问题，都可以找我，but 不是免费帮助 ！</p>
+<p>最后重申一次，代码是完整的,如若跑不起来请联系我！</p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/reward-alipay.png"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/reward-wepay.png"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">如果本文对你有所帮助，请打赏 1元就足够感动我 :）</p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处！
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/post/e207f62a.html" class="pre-post btn btn-default" title="Java基础笔记整合">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Java基础笔记整合</span>
+        </a>
+    
+    
+        <a href="/post/a1be3b5.html" class="next-post btn btn-default" title="折腾centos6.5笔记">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">折腾centos6.5笔记</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({           
+            el: '#vcomments',
+            appId: 'sbQDWnkLFsRjJS2BGzfKc4rL-gzGzoHsz',
+            appKey: '5u9C0UUmzRe3unr9iLzheHjk',
+            placeholder: '文明社会,理性评论留言 ^_^……',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#毕设描述"><span class="toc-text">毕设描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开发环境（运行环境）"><span class="toc-text">开发环境（运行环境）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目采用技术"><span class="toc-text">项目采用技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#后端"><span class="toc-text">后端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前端"><span class="toc-text">前端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他"><span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库文件"><span class="toc-text">数据库文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目截图"><span class="toc-text">项目截图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行截图"><span class="toc-text">运行截图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#登录地址"><span class="toc-text">登录地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#是否免费"><span class="toc-text">是否免费</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#联系我们"><span class="toc-text">联系我们</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意事项"><span class="toc-text">注意事项</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018 - 2020
+                </span> | .<font color="#f1607d">伊</font><font color="#ffa500">成</font><font color="#e5e802">个</font><font color="#3bff23">人</font><font color="#ffa503">站</font><font color="#29c8ec"> devcheng</font><font color="#4f9cfa">.net</font>. |
+                <span>
+                    基于 Hexo 搭建
+                </span> |
+                <span>
+                     <a href="/sitemap.xml" class="copyright-links" target="_blank" rel="nofollow">博客地图</a>
+                </span> |
+				<span>
+					 <a href="/atom.xml" class="copyright-links" target="_blank" rel="nofollow">RSS订阅</a> 
+				</span> |
+				<span>
+                    湘ICP备20010839号
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

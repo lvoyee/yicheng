@@ -1,0 +1,338 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="伊成个人站-热衷于技术分享，源码分享的个人博客网站">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+	<!--baidu tongji-->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?11f6f08fada932368f71e76bd659b783";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
+    <link rel="dns-prefetch" href="http://www.devcheng.net">
+    <!--SEO-->
+
+<meta name="description" content="伊成个人站 www.devcheng.net 一个致力于技术分享，源码分享及工作经历分享的个人博客网站">
+
+
+
+<meta name="keywords" content="伊成个人站,技术分享,源码分享,代码分享,java代码,源代码">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+<title>	如何使用Java打印项目目录结构-伊成个人站</title>
+
+    <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人博客网站" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+       ◉◡◉ 您好，欢迎到访伊成个人站!
+    </div>
+</header>
+    
+<nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.devcheng.net">伊成个人站-热衷于技术分享，源码分享的个人博客网站</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">				
+                    <ul class="menu">						
+						<a href="/"><img border="0" src="/img/logo2020.png" alt="伊成个人站" title="伊成个人站"></a>						
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa fa-home"></i>&nbsp;首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/blogshare/"><i class="fa fa-codepen"></i>&nbsp;技术分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codeshare/"><i class="fa fa-code"></i>&nbsp;源码分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codelife/"><i class="fa fa-pagelines"></i>&nbsp;程序人生</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives"><i class="fa fa-history"></i>&nbsp;时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about"><i class="fa fa-connectdevelop"></i>&nbsp;关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="如何使用Java打印项目目录结构">
+            
+	            如何使用Java打印项目目录结构
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/codeshare">
+            codeshare
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/Java" title="Java">
+                        Java
+                    </a>
+                
+                    <a href="/tags/目录结构" title="目录结构">
+                        目录结构
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/03/13</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p><img src="/images/devcheng_mulu.jpg" alt="“如何使用Java打印项目目录结构”"></p>
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a><strong>背景</strong></h3><p>看见很多代码在GITHUB上都有项目的目录结构，想要介绍一个项目各个包的内容，但又不想手敲目录结构，于是写了个工具类生成目录结构。</p>
+<h3 id="可配置项"><a href="#可配置项" class="headerlink" title="可配置项"></a><strong>可配置项</strong></h3><p>1.忽略文件夹：可以忽略一个或多个文件夹；<br>2.文件夹折叠开关：连续的空文件夹会被默认打印成包名，但可以通过开关打开和关闭；<br>3.是否生成文件：考虑到多数情况只需要生成目录不需要生成具体文件，所以有这个开关，控制是否打印文件。</p>
+<h3 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a><strong>效果图</strong></h3><p><img src="/images/clipboard.png" alt="“如何使用Java打印项目目录结构”"></p>
+<h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a><strong>源码</strong></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.lvoyee.esblog.utils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.commons.lang.StringUtils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.FileNotFoundException;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.HashSet;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: luo_yun</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span>: 2019/3/13 19:57</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>:</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PackageGenerator</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String[] TABS = <span class="keyword">new</span> String[]&#123;<span class="string">"└── "</span>, <span class="string">"├── "</span>, <span class="string">"│   "</span>, <span class="string">"    "</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">generate</span><span class="params">(String rootDir)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> generate(rootDir, <span class="keyword">new</span> HashSet&lt;&gt;(), <span class="keyword">true</span>, <span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">generate</span><span class="params">(String rootDir, Boolean packageCollapse)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> generate(rootDir, <span class="keyword">new</span> HashSet&lt;&gt;(), packageCollapse, <span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">generate</span><span class="params">(String rootDir, Set&lt;String&gt; ignoreDirs)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> generate(rootDir, ignoreDirs, <span class="keyword">true</span>, <span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * all directories and files of a specific path</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> rootDir         root dir</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> ignoreDirs      a set of dir to ignore.</span></span><br><span class="line"><span class="comment">     *                        if parent ignored, all children will be ignored too</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> packageCollapse if true, empty packages will fold to java package name.</span></span><br><span class="line"><span class="comment">     *                        like IntelliJ IDEA project outline(default, not flatten packages mode)</span></span><br><span class="line"><span class="comment">     *                        default true</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> generateFile    if true, file will be generated, otherwise only directory will be generated</span></span><br><span class="line"><span class="comment">     *                        default false</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> formatted outline string</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">generate</span><span class="params">(String rootDir, Set&lt;String&gt; ignoreDirs, Boolean packageCollapse, Boolean generateFile)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isBlank(rootDir)) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"null root dir!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        File file = <span class="keyword">new</span> File(rootDir);</span><br><span class="line">        <span class="keyword">if</span> (!file.exists()) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> FileNotFoundException(<span class="string">"root dir not exists!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!file.isDirectory()) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"root dir is not a directory!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        StringBuilder stringBuilder = <span class="keyword">new</span> StringBuilder(file.getName());</span><br><span class="line"></span><br><span class="line">        generateChildren(file, stringBuilder, <span class="string">""</span>, ignoreDirs, packageCollapse, generateFile);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> stringBuilder.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * generate directory structure with recursive function</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> file            dir to generate</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> stringBuilder   outer string builder for</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> level           depth of file or directory which determines how many blanks to display before this file or directory</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> ignoreDirs      a set of dir to ignore</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> packageCollapse if true, empty packages will fold to java package name</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">generateChildren</span><span class="params">(File file, StringBuilder stringBuilder, String level, Set&lt;String&gt; ignoreDirs, Boolean packageCollapse, Boolean generateFile)</span> </span>&#123;</span><br><span class="line">        File[] childes = file.listFiles();</span><br><span class="line">        <span class="keyword">if</span> (childes == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> lastDirIndex = lastDirIndex(childes, ignoreDirs, generateFile);</span><br><span class="line">        <span class="keyword">int</span> dirCnt = dirCnt(childes, ignoreDirs, generateFile);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (lastDirIndex &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (dirCnt == <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (packageCollapse &amp;&amp; childes[lastDirIndex].isDirectory()) &#123;</span><br><span class="line">                    stringBuilder.append(<span class="string">"."</span>).append(childes[lastDirIndex].getName());</span><br><span class="line">                    generateChildren(childes[lastDirIndex], stringBuilder, level, ignoreDirs, packageCollapse, generateFile);</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    stringBuilder.append(<span class="string">"\n"</span>).append(level).append(TABS[<span class="number">0</span>]).append(childes[lastDirIndex].getName());</span><br><span class="line">                    generateChildren(childes[lastDirIndex], stringBuilder, level + TABS[<span class="number">3</span>], ignoreDirs, packageCollapse, generateFile);</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; childes.length; i++) &#123;</span><br><span class="line">                <span class="keyword">if</span> ((childes[i].isDirectory() &amp;&amp; !ignoreDirs.contains(childes[i].getName())) || generateFile) &#123;</span><br><span class="line">                    stringBuilder.append(<span class="string">"\n"</span>).append(level);</span><br><span class="line">                    <span class="keyword">if</span> (i == lastDirIndex) &#123;</span><br><span class="line">                        stringBuilder.append(TABS[<span class="number">0</span>]).append(childes[i].getName());</span><br><span class="line">                        generateChildren(childes[i], stringBuilder, level + (TABS[<span class="number">3</span>]), ignoreDirs, packageCollapse, generateFile);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        stringBuilder.append(TABS[<span class="number">1</span>]).append(childes[i].getName());</span><br><span class="line">                        generateChildren(childes[i], stringBuilder, level + (TABS[<span class="number">2</span>]), ignoreDirs, packageCollapse, generateFile);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">dirCnt</span><span class="params">(File[] childes, Set&lt;String&gt; ignoreDirs, Boolean generateFile)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (childes == <span class="keyword">null</span> || childes.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> cnt;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; childes.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> ((childes[i].isDirectory() &amp;&amp; !ignoreDirs.contains(childes[i].getName())) || generateFile) &#123;</span><br><span class="line">                cnt++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> cnt;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">lastDirIndex</span><span class="params">(File[] childes, Set&lt;String&gt; ignoreDirs, Boolean generateFile)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> index = -<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (childes == <span class="keyword">null</span> || childes.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> index;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; childes.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> ((childes[i].isDirectory() &amp;&amp; !ignoreDirs.contains(childes[i].getName())) || generateFile) &#123;</span><br><span class="line">                index = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> index;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.print(generate(System.getProperty(<span class="string">"user.dir"</span>) + <span class="string">"/src/main/java"</span>, <span class="keyword">new</span> HashSet&lt;&gt;(Arrays.asList(<span class="string">".idea"</span>, <span class="string">"target"</span>, <span class="string">".git"</span>)), <span class="keyword">true</span>, <span class="keyword">true</span>));</span><br><span class="line">        System.out.println(<span class="string">"\n\n------------------------------------------------\n"</span>);</span><br><span class="line">        System.out.print(generate(System.getProperty(<span class="string">"user.dir"</span>) + <span class="string">"/src/main/java"</span>, <span class="keyword">new</span> HashSet&lt;&gt;(Arrays.asList(<span class="string">".idea"</span>, <span class="string">"target"</span>, <span class="string">".git"</span>)), <span class="keyword">false</span>, <span class="keyword">false</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有需要的可以直接赋值以上代码，放在自己项目里面充当一个工具类即可！</p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/reward-alipay.png"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/reward-wepay.png"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">如果本文对你有所帮助，请打赏 1元就足够感动我 :）</p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处！
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/post/2af67ce4.html" class="pre-post btn btn-default" title="Intellij IDEA使用@Autowired 注解标红报错解决办法">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Intellij IDEA使用@Autowired 注解标红报错解决办法</span>
+        </a>
+    
+    
+        <a href="/post/1c93cf.html" class="next-post btn btn-default" title="不寻常的String To Map的转换">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">不寻常的String To Map的转换</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({           
+            el: '#vcomments',
+            appId: 'sbQDWnkLFsRjJS2BGzfKc4rL-gzGzoHsz',
+            appKey: '5u9C0UUmzRe3unr9iLzheHjk',
+            placeholder: '文明社会,理性评论留言 ^_^……',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可配置项"><span class="toc-text">可配置项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#效果图"><span class="toc-text">效果图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#源码"><span class="toc-text">源码</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018 - 2020
+                </span> | .<font color="#f1607d">伊</font><font color="#ffa500">成</font><font color="#e5e802">个</font><font color="#3bff23">人</font><font color="#ffa503">站</font><font color="#29c8ec"> devcheng</font><font color="#4f9cfa">.net</font>. |
+                <span>
+                    基于 Hexo 搭建
+                </span> |
+                <span>
+                     <a href="/sitemap.xml" class="copyright-links" target="_blank" rel="nofollow">博客地图</a>
+                </span> |
+				<span>
+					 <a href="/atom.xml" class="copyright-links" target="_blank" rel="nofollow">RSS订阅</a> 
+				</span> |
+				<span>
+                    湘ICP备20010839号
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

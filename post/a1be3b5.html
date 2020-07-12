@@ -1,0 +1,341 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="伊成个人站-热衷于技术分享，源码分享的个人博客网站">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+	<!--baidu tongji-->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?11f6f08fada932368f71e76bd659b783";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
+    <link rel="dns-prefetch" href="http://www.devcheng.net">
+    <!--SEO-->
+
+<meta name="description" content="伊成个人站 www.devcheng.net 一个致力于技术分享，源码分享及工作经历分享的个人博客网站">
+
+
+
+<meta name="keywords" content="伊成个人站,技术分享,源码分享,代码分享,java代码,源代码">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+<title>	折腾centos6.5笔记-伊成个人站</title>
+
+    <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人博客网站" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+       ◉◡◉ 您好，欢迎到访伊成个人站!
+    </div>
+</header>
+    
+<nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.devcheng.net">伊成个人站-热衷于技术分享，源码分享的个人博客网站</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">				
+                    <ul class="menu">						
+						<a href="/"><img border="0" src="/img/logo2020.png" alt="伊成个人站" title="伊成个人站"></a>						
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa fa-home"></i>&nbsp;首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/blogshare/"><i class="fa fa-codepen"></i>&nbsp;技术分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codeshare/"><i class="fa fa-code"></i>&nbsp;源码分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codelife/"><i class="fa fa-pagelines"></i>&nbsp;程序人生</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives"><i class="fa fa-history"></i>&nbsp;时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about"><i class="fa fa-connectdevelop"></i>&nbsp;关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="折腾centos6.5笔记">
+            
+	            折腾centos6.5笔记
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/blogshare">
+            blogshare
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/centos6.5" title="centos6.5">
+                        centos6.5
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/04/21</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p><img src="/images/devcheng_centos.jpg" alt="&#39;折腾centos6.5笔记&#39;"></p>
+<h3 id="1-安装-vmware12"><a href="#1-安装-vmware12" class="headerlink" title="1.安装 vmware12 "></a><strong>1.安装 vmware12 </strong></h3><p>安装完成后，会提示要求输入序列号，序列号已经收集起来了。</p>
+<p>VMware Workstation 12序列号：<br><strong>5A02H-AU243-TZJ49-GTC7K-3C61N</strong></p>
+<h3 id="2-安装centos6-5"><a href="#2-安装centos6-5" class="headerlink" title="2.安装centos6.5 "></a><strong>2.安装centos6.5 </strong></h3><p>下载 centos6.5<br>下载地址:<a href="http://mirrors.163.com/" target="_blank" rel="noopener">http://mirrors.163.com/</a></p>
+<h4 id="问题1：二进制转换与此平台上的长模式不兼容"><a href="#问题1：二进制转换与此平台上的长模式不兼容" class="headerlink" title="问题1：二进制转换与此平台上的长模式不兼容"></a><strong>问题1：二进制转换与此平台上的长模式不兼容</strong></h4><p>描述： 启动vmware出现：1、二进制转换与此平台长模式不兼容….等等字样；<br>原因： 出现这样的原因一般都是由于系统Virtualization Technology虚拟化技术功能 关闭导致的。</p>
+<p>解决方法：以thinkpad t450 为例子，首先选择开机进入bios（t450 F1进入），然后找到 Intel Virtual Technology<br>默认的是disabled 这里回车 更改为enabled。<br>注：Intel Virtual Technology这项有的电脑在configuration里面，在thinkpad t450 里面不是这个地方的哦（具体在哪里我现在也忘记了，不过进入bios后 找Intel Virtual Technology 就可以了）</p>
+<p>设好后F10 保存退出 重新启动电脑。</p>
+<h4 id="问题2：-无法获取-vmci-驱动程序版本：-句柄无效"><a href="#问题2：-无法获取-vmci-驱动程序版本：-句柄无效" class="headerlink" title="问题2： 无法获取 vmci 驱动程序版本： 句柄无效"></a><strong>问题2： 无法获取 vmci 驱动程序版本： 句柄无效</strong></h4><p>描述：很多人在使用虚拟机的时候，会出现这个问题，导致无法进入虚拟机<br>解决方法：<a href="http://jingyan.baidu.com/article/a3a3f811ea5d2a8da2eb8aa1.html" target="_blank" rel="noopener">http://jingyan.baidu.com/article/a3a3f811ea5d2a8da2eb8aa1.html</a></p>
+<h4 id="问题3-no-default-or-ui-configuration-directive-found"><a href="#问题3-no-default-or-ui-configuration-directive-found" class="headerlink" title="问题3: no default or ui configuration directive found"></a><strong>问题3: no default or ui configuration directive found</strong></h4><p>描述：检测不到任何的默认启动配置 .<br>原因： 查看USB设备的根目录下isolinux文件中，发现有一个syslinux.cfg的文件夹，文件夹内容为空，存在文件isolinux.cfg文件</p>
+<p>解决方法： 删除syslinux.cfg文件夹，然后重命名isolinux.cfg为syslinux.cfg，查看syslinux.cfg里里面是否正常存在配置信息，重启服务器<br>注意：实在解决不了，还有一种可能就是你的iso镜像文件坏了，请重新下载一个iso文件重新安装。</p>
+<h4 id="问题4：无法将-Ethernet0-连接到虚拟网络”VMnet0”-详细信息可以在-vmware-log-amp"><a href="#问题4：无法将-Ethernet0-连接到虚拟网络”VMnet0”-详细信息可以在-vmware-log-amp" class="headerlink" title="问题4：无法将 Ethernet0 连接到虚拟网络”VMnet0” 详细信息可以在 vmware.log&amp;"></a><strong>问题4：无法将 Ethernet0 连接到虚拟网络”VMnet0” 详细信息可以在 vmware.log&amp;</strong></h4><p>描述：通常是虚拟机没有网络，就会爆这个错误。</p>
+<p>解决方法：<br>在 vmware“编辑-&gt;虚拟网络设置”里面，点“恢复默认”可解决。</p>
+<h3 id="centos-安装java开发环境-参考资料"><a href="#centos-安装java开发环境-参考资料" class="headerlink" title="centos 安装java开发环境 参考资料 "></a><strong>centos 安装java开发环境 参考资料 </strong></h3><p><a href="http://www.cnblogs.com/shenliang123/archive/2013/07/21/3203278.html" target="_blank" rel="noopener">http://www.cnblogs.com/shenliang123/archive/2013/07/21/3203278.html</a>         centos jdk 安装<br><a href="http://www.cnblogs.com/xiaoluo501395377/archive/2013/04/07/3003278.html" target="_blank" rel="noopener">http://www.cnblogs.com/xiaoluo501395377/archive/2013/04/07/3003278.html</a>  centos mysql  安装<br><a href="http://www.2cto.com/database/201305/208114.html" target="_blank" rel="noopener">http://www.2cto.com/database/201305/208114.html</a>                               centos mysql  安装<br><a href="http://zhizhuofl.blog.163.com/blog/static/69914779201118101254519/" target="_blank" rel="noopener">http://zhizhuofl.blog.163.com/blog/static/69914779201118101254519/</a>  centos 远程连接 mysql<br><a href="http://www.cnblogs.com/sixiweb/archive/2012/11/26/2789458.html" target="_blank" rel="noopener">http://www.cnblogs.com/sixiweb/archive/2012/11/26/2789458.html</a>        centos 安装tomcat6</p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/reward-alipay.png"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/reward-wepay.png"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">如果本文对你有所帮助，请打赏 1元就足够感动我 :）</p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处！
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/post/a182a993.html" class="pre-post btn btn-default" title="基于SpringBoot1.5 + MyBatis + Thymeleaf 开发的个人博客源码分享">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">基于SpringBoot1.5 + MyBatis + Thymeleaf 开发的个人博客源码分享</span>
+        </a>
+    
+    
+        <a href="/post/43ec5f4c.html" class="next-post btn btn-default" title="浅谈多线程之CAS原理">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">浅谈多线程之CAS原理</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({           
+            el: '#vcomments',
+            appId: 'sbQDWnkLFsRjJS2BGzfKc4rL-gzGzoHsz',
+            appKey: '5u9C0UUmzRe3unr9iLzheHjk',
+            placeholder: '文明社会,理性评论留言 ^_^……',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-安装-vmware12"><span class="toc-text">1.安装 vmware12 </span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-安装centos6-5"><span class="toc-text">2.安装centos6.5 </span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#问题1：二进制转换与此平台上的长模式不兼容"><span class="toc-text">问题1：二进制转换与此平台上的长模式不兼容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#问题2：-无法获取-vmci-驱动程序版本：-句柄无效"><span class="toc-text">问题2： 无法获取 vmci 驱动程序版本： 句柄无效</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#问题3-no-default-or-ui-configuration-directive-found"><span class="toc-text">问题3: no default or ui configuration directive found</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#问题4：无法将-Ethernet0-连接到虚拟网络”VMnet0”-详细信息可以在-vmware-log-amp"><span class="toc-text">问题4：无法将 Ethernet0 连接到虚拟网络”VMnet0” 详细信息可以在 vmware.log&amp;</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#centos-安装java开发环境-参考资料"><span class="toc-text">centos 安装java开发环境 参考资料 </span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018 - 2020
+                </span> | .<font color="#f1607d">伊</font><font color="#ffa500">成</font><font color="#e5e802">个</font><font color="#3bff23">人</font><font color="#ffa503">站</font><font color="#29c8ec"> devcheng</font><font color="#4f9cfa">.net</font>. |
+                <span>
+                    基于 Hexo 搭建
+                </span> |
+                <span>
+                     <a href="/sitemap.xml" class="copyright-links" target="_blank" rel="nofollow">博客地图</a>
+                </span> |
+				<span>
+					 <a href="/atom.xml" class="copyright-links" target="_blank" rel="nofollow">RSS订阅</a> 
+				</span> |
+				<span>
+                    湘ICP备20010839号
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

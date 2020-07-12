@@ -1,0 +1,455 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="伊成个人站-热衷于技术分享，源码分享的个人博客网站">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+	<!--baidu tongji-->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?11f6f08fada932368f71e76bd659b783";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
+    <link rel="dns-prefetch" href="http://www.devcheng.net">
+    <!--SEO-->
+
+<meta name="description" content="伊成个人站 www.devcheng.net 一个致力于技术分享，源码分享及工作经历分享的个人博客网站">
+
+
+
+<meta name="keywords" content="伊成个人站,技术分享,源码分享,代码分享,java代码,源代码">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+<title>	Java 10的功能和增强功能-伊成个人站</title>
+
+    <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人博客网站" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+       ◉◡◉ 您好，欢迎到访伊成个人站!
+    </div>
+</header>
+    
+<nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.devcheng.net">伊成个人站-热衷于技术分享，源码分享的个人博客网站</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">				
+                    <ul class="menu">						
+						<a href="/"><img border="0" src="/img/logo2020.png" alt="伊成个人站" title="伊成个人站"></a>						
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa fa-home"></i>&nbsp;首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/blogshare/"><i class="fa fa-codepen"></i>&nbsp;技术分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codeshare/"><i class="fa fa-code"></i>&nbsp;源码分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codelife/"><i class="fa fa-pagelines"></i>&nbsp;程序人生</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives"><i class="fa fa-history"></i>&nbsp;时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about"><i class="fa fa-connectdevelop"></i>&nbsp;关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Java 10的功能和增强功能">
+            
+	            Java 10的功能和增强功能
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/blogshare">
+            blogshare
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/Java10" title="Java10">
+                        Java10
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/01/27</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p><img src="/images/devcheng_java10.jpg" alt="“BeanUtils.copyProperties()用法及区别”"></p>
+<h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a><strong>摘要</strong></h3><p>在Java 9发布之后，Java 10很快就出现了。与之前的版本不同，Java 10没有那么多令人兴奋的功能，但它几乎没有重要的更新可以改变您的编码方式，以及其他未来的Java版本。</p>
+<h3 id="JEP-286：局部变量类型推断"><a href="#JEP-286：局部变量类型推断" class="headerlink" title="JEP 286：局部变量类型推断"></a><strong>JEP 286：局部变量类型推断</strong></h3><p>Java现在有var样式声明。它允许您声明局部变量而不指定其类型。变量的类型将从创建的实际对象的类型推断出来。它声称是JDK 10中开发人员唯一真正的功能。例如</p>
+<p><strong>Application.java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"Hello world"</span>;</span><br><span class="line">  </span><br><span class="line"><span class="comment">//or</span></span><br><span class="line">  </span><br><span class="line">String str = <span class="string">"Hello world"</span>;</span><br></pre></td></tr></table></figure></p>
+<p>在上面的例子中，两个语句都是等价的。在第一个语句中，类型str由类型的赋值String类型决定。</p>
+<h3 id="JEP-322：基于时间的发布版本控制"><a href="#JEP-322：基于时间的发布版本控制" class="headerlink" title="JEP 322：基于时间的发布版本控制"></a><strong>JEP 322：基于时间的发布版本控制</strong></h3><p>从Java 10开始，Oracle已经采用了基于时间的版本字符串方案。版本号的新格式为：</p>
+<blockquote>
+<p>  <code>$FEATURE.$INTERIM.$UPDATE.$PATCH</code></p>
+</blockquote>
+<p>与旧版本不同，新的基于时间的版本不会延迟，功能将每六个月发布一次，不会限制版本中的功能。</p>
+<p>还有长期版本（LTS）。它主要面向企业客户。LTS版本的产品将提供Oracle的一流和持续支持，并将每三年定位一次。此外，这些版本的更新将至少提供三年。</p>
+<h3 id="JEP-304：垃圾收集器接口"><a href="#JEP-304：垃圾收集器接口" class="headerlink" title="JEP 304：垃圾收集器接口"></a><strong>JEP 304：垃圾收集器接口</strong></h3><p>在早期的JDK结构中，构成垃圾收集器（GC）实现的组件分散在代码库的各个部分中。它在Java 10中发生了变化。现在，它是JVM源代码中的一个干净的接口，可以快速，轻松地集成替代收集器。它将改善不同垃圾收集器的源代码隔离。</p>
+<p>这纯粹是重构。以前工作的所有东西都需要在之后工作，性能不应该回归。</p>
+<h3 id="JEP-307：G1的并行全GC"><a href="#JEP-307：G1的并行全GC" class="headerlink" title="JEP 307：G1的并行全GC"></a><strong>JEP 307：G1的并行全GC</strong></h3><p>Java 9引入了G1（垃圾优先）垃圾收集器。G1垃圾收集器旨在避免完整集合，但是当并发集合无法足够快地回收内存时。通过此更改，将发生后退完整GC。</p>
+<p>G1的完整GC的当前实现使用单线程标记 - 扫描 - 紧凑算法。此更改将并行化mark-sweep-compact算法并使用相同数量的线程。当收集的并发线程无法足够快地恢复内存时，它将被触发。</p>
+<p>可以通过<code>-XX:ParallelGCThreads</code>选项控制线程数。</p>
+<h3 id="JEP-316：备用内存设备上的堆分配"><a href="#JEP-316：备用内存设备上的堆分配" class="headerlink" title="JEP 316：备用内存设备上的堆分配"></a><strong>JEP 316：备用内存设备上的堆分配</strong></h3><p>此更改的目标是使HotSpot VM能够在另一个内存设备（例如用户指定的NV-DIMM）上分配Java对象堆。</p>
+<p>要在这样的内存中分配堆，我们可以添加一个新选项<code>-XX:AllocateHeapAt=&lt;path&gt;</code>。此选项将采用文件系统的路径并使用内存映射来实现在内存设备上分配对象堆的所需结果。现有的堆相关标志（如<code>-Xmx，-Xms</code>等）和垃圾收集相关标志将继续像以前一样工作。</p>
+<h3 id="JEP-296：将JDK-Forest整合到单个存储库中"><a href="#JEP-296：将JDK-Forest整合到单个存储库中" class="headerlink" title="JEP 296：将JDK Forest整合到单个存储库中"></a><strong>JEP 296：将JDK Forest整合到单个存储库中</strong></h3><p>作为此更改的一部分，JDK林的大量存储库被组合到单个存储库中，以简化和简化开发。</p>
+<p>在JDK 9有八个回购：<code>root，corba，hotspot，jaxp，jaxws，jdk，langtools，和nashorn</code>。在统一林中，Java模块的代码通常组合在单个顶级src目录下。例如，今天在JDK林中有基于模块的目录，如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ ROOT/JDK/src/java.base</span><br><span class="line">...</span><br><span class="line">$ ROOT/langtools/src/java.compiler</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>在整合的林中，此代码组织为 -<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ROOT/src/java.base</span><br><span class="line">$ ROOT/src/java.compiler</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<h3 id="JEP-310：应用程序类-数据共享"><a href="#JEP-310：应用程序类-数据共享" class="headerlink" title="JEP 310：应用程序类 - 数据共享"></a><strong>JEP 310：应用程序类 - 数据共享</strong></h3><p>此功能的目标是改善启动占用空间，扩展现有的类 - 数据共享（“CDS”）功能，以允许将应用程序类放在共享存档中。</p>
+<p>JDK 5中引入的类数据共享允许将一组类预处理为共享存档文件，然后可以在运行时进行内存映射以减少启动时间。当多个JVM共享同一个归档文件时，它还可以减少动态内存占用。</p>
+<p>目前，CDS仅允许引导类加载器加载存档类。Application CDS允许内置系统类加载器，内置平台类加载器和自定义类加载器来加载归档类。</p>
+<p>指定<code>-XX:+UseAppCDS</code>命令行选项以为系统类加载器，平台类加载器和其他用户定义的类加载器启用类数据共享。</p>
+<h3 id="JEP-314：其他Unicode语言标记扩展"><a href="#JEP-314：其他Unicode语言标记扩展" class="headerlink" title="JEP 314：其他Unicode语言标记扩展"></a><strong>JEP 314：其他Unicode语言标记扩展</strong></h3><p>它的目标是增强<code>java.util.Locale</code>和相关的API，以实现BCP 47语言标签的其他Unicode扩展。最初在Java SE 7中添加了对BCP 47语言标记的支持，支持Unicode语言环境扩展仅限于日历和数字。此JEP将在相关的JDK类中实现最新LDML规范中指定的更多扩展。</p>
+<p>此JEP将添加对以下附加扩展的支持：</p>
+<ul>
+<li>cu (currency type)</li>
+<li>fw (first day of week)</li>
+<li>rg (region override)</li>
+<li>tz (time zone)</li>
+</ul>
+<p>修改后的相关API包括：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">java.text.DateFormat::get*Instance</span><br><span class="line">java.text.DateFormatSymbols::getInstance</span><br><span class="line">java.text.DecimalFormatSymbols::getInstance</span><br><span class="line">java.text.NumberFormat::get*Instance</span><br><span class="line">java.time.format.DateTimeFormatter::localizedBy</span><br><span class="line">java.time.format.DateTimeFormatterBuilder::getLocalizedDateTimePattern</span><br><span class="line">java.time.format.DecimalStyle::of</span><br><span class="line">java.time.temporal.WeekFields::of</span><br><span class="line">java.util.Calendar::&#123;getFirstDayOfWeek,getMinimalDaysInWeek&#125;</span><br><span class="line">java.util.Currency::getInstance</span><br><span class="line">java.util.Locale::getDisplayName</span><br><span class="line">java.util.spi.LocaleNameProvider</span><br></pre></td></tr></table></figure></p>
+<h3 id="JEP-319：根证书"><a href="#JEP-319：根证书" class="headerlink" title="JEP 319：根证书"></a><strong>JEP 319：根证书</strong></h3><p>cacerts密钥库是JDK的一部分，旨在包含一组根证书，这些证书可用于在各种安全协议中使用的证书链中建立信任。但是，JDK源代码中的cacerts密钥库目前是空的。</p>
+<p>cacerts密钥库将填充由Oracle Java SE根CA程序的CA颁发的一组根证书。许多供应商已经签署了所需的协议，并且每个供应商都会签署一份将包含的根证书列表。那些未签署协议的人目前不会被包括在内。那些需要更长时间处理的内容将包含在下一个版本中。</p>
+<p>这也意味着Oracle和Open JDK二进制文件在功能上都是相同的。诸如TLS之类的关键安全组件将在未来的OpenJDK构建中默认工作。</p>
+<h3 id="JEP-317：基于实验Java的JIT编译器"><a href="#JEP-317：基于实验Java的JIT编译器" class="headerlink" title="JEP 317：基于实验Java的JIT编译器"></a><strong>JEP 317：基于实验Java的JIT编译器</strong></h3><p>此功能使基于Java的JIT编译器Graal可用作Linux / x64平台上的实验性JIT编译器。Graal将使用JDK 9中引入的JVM编译器接口（JVMCI）.Graal已经在JDK中，因此将其作为实验性JIT启用将主要是测试和调试工作。</p>
+<p>要将Graal作为JIT编译器启用，请在java命令行上使用以下选项：</p>
+<p><code>-XX：+ UnlockExperimentalVMOptions -XX：+ UseJVMCICompiler</code><br>Graal是从头开始用Java完全重写JIT编译器。以前的JIT编译器是用C ++编写的。</p>
+<h3 id="JEP-312：线程局部握手"><a href="#JEP-312：线程局部握手" class="headerlink" title="JEP 312：线程局部握手"></a><strong>JEP 312：线程局部握手</strong></h3><p>此JEP通过在应用程序线程上执行回调而无需执行全局VM安全点，为改进VM性能奠定了基础。这意味着JVM可以阻止单个线程，而不仅仅是所有线程。</p>
+<p>线程局部握手最初将在x64和SPARC上实现。其他平台将回归正常的安全点。新产品选项-XX:ThreadLocalHandshakes（默认值true）允许用户在支持的平台上选择正常安全点。</p>
+<h3 id="JEP-313：删除Native-Header生成工具"><a href="#JEP-313：删除Native-Header生成工具" class="headerlink" title="JEP 313：删除Native-Header生成工具"></a><strong>JEP 313：删除Native-Header生成工具</strong></h3><p>它将<code>javah</code>从JDK中删除该工具，JDK是一个单独的工具，用于在编译JNI代码时生成头文件，因为这可以通过完成javac。</p>
+<p>这是另一个Java 10功能，专注于内务管理。</p>
+<p>新增的API和选项<br>在Java 10中添加了73个新的API。让我们来看看它们中的一些：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">API</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Optional.orElseThrow()</td>
+<td style="text-align:center">A new method orElseThrow has been added to the Optional class. It is synonymous with and is now the preferred alternative to the existing get method.</td>
+</tr>
+<tr>
+<td style="text-align:left">List.copyOf, Set.copyOf, and Map.copyOf</td>
+<td style="text-align:center">These methods create new collection instances from existing instances.</td>
+</tr>
+<tr>
+<td style="text-align:left">Collectors.toUnmodifiableList，Collectors.toUnmodifiableSet，Collectors.toUnmodifiableMap</td>
+<td style="text-align:center">These methods allow the elements of a Stream to be collected into an unmodifiable collection</td>
+</tr>
+<tr>
+<td style="text-align:left">–jdk.disableLastUsageTracking</td>
+<td style="text-align:center">To disable JRE last usage tracking for a running VM.</td>
+</tr>
+<tr>
+<td style="text-align:left">–add-stylesheet</td>
+<td style="text-align:center">Provides support for the use of multiple stylesheets in the generated documentation.</td>
+</tr>
+<tr>
+<td style="text-align:left">–main-stylesheet</td>
+<td style="text-align:center">To help distinguish the main stylesheet from any additional stylesheets.</td>
+</tr>
+<tr>
+<td style="text-align:left">@summary Tag</td>
+<td style="text-align:center">Added to explicitly specify the text used as the summary of the API description. By default, the summary of an API description is inferred from the first sentence.</td>
+</tr>
+</tbody>
+</table>
+<p>删除了API和选项</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">API</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">LookAndFeels</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">Runtime.getLocalizedInputStream， Runtime.getLocalizedOutputStream</td>
+<td style="text-align:center">Part of an obsolete internationalization mechanism and have no known uses.</td>
+</tr>
+<tr>
+<td style="text-align:left">RMI Server-Side Multiplex Protocol Support</td>
+<td style="text-align:center">It was disabled in JDK 9 and, now, has been removed.</td>
+</tr>
+<tr>
+<td style="text-align:left">Common DOM APIs</td>
+<td style="text-align:center">The com.sun.java.browser.plugin2.DOM, and sun.plugin.dom.DOMObject APIs have been removed. Applications can use netscape.javascript.JSObject to manipulate the DOM.</td>
+</tr>
+<tr>
+<td style="text-align:left">FlatProfiler</td>
+<td style="text-align:center">Deprecated in JDK 9, has been made obsolete by removing the implementation code.</td>
+</tr>
+<tr>
+<td style="text-align:left">-Xoss, -Xsqnopause, -Xoptimize, -Xboundthreads, and -Xusealtsigs</td>
+<td style="text-align:center">Options removed.</td>
+</tr>
+<tr>
+<td style="text-align:left">policytool</td>
+<td style="text-align:center">The policytool security tool has been removed from the JDK.</td>
+</tr>
+<tr>
+<td style="text-align:left">Deprecated Classes in com.sun.security.auth.**</td>
+<td style="text-align:center">Following classes are removed now com.sun.security.auth.PolicyFile  com.sun.security.auth.SolarisNumericGroupPrincipal com.sun.security.auth.SolarisNumericUserPrincipal com.sun.security.auth.SolarisPrincipal com.sun.security.auth.X500Principal com.sun.security.auth.module.SolarisLoginModule com.sun.security.auth.module.SolarisSystem</td>
+</tr>
+</tbody>
+</table>
+<p>总体而言，Java 10具有许多我们可能不会在日常编程中使用的功能，但它仍然具有许多功能，这些功能在幕后工作以使其成为重要的里程碑。</p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/reward-alipay.png"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/reward-wepay.png"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">如果本文对你有所帮助，请打赏 1元就足够感动我 :）</p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处！
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/post/ca6a35df.html" class="pre-post btn btn-default" title="@Inject和@Autowired以及@Resource区别">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">@Inject和@Autowired以及@Resource区别</span>
+        </a>
+    
+    
+        <a href="/post/f6b323e3.html" class="next-post btn btn-default" title="最喜欢Spring Boot的6个功能">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">最喜欢Spring Boot的6个功能</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({           
+            el: '#vcomments',
+            appId: 'sbQDWnkLFsRjJS2BGzfKc4rL-gzGzoHsz',
+            appKey: '5u9C0UUmzRe3unr9iLzheHjk',
+            placeholder: '文明社会,理性评论留言 ^_^……',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#摘要"><span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JEP-286：局部变量类型推断"><span class="toc-text">JEP 286：局部变量类型推断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JEP-322：基于时间的发布版本控制"><span class="toc-text">JEP 322：基于时间的发布版本控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JEP-304：垃圾收集器接口"><span class="toc-text">JEP 304：垃圾收集器接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JEP-307：G1的并行全GC"><span class="toc-text">JEP 307：G1的并行全GC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JEP-316：备用内存设备上的堆分配"><span class="toc-text">JEP 316：备用内存设备上的堆分配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JEP-296：将JDK-Forest整合到单个存储库中"><span class="toc-text">JEP 296：将JDK Forest整合到单个存储库中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JEP-310：应用程序类-数据共享"><span class="toc-text">JEP 310：应用程序类 - 数据共享</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JEP-314：其他Unicode语言标记扩展"><span class="toc-text">JEP 314：其他Unicode语言标记扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JEP-319：根证书"><span class="toc-text">JEP 319：根证书</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JEP-317：基于实验Java的JIT编译器"><span class="toc-text">JEP 317：基于实验Java的JIT编译器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JEP-312：线程局部握手"><span class="toc-text">JEP 312：线程局部握手</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JEP-313：删除Native-Header生成工具"><span class="toc-text">JEP 313：删除Native-Header生成工具</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018 - 2020
+                </span> | .<font color="#f1607d">伊</font><font color="#ffa500">成</font><font color="#e5e802">个</font><font color="#3bff23">人</font><font color="#ffa503">站</font><font color="#29c8ec"> devcheng</font><font color="#4f9cfa">.net</font>. |
+                <span>
+                    基于 Hexo 搭建
+                </span> |
+                <span>
+                     <a href="/sitemap.xml" class="copyright-links" target="_blank" rel="nofollow">博客地图</a>
+                </span> |
+				<span>
+					 <a href="/atom.xml" class="copyright-links" target="_blank" rel="nofollow">RSS订阅</a> 
+				</span> |
+				<span>
+                    湘ICP备20010839号
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

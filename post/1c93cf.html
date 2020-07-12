@@ -1,0 +1,344 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="伊成个人站-热衷于技术分享，源码分享的个人博客网站">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+	<!--baidu tongji-->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?11f6f08fada932368f71e76bd659b783";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
+    <link rel="dns-prefetch" href="http://www.devcheng.net">
+    <!--SEO-->
+
+<meta name="description" content="伊成个人站 www.devcheng.net 一个致力于技术分享，源码分享及工作经历分享的个人博客网站">
+
+
+
+<meta name="keywords" content="伊成个人站,技术分享,源码分享,代码分享,java代码,源代码">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+<title>	不寻常的String To Map的转换-伊成个人站</title>
+
+    <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人博客网站" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+       ◉◡◉ 您好，欢迎到访伊成个人站!
+    </div>
+</header>
+    
+<nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.devcheng.net">伊成个人站-热衷于技术分享，源码分享的个人博客网站</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">				
+                    <ul class="menu">						
+						<a href="/"><img border="0" src="/img/logo2020.png" alt="伊成个人站" title="伊成个人站"></a>						
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa fa-home"></i>&nbsp;首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/blogshare/"><i class="fa fa-codepen"></i>&nbsp;技术分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codeshare/"><i class="fa fa-code"></i>&nbsp;源码分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codelife/"><i class="fa fa-pagelines"></i>&nbsp;程序人生</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives"><i class="fa fa-history"></i>&nbsp;时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about"><i class="fa fa-connectdevelop"></i>&nbsp;关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="不寻常的String To Map的转换">
+            
+	            不寻常的String To Map的转换
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/blogshare">
+            blogshare
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/String转Map" title="String转Map">
+                        String转Map
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/03/01</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p><img src="/images/devcheng_net_map2String.jpg" alt="“ElasticSearch-实战代码3”"></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h3><p>在一般的情况下，Java中字符串转Map需要确定一点，待转的字符串是不是json格式的，如果是json格式的则容易处理的多了，直接用Gson 或是 FastJSON 等就可以处理了。</p>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a><strong>正文</strong></h3><p>那另外一种情况如果需要转的字符串 不是 json 格式的那怎么办呢？<br>举个例子，需要转的字符串是以下这种：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id:1|age:27|name:test|sex:1</span><br></pre></td></tr></table></figure></p>
+<p>以上这样的字符串，那就需要你使用 String中的 split 方法进行分割，然后变成Map既可！</p>
+<p>在说一种情况，由于工作里面碰见的特此也记录一下！<br>我遇到的需要把字符串转Map的字符串是这样的格式：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;id=1,age=2,name=test&#125;</span><br></pre></td></tr></table></figure></p>
+<p>但是有一种特殊的情况，可能里面的一些字段没有值，最后可能需要处理的字符串则变成了这样：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;id=1,age=,name=&#125;</span><br></pre></td></tr></table></figure>
+<p>那这样的情况怎么做呢？</p>
+<p>网上大多数给出的代码的是以下这样的：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">"&#123;id=1,age=,name=test&#125;"</span>;</span><br><span class="line">String[] strs = str.split(<span class="string">"="</span>);</span><br><span class="line">Map&lt;String, String&gt; m = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line"><span class="keyword">for</span>(String s:strs)&#123;</span><br><span class="line">String[] ms = s.split(<span class="string">":"</span>);</span><br><span class="line">  m.put(ms[<span class="number">0</span>], ms[<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>思路是对的，可是面对这样 key=value 且 value 可能没有值得情况，代码是用不了的。原因是就是<br>在分割字符串之后，给map 复制的那句 m.put(ms[0], ms[1]) 这里 ms[1] ，如果分割出来的字段是 age= 没有value 的 那么 ms[1] ,就会报一个 异常，数组越界异常。 </p>
+<p>根据以上代码则需要做一个特殊的处理，在给map 复制的时候需要判断一下被分割出来的 String[] ms = s.split(“:”); ms 里面有几个元素， 然后根据元素的最大下标去判断。 </p>
+<p>直接看 特殊处理后的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Map&lt;String,Object&gt; <span class="title">getStringToMap</span><span class="params">(String str)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (str.startsWith(<span class="string">"&#123;"</span>)) &#123;</span><br><span class="line">        str = str.substring(<span class="number">1</span>, str.length());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (str.endsWith(<span class="string">"&#125;"</span>)) &#123;</span><br><span class="line">        str = str.substring(<span class="number">0</span>, str.length() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//根据逗号截取字符串数组</span></span><br><span class="line">    String[] str1 = str.split(<span class="string">","</span>);</span><br><span class="line">    <span class="comment">//创建Map对象</span></span><br><span class="line">    Map&lt;String,Object&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="comment">//循环加入map集合</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str1.length; i++) &#123;</span><br><span class="line">        <span class="comment">//根据":"截取字符串数组</span></span><br><span class="line">        String[] str2 = str1[i].split(<span class="string">"="</span>);</span><br><span class="line">        <span class="comment">//str2[0]为KEY,str2[1]为值</span></span><br><span class="line">        <span class="comment">// str2.length-1 为下标最大值</span></span><br><span class="line">        <span class="keyword">if</span>(str2.length-<span class="number">1</span> == <span class="number">0</span>)&#123;</span><br><span class="line">            map.put(str2[<span class="number">0</span>].trim(),<span class="string">""</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            map.put(str2[<span class="number">0</span>].trim(),str2[<span class="number">1</span>].trim());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> map;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上代码，就可以 适用于字符串里面的key和value都存在或是key有而value没有值的场景！如下两种字符串实例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;id=1,age=,name=test&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;id=1,age=27,name=test&#125;</span><br></pre></td></tr></table></figure>
+<p>写到这里，你也许看明白了这个不寻常的字符串就是，value可能没有值的时候转Map的特殊处理，原理就是在给Map赋值的时候使用分割后获取的String []数组的最大下标作文章，从而判断value是否有值，有值的时候取两个元素，没有则给个默认的空字符串。</p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/reward-alipay.png"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/reward-wepay.png"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">如果本文对你有所帮助，请打赏 1元就足够感动我 :）</p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处！
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/post/7a0df1b9.html" class="pre-post btn btn-default" title="如何使用Java打印项目目录结构">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">如何使用Java打印项目目录结构</span>
+        </a>
+    
+    
+        <a href="/post/5d047910.html" class="next-post btn btn-default" title="ElasticSearch-实战代码3">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">ElasticSearch-实战代码3</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({           
+            el: '#vcomments',
+            appId: 'sbQDWnkLFsRjJS2BGzfKc4rL-gzGzoHsz',
+            appKey: '5u9C0UUmzRe3unr9iLzheHjk',
+            placeholder: '文明社会,理性评论留言 ^_^……',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正文"><span class="toc-text">正文</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018 - 2020
+                </span> | .<font color="#f1607d">伊</font><font color="#ffa500">成</font><font color="#e5e802">个</font><font color="#3bff23">人</font><font color="#ffa503">站</font><font color="#29c8ec"> devcheng</font><font color="#4f9cfa">.net</font>. |
+                <span>
+                    基于 Hexo 搭建
+                </span> |
+                <span>
+                     <a href="/sitemap.xml" class="copyright-links" target="_blank" rel="nofollow">博客地图</a>
+                </span> |
+				<span>
+					 <a href="/atom.xml" class="copyright-links" target="_blank" rel="nofollow">RSS订阅</a> 
+				</span> |
+				<span>
+                    湘ICP备20010839号
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

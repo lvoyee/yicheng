@@ -1,0 +1,534 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="伊成个人站-热衷于技术分享，源码分享的个人博客网站">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+	<!--baidu tongji-->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?11f6f08fada932368f71e76bd659b783";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
+    <link rel="dns-prefetch" href="http://www.devcheng.net">
+    <!--SEO-->
+
+<meta name="description" content="伊成个人站 www.devcheng.net 一个致力于技术分享，源码分享及工作经历分享的个人博客网站">
+
+
+
+<meta name="keywords" content="伊成个人站,技术分享,源码分享,代码分享,java代码,源代码">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+<title>	JDK各个版本新特性小结-伊成个人站</title>
+
+    <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人博客网站" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+       ◉◡◉ 您好，欢迎到访伊成个人站!
+    </div>
+</header>
+    
+<nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.devcheng.net">伊成个人站-热衷于技术分享，源码分享的个人博客网站</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">				
+                    <ul class="menu">						
+						<a href="/"><img border="0" src="/img/logo2020.png" alt="伊成个人站" title="伊成个人站"></a>						
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa fa-home"></i>&nbsp;首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/blogshare/"><i class="fa fa-codepen"></i>&nbsp;技术分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codeshare/"><i class="fa fa-code"></i>&nbsp;源码分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codelife/"><i class="fa fa-pagelines"></i>&nbsp;程序人生</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives"><i class="fa fa-history"></i>&nbsp;时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about"><i class="fa fa-connectdevelop"></i>&nbsp;关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="JDK各个版本新特性小结">
+            
+	            JDK各个版本新特性小结
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/blogshare">
+            blogshare
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/新特性" title="新特性">
+                        新特性
+                    </a>
+                
+                    <a href="/tags/JDK" title="JDK">
+                        JDK
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2020/05/30</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>截止到今天(2020-5-30)JDK已经发布到了 JDK14。</p>
+<p>在2017年8月，JCP执行委员会提出将Java的发布频率改为每六个月一次，新的发布周期严格遵循时间点，将在每年的3月份和9月份发布。</p>
+<p>JDK 14已经于2020年3月17日如期发布。下面介绍各个版本的新特性，后续随着JDK新版本的更新迭代，本文会持续更新。</p>
+<p>JDK从1.5版本开始，在官方的正式文档与宣传资料中已经不再使用类似JDK1.5的名称，只有程序员内部</p>
+<p>使用的开发版本号(DeveloperVersion，例如java-version的输出)才继续沿用1.5、1.6、1.7和1.8的版本号，</p>
+<p>而公开版本号(Product Version)则改为JDK5、JDK6、JDK7和JDK8的命名方式。</p>
+<h2 id="JDK-5-新特性"><a href="#JDK-5-新特性" class="headerlink" title="JDK 5 新特性"></a>JDK 5 新特性</h2><p>1.自动装箱、拆箱</p>
+<p>2.静态导入(static import)</p>
+<p>3.增强for循环（for-each）</p>
+<p>4.可变参数</p>
+<p>5.枚举（enmu）</p>
+<p>6.泛型</p>
+<p>7.元数据</p>
+<p>8.线程并发库（JUC）</p>
+<hr>
+<h2 id="JDK-6-新特性"><a href="#JDK-6-新特性" class="headerlink" title="JDK 6 新特性"></a>JDK 6 新特性</h2><p>1.AWT中新增的两个类Desktop和SystemTray</p>
+<p>2.使用JAXB2来实现对象与XML之间的映射</p>
+<ol start="3">
+<li><p>新增处理DOM和SAX之外又一种处理XML文档的API：STAX</p>
+</li>
+<li><p>使用Compiler API动态编译java源文件</p>
+</li>
+<li><p>轻量级Http Server API</p>
+</li>
+<li><p>插入式注解处理API（用于处理Annotations）</p>
+</li>
+<li><p>用Console开发控制台程序</p>
+</li>
+<li><p>对ruby、groovy、javascript等脚本语言的支持</p>
+</li>
+<li><p>Common Annotations</p>
+</li>
+</ol>
+<hr>
+<h2 id="JDK-7-新特性"><a href="#JDK-7-新特性" class="headerlink" title="JDK 7 新特性"></a>JDK 7 新特性</h2><ol>
+<li><p>对Java集合（Collections）的增强支持</p>
+</li>
+<li><p>在switch中可用String</p>
+</li>
+<li><p>数值可加下划线（eg:int one_million=123_1）</p>
+</li>
+<li><p>支持二进制文字（int binary=0b1001_1001）</p>
+</li>
+<li><p>简化可变参数方法的调用</p>
+</li>
+<li><p>自动资源管理</p>
+</li>
+<li><p>类型推断</p>
+</li>
+<li><p>catch 多个类型异常</p>
+</li>
+</ol>
+<hr>
+<h2 id="JDK-8-新特性"><a href="#JDK-8-新特性" class="headerlink" title="JDK 8 新特性"></a>JDK 8 新特性</h2><ol>
+<li><p>Stream函数式操作流元素集合</p>
+</li>
+<li><p>Lambda表达式</p>
+</li>
+<li><p>新的日期时间 API(Java Date/time API)</p>
+</li>
+<li><p>新增接口：默认方法与静态方法</p>
+</li>
+<li><p>Nashorm(Rhino的接替者，轻量级高性能的javascript运行环境)</p>
+</li>
+<li><p>Accumlators多线程lock</p>
+</li>
+<li><p>方法引用，与Lambda表达式联合使用</p>
+</li>
+<li><p>引入重复注解和类型注解</p>
+</li>
+<li><p>类型注解</p>
+</li>
+<li><p>新增base64加解密API</p>
+</li>
+<li><p>数组并行（parallel）操作</p>
+</li>
+<li><p>JVM的permGen空间移除，被Metaspace元空间取代</p>
+</li>
+</ol>
+<hr>
+<h2 id="JDK-9-新特性"><a href="#JDK-9-新特性" class="headerlink" title="JDK 9 新特性"></a>JDK 9 新特性</h2><ol>
+<li><p>目录结构</p>
+</li>
+<li><p>模块化系统</p>
+</li>
+<li><p>jshell</p>
+</li>
+<li><p>多版本兼容JAR</p>
+</li>
+<li><p>接口的私有方法</p>
+</li>
+<li><p>改进try-with-resourcs</p>
+</li>
+<li><p>改进砖石操作符</p>
+</li>
+<li><p>限制使用单独下划线标识符</p>
+</li>
+<li><p>String存储结构变更</p>
+</li>
+<li><p>快速创建只读结合</p>
+</li>
+<li><p>增强Stream API</p>
+</li>
+<li><p>改进Optional 类</p>
+</li>
+<li><p>多分辨率图像 API</p>
+</li>
+<li><p>全新 HTTP客服端API</p>
+</li>
+<li><p>智能JAVA 编译工具</p>
+</li>
+<li><p>统一JVM 日志系统</p>
+</li>
+<li><p>javadoc 的 HTML5 支持</p>
+</li>
+<li><p>java 动态编译</p>
+</li>
+</ol>
+<hr>
+<h2 id="JDK-10-新特性"><a href="#JDK-10-新特性" class="headerlink" title="JDK 10 新特性"></a>JDK 10 新特性</h2><ol>
+<li><p>局部变量类型推断</p>
+</li>
+<li><p>将JDK多存储库合并为单储存库</p>
+</li>
+<li><p>垃圾回收接口</p>
+</li>
+<li><p>并行Full GC 的G1</p>
+</li>
+<li><p>应用数据共享</p>
+</li>
+<li><p>线程局部管控</p>
+</li>
+<li><p>移除Native-Header Generation Tool （javah）</p>
+</li>
+<li><p>Unicode 标签扩展</p>
+</li>
+<li><p>备用内存设备上分配堆内存</p>
+</li>
+<li><p>基于实验JAVA 的JIT 编译器</p>
+</li>
+<li><p>Root 证书</p>
+</li>
+<li><p>基于时间的版本控制</p>
+</li>
+</ol>
+<hr>
+<h2 id="JDK-11-新特性"><a href="#JDK-11-新特性" class="headerlink" title="JDK 11 新特性"></a>JDK 11 新特性</h2><ol>
+<li><p>字符串加强</p>
+</li>
+<li><p>HttClient Api</p>
+</li>
+<li><p>用于 Lambda 参数的局部变量语法</p>
+</li>
+<li><p>ZGC (并发回收的策略)</p>
+</li>
+</ol>
+<hr>
+<h2 id="JDK-12-新特性"><a href="#JDK-12-新特性" class="headerlink" title="JDK 12 新特性"></a>JDK 12 新特性</h2><ol>
+<li><p>Switch Expressions</p>
+</li>
+<li><p>Shenandoah GC (GC 算法)</p>
+</li>
+</ol>
+<hr>
+<h2 id="JDK-13-新特性"><a href="#JDK-13-新特性" class="headerlink" title="JDK 13 新特性"></a>JDK 13 新特性</h2><ol>
+<li><p>switch优化更新</p>
+</li>
+<li><p>文本块升级</p>
+</li>
+<li><p>重新实现旧版套接字API</p>
+</li>
+<li><p>核心库/java.util中：I18N</p>
+</li>
+<li><p>增加ZGC以将未使用的堆内存返回给操作系统</p>
+</li>
+</ol>
+<hr>
+<h2 id="JDK-14-新特性"><a href="#JDK-14-新特性" class="headerlink" title="JDK 14 新特性"></a>JDK 14 新特性</h2><ol>
+<li><p>switch优化变更为最终版</p>
+</li>
+<li><p>垃圾回收相</p>
+</li>
+</ol>
+<ul>
+<li>删除cms垃圾收集器</li>
+<li>弃用 ParallelScavenge + SerialOld GC 的垃圾回收算法组合</li>
+<li>将 zgc 垃圾回收器移植到 macOS 和 windows 平台 </li>
+</ul>
+<ol start="3">
+<li><p>instanceof的模式匹配（预览版）</p>
+</li>
+<li><p>删除了安全库java.security.acl API</p>
+</li>
+<li><p>货币格式（优化）</p>
+</li>
+<li><p>友好的空指针异常</p>
+</li>
+<li><p>外部存储器API（孵化）</p>
+</li>
+</ol>
+<p>… </p>
+<p><strong> 本文会持续更新… </strong></p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/reward-alipay.png"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/reward-wepay.png"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">如果本文对你有所帮助，请打赏 1元就足够感动我 :）</p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处！
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/post/64102a3b.html" class="pre-post btn btn-default" title="墙裂推荐一款redis客户端可视化工具之RedisPlus">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">墙裂推荐一款redis客户端可视化工具之RedisPlus</span>
+        </a>
+    
+    
+        <a href="/post/ea3f1216.html" class="next-post btn btn-default" title="15个超实用的IDEA快捷键">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">15个超实用的IDEA快捷键</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({           
+            el: '#vcomments',
+            appId: 'sbQDWnkLFsRjJS2BGzfKc4rL-gzGzoHsz',
+            appKey: '5u9C0UUmzRe3unr9iLzheHjk',
+            placeholder: '文明社会,理性评论留言 ^_^……',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JDK-5-新特性"><span class="toc-text">JDK 5 新特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JDK-6-新特性"><span class="toc-text">JDK 6 新特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JDK-7-新特性"><span class="toc-text">JDK 7 新特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JDK-8-新特性"><span class="toc-text">JDK 8 新特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JDK-9-新特性"><span class="toc-text">JDK 9 新特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JDK-10-新特性"><span class="toc-text">JDK 10 新特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JDK-11-新特性"><span class="toc-text">JDK 11 新特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JDK-12-新特性"><span class="toc-text">JDK 12 新特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JDK-13-新特性"><span class="toc-text">JDK 13 新特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JDK-14-新特性"><span class="toc-text">JDK 14 新特性</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018 - 2020
+                </span> | .<font color="#f1607d">伊</font><font color="#ffa500">成</font><font color="#e5e802">个</font><font color="#3bff23">人</font><font color="#ffa503">站</font><font color="#29c8ec"> devcheng</font><font color="#4f9cfa">.net</font>. |
+                <span>
+                    基于 Hexo 搭建
+                </span> |
+                <span>
+                     <a href="/sitemap.xml" class="copyright-links" target="_blank" rel="nofollow">博客地图</a>
+                </span> |
+				<span>
+					 <a href="/atom.xml" class="copyright-links" target="_blank" rel="nofollow">RSS订阅</a> 
+				</span> |
+				<span>
+                    湘ICP备20010839号
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

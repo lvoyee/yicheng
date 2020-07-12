@@ -1,0 +1,349 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="伊成个人站-热衷于技术分享，源码分享的个人博客网站">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+	<!--baidu tongji-->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?11f6f08fada932368f71e76bd659b783";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
+    <link rel="dns-prefetch" href="http://www.devcheng.net">
+    <!--SEO-->
+
+<meta name="description" content="伊成个人站 www.devcheng.net 一个致力于技术分享，源码分享及工作经历分享的个人博客网站">
+
+
+
+<meta name="keywords" content="伊成个人站,技术分享,源码分享,代码分享,java代码,源代码">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+<title>	@Inject和@Autowired以及@Resource区别-伊成个人站</title>
+
+    <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人博客网站" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+       ◉◡◉ 您好，欢迎到访伊成个人站!
+    </div>
+</header>
+    
+<nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.devcheng.net">伊成个人站-热衷于技术分享，源码分享的个人博客网站</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">				
+                    <ul class="menu">						
+						<a href="/"><img border="0" src="/img/logo2020.png" alt="伊成个人站" title="伊成个人站"></a>						
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa fa-home"></i>&nbsp;首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/blogshare/"><i class="fa fa-codepen"></i>&nbsp;技术分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codeshare/"><i class="fa fa-code"></i>&nbsp;源码分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codelife/"><i class="fa fa-pagelines"></i>&nbsp;程序人生</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives"><i class="fa fa-history"></i>&nbsp;时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about"><i class="fa fa-connectdevelop"></i>&nbsp;关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="@Inject和@Autowired以及@Resource区别">
+            
+	            @Inject和@Autowired以及@Resource区别
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/blogshare">
+            blogshare
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/Inject" title="Inject">
+                        Inject
+                    </a>
+                
+                    <a href="/tags/Autowired" title="Autowired">
+                        Autowired
+                    </a>
+                
+                    <a href="/tags/Resource" title="Resource">
+                        Resource
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/02/14</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p><img src="/images/devcheng_zhujie.jpg" alt="“BeanUtils.copyProperties()用法及区别”"></p>
+<h3 id="Inject"><a href="#Inject" class="headerlink" title="@Inject"></a><strong>@Inject</strong></h3><p>javax.inject JSR330 (Dependency Injection for Java) 这是jsr330中的规范，通过<code>AutowiredAnnotationBeanPostProcessor</code>类实现的依赖注入。</p>
+<h4 id="Inject使用"><a href="#Inject使用" class="headerlink" title="@Inject使用"></a><strong>@Inject使用</strong></h4><p>如下是@Inject的使用，不加@Named注解，需要配置与变量名一致即可。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Inject</span></span><br><span class="line"><span class="meta">@Named</span>(<span class="string">"mongo"</span>)</span><br><span class="line"><span class="keyword">private</span> Mongo mongo;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Autowired"><a href="#Autowired" class="headerlink" title="@Autowired"></a><strong>@Autowired</strong></h3><p>org.springframework.bean.factory Spring @Autowired是Spring提供的注解，通过<code>AutowiredAnnotationBeanPostProcessor</code> 类实现的依赖注入，与@inject二者具有可互换性。</p>
+<h4 id="Autowired的使用"><a href="#Autowired的使用" class="headerlink" title="@Autowired的使用"></a><strong>@Autowired的使用</strong></h4><p>@Autowired有个属性为required，可以配置为false，如果配置为false之后，当没有找到相应bean的时候，系统不会抛错.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> MongoTemplate mongoTemplate;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Resource"><a href="#Resource" class="headerlink" title="@Resource"></a><strong>@Resource</strong></h3><p>javax.annotation JSR250 (Common Annotations for Java) 这是jsr250规范的实现，<code>@Resource</code>通过 <code>CommonAnnotationBeanPostProcessor</code>类实现依赖注入。</p>
+<h4 id="Resource的使用"><a href="#Resource的使用" class="headerlink" title="@Resource的使用"></a><strong>@Resource的使用</strong></h4><p>@Resource一般会指定一个name属性，如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Resource</span>(name = <span class="string">"userMapper"</span>)</span><br><span class="line"><span class="keyword">private</span> UserMapper userMapper;</span><br></pre></td></tr></table></figure></p>
+<h3 id="三个注解的相异之处"><a href="#三个注解的相异之处" class="headerlink" title="三个注解的相异之处"></a><strong>三个注解的相异之处</strong></h3><ol>
+<li>@Autowired和@Inject基本是一样的，因为两者都是使用AutowiredAnnotationBeanPostProcessor来处理依赖注入。但是@Resource是个例外，它使用的是CommonAnnotationBeanPostProcessor来处理依赖注入。当然，两者都是BeanPostProcessor。</li>
+<li>@Autowired和@Inject 默认 autowired by type 可以 通过@Qualifier 显式指定 autowired by qualifier name。</li>
+<li>@Resource 默认 autowired by field name 如果 autowired by field name失败，会退化为 autowired by type 可以 通过@Qualifier 显式指定 autowired by qualifier name 如果 autowired by qualifier name失败，会退化为 autowired by field name。但是这时候如果 autowired by field name失败，就不会再退化为autowired by type了。</li>
+</ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><p>个人在使用上，更偏重使用@Inject，这是jsr330规范的实现，而@Autowired是spring的实现，如果不用spring一般用不上这个，而@Resource则是jsr250的实现，这是多年前的规范。</p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/reward-alipay.png"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/reward-wepay.png"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">如果本文对你有所帮助，请打赏 1元就足够感动我 :）</p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处！
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/post/b30a183c.html" class="pre-post btn btn-default" title="ElasticSearch-实战代码1">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">ElasticSearch-实战代码1</span>
+        </a>
+    
+    
+        <a href="/post/5322594a.html" class="next-post btn btn-default" title="Java 10的功能和增强功能">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Java 10的功能和增强功能</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({           
+            el: '#vcomments',
+            appId: 'sbQDWnkLFsRjJS2BGzfKc4rL-gzGzoHsz',
+            appKey: '5u9C0UUmzRe3unr9iLzheHjk',
+            placeholder: '文明社会,理性评论留言 ^_^……',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Inject"><span class="toc-text">@Inject</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Inject使用"><span class="toc-text">@Inject使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Autowired"><span class="toc-text">@Autowired</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Autowired的使用"><span class="toc-text">@Autowired的使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Resource"><span class="toc-text">@Resource</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Resource的使用"><span class="toc-text">@Resource的使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三个注解的相异之处"><span class="toc-text">三个注解的相异之处</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018 - 2020
+                </span> | .<font color="#f1607d">伊</font><font color="#ffa500">成</font><font color="#e5e802">个</font><font color="#3bff23">人</font><font color="#ffa503">站</font><font color="#29c8ec"> devcheng</font><font color="#4f9cfa">.net</font>. |
+                <span>
+                    基于 Hexo 搭建
+                </span> |
+                <span>
+                     <a href="/sitemap.xml" class="copyright-links" target="_blank" rel="nofollow">博客地图</a>
+                </span> |
+				<span>
+					 <a href="/atom.xml" class="copyright-links" target="_blank" rel="nofollow">RSS订阅</a> 
+				</span> |
+				<span>
+                    湘ICP备20010839号
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
