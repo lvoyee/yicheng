@@ -42,7 +42,7 @@
 
     <!--Title-->
 
-<title>	浅谈程序员该如何自我成长-伊成个人站</title>
+<title>	Redis知识点汇总整理-伊成个人站</title>
 
     <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人博客网站" type="application/atom+xml">
 
@@ -138,9 +138,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="浅谈程序员该如何自我成长">
+        <h1 id="Redis知识点汇总整理">
             
-	            浅谈程序员该如何自我成长
+	            Redis知识点汇总整理
             
         </h1>
         <div class="post-meta">
@@ -148,8 +148,8 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a href="/categories/codelife">
-            codelife
+        <a href="/categories/blogshare">
+            blogshare
         </a>
     </span>
     
@@ -160,8 +160,12 @@
         <span class="tags-meta">
             
                 
-                    <a href="/tags/程序员成长" title="程序员成长">
-                        程序员成长
+                    <a href="/tags/Redis" title="Redis">
+                        Redis
+                    </a>
+                
+                    <a href="/tags/Redis知识点" title="Redis知识点">
+                        Redis知识点
                     </a>
                 
             
@@ -173,7 +177,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2018/11/17</span>
+            <span class="date-meta">2020/08/17</span>
         </span>
         
     
@@ -181,24 +185,31 @@
 
             
             
-            <p class="fa fa-exclamation-triangle warning">
-                本文于<strong>638</strong>天之前发表，文中内容可能已经过时。
-            </p>
-        
     </div>
     
     <div class="post-body post-content">
-        <p><img src="/images/devcheng_grow.jpg" alt="“浅谈程序员该如何自我成长”"></p>
-<p>对于程序员该如何自我成长，这是一个人人都能掺和话题，作为一名在坑里挣扎了五年的码农，我也一直在探索、一直在思考、一直在总结，作为一名码农到底该怎么成长，不再被35岁这个魔咒所恐吓。</p>
-<h3 id="提前规划未来几年的职业发展"><a href="#提前规划未来几年的职业发展" class="headerlink" title="提前规划未来几年的职业发展"></a><strong>提前规划未来几年的职业发展</strong></h3><p>在最开始的时候看清楚自己想要做什么，沉下心去做一件事。如果没有的话，光看着别人打怪升级，不断地学到新的知识，那时候你就会变得很焦虑。其实，最重要的是，怎么能够在未来的时间里真正充实自己，让自己真正学到东西。制定一个职业规划，则就确保了自己的方向，只要方向是对的，结果就不会是错的。</p>
-<h3 id="不断的学习"><a href="#不断的学习" class="headerlink" title="不断的学习"></a><strong>不断的学习</strong></h3><p>做为程序员，一旦停止学习就会被淘汰。<br>之前在群里比较流行一张图片，大体内容就是某种语言一直在更新迭代，有位比较滑稽的网友就提了一个issues说到“求不要更新了，老子学不动了”。这也说明了一点，在技术领域每一年都有各种各样的技术出现，很多大厂更是有自己的一套技术栈。<br><img src="/images/life_1.png" alt="“浅谈程序员该如何自我成长”"></p>
-<h3 id="利用好业余时间"><a href="#利用好业余时间" class="headerlink" title="利用好业余时间"></a><strong>利用好业余时间</strong></h3><p>有一大部分人，周末或是下班之后的时间都会选择看看电视，玩游戏等娱乐去了。当然这里不是说下班之后就不能娱乐，这里而是推荐大家利用好业余时间去学习或是认知工作以外的一些新技术。</p>
-<h3 id="善于总结"><a href="#善于总结" class="headerlink" title="善于总结"></a><strong>善于总结</strong></h3><p>成长的路上，什么时候才是真的成长呢？举个栗子，最开始遇到的这个问题，各种谷歌各种度娘折腾了半天解决了这个问题，如果把这个过程用自己的方式总结下来，下次或未来遇到类似的有一个借鉴的方法。能让自己快速的解决掉这个问题，这就是成长的表现。</p>
-<p>最直接的方式，就是用语(bo)言(ke)记录下来，古人言：好记性，不如烂笔头。</p>
-<h3 id="建立人脉"><a href="#建立人脉" class="headerlink" title="建立人脉"></a><strong>建立人脉</strong></h3><p>有一个说法叫幸运三连。</p>
-<p>上学时遇到一位好老师；<br>工作时遇到一位好师傅；<br>成家时遇到一个好伴侣。</p>
-<p>那如何能找到一个好师傅，闻道有先后，一个公司里面总有技术好的，像他们学习。建立良好的人脉关系，在工作中遇到什么困难也能提到事半功倍。</p>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a><strong>小结</strong></h3><p>成长之路没有捷径只有自己一点一滴的学习，一点一滴的付出，才有成长。</p>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近，利用业余时间把Redis的知识点从基础到面试常问的点，全面系统的画了一个脑图。</p>
+<p>这里先给大家安利一个在线画图<a href="https://www.processon.com/i/5915bcb6e4b0691b1f68fa96" target="_blank" rel="noopener">processon</a>，先看一下Redis知识点汇总整理好的一览图。</p>
+<p><img src="https://s1.ax1x.com/2020/08/17/dZ8r24.png" alt="dZ8r24.png">.</p>
+<p>由于绘制的脑图很大，以上仅是图的一部分。</p>
+<h2 id="涉及知识点"><a href="#涉及知识点" class="headerlink" title="涉及知识点"></a>涉及知识点</h2><ul>
+<li>基础知识点</li>
+<li>数据持久化</li>
+<li>过期策略</li>
+<li>内存淘汰策略</li>
+<li>常见问题</li>
+<li>Redis事务</li>
+<li>主从复制</li>
+<li>Redis集群</li>
+<li>应用场景</li>
+<li>对应面试题</li>
+<li>…</li>
+</ul>
+<p>如有其它你觉得可以加进去的知识点，欢迎留言。后续会继续修改优化脑图！</p>
+<p>脑图地址: <a href="https://www.processon.com/view/link/5f34b188e0b34d0806735914" target="_blank" rel="noopener">https://www.processon.com/view/link/5f34b188e0b34d0806735914</a></p>
+<p>阅读密码：yicheng</p>
+<hr>
+<p><strong>The end</strong></p>
 
     </div>
     
@@ -234,15 +245,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/post/32452853.html" class="pre-post btn btn-default" title="月薪8K和月薪30K的程序员差距在哪">
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">月薪8K和月薪30K的程序员差距在哪</span>
-        </a>
     
-    
-        <a href="/post/55553214.html" class="next-post btn btn-default" title="博客SEO优化之链接持久化">
+        <a href="/post/60b1ff4c.html" class="next-post btn btn-default" title="16个Redis面试题，你能回答出来几个？">
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">博客SEO优化之链接持久化</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">16个Redis面试题，你能回答出来几个？</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -280,7 +286,7 @@
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#提前规划未来几年的职业发展"><span class="toc-text">提前规划未来几年的职业发展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不断的学习"><span class="toc-text">不断的学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#利用好业余时间"><span class="toc-text">利用好业余时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#善于总结"><span class="toc-text">善于总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#建立人脉"><span class="toc-text">建立人脉</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-text">小结</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#涉及知识点"><span class="toc-text">涉及知识点</span></a></li></ol>
         
     </div>
 </aside>

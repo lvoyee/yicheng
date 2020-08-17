@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.devcheng.net/"/>
-  <updated>2020-08-09T13:19:24.674Z</updated>
+  <updated>2020-08-17T12:49:51.967Z</updated>
   <id>http://www.devcheng.net/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Redis知识点汇总整理</title>
+    <link href="http://www.devcheng.net/post/72b87000.html"/>
+    <id>http://www.devcheng.net/post/72b87000.html</id>
+    <published>2020-08-17T12:41:47.000Z</published>
+    <updated>2020-08-17T12:49:51.967Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近，利用业余时间把Redis的知识点从基础到面试常问的点，全面系统的画了一个脑图。</p><p>这里先给大家安利一个在线画图<a href="https://www.processon.com/i/5915bcb6e4b0691b1f68fa96" target="_blank" rel="noopener">processon</a>，先看一下Redis知识点汇总整理好的一览图。</p><p><img src="https://s1.ax1x.com/2020/08/17/dZ8r24.png" alt="dZ8r24.png">.</p><p>由于绘制的脑图很大，以上仅是图的一部分。</p><h2 id="涉及知识点"><a href="#涉及知识点" class="headerlink" title="涉及知识点"></a>涉及知识点</h2><ul><li>基础知识点</li><li>数据持久化</li><li>过期策略</li><li>内存淘汰策略</li><li>常见问题</li><li>Redis事务</li><li>主从复制</li><li>Redis集群</li><li>应用场景</li><li>对应面试题</li><li>…</li></ul><p>如有其它你觉得可以加进去的知识点，欢迎留言。后续会继续修改优化脑图！</p><p>脑图地址: <a href="https://www.processon.com/view/link/5f34b188e0b34d0806735914" target="_blank" rel="noopener">https://www.processon.com/view/link/5f34b188e0b34d0806735914</a></p><p>阅读密码：yicheng</p><hr><p><strong>The end</strong></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;最近，利用业余时间把Redis的知识点从基础到面试常问的点，全面系统的画了一个脑图。&lt;/p&gt;
+&lt;p&gt;这里先给大家安利一个在线画图&lt;a hre
+      
+    
+    </summary>
+    
+      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+    
+    
+      <category term="Redis" scheme="http://www.devcheng.net/tags/Redis/"/>
+    
+      <category term="Redis知识点" scheme="http://www.devcheng.net/tags/Redis%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    
+  </entry>
   
   <entry>
     <title>16个Redis面试题，你能回答出来几个？</title>
@@ -527,36 +555,6 @@
     
     
       <category term="spring boot" scheme="http://www.devcheng.net/tags/spring-boot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>基于Spring Boot开发学生成绩管理系统</title>
-    <link href="http://www.devcheng.net/post/d01dd317.html"/>
-    <id>http://www.devcheng.net/post/d01dd317.html</id>
-    <published>2020-01-06T09:09:12.000Z</published>
-    <updated>2020-03-14T12:06:03.650Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>本项目为学生成绩管理系统，可以当作毕业设计，也可以成为Spirng Boot初学者的学习代码！</p><h2 id="系统描述"><a href="#系统描述" class="headerlink" title="系统描述"></a><strong>系统描述</strong></h2><p>学生成绩管理系统提供了三种角色：学生，老师，网站管理员。主要实现的功能如下：</p><ul><li>登录 &amp; 安全退出</li><li>学生信息管理</li><li>班级信息管理</li><li>教师信息管理</li><li>课程信息管理</li><li>选课信息管理</li><li>考勤信息管理</li><li>请假信息管理</li><li>成绩信息管理</li><li>系统管理</li></ul><h2 id="开发环境（运行环境）"><a href="#开发环境（运行环境）" class="headerlink" title="开发环境（运行环境）"></a><strong>开发环境（运行环境）</strong></h2><p>-系统环境：Windows 10<br>-开发工具：IntelliJ IDEA<br>-Java版本：JDK 1.8</p><h2 id="项目技术栈"><a href="#项目技术栈" class="headerlink" title="项目技术栈"></a><strong>项目技术栈</strong></h2><ul><li>Spring Boot 2.0.2</li><li>Mybatis(mybatis-spring-boot-starter 1.1.1)</li><li>Maven 3.X</li><li>Apache poi</li><li>EasyUI</li><li>Thymeleaf</li></ul><h2 id="数据库文件"><a href="#数据库文件" class="headerlink" title="数据库文件"></a><strong>数据库文件</strong></h2><ul><li>db_studentmanager.sql</li></ul><h2 id="登录地址"><a href="#登录地址" class="headerlink" title="登录地址"></a><strong>登录地址</strong></h2><p><a href="http://localhost:8888/" target="_blank" rel="noopener">http://localhost:8888/</a></p><p>不同角色的账号详细参考数据库<br>学生，老师，管理员的密码均为：123456</p><h2 id="项目截图"><a href="#项目截图" class="headerlink" title="项目截图"></a><strong>项目截图</strong></h2><p><img src="/images/xiangmuPhoto1.png" alt="“伊成博客”"></p><h2 id="项目运行截图"><a href="#项目运行截图" class="headerlink" title="项目运行截图"></a><strong>项目运行截图</strong></h2><p>以下截图仅仅展示部分功能，上文罗列的功能均已实现！</p><p><img src="/images/studenmanagerrun1.png" alt="“伊成博客”"></p><p><img src="/images/studenmanagerrun2.png" alt="“伊成博客”"></p><p><img src="/images/xiangmuPhoto3.png" alt="“伊成博客”"></p><p><img src="/images/studenmanagerrun4.png" alt="“伊成博客”"></p><h2 id="联系我们"><a href="#联系我们" class="headerlink" title="联系我们"></a><strong>联系我们</strong></h2><p>如有需要欢迎进群私聊我哦！<br>QQ 搜索我们的群号：816175200<br>也可以直接在博客里找到我的QQ联系我！</p><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a><strong>注意事项</strong></h2><p>获取代码之后，使用IDEA导入本项目前，请确保你本地环境是已经含有代码所需要运行环境的条件了。</p><p>接着找到对应的sql文件，将其导入到你本地的数据库即可。</p><p>最后修改项目中配置文件中的数据库对应的信息，确认修改完毕，找到对应的xxxApplication直接运行吧！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;本项目为学生成绩管理系统，可以当作毕业设计，也可以成为Spirng Boot初学者的学习代码！&lt;/p&gt;
-&lt;
-      
-    
-    </summary>
-    
-      <category term="codeshare" scheme="http://www.devcheng.net/categories/codeshare/"/>
-    
-    
-      <category term="SpringBoot" scheme="http://www.devcheng.net/tags/SpringBoot/"/>
-    
-      <category term="源代码" scheme="http://www.devcheng.net/tags/%E6%BA%90%E4%BB%A3%E7%A0%81/"/>
-    
-      <category term="学生成绩管理系统" scheme="http://www.devcheng.net/tags/%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
