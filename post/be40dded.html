@@ -222,13 +222,15 @@
 <h2 id="登录地址"><a href="#登录地址" class="headerlink" title="登录地址"></a><strong>登录地址</strong></h2><p><a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a></p>
 <p>登录用户名和密码</p>
 <p>admin / admin </p>
-<h2 id="联系我们"><a href="#联系我们" class="headerlink" title="联系我们"></a><strong>联系我们</strong></h2><p>QQ 搜索我们的群号：816175200</p>
+<h2 id="联系我们"><a href="#联系我们" class="headerlink" title="联系我们"></a><strong>联系我们</strong></h2><p>如有需要源码可以通过</p>
+<p>QQ 搜索：792435323联系我！</p>
 <h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a><strong>注意事项</strong></h2><ol>
 <li>头像如何配置？<br>在电脑选一个盘，新建一个文件夹 例如：在C盘新建一个avatar文件夹，里面存放你的头像图片。<br>找到 application.properties 配置文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># ==============================</span><br><span class="line"># avator location</span><br><span class="line"># ==============================</span><br><span class="line">resource.staticResourceLocation=C:/avatar/</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>写好配置，找到 StaticResourceConfig 类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public void addResourceHandlers(ResourceHandlerRegistry registry) &#123;</span><br><span class="line">   //这里也要和之前的对应起来</span><br><span class="line">   registry.addResourceHandler(&quot;/avatar/**&quot;).addResourceLocations(&quot;file:C:/avatar/&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>数据库里面和这对应就可以了！</p>
+<h2 id="其它说明"><a href="#其它说明" class="headerlink" title="其它说明"></a>其它说明</h2><p>白嫖党绕道！</p>
 
     </div>
     
@@ -310,7 +312,7 @@
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#毕设描述"><span class="toc-text">毕设描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开发环境（运行环境）"><span class="toc-text">开发环境（运行环境）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目采用技术"><span class="toc-text">项目采用技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#后端"><span class="toc-text">后端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前端"><span class="toc-text">前端</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库文件"><span class="toc-text">数据库文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目截图"><span class="toc-text">项目截图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#登录地址"><span class="toc-text">登录地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#联系我们"><span class="toc-text">联系我们</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意事项"><span class="toc-text">注意事项</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#毕设描述"><span class="toc-text">毕设描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开发环境（运行环境）"><span class="toc-text">开发环境（运行环境）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目采用技术"><span class="toc-text">项目采用技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#后端"><span class="toc-text">后端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前端"><span class="toc-text">前端</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库文件"><span class="toc-text">数据库文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目截图"><span class="toc-text">项目截图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#登录地址"><span class="toc-text">登录地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#联系我们"><span class="toc-text">联系我们</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意事项"><span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其它说明"><span class="toc-text">其它说明</span></a></li></ol>
         
     </div>
 </aside>
