@@ -341,9 +341,9 @@
       <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
     
     
-      <category term="新特性" scheme="http://www.devcheng.net/tags/%E6%96%B0%E7%89%B9%E6%80%A7/"/>
-    
       <category term="JDK" scheme="http://www.devcheng.net/tags/JDK/"/>
+    
+      <category term="新特性" scheme="http://www.devcheng.net/tags/%E6%96%B0%E7%89%B9%E6%80%A7/"/>
     
   </entry>
   
@@ -502,9 +502,9 @@
     
       <category term="Spring Boot" scheme="http://www.devcheng.net/tags/Spring-Boot/"/>
     
-      <category term="源代码" scheme="http://www.devcheng.net/tags/%E6%BA%90%E4%BB%A3%E7%A0%81/"/>
-    
       <category term="动漫商城系统" scheme="http://www.devcheng.net/tags/%E5%8A%A8%E6%BC%AB%E5%95%86%E5%9F%8E%E7%B3%BB%E7%BB%9F/"/>
+    
+      <category term="源代码" scheme="http://www.devcheng.net/tags/%E6%BA%90%E4%BB%A3%E7%A0%81/"/>
     
   </entry>
   
