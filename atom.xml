@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.devcheng.net/"/>
-  <updated>2020-09-22T14:05:06.212Z</updated>
+  <updated>2020-09-25T13:03:42.557Z</updated>
   <id>http://www.devcheng.net/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>乐观锁与悲观锁</title>
+    <link href="http://www.devcheng.net/post/c72647c7.html"/>
+    <id>http://www.devcheng.net/post/c72647c7.html</id>
+    <published>2020-09-25T12:53:55.000Z</published>
+    <updated>2020-09-25T13:03:42.557Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="大白话之乐观锁和悲观锁"><a href="#大白话之乐观锁和悲观锁" class="headerlink" title="大白话之乐观锁和悲观锁"></a>大白话之乐观锁和悲观锁</h2><p>用大白话解释什么是乐观锁好悲观锁如下：</p><p>乐观锁对应于生活中乐观的人总是想着事情会往好的方向发展。</p><p>悲观锁对应于生活中悲观的人总是想着事情会往坏的方向发展。</p><h3 id="乐观锁-Optimistic-Locking"><a href="#乐观锁-Optimistic-Locking" class="headerlink" title="乐观锁 (Optimistic Locking)"></a>乐观锁 (Optimistic Locking)</h3><p>假设数据一般情况下不会造成冲突，所以在数据进行提交更新的时候，才会正式对数据的冲突与否进行检测，如果发现冲突了，则返回给用户错误的信息，让用户决定如何去做。</p><p>乐观锁适用于多读的应用类型，这样可以提高吞吐量，像数据库提供的类似于write_condition机制，其实都是提供的乐观锁。</p><h3 id="悲观锁-Pessimistic-Lock"><a href="#悲观锁-Pessimistic-Lock" class="headerlink" title="悲观锁 (Pessimistic Lock)"></a>悲观锁 (Pessimistic Lock)</h3><p>悲观其实是我们人类一种消极的情绪，对应到锁的悲观情绪，悲观锁认为被它保护的数据是极其不安全的，每时每刻都有可能变动，一个事务拿到悲观锁后（可以理解为一个用户），其他任何事务都不能对该数据进行修改，只能等待锁被释放才可以执行。</p><p>传统的关系型数据库里边就用到了很多这种锁机制，比如行锁，表锁等，读锁，写锁以及 Java中<strong>synchronized</strong>和<strong>ReentrantLock</strong>等独占锁就是悲观锁思想的实现。</p><h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>从上面对两种锁的介绍，我们知道两种锁各有优缺点，不可认为一种好于另一种，像<strong>乐观锁适用于写比较少的情况下（多读场景）</strong>，即冲突真的很少发生的时候，这样可以省去了锁的开销，加大了系统的整个吞吐量。</p><p>但如果是多写的情况，一般会经常产生冲突，这就会导致上层应用会不断的进行retry，这样反倒是降低了性能，所以<strong>悲观锁一般多写的场景下</strong>用就比较合适。</p><h2 id="乐观的两种实现方式"><a href="#乐观的两种实现方式" class="headerlink" title="乐观的两种实现方式"></a>乐观的两种实现方式</h2><ul><li>版本号机制<br>一般是在数据表中加上一个数据版本号version字段，表示数据被修改的次数，当数据被修改时，version值会加一。当线程A要更新数据值时，在读取数据的同时也会读取version值，在提交更新时，若刚才读取到的version值为当前数据库中的version值相等时才更新，否则重试更新操作，直到更新成功。</li></ul><p>举一个简单的例子： 假设数据库中帐户信息表中有一个 version 字段，当前值为 1 ；而当前帐户余额字段（ balance ）为 $100 。</p><p>1.操作员 A 此时将其读出（ version=1 ），并从其帐户余额中扣除 50（100-$50 ）。</p><p>2.在操作员 A 操作的过程中，操作员B 也读入此用户信息（ version=1 ），并从其帐户余额中扣除 20（100-$20 ）。</p><p>3.操作员 A 完成了修改工作，将数据版本号（ version=1 ），连同帐户扣除后余额（ balance=$50 ），提交至数据库更新，此时由于提交数据版本等于数据库记录当前版本，数据被更新，数据库记录 version 更新为 2 。</p><p>4.操作员 B 完成了操作，也将版本号（ version=1 ）试图向数据库提交数据（ balance=$80 ），但此时比对数据库记录版本时发现，操作员 B 提交的数据版本号为 1 ，数据库记录当前版本也为 2 ，不满足 “ 提交版本必须等于当前版本才能执行更新 “ 的乐观锁策略，因此，操作员 B 的提交被驳回。</p><p>这样，就避免了操作员 B 用基于 version=1 的旧数据修改的结果覆盖操作员A 的操作结果的可能。</p><ul><li>CAS算法<br>即<strong>compare and swap</strong>（比较与交换），是一种有名的无锁算法。无锁编程，即不使用锁的情况下实现多线程之间的变量同步，也就是在没有线程被阻塞的情况下实现变量的同步，所以也叫非阻塞同步（Non-blocking Synchronization）。</li></ul><p>CAS算法涉及到三个操作数</p><ul><li>需要读写的内存值 V</li><li>进行比较的值 A</li><li>拟写入的新值 B</li><li>当且仅当 V 的值等于 A时，CAS通过原子方式用新值B来更新V的值，否则不会执行任何操作（比较和替换是一个原子操作）。</li></ul><p>一般情况下是一个自旋操作，即不断的重试。</p><h2 id="乐观锁的缺点"><a href="#乐观锁的缺点" class="headerlink" title="乐观锁的缺点"></a>乐观锁的缺点</h2><p>ABA 问题是乐观锁一个常见的问题。</p><p><strong>1 ABA 问题</strong></p><p>如果一个变量V初次读取的时候是A值，并且在准备赋值的时候检查到它仍然是A值，那我们就能说明它的值没有被其他线程修改过了吗？很明显是不能的，因为在这段时间它的值可能被改为其他值，然后又改回A，那CAS操作就会误认为它从来没有被修改过。</p><p>这个问题被称为CAS操作的 <strong>“ABA”问题</strong>。</p><p>JDK 1.5 以后的 AtomicStampedReference 类就提供了此种能力，其中的 compareAndSet 方法就是首先检查当前引用是否等于预期引用，并且当前标志是否等于预期标志，如果全部相等，则以原子方式将该引用和该标志的值设置为给定的更新值。</p><h2 id="CAS与synchronized的使用情景"><a href="#CAS与synchronized的使用情景" class="headerlink" title="CAS与synchronized的使用情景"></a>CAS与synchronized的使用情景</h2><p><strong>简单的来说CAS适用于写比较少的情况下（多读场景，冲突一般较少）<br>synchronized适用于写比较多的情况下（多写场景，冲突一般较多）</strong></p><p>1.对于资源竞争较少（线程冲突较轻）的情况，使用synchronized同步锁进行线程阻塞和唤醒切换以及用户态内核态间的切换操作额外浪费消耗cpu资源；<br>而CAS基于硬件实现，不需要进入内核，不需要切换线程，操作自旋几率较少，因此可以获得更高的性能。</p><p>2.对于资源竞争严重（线程冲突严重）的情况，CAS自旋的概率会比较大，从而浪费更多的CPU资源，效率低于synchronized。</p><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>由上文的介绍，相信大家都有一定的认识了，在实际工作中如何选择得需要看对应的业务场景，但随着互联网三高架构(高并发、高性能、高可用)的提出，悲观锁已经越来越少的被应用到生产环境中了，尤其是并发量比较大的业务场景。</p><hr><p>The end</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;大白话之乐观锁和悲观锁&quot;&gt;&lt;a href=&quot;#大白话之乐观锁和悲观锁&quot; class=&quot;headerlink&quot; title=&quot;大白话之乐观锁和悲观锁&quot;&gt;&lt;/a&gt;大白话之乐观锁和悲观锁&lt;/h2&gt;&lt;p&gt;用大白话解释什么是乐观锁好悲观锁如下：&lt;/p&gt;
+&lt;p&gt;乐观锁对应于生
+      
+    
+    </summary>
+    
+      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+    
+    
+      <category term="乐观锁" scheme="http://www.devcheng.net/tags/%E4%B9%90%E8%A7%82%E9%94%81/"/>
+    
+      <category term="悲观锁" scheme="http://www.devcheng.net/tags/%E6%82%B2%E8%A7%82%E9%94%81/"/>
+    
+  </entry>
   
   <entry>
     <title>如果面试官问你“你有什么问题问我吗？”时，你该如何回答</title>
@@ -532,33 +560,6 @@
       <category term="源代码" scheme="http://www.devcheng.net/tags/%E6%BA%90%E4%BB%A3%E7%A0%81/"/>
     
       <category term="动漫商城系统" scheme="http://www.devcheng.net/tags/%E5%8A%A8%E6%BC%AB%E5%95%86%E5%9F%8E%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>基于Spring Boot + MyBatis + Maven论坛内容管理系统源码</title>
-    <link href="http://www.devcheng.net/post/be40dded.html"/>
-    <id>http://www.devcheng.net/post/be40dded.html</id>
-    <published>2020-03-02T15:24:39.000Z</published>
-    <updated>2020-09-20T07:13:56.788Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="毕设描述"><a href="#毕设描述" class="headerlink" title="毕设描述"></a><strong>毕设描述</strong></h2><p>xxxForum是一个基于Spring Boot + MyBatis + Maven开发的一个论坛内容管理系统，主要实现了的功能有：</p><ul><li>前台页面展示数据、广告展示</li><li>内容模块：发帖、评论、帖子分类、分页、回帖统计、访问统计、表单验证</li><li>用户模块：权限、资料、头像、邮箱验证</li><li>管理：后台管理、统计图表、帖子/分类管理</li></ul><h2 id="开发环境（运行环境）"><a href="#开发环境（运行环境）" class="headerlink" title="开发环境（运行环境）"></a><strong>开发环境（运行环境）</strong></h2><p>windows 7 , jdk 1.8</p><h2 id="项目采用技术"><a href="#项目采用技术" class="headerlink" title="项目采用技术"></a><strong>项目采用技术</strong></h2><h3 id="后端"><a href="#后端" class="headerlink" title="后端"></a><strong>后端</strong></h3><ul><li>Spring Boot 1.5.5</li><li>Spring Security 4</li><li>Mybatis(mybatis-spring-boot-starter 1.3.1)</li><li>Maven 3.X</li></ul><h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a><strong>前端</strong></h3><ul><li>Thymeleaf</li><li>Bootstrap</li><li>jQuery</li><li>Chart.js</li><li>bootstrap-select</li><li>daterangepicker</li></ul><h2 id="数据库文件"><a href="#数据库文件" class="headerlink" title="数据库文件"></a><strong>数据库文件</strong></h2><p>在项目文件里面</p><h2 id="项目截图"><a href="#项目截图" class="headerlink" title="项目截图"></a><strong>项目截图</strong></h2><p><img src="/images/shouye1.png" alt="“论坛内容管理系统”"></p><p><img src="/images/tiezidetail2.png" alt="“论坛内容管理系统”"></p><p><img src="/images/login3.png" alt="“论坛内容管理系统”"></p><p><img src="/images/zhuce4.png" alt="“论坛内容管理系统”"></p><p><img src="/images/table5.png" alt="“论坛内容管理系统”"></p><p><img src="/images/user6.png" alt="“论坛内容管理系统”"></p><p><img src="/images/fenlei9.png" alt="“论坛内容管理系统”"></p><p><img src="/images/run1.png" alt="“论坛内容管理系统”"></p><h2 id="登录地址"><a href="#登录地址" class="headerlink" title="登录地址"></a><strong>登录地址</strong></h2><p><a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a></p><p>登录用户名和密码</p><p>admin / admin </p><h2 id="联系我们"><a href="#联系我们" class="headerlink" title="联系我们"></a><strong>联系我们</strong></h2><p>如有需要源码可以通过</p><p>QQ 搜索：792435323联系我！</p><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a><strong>注意事项</strong></h2><ol><li>头像如何配置？<br>在电脑选一个盘，新建一个文件夹 例如：在C盘新建一个avatar文件夹，里面存放你的头像图片。<br>找到 application.properties 配置文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># ==============================</span><br><span class="line"># avator location</span><br><span class="line"># ==============================</span><br><span class="line">resource.staticResourceLocation=C:/avatar/</span><br></pre></td></tr></table></figure></li></ol><p>写好配置，找到 StaticResourceConfig 类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public void addResourceHandlers(ResourceHandlerRegistry registry) &#123;</span><br><span class="line">   //这里也要和之前的对应起来</span><br><span class="line">   registry.addResourceHandler(&quot;/avatar/**&quot;).addResourceLocations(&quot;file:C:/avatar/&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>数据库里面和这对应就可以了！</p><h2 id="其它说明"><a href="#其它说明" class="headerlink" title="其它说明"></a>其它说明</h2><p>白嫖党绕道！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;毕设描述&quot;&gt;&lt;a href=&quot;#毕设描述&quot; class=&quot;headerlink&quot; title=&quot;毕设描述&quot;&gt;&lt;/a&gt;&lt;strong&gt;毕设描述&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;xxxForum是一个基于Spring Boot + MyBatis + Maven开发的
-      
-    
-    </summary>
-    
-      <category term="codeshare" scheme="http://www.devcheng.net/categories/codeshare/"/>
-    
-    
-      <category term="Spring Boot" scheme="http://www.devcheng.net/tags/Spring-Boot/"/>
-    
-      <category term="论坛内容管理系统" scheme="http://www.devcheng.net/tags/%E8%AE%BA%E5%9D%9B%E5%86%85%E5%AE%B9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
