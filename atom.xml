@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.devcheng.net/"/>
-  <updated>2020-09-25T13:03:42.557Z</updated>
+  <updated>2020-09-28T09:57:08.461Z</updated>
   <id>http://www.devcheng.net/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Class org.springframework.util.ReflectionUtils can not access a member of class异常</title>
+    <link href="http://www.devcheng.net/post/50c55201.html"/>
+    <id>http://www.devcheng.net/post/50c55201.html</id>
+    <published>2020-09-28T09:34:25.000Z</published>
+    <updated>2020-09-28T09:57:08.461Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近，工作中多个地方用到了Java反射调用私有方法，但如果不小心很容易出错，下面看看异常信息</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">2020-09-25 14:02:03.393 ERROR 13920 --- [nio-8400-exec-3] c.s.b.d.support.utils.ExceptionUtils :</span><br><span class="line"> Could not access method: </span><br><span class="line"> Class org.springframework.util.ReflectionUtils can not access a member of class com.xxx.model.entity.XxxEntity with modifiers &quot;private&quot;; </span><br><span class="line"> nested exception is java.lang.IllegalStateException: Could not access method: </span><br><span class="line"> Class org.springframework.util.ReflectionUtils can not access a member of </span><br><span class="line"> class com.xxx.Entity with modifiers &quot;private&quot;</span><br></pre></td></tr></table></figure><h2 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h2><p>为了完整的说明这个异常，简单的看一下代码：</p><p><strong>Entity 类</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">package com.xxx.reflect;</span><br><span class="line"></span><br><span class="line">public class Student &#123;</span><br><span class="line"></span><br><span class="line">    private void add()&#123;</span><br><span class="line">        System.out.println(&quot;add method...&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private int id;</span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line">    public int getId() &#123;</span><br><span class="line">        return id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setId(int id) &#123;</span><br><span class="line">        this.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Student(int id, String name) &#123;</span><br><span class="line">        super();</span><br><span class="line">        this.id = id;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Student() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p><strong>Main类</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">        Class c1=Student.class;</span><br><span class="line">        Object obj=(Object)c1.newInstance();</span><br><span class="line"></span><br><span class="line">        Method  method = c1.getDeclaredMethod(&quot;add&quot;);</span><br><span class="line">        method.invoke((Student)obj);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p>直接运行 main 方法则会报这个异常 Class . can not access a member of class . with modifiers “private” 。</p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>设置Field对象的Accessible的访问标志位为Ture，就可以通过反射获取私有变量的值，在访问时会忽略访问修饰符的检查。</p><p>所以只需要加上这行代码即可！</p><p><strong>Main类</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">        Class c1=Student.class;</span><br><span class="line">        Object obj=(Object)c1.newInstance();</span><br><span class="line"></span><br><span class="line">        Method  method = c1.getDeclaredMethod(&quot;add&quot;);</span><br><span class="line">method.setAccessible(true); // 加上这句即可解决问题！</span><br><span class="line">        method.invoke((Student)obj);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><hr><p>The end</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;最近，工作中多个地方用到了Java反射调用私有方法，但如果不小心很容易出错，下面看看异常信息&lt;/p&gt;
+&lt;figure class=&quot;high
+      
+    
+    </summary>
+    
+      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+    
+    
+      <category term="异常" scheme="http://www.devcheng.net/tags/%E5%BC%82%E5%B8%B8/"/>
+    
+  </entry>
   
   <entry>
     <title>乐观锁与悲观锁</title>
@@ -531,35 +557,6 @@
     
     
       <category term="redis" scheme="http://www.devcheng.net/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>基于Spring Boot开发的动漫商城系统源码分享</title>
-    <link href="http://www.devcheng.net/post/536e3846.html"/>
-    <id>http://www.devcheng.net/post/536e3846.html</id>
-    <published>2020-03-15T09:24:25.000Z</published>
-    <updated>2020-09-20T07:10:55.889Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>动漫商城项目包括商城前台系统和商城后台管理系统，基于 Spring Boot 2.X 及相关技术栈开发。<br>前台商城系统包含首页门户、商品分类、新品上线、首页轮播、商品推荐、商品搜索、商品展示、购物车、订单结算、支付流程、订单流程(微信支付/支付宝沙箱支付)、个人订单管理、会员中心、帮助中心、公告管理等模块。<br>后台管理系统包含数据面板、轮播图管理、商品管理、订单管理、会员管理、分类管理、系统设置等模块。</p><h2 id="开发环境（运行环境）"><a href="#开发环境（运行环境）" class="headerlink" title="开发环境（运行环境）"></a><strong>开发环境（运行环境）</strong></h2><p>-系统环境：Windows 10<br>-开发工具：IntelliJ IDEA<br>-Java版本：JDK 1.8</p><h2 id="项目技术栈"><a href="#项目技术栈" class="headerlink" title="项目技术栈"></a><strong>项目技术栈</strong></h2><ul><li>Spring Boot</li><li>Mybatis</li><li>Maven 3.X</li><li>Thymeleaf</li></ul><h2 id="前台页面预览"><a href="#前台页面预览" class="headerlink" title="前台页面预览"></a><strong>前台页面预览</strong></h2><ul><li><p>动漫商城首页<br><img src="/images/动漫商城-首页.png" alt="“伊成博客”"></p></li><li><p>商品详情页面<br><img src="/images/动漫商城-商品详情.png" alt="“伊成博客”"></p></li><li><p>购物车页面<br><img src="/images/动漫商城-购物车.png" alt="“伊成博客”"></p></li><li><p>登录页面<br><img src="/images/动漫商城-登录.png" alt="“伊成博客”"></p></li></ul><h2 id="后台管理页面预览"><a href="#后台管理页面预览" class="headerlink" title="后台管理页面预览"></a><strong>后台管理页面预览</strong></h2><ul><li><p>轮播图配置<br><img src="/images/微信截图_1.png" alt="“伊成博客”"></p></li><li><p>商品管理<br><img src="/images/微信截图_2.png" alt="“伊成博客”"></p></li><li><p>会员管理<br><img src="/images/微信截图_3.png" alt="“伊成博客”"></p></li><li><p>订单管理<br><img src="/images/微信截图_4.png" alt="“伊成博客”"></p></li><li><p>公告管理<br><img src="/images/微信截图_5.png" alt="“伊成博客”"></p></li></ul><h2 id="联系我们"><a href="#联系我们" class="headerlink" title="联系我们"></a><strong>联系我们</strong></h2><p>如有需要欢迎私聊我哦！<br>QQ 搜索：792435323联系我！</p><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a><strong>注意事项</strong></h2><p>获取代码之后，使用IDEA导入本项目前，请确保你本地环境是已经含有代码所需要运行环境的条件了。</p><p>接着找到对应的sql文件，将其导入到你本地的数据库即可。</p><p>最后修改项目中配置文件中的数据库对应的信息，确认修改完毕，找到对应的xxxApplication直接运行吧！</p><h2 id="其它说明"><a href="#其它说明" class="headerlink" title="其它说明"></a>其它说明</h2><p>白嫖党绕道！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;动漫商城项目包括商城前台系统和商城后台管理系统，基于 Spring Boot 2.X 及相关技术栈开发。&lt;
-      
-    
-    </summary>
-    
-      <category term="codeshare" scheme="http://www.devcheng.net/categories/codeshare/"/>
-    
-    
-      <category term="Spring Boot" scheme="http://www.devcheng.net/tags/Spring-Boot/"/>
-    
-      <category term="源代码" scheme="http://www.devcheng.net/tags/%E6%BA%90%E4%BB%A3%E7%A0%81/"/>
-    
-      <category term="动漫商城系统" scheme="http://www.devcheng.net/tags/%E5%8A%A8%E6%BC%AB%E5%95%86%E5%9F%8E%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
