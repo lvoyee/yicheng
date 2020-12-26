@@ -527,9 +527,9 @@
       <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
     
     
-      <category term="JDK" scheme="http://www.devcheng.net/tags/JDK/"/>
-    
       <category term="新特性" scheme="http://www.devcheng.net/tags/%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    
+      <category term="JDK" scheme="http://www.devcheng.net/tags/JDK/"/>
     
   </entry>
   
