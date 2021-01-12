@@ -1,0 +1,356 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="伊成个人站-热衷于技术分享，源码分享的个人网站">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+	<!--baidu tongji-->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?11f6f08fada932368f71e76bd659b783";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
+    <link rel="dns-prefetch" href="http://www.devcheng.net">
+    <!--SEO-->
+
+<meta name="description" content="伊成个人站 www.devcheng.net 一个致力于技术分享，源码分享及工作经历分享的个人网站">
+
+
+
+<meta name="keywords" content="伊成个人站,技术分享,源码分享,代码分享,java代码,源代码">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+<title>	分享几个实用的Git技巧-伊成个人站</title>
+
+    <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人网站" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+       ◉◡◉ 您好，欢迎到访伊成个人站!
+    </div>
+</header>
+    
+<nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.devcheng.net">伊成个人站-热衷于技术分享，源码分享的个人网站</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">				
+                    <ul class="menu">						
+						<a href="/"><img border="0" src="/img/logo2020.png" alt="伊成个人站" title="伊成个人站"></a>						
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa fa-home"></i>&nbsp;首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/blogshare/"><i class="fa fa-codepen"></i>&nbsp;技术分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codeshare/"><i class="fa fa-code"></i>&nbsp;源码分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codelife/"><i class="fa fa-pagelines"></i>&nbsp;程序人生</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives"><i class="fa fa-history"></i>&nbsp;时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about"><i class="fa fa-connectdevelop"></i>&nbsp;关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="分享几个实用的Git技巧">
+            
+	            分享几个实用的Git技巧
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/blogshare">
+            blogshare
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/Git" title="Git">
+                        Git
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2021/01/12</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>可以这么说,Git在一定程度上拯救了很多开发者的饭碗。只要你经常使用Git保存自己的工作，你就一直有机会可以将代码退回到之前的状态，因此就可以挽回那些你深夜里迷迷糊糊犯下的错误。</p>
+<p>但是Git的命令行界面可是出了名的难掌握。接下来，就给大家介绍7个比较实用的小技巧，最大限度发挥Git的作用。</p>
+<p>通常，大部分时间我们都只会用到add、commit、branch和push/pull这些命令。大部分人熟悉这套只往一个方向运转的工作流。你们有没有想过，如果自己往仓库中添加了错误的文件，或是将代码提交到了错误的分支，而且提交信息还写错了的话，自己怎样才能取消之前的操作？如果你也是按照上面漫画中所描绘的一样操作的，那么你就有必要了解下面这些Git使用技巧了。</p>
+<h2 id="Git技巧"><a href="#Git技巧" class="headerlink" title="Git技巧"></a>Git技巧</h2><h3 id="1-修改错误的提交信息（commit-message）"><a href="#1-修改错误的提交信息（commit-message）" class="headerlink" title="1.修改错误的提交信息（commit message）"></a>1.修改错误的提交信息（commit message）</h3><p>提交的信息在很长时间内会一直保留在你的代码库（code base）中，所以你肯定希望通过这个信息正确地了解代码修改情况。 下面这个命令可以让你编辑最近一次的提交信息，但是你必须确保没有对当前的代码库（working copy）做修改，否则这些修改也会随之一起提交。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit --amend -m ”YOUR-NEW-COMMIT-MESSAGE”</span><br></pre></td></tr></table></figure>
+<p>假如你已经将代码提交（git commit）推送（git push）到了远程分支，那么你需要通过下面的命令强制推送这次的代码提交。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push &lt;remote&gt; &lt;branch&gt; --force</span><br></pre></td></tr></table></figure>
+<h3 id="2-提交之前撤销-git-add"><a href="#2-提交之前撤销-git-add" class="headerlink" title="2.提交之前撤销 git add"></a>2.提交之前撤销 git add</h3><p>如果你往暂存区（staging area）中加入了一些错误的文件，但是还没有提交代码。你可以使用一条简单的命令就可以撤销。如果只需要移除一个文件，那么请输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset &lt;文件名&gt;</span><br></pre></td></tr></table></figure>
+<p>或者如果你想从暂存区移除所有没有提交的修改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset</span><br></pre></td></tr></table></figure>
+<h3 id="3-撤销最近一次代码提交"><a href="#3-撤销最近一次代码提交" class="headerlink" title="3.撤销最近一次代码提交"></a>3.撤销最近一次代码提交</h3><p>有时候你可能会不小心提交了错误的文件或一开始就遗漏了某些东西。<br>下面这三步操作可以帮助你解决这个问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --soft HEAD~1</span><br></pre></td></tr></table></figure>
+<h1 id="对工作文件进行必要的更改"><a href="#对工作文件进行必要的更改" class="headerlink" title="对工作文件进行必要的更改"></a>对工作文件进行必要的更改</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git add -A .</span><br><span class="line">$ git commit -c ORIG_HEAD</span><br></pre></td></tr></table></figure>
+<p>你执行第一个命令时，Git会将HEAD指针后移到此前的一次提交，之后你才能移动文件或作必要的修改。</p>
+<p>然后你就可以添加所有的修改，而且当你执行最后的命令时，Git会打开你的默认文本编辑器，其中会包含上一次提交时的信息。<br>如果愿意的话，你可以修改提交信息，或者你也可以在最后的命令中使用-C而不是-c，来跳过这一步。</p>
+<h3 id="4-Git仓库撤销至前一次提交时的状态"><a href="#4-Git仓库撤销至前一次提交时的状态" class="headerlink" title="4.Git仓库撤销至前一次提交时的状态"></a>4.Git仓库撤销至前一次提交时的状态</h3><p>“撤销”（revert）在许多情况下是非常有必要的——尤其是你把代码搞的一团糟的情况下。最常见的情况是，你想回到之前代码版本，检查下那个时候的代码库，然后再回到现在状态。这可以通过下面的命令实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout &lt;SHA&gt;</span><br></pre></td></tr></table></figure>
+<p>“”是你想查看的提交拥有的哈希值（Hash Code）中前8至10个字符。 这个命令会使<head><meta name="generator" content="Hexo 3.8.0">指针脱离（detach），可以让你在不检出（check out）任何分支的情况下查看代码——脱离HEAD并不像听上去那么可怕。如果你想在这种情况下提交修改，你可以通过创建新的分支来实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b &lt;SHA&gt;</span><br></pre></td></tr></table></figure></head></p>
+<p>要想回到当前的工作进度，只需要检出（check out）你之前所在的分支即可。</p>
+<h3 id="5-撤销合并（Merge）"><a href="#5-撤销合并（Merge）" class="headerlink" title="5.撤销合并（Merge）"></a>5.撤销合并（Merge）</h3><p>要想撤销合并，你可能必须要使用恢复命令（HARD RESET）回到上一次提交的状态。“合并”所做的工作基本上就是重置索引，更新working tree（工作树）中的不同文件，即当前提交（）代码中与HEAD游标所指向代码之间的不同文件；但是合并会保留索引与working tree之间的差异部分（例如那些没有被追踪的修改）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b &lt;SHA&gt;</span><br></pre></td></tr></table></figure></p>
+<p>当然，Git中总是有其他的实现办法，你可以查看看这篇文章继续了解。</p>
+<h3 id="6-从当前Git分支移除未追踪的本地文件"><a href="#6-从当前Git分支移除未追踪的本地文件" class="headerlink" title="6.从当前Git分支移除未追踪的本地文件"></a>6.从当前Git分支移除未追踪的本地文件</h3><p>假设你凑巧有一些未被追踪的文件（因为不再需要它们），不想每次使用git status命令时让它们显示出来。下面是解决这个问题的一些方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git clean -f -n         # 1</span><br><span class="line">$ git clean -f            # 2</span><br><span class="line">$ git clean -fd           # 3</span><br><span class="line">$ git clean -fX           # 4</span><br><span class="line">$ git clean -fx           # 5</span><br></pre></td></tr></table></figure></p>
+<p>(1): 选项-n将显示执行（2）时将会移除哪些文件。<br>(2): 该命令会移除所有命令（1）中显示的文件。<br>(3): 如果你还想移除文件件，请使用选项-d。<br>(4): 如果你只想移除已被忽略的文件，请使用选项-X。<br>(5): 如果你想移除已被忽略和未被忽略的文件，请使用选项-x。<br>请注意最后两个命令中X的区别。</p>
+<h3 id="7-删除本地和远程Git分支"><a href="#7-删除本地和远程Git分支" class="headerlink" title="7.删除本地和远程Git分支"></a>7.删除本地和远程Git分支</h3><p>删除本地分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch --delete --force &lt;branchName&gt;</span><br></pre></td></tr></table></figure></p>
+<p>或者使用选项-D作为简写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -D</span><br></pre></td></tr></table></figure></p>
+<p>删除远程分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin --delete &lt;branchName&gt;</span><br></pre></td></tr></table></figure></p>
+<p>建议：要想更好地掌握Git的用法，还得仔细阅读Git官方文档！</p>
+<hr>
+<p>The end.</p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/reward-alipay.png"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/reward-wepay.png"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip"></p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处！
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/post/991a821e.html" class="next-post btn btn-default" title='MySQL优化干货总结'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">MySQL优化干货总结</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({           
+            el: '#vcomments',
+            appId: 'sbQDWnkLFsRjJS2BGzfKc4rL-gzGzoHsz',
+            appKey: '5u9C0UUmzRe3unr9iLzheHjk',
+            placeholder: '文明社会,理性评论留言 ^_^……',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#写在前面"><span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git技巧"><span class="toc-text">Git技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-修改错误的提交信息（commit-message）"><span class="toc-text">1.修改错误的提交信息（commit message）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-提交之前撤销-git-add"><span class="toc-text">2.提交之前撤销 git add</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-撤销最近一次代码提交"><span class="toc-text">3.撤销最近一次代码提交</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#对工作文件进行必要的更改"><span class="toc-text">对工作文件进行必要的更改</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Git仓库撤销至前一次提交时的状态"><span class="toc-text">4.Git仓库撤销至前一次提交时的状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-撤销合并（Merge）"><span class="toc-text">5.撤销合并（Merge）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-从当前Git分支移除未追踪的本地文件"><span class="toc-text">6.从当前Git分支移除未追踪的本地文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-删除本地和远程Git分支"><span class="toc-text">7.删除本地和远程Git分支</span></a></li></ol></li>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018 - 2021
+                </span> | .<font color="#f1607d">伊</font><font color="#ffa500">成</font><font color="#e5e802">个</font><font color="#3bff23">人</font><font color="#ffa503">站</font><font color="#29c8ec"> devcheng</font><font color="#4f9cfa">.net</font>. |
+                <span>
+                    网站基于Hexo搭建
+                </span> |
+                <span>
+                     <a href="/sitemap.xml" class="copyright-links" target="_blank" rel="nofollow">本站地图</a>
+                </span> |
+				<span>
+					 <a href="/atom.xml" class="copyright-links" target="_blank" rel="nofollow">RSS订阅</a> 
+				</span> |
+				<span>
+                    <a href="https://beian.miit.gov.cn/" class="copyright-links" target="_blank" rel="nofollow">湘ICP备20010839号</a> 
+                </span>
+				<span>
+                    <a href="https://beian.miit.gov.cn/" class="copyright-links" target="_blank" rel="nofollow">湘ICP备20010839号-1</a> 
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

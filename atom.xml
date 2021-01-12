@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.devcheng.net/"/>
-  <updated>2021-01-03T07:12:02.349Z</updated>
+  <updated>2021-01-12T14:04:24.114Z</updated>
   <id>http://www.devcheng.net/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>分享几个实用的Git技巧</title>
+    <link href="http://www.devcheng.net/post/ddae8940.html"/>
+    <id>http://www.devcheng.net/post/ddae8940.html</id>
+    <published>2021-01-12T13:59:13.000Z</published>
+    <updated>2021-01-12T14:04:24.114Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>可以这么说,Git在一定程度上拯救了很多开发者的饭碗。只要你经常使用Git保存自己的工作，你就一直有机会可以将代码退回到之前的状态，因此就可以挽回那些你深夜里迷迷糊糊犯下的错误。</p><p>但是Git的命令行界面可是出了名的难掌握。接下来，就给大家介绍7个比较实用的小技巧，最大限度发挥Git的作用。</p><p>通常，大部分时间我们都只会用到add、commit、branch和push/pull这些命令。大部分人熟悉这套只往一个方向运转的工作流。你们有没有想过，如果自己往仓库中添加了错误的文件，或是将代码提交到了错误的分支，而且提交信息还写错了的话，自己怎样才能取消之前的操作？如果你也是按照上面漫画中所描绘的一样操作的，那么你就有必要了解下面这些Git使用技巧了。</p><h2 id="Git技巧"><a href="#Git技巧" class="headerlink" title="Git技巧"></a>Git技巧</h2><h3 id="1-修改错误的提交信息（commit-message）"><a href="#1-修改错误的提交信息（commit-message）" class="headerlink" title="1.修改错误的提交信息（commit message）"></a>1.修改错误的提交信息（commit message）</h3><p>提交的信息在很长时间内会一直保留在你的代码库（code base）中，所以你肯定希望通过这个信息正确地了解代码修改情况。 下面这个命令可以让你编辑最近一次的提交信息，但是你必须确保没有对当前的代码库（working copy）做修改，否则这些修改也会随之一起提交。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit --amend -m ”YOUR-NEW-COMMIT-MESSAGE”</span><br></pre></td></tr></table></figure><p>假如你已经将代码提交（git commit）推送（git push）到了远程分支，那么你需要通过下面的命令强制推送这次的代码提交。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push &lt;remote&gt; &lt;branch&gt; --force</span><br></pre></td></tr></table></figure><h3 id="2-提交之前撤销-git-add"><a href="#2-提交之前撤销-git-add" class="headerlink" title="2.提交之前撤销 git add"></a>2.提交之前撤销 git add</h3><p>如果你往暂存区（staging area）中加入了一些错误的文件，但是还没有提交代码。你可以使用一条简单的命令就可以撤销。如果只需要移除一个文件，那么请输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset &lt;文件名&gt;</span><br></pre></td></tr></table></figure><p>或者如果你想从暂存区移除所有没有提交的修改：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset</span><br></pre></td></tr></table></figure><h3 id="3-撤销最近一次代码提交"><a href="#3-撤销最近一次代码提交" class="headerlink" title="3.撤销最近一次代码提交"></a>3.撤销最近一次代码提交</h3><p>有时候你可能会不小心提交了错误的文件或一开始就遗漏了某些东西。<br>下面这三步操作可以帮助你解决这个问题。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --soft HEAD~1</span><br></pre></td></tr></table></figure><h1 id="对工作文件进行必要的更改"><a href="#对工作文件进行必要的更改" class="headerlink" title="对工作文件进行必要的更改"></a>对工作文件进行必要的更改</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git add -A .</span><br><span class="line">$ git commit -c ORIG_HEAD</span><br></pre></td></tr></table></figure><p>你执行第一个命令时，Git会将HEAD指针后移到此前的一次提交，之后你才能移动文件或作必要的修改。</p><p>然后你就可以添加所有的修改，而且当你执行最后的命令时，Git会打开你的默认文本编辑器，其中会包含上一次提交时的信息。<br>如果愿意的话，你可以修改提交信息，或者你也可以在最后的命令中使用-C而不是-c，来跳过这一步。</p><h3 id="4-Git仓库撤销至前一次提交时的状态"><a href="#4-Git仓库撤销至前一次提交时的状态" class="headerlink" title="4.Git仓库撤销至前一次提交时的状态"></a>4.Git仓库撤销至前一次提交时的状态</h3><p>“撤销”（revert）在许多情况下是非常有必要的——尤其是你把代码搞的一团糟的情况下。最常见的情况是，你想回到之前代码版本，检查下那个时候的代码库，然后再回到现在状态。这可以通过下面的命令实现：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout &lt;SHA&gt;</span><br></pre></td></tr></table></figure><p>“”是你想查看的提交拥有的哈希值（Hash Code）中前8至10个字符。 这个命令会使<head><meta name="generator" content="Hexo 3.8.0">指针脱离（detach），可以让你在不检出（check out）任何分支的情况下查看代码——脱离HEAD并不像听上去那么可怕。如果你想在这种情况下提交修改，你可以通过创建新的分支来实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b &lt;SHA&gt;</span><br></pre></td></tr></table></figure></head></p><p>要想回到当前的工作进度，只需要检出（check out）你之前所在的分支即可。</p><h3 id="5-撤销合并（Merge）"><a href="#5-撤销合并（Merge）" class="headerlink" title="5.撤销合并（Merge）"></a>5.撤销合并（Merge）</h3><p>要想撤销合并，你可能必须要使用恢复命令（HARD RESET）回到上一次提交的状态。“合并”所做的工作基本上就是重置索引，更新working tree（工作树）中的不同文件，即当前提交（）代码中与HEAD游标所指向代码之间的不同文件；但是合并会保留索引与working tree之间的差异部分（例如那些没有被追踪的修改）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b &lt;SHA&gt;</span><br></pre></td></tr></table></figure></p><p>当然，Git中总是有其他的实现办法，你可以查看看这篇文章继续了解。</p><h3 id="6-从当前Git分支移除未追踪的本地文件"><a href="#6-从当前Git分支移除未追踪的本地文件" class="headerlink" title="6.从当前Git分支移除未追踪的本地文件"></a>6.从当前Git分支移除未追踪的本地文件</h3><p>假设你凑巧有一些未被追踪的文件（因为不再需要它们），不想每次使用git status命令时让它们显示出来。下面是解决这个问题的一些方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git clean -f -n         # 1</span><br><span class="line">$ git clean -f            # 2</span><br><span class="line">$ git clean -fd           # 3</span><br><span class="line">$ git clean -fX           # 4</span><br><span class="line">$ git clean -fx           # 5</span><br></pre></td></tr></table></figure></p><p>(1): 选项-n将显示执行（2）时将会移除哪些文件。<br>(2): 该命令会移除所有命令（1）中显示的文件。<br>(3): 如果你还想移除文件件，请使用选项-d。<br>(4): 如果你只想移除已被忽略的文件，请使用选项-X。<br>(5): 如果你想移除已被忽略和未被忽略的文件，请使用选项-x。<br>请注意最后两个命令中X的区别。</p><h3 id="7-删除本地和远程Git分支"><a href="#7-删除本地和远程Git分支" class="headerlink" title="7.删除本地和远程Git分支"></a>7.删除本地和远程Git分支</h3><p>删除本地分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch --delete --force &lt;branchName&gt;</span><br></pre></td></tr></table></figure></p><p>或者使用选项-D作为简写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -D</span><br></pre></td></tr></table></figure></p><p>删除远程分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin --delete &lt;branchName&gt;</span><br></pre></td></tr></table></figure></p><p>建议：要想更好地掌握Git的用法，还得仔细阅读Git官方文档！</p><hr><p>The end.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h2&gt;&lt;p&gt;可以这么说,Git在一定程度上拯救了很多开发者的饭碗。只要你经常使用Git保存自己的工作，你就一直有机会可以将代码退回到之前
+      
+    
+    </summary>
+    
+      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+    
+    
+      <category term="Git" scheme="http://www.devcheng.net/tags/Git/"/>
+    
+  </entry>
   
   <entry>
     <title>MySQL优化干货总结</title>
@@ -526,35 +551,6 @@
       <category term="RedisPlus" scheme="http://www.devcheng.net/tags/RedisPlus/"/>
     
       <category term="redis客户端" scheme="http://www.devcheng.net/tags/redis%E5%AE%A2%E6%88%B7%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JDK各个版本新特性小结</title>
-    <link href="http://www.devcheng.net/post/5ae138f6.html"/>
-    <id>http://www.devcheng.net/post/5ae138f6.html</id>
-    <published>2020-05-30T07:07:22.000Z</published>
-    <updated>2020-05-30T07:08:50.691Z</updated>
-    
-    <content type="html"><![CDATA[<p>截止到今天(2020-5-30)JDK已经发布到了 JDK14。</p><p>在2017年8月，JCP执行委员会提出将Java的发布频率改为每六个月一次，新的发布周期严格遵循时间点，将在每年的3月份和9月份发布。</p><p>JDK 14已经于2020年3月17日如期发布。下面介绍各个版本的新特性，后续随着JDK新版本的更新迭代，本文会持续更新。</p><p>JDK从1.5版本开始，在官方的正式文档与宣传资料中已经不再使用类似JDK1.5的名称，只有程序员内部</p><p>使用的开发版本号(DeveloperVersion，例如java-version的输出)才继续沿用1.5、1.6、1.7和1.8的版本号，</p><p>而公开版本号(Product Version)则改为JDK5、JDK6、JDK7和JDK8的命名方式。</p><h2 id="JDK-5-新特性"><a href="#JDK-5-新特性" class="headerlink" title="JDK 5 新特性"></a>JDK 5 新特性</h2><p>1.自动装箱、拆箱</p><p>2.静态导入(static import)</p><p>3.增强for循环（for-each）</p><p>4.可变参数</p><p>5.枚举（enmu）</p><p>6.泛型</p><p>7.元数据</p><p>8.线程并发库（JUC）</p><hr><h2 id="JDK-6-新特性"><a href="#JDK-6-新特性" class="headerlink" title="JDK 6 新特性"></a>JDK 6 新特性</h2><p>1.AWT中新增的两个类Desktop和SystemTray</p><p>2.使用JAXB2来实现对象与XML之间的映射</p><ol start="3"><li><p>新增处理DOM和SAX之外又一种处理XML文档的API：STAX</p></li><li><p>使用Compiler API动态编译java源文件</p></li><li><p>轻量级Http Server API</p></li><li><p>插入式注解处理API（用于处理Annotations）</p></li><li><p>用Console开发控制台程序</p></li><li><p>对ruby、groovy、javascript等脚本语言的支持</p></li><li><p>Common Annotations</p></li></ol><hr><h2 id="JDK-7-新特性"><a href="#JDK-7-新特性" class="headerlink" title="JDK 7 新特性"></a>JDK 7 新特性</h2><ol><li><p>对Java集合（Collections）的增强支持</p></li><li><p>在switch中可用String</p></li><li><p>数值可加下划线（eg:int one_million=123_1）</p></li><li><p>支持二进制文字（int binary=0b1001_1001）</p></li><li><p>简化可变参数方法的调用</p></li><li><p>自动资源管理</p></li><li><p>类型推断</p></li><li><p>catch 多个类型异常</p></li></ol><hr><h2 id="JDK-8-新特性"><a href="#JDK-8-新特性" class="headerlink" title="JDK 8 新特性"></a>JDK 8 新特性</h2><ol><li><p>Stream函数式操作流元素集合</p></li><li><p>Lambda表达式</p></li><li><p>新的日期时间 API(Java Date/time API)</p></li><li><p>新增接口：默认方法与静态方法</p></li><li><p>Nashorm(Rhino的接替者，轻量级高性能的javascript运行环境)</p></li><li><p>Accumlators多线程lock</p></li><li><p>方法引用，与Lambda表达式联合使用</p></li><li><p>引入重复注解和类型注解</p></li><li><p>类型注解</p></li><li><p>新增base64加解密API</p></li><li><p>数组并行（parallel）操作</p></li><li><p>JVM的permGen空间移除，被Metaspace元空间取代</p></li></ol><hr><h2 id="JDK-9-新特性"><a href="#JDK-9-新特性" class="headerlink" title="JDK 9 新特性"></a>JDK 9 新特性</h2><ol><li><p>目录结构</p></li><li><p>模块化系统</p></li><li><p>jshell</p></li><li><p>多版本兼容JAR</p></li><li><p>接口的私有方法</p></li><li><p>改进try-with-resourcs</p></li><li><p>改进砖石操作符</p></li><li><p>限制使用单独下划线标识符</p></li><li><p>String存储结构变更</p></li><li><p>快速创建只读结合</p></li><li><p>增强Stream API</p></li><li><p>改进Optional 类</p></li><li><p>多分辨率图像 API</p></li><li><p>全新 HTTP客服端API</p></li><li><p>智能JAVA 编译工具</p></li><li><p>统一JVM 日志系统</p></li><li><p>javadoc 的 HTML5 支持</p></li><li><p>java 动态编译</p></li></ol><hr><h2 id="JDK-10-新特性"><a href="#JDK-10-新特性" class="headerlink" title="JDK 10 新特性"></a>JDK 10 新特性</h2><ol><li><p>局部变量类型推断</p></li><li><p>将JDK多存储库合并为单储存库</p></li><li><p>垃圾回收接口</p></li><li><p>并行Full GC 的G1</p></li><li><p>应用数据共享</p></li><li><p>线程局部管控</p></li><li><p>移除Native-Header Generation Tool （javah）</p></li><li><p>Unicode 标签扩展</p></li><li><p>备用内存设备上分配堆内存</p></li><li><p>基于实验JAVA 的JIT 编译器</p></li><li><p>Root 证书</p></li><li><p>基于时间的版本控制</p></li></ol><hr><h2 id="JDK-11-新特性"><a href="#JDK-11-新特性" class="headerlink" title="JDK 11 新特性"></a>JDK 11 新特性</h2><ol><li><p>字符串加强</p></li><li><p>HttClient Api</p></li><li><p>用于 Lambda 参数的局部变量语法</p></li><li><p>ZGC (并发回收的策略)</p></li></ol><hr><h2 id="JDK-12-新特性"><a href="#JDK-12-新特性" class="headerlink" title="JDK 12 新特性"></a>JDK 12 新特性</h2><ol><li><p>Switch Expressions</p></li><li><p>Shenandoah GC (GC 算法)</p></li></ol><hr><h2 id="JDK-13-新特性"><a href="#JDK-13-新特性" class="headerlink" title="JDK 13 新特性"></a>JDK 13 新特性</h2><ol><li><p>switch优化更新</p></li><li><p>文本块升级</p></li><li><p>重新实现旧版套接字API</p></li><li><p>核心库/java.util中：I18N</p></li><li><p>增加ZGC以将未使用的堆内存返回给操作系统</p></li></ol><hr><h2 id="JDK-14-新特性"><a href="#JDK-14-新特性" class="headerlink" title="JDK 14 新特性"></a>JDK 14 新特性</h2><ol><li><p>switch优化变更为最终版</p></li><li><p>垃圾回收相</p></li></ol><ul><li>删除cms垃圾收集器</li><li>弃用 ParallelScavenge + SerialOld GC 的垃圾回收算法组合</li><li>将 zgc 垃圾回收器移植到 macOS 和 windows 平台 </li></ul><ol start="3"><li><p>instanceof的模式匹配（预览版）</p></li><li><p>删除了安全库java.security.acl API</p></li><li><p>货币格式（优化）</p></li><li><p>友好的空指针异常</p></li><li><p>外部存储器API（孵化）</p></li></ol><p>… </p><p><strong> 本文会持续更新… </strong></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;截止到今天(2020-5-30)JDK已经发布到了 JDK14。&lt;/p&gt;
-&lt;p&gt;在2017年8月，JCP执行委员会提出将Java的发布频率改为每六个月一次，新的发布周期严格遵循时间点，将在每年的3月份和9月份发布。&lt;/p&gt;
-&lt;p&gt;JDK 14已经于2020年3月17日如期发
-      
-    
-    </summary>
-    
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
-    
-    
-      <category term="新特性" scheme="http://www.devcheng.net/tags/%E6%96%B0%E7%89%B9%E6%80%A7/"/>
-    
-      <category term="JDK" scheme="http://www.devcheng.net/tags/JDK/"/>
     
   </entry>
   
