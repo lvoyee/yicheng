@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.devcheng.net/"/>
-  <updated>2021-01-12T14:08:38.013Z</updated>
+  <updated>2021-01-19T02:37:37.481Z</updated>
   <id>http://www.devcheng.net/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>基于SpringBoot开发的招聘网站源码分享</title>
+    <link href="http://www.devcheng.net/post/2093beaf.html"/>
+    <id>http://www.devcheng.net/post/2093beaf.html</id>
+    <published>2021-01-19T02:16:31.000Z</published>
+    <updated>2021-01-19T02:37:37.481Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>本项目是基于SpringBoot开发招聘网站，可以当作毕业设计、期末课程作业等，也使用刚刚入门SpringBoot的同学们！</p><h2 id="功能描述"><a href="#功能描述" class="headerlink" title="功能描述"></a><strong>功能描述</strong></h2><p>项目分为应聘方和招聘方两种角色，招聘方可以发布职位，应聘方创建简历通过投递简历应聘。</p><p>在项目中主要拥有的功能有：登录（密码登录，验证码登录），注册，创建简历，投递，查看职位详情，申请职位等。</p><h2 id="开发环境（运行环境）"><a href="#开发环境（运行环境）" class="headerlink" title="开发环境（运行环境）"></a><strong>开发环境（运行环境）</strong></h2><ul><li>系统环境：Windows 10</li><li>开发工具：IntelliJ IDEA</li><li>Java版本：JDK 1.8</li></ul><h2 id="项目技术栈"><a href="#项目技术栈" class="headerlink" title="项目技术栈"></a><strong>项目技术栈</strong></h2><ul><li>Spring Boot</li><li>Mybatis</li><li>Maven 3.X</li><li>Bootstarp</li><li>Druid</li><li>Mysql</li><li>Jsp</li></ul><h2 id="登录地址"><a href="#登录地址" class="headerlink" title="登录地址"></a><strong>登录地址</strong></h2><p><a href="http://localhost:8081/" target="_blank" rel="noopener">http://localhost:8081/</a></p><p>账户和密码(密码登陆)： 18612345678 / 1234567</p><h2 id="系统展示图"><a href="#系统展示图" class="headerlink" title="系统展示图"></a><strong>系统展示图</strong></h2><p><img src="/images/devcheng_net_zhaopin3.png" alt="“伊成博客”"></p><p><img src="/images/devcheng_net_zhaopin2.png" alt="“伊成博客”"></p><p><img src="/images/devcheng_net_zhaopin1.png" alt="“伊成博客”"></p><p><img src="/images/devcheng_net_zhaopin4.png" alt="“伊成博客”"></p><p><img src="/images/devcheng_net_zhaopin5.png" alt="“伊成博客”"></p><h2 id="联系我们"><a href="#联系我们" class="headerlink" title="联系我们"></a><strong>联系我们</strong></h2><p>如有需要源码可以通过</p><p>QQ 搜索：792435323联系我！ 备注：招聘网站源码</p><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a><strong>注意事项</strong></h2><p>获取代码之后，使用IDEA导入本项目前，请确保你本地环境是已经含有代码所需要运行环境的条件了。</p><p>接着找到对应的sql文件，将其导入到你本地的数据库即可。</p><p>最后修改项目中配置文件中的数据库对应的信息，确认修改完毕，找到对应的xxxApplication直接运行吧！</p><h2 id="其它说明"><a href="#其它说明" class="headerlink" title="其它说明"></a>其它说明</h2><p>白嫖怪请绕道！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;本项目是基于SpringBoot开发招聘网站，可以当作毕业设计、期末课程作业等，也使用刚刚入门Spring
+      
+    
+    </summary>
+    
+      <category term="codeshare" scheme="http://www.devcheng.net/categories/codeshare/"/>
+    
+    
+      <category term="SpringBoot" scheme="http://www.devcheng.net/tags/SpringBoot/"/>
+    
+      <category term="招聘网站" scheme="http://www.devcheng.net/tags/%E6%8B%9B%E8%81%98%E7%BD%91%E7%AB%99/"/>
+    
+  </entry>
   
   <entry>
     <title>分享几个实用的Git技巧</title>
@@ -524,33 +551,6 @@
       <category term="java反射" scheme="http://www.devcheng.net/tags/java%E5%8F%8D%E5%B0%84/"/>
     
       <category term="Column注解" scheme="http://www.devcheng.net/tags/Column%E6%B3%A8%E8%A7%A3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>墙裂推荐一款redis客户端可视化工具之RedisPlus</title>
-    <link href="http://www.devcheng.net/post/64102a3b.html"/>
-    <id>http://www.devcheng.net/post/64102a3b.html</id>
-    <published>2020-06-07T07:15:43.000Z</published>
-    <updated>2020-06-07T07:23:36.448Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a><strong>背景</strong></h2><p>在实际工作中，项目中使用redis的项目肯定很多，因此大家或多或少都会接触过一些redis客户端可视化工具。<br>比如：Redis Desktop Manager，RedisView ，RedisClient 等工具。</p><p>今天墙裂推荐一款redis客户端可视化工具：RedisPlus</p><h2 id="RedisPlus"><a href="#RedisPlus" class="headerlink" title="RedisPlus"></a><strong>RedisPlus</strong></h2><h3 id="官方描述"><a href="#官方描述" class="headerlink" title="官方描述"></a>官方描述</h3><p>RedisPlus是为Redis可视化管理开发的一款开源免费的桌面客户端软件，支持Windows 、Linux、Mac三大系统平台，RedisPlus提供更加高效、方便、快捷的使用体验，有着更加现代化的用户界面风格。该软件支持单机、集群模式连接，同时还支持SSH（单机、<strong>集群</strong>）通道连接。</p><p>项目地址： <a href="https://gitee.com/MaxBill/RedisPlus" target="_blank" rel="noopener">https://gitee.com/MaxBill/RedisPlus</a></p><p>运行截图：<br><img src="/images/devcheng_net_redis_001.jpg" alt="“伊成博客”"></p><p><img src="/images/devcheng_net_redis_002.jpg" alt="“伊成博客”"></p><p>RedisPlus目前最新版本为：3.2.0。<br>项目介绍中得知，RedisPlus将不再更新迭代，包括V4.0的electron和jfx11版本都将停止开发和更新。</p><p>下载地址<br>百度下载：链接: <a href="https://pan.baidu.com/s/1GjNFwbmksA1JhguHgcAcSQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1GjNFwbmksA1JhguHgcAcSQ</a> 提取码: 3pcm</p><p><img src="/images/devcheng_net_redis_003.png" alt="“伊成博客”"></p><h2 id="最后说一句"><a href="#最后说一句" class="headerlink" title="最后说一句"></a><strong>最后说一句</strong></h2><p>在网上不乏有很多redis客户端工具，但是真正能支持集群的没几个工具，同时也找到了一款国外的工具，名字叫FastoRedis。<br>下载地址：<a href="https://fastoredis.com/anonim_users_downloads" target="_blank" rel="noopener">https://fastoredis.com/anonim_users_downloads</a></p><p>FastoRedis 的官方介绍<br>Download FastoRedis - cross-platform client for Redis, supported main Redis database features like: modules, cluster, sentinel, ssh tunneling.</p><p>但是这款工具是收费的，土豪请无视这句话！</p><p>最后有需要RedisPlus的又觉得从百度网盘下载麻烦的，可以加一下我的QQ群：816175200 免费获取。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;&lt;strong&gt;背景&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;在实际工作中，项目中使用redis的项目肯定很多，因此大家或多或少都会接触过一些redis客户端可视化工具
-      
-    
-    </summary>
-    
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
-    
-    
-      <category term="RedisPlus" scheme="http://www.devcheng.net/tags/RedisPlus/"/>
-    
-      <category term="redis客户端" scheme="http://www.devcheng.net/tags/redis%E5%AE%A2%E6%88%B7%E7%AB%AF/"/>
     
   </entry>
   
