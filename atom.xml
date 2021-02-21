@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.devcheng.net/"/>
-  <updated>2021-01-19T03:36:51.187Z</updated>
+  <updated>2021-02-21T07:31:31.758Z</updated>
   <id>http://www.devcheng.net/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ETL入门系列01</title>
+    <link href="http://www.devcheng.net/post/53978f67.html"/>
+    <id>http://www.devcheng.net/post/53978f67.html</id>
+    <published>2021-02-21T07:12:47.000Z</published>
+    <updated>2021-02-21T07:31:31.758Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a><strong>背景</strong></h3><p>DT时代，把数据转换为信息、知识，已成为企业提高核心竞争力的关键。目前，大多数企业和政府采用传统的数据库脚本方式来处理数据，但是脚本方式可读性差，过分依赖人，无论是程序的迁移还是系统维护，都极为不便，而ETL则成为主要的一个技术手段。</p><h3 id="什么是ETL"><a href="#什么是ETL" class="headerlink" title="什么是ETL"></a><strong>什么是ETL</strong></h3><p>字面含义：ETL（Extact-Transform-Load，数据的抽取、转换、加载）是抽取、转换、加载的缩写。</p><p>简单定义：把数据从OLTP系统中转移到数据仓库中的一系列操作的集合。</p><h4 id="抽取"><a href="#抽取" class="headerlink" title="抽取"></a><strong>抽取</strong></h4><p> 一般抽取过程需要连接到不同的数据源，以便为随后的步骤提供数据。这一部分看上去简单而琐碎，实际上它是ETL解决方案成功实施的一个主要障碍。</p><h4 id="转换"><a href="#转换" class="headerlink" title="转换"></a><strong>转换</strong></h4><p> 在抽取和加载之间，任何对数据的处理过程都是转换。这些处理过程通常包括（但不限于）下面一些操作。</p><ul><li>移动数据</li><li>根据规则验证数据</li><li>数据内容和数据结构的修改</li><li>集成多个数据源的数据</li><li>根据处理后的数据计算派生值和聚集值</li></ul><h4 id="加载"><a href="#加载" class="headerlink" title="加载"></a><strong>加载</strong></h4><p> 将数据加载到目标系统的所有操作。</p><h3 id="ETL解决方案演化过程"><a href="#ETL解决方案演化过程" class="headerlink" title="ETL解决方案演化过程"></a><strong>ETL解决方案演化过程</strong></h3><p>第一代，使用手工编程、脚本的方式来完成。</p><p>第二代，依据设计好的ETL工作流来自动生成所需代码。</p><p>第三代，采用基于引擎的架构，可以执行所有的数据处理进程，还可以将所有的数据库连接和转换规则作为元数据存储起来。</p><p>第四代，基于MDA智能化ETL。</p><h3 id="ETL工具"><a href="#ETL工具" class="headerlink" title="ETL工具"></a><strong>ETL工具</strong></h3><p><img src="/images/ETL_202101.png" alt="“伊成博客”"></p><p><img src="/images/ETL_202102.png" alt="“伊成博客”"></p><h3 id="用途"><a href="#用途" class="headerlink" title="用途"></a><strong>用途</strong></h3><p>一，数据迁移。</p><p>二，数据同步。</p><h3 id="数据集成的几种方式"><a href="#数据集成的几种方式" class="headerlink" title="数据集成的几种方式"></a><strong>数据集成的几种方式</strong></h3><p><img src="/images/ETL_202103.png" alt="“伊成博客”"></p><h4 id="ELT"><a href="#ELT" class="headerlink" title="ELT"></a><strong>ELT</strong></h4><p>抽取、加载和转换的简称，同ETL在数据整合的方法上略微不同。在ELT的情况下，数据首先从源数据进行抽取、加载到目标数据库中，再转换为所需要的格式。所有大数据量处理全部放在目标数据库中进行。这种做法的好处在于，一般情况下，数据库系统更适合处理负荷在百万级以上的数据储存民。数据库系统也通常会对I/O(吞吐量)进行优化，用来提高数据处理速度。</p><h4 id="EII"><a href="#EII" class="headerlink" title="EII"></a><strong>EII</strong></h4><p>除了物理数据集成方式，还有虚拟数据集成方式也可以满足用户访问数据的要求。这种虚拟数据集成试就是企业信息集成，也就是EII。如数据联邦和数据虚拟化，也都是描述同样的事情。</p><p>这种方法的主要优点就是数据永远都是最新的，不需要额外的存储层，没有冗余数据。缺点就是使用虚拟方法来管理大量的、清洗后的、时效性强的数据是一个非常具有挑战性的工作。</p><h3 id="虚拟数据集成和物理数据集成的比较"><a href="#虚拟数据集成和物理数据集成的比较" class="headerlink" title="虚拟数据集成和物理数据集成的比较"></a><strong>虚拟数据集成和物理数据集成的比较</strong></h3><p><img src="/images/ETL_202104.png" alt="“伊成博客”"></p><hr><p>The end.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;&lt;strong&gt;背景&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;DT时代，把数据转换为信息、知识，已成为企业提高核心竞争力的关键。目前，大多数企业和政府采用传统的数据库脚
+      
+    
+    </summary>
+    
+      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+    
+    
+      <category term="ETL" scheme="http://www.devcheng.net/tags/ETL/"/>
+    
+      <category term="ELT" scheme="http://www.devcheng.net/tags/ELT/"/>
+    
+      <category term="数据集成" scheme="http://www.devcheng.net/tags/%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/"/>
+    
+  </entry>
   
   <entry>
     <title>基于SpringBoot开发的招聘网站源码分享</title>
@@ -524,33 +553,6 @@
       <category term="Maven" scheme="http://www.devcheng.net/tags/Maven/"/>
     
       <category term="Gradle" scheme="http://www.devcheng.net/tags/Gradle/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>java通过反射获取注解@Column中的信息</title>
-    <link href="http://www.devcheng.net/post/74b831b2.html"/>
-    <id>http://www.devcheng.net/post/74b831b2.html</id>
-    <published>2020-06-20T02:44:08.000Z</published>
-    <updated>2020-06-20T02:49:43.679Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在工作中需要从实体类的@Column注解中获取对应的信息，先一个实体类的上代码，如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.devcheng.demo.restful.data.service.model.entity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.databind.annotation.JsonDeserialize;</span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.databind.annotation.JsonSerialize;</span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;</span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.persistence.Column;</span><br><span class="line"><span class="keyword">import</span> javax.persistence.Entity;</span><br><span class="line"><span class="keyword">import</span> javax.persistence.Id;</span><br><span class="line"><span class="keyword">import</span> javax.persistence.Table;</span><br><span class="line"><span class="keyword">import</span> java.time.LocalDateTime;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table</span>(name = <span class="string">"DEV_CHENG_FILE_DEMO"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DiscloseFileEntity</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"ID"</span>,columnDefinition = <span class="string">"ID"</span>)</span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"APPLY_NO"</span>,columnDefinition = <span class="string">"申请号"</span>)</span><br><span class="line">    <span class="keyword">private</span> String applyNo;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"FILE_NAME"</span>,columnDefinition = <span class="string">"文件名称"</span>)</span><br><span class="line">    <span class="keyword">private</span> String fileName;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"FILE_SIZE"</span>,columnDefinition = <span class="string">"文件大小"</span>)</span><br><span class="line">    <span class="keyword">private</span> String fileSize;</span><br><span class="line">   </span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"TITLE"</span>,columnDefinition = <span class="string">"标题"</span>)</span><br><span class="line">    <span class="keyword">private</span> String title;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"IS_VALID"</span>,columnDefinition = <span class="string">"是否有效"</span>)</span><br><span class="line">    <span class="keyword">private</span> String isValid;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"SAVE_DATE"</span>,columnDefinition = <span class="string">"保存日期"</span>)    </span><br><span class="line">    <span class="keyword">private</span> LocalDateTime saveDate;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>由上得知，需要从 @Column 注解中获取 name和columnDefinition 中的信息，那如何可以获取到对应的信息？</p><p>在获取 @Column 注解中的信息之前，先看看 columnDefinition是啥意思?</p><h2 id="columnDefinition"><a href="#columnDefinition" class="headerlink" title="columnDefinition"></a>columnDefinition</h2><p>columnDefinition属性表示创建表时，该字段创建的SQL语句，一般用于通过Entity生成表定义时使用，如果数据库中表已经建好，该属性没有必要使用。</p><p>值得注意的一点是：在编程语言中字符串一般都用String表示，但是数据库中varcahr数值类型有长度限制，一旦需要大文本，则需要text数值类型。但是String类型默认映射的数值类型是varchar，columnDefinition可以进行额外指定。</p><h2 id="获取注解-Column中的信息"><a href="#获取注解-Column中的信息" class="headerlink" title="获取注解@Column中的信息"></a>获取注解@Column中的信息</h2><p>实现思路：通过类路径利用反射获取到对应的注解信息，从而获取到对应@Column中的信息<br>代码如下：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;TableColumnsVO&gt; <span class="title">getFiledAndAnnotateInfo</span><span class="params">(String entityPath)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        List&lt;TableColumnsVO&gt; tableColumnsLists = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Class&lt;?&gt; aClass = Class.forName(entityPath);</span><br><span class="line">            Field[] fields = aClass.getDeclaredFields();</span><br><span class="line"></span><br><span class="line">            Column presentColumn;</span><br><span class="line">            <span class="keyword">for</span> (Field field:fields)</span><br><span class="line">            &#123;</span><br><span class="line">                field.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">                <span class="keyword">if</span>(field.isAnnotationPresent(Column.class))</span><br><span class="line">                &#123;</span><br><span class="line">                    presentColumn = field.getDeclaredAnnotation(Column.class);</span><br><span class="line">                    TableColumnsVO tableData = <span class="keyword">new</span> TableColumnsVO();</span><br><span class="line">                    tableData.setColumnName(presentColumn.name());</span><br><span class="line">                    tableData.setColumnDefinationInfo(presentColumn.columnDefinition());</span><br><span class="line">                    tableColumnsLists.add(tableData);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">            log.info(String.format(<span class="string">"获取字段和注释异常：%s"</span>, entityPath));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> tableColumnsLists;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p>对应的 TableColumnsVO代码如下:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TableColumnsVO</span></span>&#123;</span><br><span class="line">    <span class="comment">//列名</span></span><br><span class="line">    <span class="keyword">private</span> String columnName;</span><br><span class="line">    <span class="comment">//ColumnDefinationInfo信息</span></span><br><span class="line">    <span class="keyword">private</span> String columnDefinationInfo;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;在工作中需要从实体类的@Column注解中获取对应的信息，先一个实体类的上代码，如下：&lt;br&gt;&lt;figure class=&quot;highligh
-      
-    
-    </summary>
-    
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
-    
-    
-      <category term="java反射" scheme="http://www.devcheng.net/tags/java%E5%8F%8D%E5%B0%84/"/>
-    
-      <category term="Column注解" scheme="http://www.devcheng.net/tags/Column%E6%B3%A8%E8%A7%A3/"/>
     
   </entry>
   
