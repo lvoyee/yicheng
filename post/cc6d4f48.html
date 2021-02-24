@@ -42,7 +42,7 @@
 
     <!--Title-->
 
-<title>	不寻常的String To Map的转换-伊成个人站</title>
+<title>	ETL入门系列 02-伊成个人站</title>
 
     <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人网站" type="application/atom+xml">
 
@@ -138,9 +138,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="不寻常的String To Map的转换">
+        <h1 id="ETL入门系列 02">
             
-	            不寻常的String To Map的转换
+	            ETL入门系列 02
             
         </h1>
         <div class="post-meta">
@@ -160,8 +160,16 @@
         <span class="tags-meta">
             
                 
-                    <a href="/tags/String转Map" title="String转Map">
-                        String转Map
+                    <a href="/tags/ETL" title="ETL">
+                        ETL
+                    </a>
+                
+                    <a href="/tags/ELT" title="ELT">
+                        ELT
+                    </a>
+                
+                    <a href="/tags/数据集成" title="数据集成">
+                        数据集成
                     </a>
                 
             
@@ -173,7 +181,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2019/03/01</span>
+            <span class="date-meta">2021/02/24</span>
         </span>
         
     
@@ -181,29 +189,27 @@
 
             
             
-            <p class="fa fa-exclamation-triangle warning">
-                本文于<strong>725</strong>天之前发表，文中内容可能已经过时。
-            </p>
-        
     </div>
     
     <div class="post-body post-content">
-        <p><img src="/images/devcheng_net_map2String.jpg" alt="“ElasticSearch-实战代码3”"></p>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h3><p>在一般的情况下，Java中字符串转Map需要确定一点，待转的字符串是不是json格式的，如果是json格式的则容易处理的多了，直接用Gson 或是 FastJSON 等就可以处理了。</p>
-<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a><strong>正文</strong></h3><p>那另外一种情况如果需要转的字符串 不是 json 格式的那怎么办呢？<br>举个例子，需要转的字符串是以下这种：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id:1|age:27|name:test|sex:1</span><br></pre></td></tr></table></figure></p>
-<p>以上这样的字符串，那就需要你使用 String中的 split 方法进行分割，然后变成Map既可！</p>
-<p>在说一种情况，由于工作里面碰见的特此也记录一下！<br>我遇到的需要把字符串转Map的字符串是这样的格式：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;id=1,age=2,name=test&#125;</span><br></pre></td></tr></table></figure></p>
-<p>但是有一种特殊的情况，可能里面的一些字段没有值，最后可能需要处理的字符串则变成了这样：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;id=1,age=,name=&#125;</span><br></pre></td></tr></table></figure>
-<p>那这样的情况怎么做呢？</p>
-<p>网上大多数给出的代码的是以下这样的：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">"&#123;id=1,age=,name=test&#125;"</span>;</span><br><span class="line">String[] strs = str.split(<span class="string">"="</span>);</span><br><span class="line">Map&lt;String, String&gt; m = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line"><span class="keyword">for</span>(String s:strs)&#123;</span><br><span class="line">String[] ms = s.split(<span class="string">":"</span>);</span><br><span class="line">  m.put(ms[<span class="number">0</span>], ms[<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>思路是对的，可是面对这样 key=value 且 value 可能没有值得情况，代码是用不了的。原因是就是<br>在分割字符串之后，给map 复制的那句 m.put(ms[0], ms[1]) 这里 ms[1] ，如果分割出来的字段是 age= 没有value 的 那么 ms[1] ,就会报一个 异常，数组越界异常。 </p>
-<p>根据以上代码则需要做一个特殊的处理，在给map 复制的时候需要判断一下被分割出来的 String[] ms = s.split(“:”); ms 里面有几个元素， 然后根据元素的最大下标去判断。 </p>
-<p>直接看 特殊处理后的代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Map&lt;String,Object&gt; <span class="title">getStringToMap</span><span class="params">(String str)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (str.startsWith(<span class="string">"&#123;"</span>)) &#123;</span><br><span class="line">        str = str.substring(<span class="number">1</span>, str.length());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (str.endsWith(<span class="string">"&#125;"</span>)) &#123;</span><br><span class="line">        str = str.substring(<span class="number">0</span>, str.length() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//根据逗号截取字符串数组</span></span><br><span class="line">    String[] str1 = str.split(<span class="string">","</span>);</span><br><span class="line">    <span class="comment">//创建Map对象</span></span><br><span class="line">    Map&lt;String,Object&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="comment">//循环加入map集合</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str1.length; i++) &#123;</span><br><span class="line">        <span class="comment">//根据":"截取字符串数组</span></span><br><span class="line">        String[] str2 = str1[i].split(<span class="string">"="</span>);</span><br><span class="line">        <span class="comment">//str2[0]为KEY,str2[1]为值</span></span><br><span class="line">        <span class="comment">// str2.length-1 为下标最大值</span></span><br><span class="line">        <span class="keyword">if</span>(str2.length-<span class="number">1</span> == <span class="number">0</span>)&#123;</span><br><span class="line">            map.put(str2[<span class="number">0</span>].trim(),<span class="string">""</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            map.put(str2[<span class="number">0</span>].trim(),str2[<span class="number">1</span>].trim());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> map;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>以上代码，就可以 适用于字符串里面的key和value都存在或是key有而value没有值的场景！如下两种字符串实例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;id=1,age=,name=test&#125;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;id=1,age=27,name=test&#125;</span><br></pre></td></tr></table></figure>
-<p>写到这里，你也许看明白了这个不寻常的字符串就是，value可能没有值的时候转Map的特殊处理，原理就是在给Map赋值的时候使用分割后获取的String []数组的最大下标作文章，从而判断value是否有值，有值的时候取两个元素，没有则给个默认的空字符串。</p>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a><strong>背景</strong></h2><p>上一篇我们提到了有几款开源的ETL工具，接下来将学习CKettle。CKettle源于Kettle，在CKettle官网自我介绍中是这样描述自己的 “源于开源，强于开源”。主要提供专职、专业的技术支持和帮助，快速响应国内用户，他们致力于打造专业的ETL技术交流社区。</p>
+<h2 id="下载CKettle"><a href="#下载CKettle" class="headerlink" title="下载CKettle"></a><strong>下载CKettle</strong></h2><p>下载地址： <a href="https://ckettle.ccsaii.com.cn/" target="_blank" rel="noopener">https://ckettle.ccsaii.com.cn/</a></p>
+<p><img src="/images/ETL_202102241.png" alt="“伊成博客”"></p>
+<p>下载稳定版即可！</p>
+<p><strong>必要准备</strong><br>CKettle是基于Java开发的，所以确保你本地电脑配置了Java环境变量。</p>
+<p>下载得到一个zip压缩包，解压缩出来之后，结构目录如下：</p>
+<p><img src="/images/ETL_202102242.png" alt="“伊成博客”"></p>
+<p>windows下双击 Spoon.bat 启动。</p>
+<p><img src="/images/ETL_202102243.png" alt="“伊成博客”"></p>
+<p>在结构目录中我们经常使用到的有： Spoon.bat , Kitchen.bat , Pan.bat , Carte.bat</p>
+<p>下面分别介绍</p>
+<h3 id="Spoon-设计器"><a href="#Spoon-设计器" class="headerlink" title="Spoon(设计器)"></a><strong>Spoon(设计器)</strong></h3><p>提供了一个图形用户界面，用户创建(编辑)作业或转换；也可以用户执行(调试)作业或转换，它还提供了性能监控的功能。</p>
+<h3 id="Kitchen"><a href="#Kitchen" class="headerlink" title="Kitchen"></a><strong>Kitchen</strong></h3><p>用于作业的命令行运行，可以通过Shell脚本来调用，常用于Linux环境中。</p>
+<h3 id="Pan"><a href="#Pan" class="headerlink" title="Pan"></a><strong>Pan</strong></h3><p>用户转换的命令行运行，和Kitchen一样可以通过Shell脚本来调用。</p>
+<h3 id="Carte"><a href="#Carte" class="headerlink" title="Carte"></a><strong>Carte</strong></h3><p>是一个轻量级的HTTP服务器，后台运行，监听HTTP请求来运行一个作业或转换,也可以用于分布式执行作业或转换，也就是CKettle的集群。</p>
+<p>关于以上几个命令如何使用，后续我们结合例子再做详细说明。</p>
+<hr>
+<p>The end.</p>
 
     </div>
     
@@ -239,15 +245,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/post/7a0df1b9.html" class="pre-post btn btn-default" title="如何使用Java打印项目目录结构">
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">如何使用Java打印项目目录结构</span>
-        </a>
     
-    
-        <a href="/post/5d047910.html" class="next-post btn btn-default" title="ElasticSearch-实战代码3">
+        <a href="/post/53978f67.html" class="next-post btn btn-default" title="ETL入门系列01">
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">ElasticSearch-实战代码3</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">ETL入门系列01</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -285,7 +286,7 @@
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正文"><span class="toc-text">正文</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下载CKettle"><span class="toc-text">下载CKettle</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Spoon-设计器"><span class="toc-text">Spoon(设计器)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kitchen"><span class="toc-text">Kitchen</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pan"><span class="toc-text">Pan</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Carte"><span class="toc-text">Carte</span></a></li></ol></li></ol>
         
     </div>
 </aside>
