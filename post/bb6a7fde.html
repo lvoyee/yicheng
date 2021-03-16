@@ -1,0 +1,399 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="伊成个人站-热衷于技术分享，源码分享的个人网站">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+	<!--baidu tongji-->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?11f6f08fada932368f71e76bd659b783";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
+    <link rel="dns-prefetch" href="http://www.devcheng.net">
+    <!--SEO-->
+
+<meta name="description" content="伊成个人站 www.devcheng.net 一个致力于技术分享，源码分享及工作经历分享的个人网站">
+
+
+
+<meta name="keywords" content="伊成个人站,技术分享,源码分享,代码分享,java代码,源代码">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+<title>	ETL入门系列 03-伊成个人站</title>
+
+    <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人网站" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+       ◉◡◉ 您好，欢迎到访伊成个人站!
+    </div>
+</header>
+    
+<nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.devcheng.net">伊成个人站-热衷于技术分享，源码分享的个人网站</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">				
+                    <ul class="menu">						
+						<a href="/"><img border="0" src="/img/logo2020.png" alt="伊成个人站" title="伊成个人站"></a>						
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa fa-home"></i>&nbsp;首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/blogshare/"><i class="fa fa-codepen"></i>&nbsp;技术分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codeshare/"><i class="fa fa-code"></i>&nbsp;源码分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codelife/"><i class="fa fa-pagelines"></i>&nbsp;程序人生</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives"><i class="fa fa-history"></i>&nbsp;时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about"><i class="fa fa-connectdevelop"></i>&nbsp;关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="ETL入门系列 03">
+            
+	            ETL入门系列 03
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/blogshare">
+            blogshare
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/ETL" title="ETL">
+                        ETL
+                    </a>
+                
+                    <a href="/tags/实战案例" title="实战案例">
+                        实战案例
+                    </a>
+                
+                    <a href="/tags/数据集成" title="数据集成">
+                        数据集成
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2021/03/15</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a><strong>背景</strong></h2><p>结合前面两篇博文，这篇博文进行一次实战案例，用于介绍如何使用Ckettle做数据集成。</p>
+<p><strong>实战需求</strong>：<br>某公司新人试用期为3个月，现在需要对职称为P3的为转正的员工实施转正考核，需要从现有的一张员工信息表格中提取并筛选未转正的员工数据，然后转存到考核系统的数据库中，每个月的1号执行一次。</p>
+<p><strong>技术需求</strong></p>
+<ul>
+<li>源数据：Excel   目标数据：MySql</li>
+</ul>
+<p><img src="/images/ETL_20210315093800.png" alt="“伊成博客”"></p>
+<p><strong>业务分析</strong></p>
+<ul>
+<li>试用期：3个月    职称：P3    转正状态:未转正</li>
+</ul>
+<p><strong>技术概要分析</strong></p>
+<p>识别源和目标数据库，数据存储表</p>
+<p><strong>操作概要分析</strong></p>
+<ul>
+<li>数据处理类型：定时调用</li>
+<li>调度频率：每个一次</li>
+</ul>
+<p><img src="/images/ETL_20210315101321.png" alt="“伊成博客”"></p>
+<h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a><strong>操作步骤</strong></h2><h3 id="数据抽取"><a href="#数据抽取" class="headerlink" title="数据抽取"></a><strong>数据抽取</strong></h3><p>1.找到CKettle安装完成目录中的 ‘Spoon.bat’ 双击打开即可。</p>
+<p>2.点击 ‘新建’，选择 ‘转换’ 选项。</p>
+<p><img src="/images/ETL_20210315101939.png" alt="“伊成博客”"></p>
+<p>3.点击 ‘输入’插件中，拖拽 ‘Excel输入’ 插件到右边。</p>
+<p><img src="/images/ETL_20210315102217.png" alt="“伊成博客”"></p>
+<p>4.选择存于你本地的excel文件，点击 ‘添加’按钮。</p>
+<p><img src="/images/ETL_20210315102608.png" alt="“伊成博客”"></p>
+<p>5.切换到 ‘工作表’选项，点击 ‘获选工作表名称’选择数据对应的sheet，完成后点击确定按钮。</p>
+<p><img src="/images/ETL_20210315103026.png" alt="“伊成博客”"></p>
+<p>6.继续切换到 ‘字段’选项，点击 ‘选择来自头部数据的字段’，如无需修改各个字段的类型点击确定按钮。</p>
+<p><img src="/images/ETL_20210315103130.png" alt="“伊成博客”"></p>
+<p>tips:到此第一步的数据抽取的工作就完成了。</p>
+<h3 id="数据转换"><a href="#数据转换" class="headerlink" title="数据转换"></a><strong>数据转换</strong></h3><p>1.接着需要筛选出职称为P3的员工，需要’过滤记录’插件。</p>
+<p><img src="/images/ETL_20210315103509.png" alt="“伊成博客”"></p>
+<p>2.按住shift键把两个插件用数据线连接在一块，然后进行数据过来的配置。</p>
+<p><img src="/images/ETL_20210315103725.png" alt="“伊成博客”"></p>
+<p>3.接着筛选出未转正的数据，在步骤2中同理操作一次即可。</p>
+<p><img src="/images/ETL_20210315104250.png" alt="“伊成博客”"></p>
+<p>tips：做好以上的步骤，我们可以试着点击’运行’按钮，查看一下流程是否有问题，如果配置都没问题的情况下我们可以查看到数据过滤后的结果。</p>
+<p><img src="/images/ETL_20210315111418.png" alt="“伊成博客”"></p>
+<p>4.添加一个常量用于比较出是否已经满了入职三个月的需求，这里需要一个 ‘增加常量’插件。</p>
+<p><img src="/images/ETL_20210315204407.png" alt="“伊成博客”"></p>
+<p>5.添加一个’计算器’ 插件，把入职时间加上刚刚设置的常量得到一个应该转正日期。</p>
+<p><img src="/images/ETL_20210315204920.png" alt="“伊成博客”"></p>
+<p>6.添加一个 ‘获取系统信息’ 插件，选择系统时间固定值。</p>
+<p><img src="/images/ETL_20210315205318.png" alt="“伊成博客”"></p>
+<p>7.由以上步骤，可以用当前时间和应该转正日期做比较从而筛选出符合条件的数据。</p>
+<p><img src="/images/ETL_20210315205627.png" alt="“伊成博客”"></p>
+<p>做到这一步，点击运行查看一下被筛选后的数据。</p>
+<p><img src="/images/ETL_20210315205917.png" alt="“伊成博客”"></p>
+<p>8.由上一步得知有重复数据，需要借助 ‘去除重复记录’ 插件。</p>
+<p><img src="/images/ETL_20210315210420.png" alt="“伊成博客”"></p>
+<h3 id="数据转载"><a href="#数据转载" class="headerlink" title="数据转载"></a><strong>数据转载</strong></h3><p>1.添加 ‘插入/更新’ 插件，配置数据库连接信息。</p>
+<p><img src="/images/ETL_20210315210849.png" alt="“伊成博客”"></p>
+<p>设置好用来查询的关键字字段，这一步是用来当成数据查询的条件。<br>更新字段这一项是获取数据之后需要更新哪一些字段。</p>
+<p><img src="/images/ETL_20210315211529.png" alt="“伊成博客”"></p>
+<p>配置完成之后可以点击运行按钮，接着查看数据库对应的表是否存放了符合条件的数据。</p>
+<p><img src="/images/ETL_20210315211802.png" alt="“伊成博客”"></p>
+<p>数据成功存入到对应数据库表中，到此数据抽取，转换，装载都完成了。<br>但每个月1号需要执行一次这个涉及到定时调度，我们后续再出对应博文讲解！</p>
+<h2 id="其它说明"><a href="#其它说明" class="headerlink" title="其它说明"></a><strong>其它说明</strong></h2><p><a href="http://www.devcheng.net/post/53978f67.html">《ETL入门系列01》</a></p>
+<p><a href="http://www.devcheng.net/post/cc6d4f48.html">《ETL入门系列02》</a></p>
+<p><a href="http://www.devcheng.net/post/bb6a7fde.html">《ETL入门系列03》</a></p>
+<p>ETL入门系列到此结束！</p>
+<p>本案例中涉及的execl文档和ktr文件有需要的可以加QQ群：816175200<br>备注: ckettle</p>
+<hr>
+<p>The end.</p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/reward-alipay.png"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/reward-wepay.png"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip"></p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处！
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/post/cc6d4f48.html" class="next-post btn btn-default" title="ETL入门系列 02">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">ETL入门系列 02</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({           
+            el: '#vcomments',
+            appId: 'sbQDWnkLFsRjJS2BGzfKc4rL-gzGzoHsz',
+            appKey: '5u9C0UUmzRe3unr9iLzheHjk',
+            placeholder: '文明社会,理性评论留言 ^_^……',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作步骤"><span class="toc-text">操作步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据抽取"><span class="toc-text">数据抽取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据转换"><span class="toc-text">数据转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据转载"><span class="toc-text">数据转载</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其它说明"><span class="toc-text">其它说明</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018 - 2021
+                </span> | .<font color="#f1607d">伊</font><font color="#ffa500">成</font><font color="#e5e802">个</font><font color="#3bff23">人</font><font color="#ffa503">站</font><font color="#29c8ec"> devcheng</font><font color="#4f9cfa">.net</font>. |
+                <span>
+                    网站基于Hexo搭建
+                </span> |
+                <span>
+                     <a href="/sitemap.xml" class="copyright-links" target="_blank" rel="nofollow">本站地图</a>
+                </span> |
+				<span>
+					 <a href="/atom.xml" class="copyright-links" target="_blank" rel="nofollow">RSS订阅</a> 
+				</span> |
+				<span>
+                    <a href="https://beian.miit.gov.cn/" class="copyright-links" target="_blank" rel="nofollow">湘ICP备20010839号</a> 
+                </span>
+				<span>
+                    <a href="https://beian.miit.gov.cn/" class="copyright-links" target="_blank" rel="nofollow">湘ICP备20010839号-1</a> 
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
