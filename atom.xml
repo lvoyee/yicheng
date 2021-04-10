@@ -40,9 +40,9 @@
     
       <category term="ETL" scheme="http://www.devcheng.net/tags/ETL/"/>
     
-      <category term="实战案例" scheme="http://www.devcheng.net/tags/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"/>
-    
       <category term="数据集成" scheme="http://www.devcheng.net/tags/%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/"/>
+    
+      <category term="实战案例" scheme="http://www.devcheng.net/tags/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"/>
     
   </entry>
   
@@ -69,9 +69,9 @@
     
       <category term="ETL" scheme="http://www.devcheng.net/tags/ETL/"/>
     
-      <category term="数据集成" scheme="http://www.devcheng.net/tags/%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/"/>
-    
       <category term="ELT" scheme="http://www.devcheng.net/tags/ELT/"/>
+    
+      <category term="数据集成" scheme="http://www.devcheng.net/tags/%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/"/>
     
   </entry>
   
@@ -98,9 +98,9 @@
     
       <category term="ETL" scheme="http://www.devcheng.net/tags/ETL/"/>
     
-      <category term="数据集成" scheme="http://www.devcheng.net/tags/%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/"/>
-    
       <category term="ELT" scheme="http://www.devcheng.net/tags/ELT/"/>
+    
+      <category term="数据集成" scheme="http://www.devcheng.net/tags/%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/"/>
     
   </entry>
   
