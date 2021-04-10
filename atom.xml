@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.devcheng.net/"/>
-  <updated>2021-03-16T12:52:46.467Z</updated>
+  <updated>2021-04-10T01:52:41.406Z</updated>
   <id>http://www.devcheng.net/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>工作中碰上那些给你挖坑或者带你踩坑的猪队友，你会怎么办？</title>
+    <link href="http://www.devcheng.net/post/d7b63f4f.html"/>
+    <id>http://www.devcheng.net/post/d7b63f4f.html</id>
+    <published>2021-04-10T01:43:25.000Z</published>
+    <updated>2021-04-10T01:52:41.406Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>如果你在工作中碰上那些给你挖坑或者带你踩坑的猪队友，你会怎么办？</p><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>后台有个老铁就跟我说了这么一件事。</p><p>他是产品经理，上周刚加班搞定一个老板很重视的需求，熬了几个夜终于上线了。</p><p>这周陆续收到用户反馈，说其中一个功能的历史数据没有了，各种投诉就直接过来了。</p><p>在后台一查，原来是新版本完全覆盖了老版本的数据，没有做数据上新老版本兼容，导致更新了新版本的用户看不到之前的老数据。且后台上线后，老版本的用户也看不到之前的数据了。</p><p>这个问题最先被反馈到产品经理这，产品去问测试，测试说已经都测过没问题才发包的。产品去问研发，研发说新版代码里已经做了数据兼容的调整。</p><p>没办法，让研发老大带着下面的人去检查线上代码，发现提交上去的代码中果然没有完成数据兼容。可去发布前的测试代码中一看，这部分代码却存在。</p><p>原来，最后提交代码的程序员没有把这部分代码合并到主分支里面去。</p><p>因为表现层的功能测试都没问题了，且数据代码也写好了，所有人都以为万事俱备，没想到被一个代码提交给搞砸了。</p><p>幸亏数据有备份，经过恢复处理后这才回归了正常。</p><p>原本大家等着靠这个项目拿个季度奖，没想到被队友给坑了，而且是一个本该完全避免的失误。</p><p>所以，产品测试完没问题真不是最后一步。在有条件的团队，一定要做灰度上线，把出问题的概率控制在最低。</p><p>据我了解，微信团队每次更新产品都是逐步灰度放量，一旦遇到问题就立马回滚，非常灵活。</p><p>这些都属于产品技术的基本功，在快速跑需求的同时，也得时刻降低技术负债，多给自己留一些后路。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h2&gt;&lt;p&gt;如果你在工作中碰上那些给你挖坑或者带你踩坑的猪队友，你会怎么办？&lt;/p&gt;
+&lt;h2 id=&quot;正文&quot;&gt;&lt;a href=&quot;#正文&quot;
+      
+    
+    </summary>
+    
+      <category term="codelife" scheme="http://www.devcheng.net/categories/codelife/"/>
+    
+    
+      <category term="职场" scheme="http://www.devcheng.net/tags/%E8%81%8C%E5%9C%BA/"/>
+    
+      <category term="猪队友" scheme="http://www.devcheng.net/tags/%E7%8C%AA%E9%98%9F%E5%8F%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>ETL入门系列 03</title>
@@ -40,9 +68,9 @@
     
       <category term="ETL" scheme="http://www.devcheng.net/tags/ETL/"/>
     
-      <category term="数据集成" scheme="http://www.devcheng.net/tags/%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/"/>
-    
       <category term="实战案例" scheme="http://www.devcheng.net/tags/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"/>
+    
+      <category term="数据集成" scheme="http://www.devcheng.net/tags/%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/"/>
     
   </entry>
   
@@ -69,9 +97,9 @@
     
       <category term="ETL" scheme="http://www.devcheng.net/tags/ETL/"/>
     
-      <category term="ELT" scheme="http://www.devcheng.net/tags/ELT/"/>
-    
       <category term="数据集成" scheme="http://www.devcheng.net/tags/%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/"/>
+    
+      <category term="ELT" scheme="http://www.devcheng.net/tags/ELT/"/>
     
   </entry>
   
@@ -98,9 +126,9 @@
     
       <category term="ETL" scheme="http://www.devcheng.net/tags/ETL/"/>
     
-      <category term="ELT" scheme="http://www.devcheng.net/tags/ELT/"/>
-    
       <category term="数据集成" scheme="http://www.devcheng.net/tags/%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/"/>
+    
+      <category term="ELT" scheme="http://www.devcheng.net/tags/ELT/"/>
     
   </entry>
   
@@ -528,33 +556,6 @@
       <category term="恢复Hexo" scheme="http://www.devcheng.net/tags/%E6%81%A2%E5%A4%8DHexo/"/>
     
       <category term="重装系统" scheme="http://www.devcheng.net/tags/%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MySQL中按字段查询重复数据</title>
-    <link href="http://www.devcheng.net/post/4dfd5416.html"/>
-    <id>http://www.devcheng.net/post/4dfd5416.html</id>
-    <published>2020-07-09T13:37:57.000Z</published>
-    <updated>2020-07-09T13:48:17.605Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在项目开发中，难免会遇到xx表有重复数据(脏数据)，导致的原因有很多，可能是测试人员一直在添加同一条数据，也可能是编写的功能本身就存在bug(没有对数据做重复数据校验)等。</p><p>既然是难免的情况，那如何处理呢？</p><h2 id="根据一个字段查询重复数据"><a href="#根据一个字段查询重复数据" class="headerlink" title="根据一个字段查询重复数据"></a>根据一个字段查询重复数据</h2><p>举个栗子，有个用户表测试小姐姐拼命的创建同一条数据插入到用户表。<br>那么在用户表中就会存在相同用户名的多条数据，根据 用户名 查询重复数据的SQL如下：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> userName <span class="keyword">from</span> tb_user <span class="keyword">GROUP</span> <span class="keyword">BY</span> userName <span class="keyword">HAVING</span> <span class="keyword">count</span>(*) &gt; <span class="number">1</span>;</span><br></pre></td></tr></table></figure><p>如果查询出来重复数据只需要保留一条，那就得把多余的数据删除即可，对应SQL如下：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> tb_user <span class="keyword">WHERE</span> userId <span class="keyword">NOT</span> <span class="keyword">IN</span> ( <span class="keyword">SELECT</span> <span class="keyword">MAX</span>( userId ) <span class="keyword">AS</span> maxid <span class="keyword">FROM</span> tb_user <span class="keyword">GROUP</span> <span class="keyword">BY</span> userName);</span><br></pre></td></tr></table></figure><p>这里是根据 用户名分组保留用户ID最大的那条数据，其它的都删掉！<br>具体保留哪条数据，各位小伙伴可自行决定~</p><h2 id="根据多个字段查询重复数据"><a href="#根据多个字段查询重复数据" class="headerlink" title="根据多个字段查询重复数据"></a>根据多个字段查询重复数据</h2><p>在举个栗子，在这个用户表中 用户名和用户类型 都重复的需要查询出来，对应的SQL如下：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tb_user <span class="keyword">GROUP</span> <span class="keyword">BY</span> userName,userType <span class="keyword">HAVING</span> <span class="keyword">count</span>(*) &gt; <span class="number">1</span>;</span><br></pre></td></tr></table></figure><p>根据多个字段查询，保留一条数据，删除多余数据SQL如下：</p><p>方法一：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> tb_user <span class="keyword">WHERE</span> userId <span class="keyword">NOT</span> <span class="keyword">IN</span> ( <span class="keyword">SELECT</span> <span class="keyword">MAX</span>( userId ) <span class="keyword">AS</span> maxid <span class="keyword">FROM</span> tb_user <span class="keyword">GROUP</span> <span class="keyword">BY</span> userName,userType);</span><br></pre></td></tr></table></figure></p><p>方法二：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> nameAndType <span class="keyword">from</span> (<span class="keyword">SELECT</span> <span class="keyword">CONCAT</span>(userName,userType) <span class="keyword">as</span> nameAndType <span class="keyword">from</span> tb_user) tt <span class="keyword">GROUP</span> <span class="keyword">BY</span> nameAndType <span class="keyword">HAVING</span> <span class="keyword">count</span>(nameAndType) &gt; <span class="number">1</span>;</span><br></pre></td></tr></table></figure></p><p>方法三：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> tb_user <span class="keyword">WHERE</span> userId <span class="keyword">NOT</span> <span class="keyword">IN</span> (<span class="keyword">SELECT</span> maxid <span class="keyword">from</span> (<span class="keyword">SELECT</span> <span class="keyword">MAX</span>(userId) <span class="keyword">as</span> maxid, <span class="keyword">CONCAT</span>(userName,userType) <span class="keyword">as</span> nameAndType <span class="keyword">from</span> tb_user <span class="keyword">GROUP</span> <span class="keyword">BY</span> nameAndType) t);</span><br></pre></td></tr></table></figure></p><p>方法一中删除多余重复数据和上面文章中的思路是一致的，方法二和方法三的思路是利用CONCAT函数。</p><p>以上，如果你开发过程中遇到同样问题，可以使用上面的SQL尝试一下！</p><p>The end…</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;在项目开发中，难免会遇到xx表有重复数据(脏数据)，导致的原因有很多，可能是测试人员一直在添加同一条数据，也可能是编写的功能本身就存在bug
-      
-    
-    </summary>
-    
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
-    
-    
-      <category term="MySQL" scheme="http://www.devcheng.net/tags/MySQL/"/>
-    
-      <category term="重复数据" scheme="http://www.devcheng.net/tags/%E9%87%8D%E5%A4%8D%E6%95%B0%E6%8D%AE/"/>
     
   </entry>
   
