@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.devcheng.net/"/>
-  <updated>2021-05-25T12:45:48.401Z</updated>
+  <updated>2021-05-26T12:01:44.877Z</updated>
   <id>http://www.devcheng.net/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>springBoot启动提示If you want an embedded database (H2, HSQL or Derby), please put</title>
+    <link href="http://www.devcheng.net/post/7dd074b3.html"/>
+    <id>http://www.devcheng.net/post/7dd074b3.html</id>
+    <published>2021-05-26T11:47:56.000Z</published>
+    <updated>2021-05-26T12:01:44.877Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><p>Springboot启动时报错 If you want an embedded database (H2, HSQL or Derby), please put it on the classpath</p><h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>对于这个异常的解决方案，网上绝大部分都是说：在启动的类中的@SpringBootApplication 改为如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)//排除自动配置</span><br><span class="line">public class ErukaServerMain &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        SpringApplication.run(ErukaServerMain.class,args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>这样改没有解决实际的问题。</p><p>产生这个错误的原因是Spring Boot的自动配置，如果你没有配置DataSource就会导致下图这个错误。</p><p>那如果你很确定，比如你就是要Spring Boot + Mybatis + MySQL 整合的代码，此时就应该去检查你的配置文件中是否正确配置了数据库连接。</p><h2 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h2><p>下面我们举个栗子复现这个问题，这里我使用Spring Boot + JPA + MySQL整合一个demo。</p><p>在数据库链接配置文件中，我们故意写错<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">spring.datasource.mysql.jdbc-url=jdbc:mysql://127.0.0.1:3306/beauty_atlas_server?characterEncoding=utf8&amp;serverTimezone=Asia/Shanghai&amp;allowMultiQueries=true</span><br><span class="line">spring.datasource.mysql.driverClassName=com.mysql.cj.jdbc.Driver</span><br><span class="line">spring.datasource.mysql.username=root</span><br><span class="line">spring.datasource.mysql.password=root</span><br></pre></td></tr></table></figure></p><p>tips: Spring Boot + JPA 配置连接数据库 可不是用 spring.datasource.mysql.jdbc-url 这个哦，以上的这块配置都是错的，这个时候你启动就会提示</p><p><img src="/images/devcheng_net_zhengheyichang.png" alt="“论坛内容管理系统”"></p><p>那正确的解决方法如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 数据库配置 spring boot + jpa 数据库配置前缀是下面这样的</span><br><span class="line">spring.datasource.url=jdbc:mysql://127.0.0.1:3306/beauty_atlas_server?characterEncoding=utf8&amp;serverTimezone=Asia/Shanghai&amp;allowMultiQueries=true</span><br><span class="line">spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver</span><br><span class="line">spring.datasource.username=root</span><br><span class="line">spring.datasource.password=root</span><br><span class="line">spring.datasource.type=com.alibaba.druid.pool.DruidDataSource</span><br></pre></td></tr></table></figure><p>由上可见，Spirng Boot 和不同的持久层整合这些配置都是有所区别的，在整合的过程中一定要慎重。<br>Spring Boot + JPA + MySQL 整合中还得配置DataSource，把它注入到Spring中接口，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">@ComponentScan</span><br><span class="line">@Configuration</span><br><span class="line">@ConfigurationProperties(prefix=&quot;spring.datasource&quot;)</span><br><span class="line">public class DbConfig &#123;</span><br><span class="line"></span><br><span class="line">    private String url;</span><br><span class="line">    private String username;</span><br><span class="line">    private String password;</span><br><span class="line"></span><br><span class="line">    @Bean</span><br><span class="line">    public DataSource getDataSource() &#123;</span><br><span class="line">        DruidDataSource dataSource = new DruidDataSource();</span><br><span class="line">        dataSource.setUrl(url);</span><br><span class="line">        dataSource.setUsername(username);</span><br><span class="line">        dataSource.setPassword(password);</span><br><span class="line">        return dataSource;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getUrl() &#123;</span><br><span class="line">        return url;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setUrl(String url) &#123;</span><br><span class="line">        this.url = url;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getUsername() &#123;</span><br><span class="line">        return username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setUsername(String username) &#123;</span><br><span class="line">        this.username = username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getPassword() &#123;</span><br><span class="line">        return password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setPassword(String password) &#123;</span><br><span class="line">        this.password = password;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>重新启动，项目无问题了。</p><hr><p>The end.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;异常&quot;&gt;&lt;a href=&quot;#异常&quot; class=&quot;headerlink&quot; title=&quot;异常&quot;&gt;&lt;/a&gt;异常&lt;/h2&gt;&lt;p&gt;Springboot启动时报错 If you want an embedded database (H2, HSQL or Derby), 
+      
+    
+    </summary>
+    
+      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+    
+    
+      <category term="异常" scheme="http://www.devcheng.net/tags/%E5%BC%82%E5%B8%B8/"/>
+    
+      <category term="SpringBoot" scheme="http://www.devcheng.net/tags/SpringBoot/"/>
+    
+  </entry>
   
   <entry>
     <title>MySQL关键字大全</title>
@@ -528,34 +555,6 @@
       <category term="Spring Boot" scheme="http://www.devcheng.net/tags/Spring-Boot/"/>
     
       <category term="注解" scheme="http://www.devcheng.net/tags/%E6%B3%A8%E8%A7%A3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis知识点汇总整理</title>
-    <link href="http://www.devcheng.net/post/72b87000.html"/>
-    <id>http://www.devcheng.net/post/72b87000.html</id>
-    <published>2020-08-17T12:41:47.000Z</published>
-    <updated>2020-08-17T12:49:51.967Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近，利用业余时间把Redis的知识点从基础到面试常问的点，全面系统的画了一个脑图。</p><p>这里先给大家安利一个在线画图<a href="https://www.processon.com/i/5915bcb6e4b0691b1f68fa96" target="_blank" rel="noopener">processon</a>，先看一下Redis知识点汇总整理好的一览图。</p><p><img src="https://s1.ax1x.com/2020/08/17/dZ8r24.png" alt="dZ8r24.png">.</p><p>由于绘制的脑图很大，以上仅是图的一部分。</p><h2 id="涉及知识点"><a href="#涉及知识点" class="headerlink" title="涉及知识点"></a>涉及知识点</h2><ul><li>基础知识点</li><li>数据持久化</li><li>过期策略</li><li>内存淘汰策略</li><li>常见问题</li><li>Redis事务</li><li>主从复制</li><li>Redis集群</li><li>应用场景</li><li>对应面试题</li><li>…</li></ul><p>如有其它你觉得可以加进去的知识点，欢迎留言。后续会继续修改优化脑图！</p><p>脑图地址: <a href="https://www.processon.com/view/link/5f34b188e0b34d0806735914" target="_blank" rel="noopener">https://www.processon.com/view/link/5f34b188e0b34d0806735914</a></p><p>阅读密码：yicheng</p><hr><p><strong>The end</strong></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;最近，利用业余时间把Redis的知识点从基础到面试常问的点，全面系统的画了一个脑图。&lt;/p&gt;
-&lt;p&gt;这里先给大家安利一个在线画图&lt;a hre
-      
-    
-    </summary>
-    
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
-    
-    
-      <category term="Redis" scheme="http://www.devcheng.net/tags/Redis/"/>
-    
-      <category term="Redis知识点" scheme="http://www.devcheng.net/tags/Redis%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     
   </entry>
   
