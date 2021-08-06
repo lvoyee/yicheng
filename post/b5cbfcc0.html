@@ -1,0 +1,348 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="伊成个人站-热衷于技术分享，源码分享的个人网站">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+	<!--baidu tongji-->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?11f6f08fada932368f71e76bd659b783";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
+    <link rel="dns-prefetch" href="http://www.devcheng.net">
+    <!--SEO-->
+
+<meta name="description" content="伊成个人站 www.devcheng.net 一个致力于技术分享，源码分享及工作经历分享的个人网站">
+
+
+
+<meta name="keywords" content="伊成个人站,技术分享,源码分享,代码分享,java代码,源代码">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+<title>	Springboot2.x整合p6spy-伊成个人站</title>
+
+    <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人网站" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+       ◉◡◉ 您好，欢迎到访伊成个人站!
+    </div>
+</header>
+    
+<nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.devcheng.net">伊成个人站-热衷于技术分享，源码分享的个人网站</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">				
+                    <ul class="menu">						
+						<a href="/"><img border="0" src="/img/logo2020.png" alt="伊成个人站" title="伊成个人站"></a>						
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa fa-home"></i>&nbsp;首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/blogshare/"><i class="fa fa-codepen"></i>&nbsp;技术分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codeshare/"><i class="fa fa-code"></i>&nbsp;源码分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codelife/"><i class="fa fa-pagelines"></i>&nbsp;程序人生</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives"><i class="fa fa-history"></i>&nbsp;时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about"><i class="fa fa-connectdevelop"></i>&nbsp;关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Springboot2.x整合p6spy">
+            
+	            Springboot2.x整合p6spy
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/blogshare">
+            blogshare
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/pringboot2" title="pringboot2">
+                        pringboot2
+                    </a>
+                
+                    <a href="/tags/p6spy" title="p6spy">
+                        p6spy
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2021/08/06</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="介绍p6spy"><a href="#介绍p6spy" class="headerlink" title="介绍p6spy"></a>介绍p6spy</h2><p>P6Spy 是针对数据库访问操作的动态监测框架，它使得数据库数据可无缝截取和操纵，而不必对现有应用程序的代码作任何修改。</p>
+<p>P6Spy 分发包包括P6Log，它是一个可记录任何 Java 应用程序的所有JDBC事务的应用程序。其配置完成使用时，可以进行数据访问性能的监测。</p>
+<p><code>P6Spy是一个开源项目，项目首页 www.p6spy.com [项目首页网站不可访问了！]</code></p>
+<h2 id="为何选择p6spy"><a href="#为何选择p6spy" class="headerlink" title="为何选择p6spy"></a>为何选择p6spy</h2><p>在很多项目中我们都会用mybatis打印必要的sql语句，但是对应的参数都是用 ？ 展示。而开发过程中如果我需要看完整的一条sql语句和具体参数值这就需要p6spy了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">==&gt; Preparing: select order_id, order_code, org_remark, add_payment, activity_id, evaluate_score FROM tc_order WHERE 1=1 and category =? and order_status = ? and start_date &lt;=? and third_order_id = ? </span><br><span class="line">2017-06-07 14:30:02,679 [executor-1] DEBUG com.xx.xx.dop2c.order.ext.TcOrderExtDao.queryForQueue - 47 - ==&gt; Parameters: 253(Long), 30(Integer), 2017-06-07 14:30:02(String), 0(String)</span><br></pre></td></tr></table></figure>
+<p>使用p6spy打印的sql如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2021-08-05 10:05:53.217 INFO 1064 --- [ main] p6spy : 2021-08-05 10:05:53|0|statement|connection 0|url </span><br><span class="line">jdbc:p6spy:h2:./data/test|insert into goods (name, price, create_time, update_time) values (&apos;bottole&apos;, 2500, now(), now())|insert into goods (name, price, create_time, update_time) values (&apos;bottole&apos;, 2500, now(), now())</span><br></pre></td></tr></table></figure>
+<h2 id="Springboot2整合p6spy"><a href="#Springboot2整合p6spy" class="headerlink" title="Springboot2整合p6spy"></a>Springboot2整合p6spy</h2><p>spring boot 版本：2.4.3</p>
+<p>1.添加对应依赖<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;p6spy&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;p6spy&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.9.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
+<p>2.修改数据库连接URL中加入p6spy</p>
+<p><img src="/images/springboot_p6spy_0806001.png" alt="“伊成博客”"></p>
+<p>3.配置spy.properties<br>将spy.properties复制到项目的resources文件夹中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#3.2.1以上使用</span><br><span class="line">modulelist=com.baomidou.mybatisplus.extension.p6spy.MybatisPlusLogFactory,com.p6spy.engine.outage.P6OutageFactory</span><br><span class="line">#modulelist=com.baomidou.mybatisplus.extension.p6spy.MybatisPlusLogFactory</span><br><span class="line">#3.2.1以下使用或者不配置</span><br><span class="line">#modulelist=com.p6spy.engine.logging.P6LogFactory,com.p6spy.engine.outage.P6OutageFactory</span><br><span class="line"># 自定义日志打印</span><br><span class="line">logMessageFormat=com.baomidou.mybatisplus.extension.p6spy.P6SpyLogger</span><br><span class="line">#日志输出到控制台</span><br><span class="line">appender=com.baomidou.mybatisplus.extension.p6spy.StdoutLogger</span><br><span class="line"># 使用日志系统记录 sql</span><br><span class="line">#appender=com.p6spy.engine.spy.appender.Slf4JLogger</span><br><span class="line"># 设置 p6spy driver 代理</span><br><span class="line">deregisterdrivers=true</span><br><span class="line"># 取消JDBC URL前缀</span><br><span class="line">useprefix=true</span><br><span class="line"># 配置记录 Log 例外,可去掉的结果集有error,info,batch,debug,statement,commit,rollback,result,resultset.</span><br><span class="line">excludecategories=info,debug,result,commit,resultset</span><br><span class="line"># 日期格式</span><br><span class="line">dateformat=yyyy-MM-dd HH:mm:ss</span><br><span class="line"># 实际驱动可多个</span><br><span class="line">#driverlist=org.h2.Driver</span><br><span class="line"># 是否开启慢SQL记录</span><br><span class="line">outagedetection=true</span><br><span class="line"># 慢SQL记录标准 2 秒</span><br><span class="line">outagedetectioninterval=2</span><br></pre></td></tr></table></figure>
+<p>这样就大功告成了，我们在运行项目的时候就可以在控制台中看到具体的sql语句了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Consume Time：0 ms 2021-08-05 11:16:24</span><br><span class="line">Execute SQL：SELECT * FROM tb_data_info WHERE datasource_id = 74</span><br></pre></td></tr></table></figure>
+<hr>
+<p>The end…</p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/reward-alipay.png"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/reward-wepay.png"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip"></p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处！
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/post/12b3c63e.html" class="next-post btn btn-default" title="微信小程序使用async提示regeneratorRuntime is not defined异常">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">微信小程序使用async提示regeneratorRuntime is not defined异常</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({           
+            el: '#vcomments',
+            appId: 'sbQDWnkLFsRjJS2BGzfKc4rL-gzGzoHsz',
+            appKey: '5u9C0UUmzRe3unr9iLzheHjk',
+            placeholder: '文明社会,理性评论留言 ^_^……',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍p6spy"><span class="toc-text">介绍p6spy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为何选择p6spy"><span class="toc-text">为何选择p6spy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Springboot2整合p6spy"><span class="toc-text">Springboot2整合p6spy</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018 - 2021
+                </span> | .<font color="#f1607d">伊</font><font color="#ffa500">成</font><font color="#e5e802">个</font><font color="#3bff23">人</font><font color="#ffa503">站</font><font color="#29c8ec"> devcheng</font><font color="#4f9cfa">.net</font>. |
+                <span>
+                    网站基于Hexo搭建
+                </span> |
+                <span>
+                     <a href="/sitemap.xml" class="copyright-links" target="_blank" rel="nofollow">本站地图</a>
+                </span> |
+				<span>
+					 <a href="/atom.xml" class="copyright-links" target="_blank" rel="nofollow">RSS订阅</a> 
+				</span> |
+				<span>
+                    <a href="https://beian.miit.gov.cn/" class="copyright-links" target="_blank" rel="nofollow">湘ICP备20010839号</a> 
+                </span>
+				<span>
+                    <a href="https://beian.miit.gov.cn/" class="copyright-links" target="_blank" rel="nofollow">湘ICP备20010839号-1</a> 
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>
