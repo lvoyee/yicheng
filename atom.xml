@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.devcheng.net/"/>
-  <updated>2021-08-06T05:36:50.434Z</updated>
+  <updated>2021-08-17T13:01:22.234Z</updated>
   <id>http://www.devcheng.net/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>如何批量添加单引号(逗号)</title>
+    <link href="http://www.devcheng.net/post/79b571d7.html"/>
+    <id>http://www.devcheng.net/post/79b571d7.html</id>
+    <published>2021-08-17T12:56:24.000Z</published>
+    <updated>2021-08-17T13:01:22.234Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在工作中可能会遇到这样的需求，客户（领导、同事）给你很多数据，你需要添加对应的单引号(or逗号)。数据量少的情况可以采用笨方法一个一个的处理，<br>但是数据量大的时候那怎么办呢？</p><p>借助一个神器，它就是 “Visual Studio Code”！</p><p><img src="/images/devcheng_net_vscode10001.png" alt="“伊成博客”"></p><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p><img src="/images/devcheng_net_vscode10002.png" alt="“伊成博客”"></p><p>假如客户（领导、同事）给你的是这样的一个txt文件，这个文件里面有很多数据。</p><h2 id="解决方法-vsCode方案"><a href="#解决方法-vsCode方案" class="headerlink" title="解决方法(vsCode方案)"></a>解决方法(vsCode方案)</h2><h3 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h3><p>这里我们借助 vsCode ,先打开 vsCode 。</p><p>接着双击编辑区，看下图：</p><p><img src="/images/devcheng_net_vscode10003.png" alt="“伊成博客”"></p><h3 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h3><p>把准备工作中的txt文件里面的数据复制进去。</p><p><img src="/images/devcheng_net_vscode10004.png" alt="“伊成博客”"></p><h3 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h3><p>鼠标放在文件最开始的地方，然后 ‘Alt + Shift’ 按住鼠标左键往下滑。然后你就可以输入你想要的符号了，例如我这里第一行我输入单引号，然后再最后一行我也输入一个单引号<br>并且加了一个逗号。</p><p>如下图：</p><p><img src="/images/devcheng_net_vscode10005.gif" alt="“伊成博客”"></p><h2 id="解决方法-notepad-方案"><a href="#解决方法-notepad-方案" class="headerlink" title="解决方法(notepad++方案)"></a>解决方法(notepad++方案)</h2><p>步骤和上述 vsCode 操作很类似，不一样的地方就是快捷键不一样了，在 notepad++ 里面 ‘Ctrl + Alt + Shift’ 按住鼠标左键往下滑。</p><p><img src="/images/devcheng_net_pad10006.gif" alt="“伊成博客”"></p><p>以上两种解决方案，任君选择。</p><p>好风凭借力，扶摇上青云。</p><p>收藏小技巧，包你事倍功半!</p><hr><p>The end…</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;在工作中可能会遇到这样的需求，客户（领导、同事）给你很多数据，你需要添加对应的单引号(or逗号)。数据量少的情况可以采用笨方法一个一个的处理
+      
+    
+    </summary>
+    
+      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+    
+    
+      <category term="批量添加单引号" scheme="http://www.devcheng.net/tags/%E6%89%B9%E9%87%8F%E6%B7%BB%E5%8A%A0%E5%8D%95%E5%BC%95%E5%8F%B7/"/>
+    
+      <category term="vscode" scheme="http://www.devcheng.net/tags/vscode/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Springboot2.x整合p6spy</title>
     <link href="http://www.devcheng.net/post/b5cbfcc0.html"/>
     <id>http://www.devcheng.net/post/b5cbfcc0.html</id>
     <published>2021-08-06T05:27:03.000Z</published>
-    <updated>2021-08-06T05:36:50.434Z</updated>
+    <updated>2021-08-17T12:57:04.822Z</updated>
     
     <content type="html"><![CDATA[<h2 id="介绍p6spy"><a href="#介绍p6spy" class="headerlink" title="介绍p6spy"></a>介绍p6spy</h2><p>P6Spy 是针对数据库访问操作的动态监测框架，它使得数据库数据可无缝截取和操纵，而不必对现有应用程序的代码作任何修改。</p><p>P6Spy 分发包包括P6Log，它是一个可记录任何 Java 应用程序的所有JDBC事务的应用程序。其配置完成使用时，可以进行数据访问性能的监测。</p><p><code>P6Spy是一个开源项目，项目首页 www.p6spy.com [项目首页网站不可访问了！]</code></p><h2 id="为何选择p6spy"><a href="#为何选择p6spy" class="headerlink" title="为何选择p6spy"></a>为何选择p6spy</h2><p>在很多项目中我们都会用mybatis打印必要的sql语句，但是对应的参数都是用 ？ 展示。而开发过程中如果我需要看完整的一条sql语句和具体参数值这就需要p6spy了。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">==&gt; Preparing: select order_id, order_code, org_remark, add_payment, activity_id, evaluate_score FROM tc_order WHERE 1=1 and category =? and order_status = ? and start_date &lt;=? and third_order_id = ? </span><br><span class="line">2017-06-07 14:30:02,679 [executor-1] DEBUG com.xx.xx.dop2c.order.ext.TcOrderExtDao.queryForQueue - 47 - ==&gt; Parameters: 253(Long), 30(Integer), 2017-06-07 14:30:02(String), 0(String)</span><br></pre></td></tr></table></figure><p>使用p6spy打印的sql如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2021-08-05 10:05:53.217 INFO 1064 --- [ main] p6spy : 2021-08-05 10:05:53|0|statement|connection 0|url </span><br><span class="line">jdbc:p6spy:h2:./data/test|insert into goods (name, price, create_time, update_time) values (&apos;bottole&apos;, 2500, now(), now())|insert into goods (name, price, create_time, update_time) values (&apos;bottole&apos;, 2500, now(), now())</span><br></pre></td></tr></table></figure><h2 id="Springboot2整合p6spy"><a href="#Springboot2整合p6spy" class="headerlink" title="Springboot2整合p6spy"></a>Springboot2整合p6spy</h2><p>spring boot 版本：2.4.3</p><p>1.添加对应依赖<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;p6spy&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;p6spy&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.9.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p><p>2.修改数据库连接URL中加入p6spy</p><p><img src="/images/springboot_p6spy_0806001.png" alt="“伊成博客”"></p><p>3.配置spy.properties<br>将spy.properties复制到项目的resources文件夹中。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#3.2.1以上使用</span><br><span class="line">modulelist=com.baomidou.mybatisplus.extension.p6spy.MybatisPlusLogFactory,com.p6spy.engine.outage.P6OutageFactory</span><br><span class="line">#modulelist=com.baomidou.mybatisplus.extension.p6spy.MybatisPlusLogFactory</span><br><span class="line">#3.2.1以下使用或者不配置</span><br><span class="line">#modulelist=com.p6spy.engine.logging.P6LogFactory,com.p6spy.engine.outage.P6OutageFactory</span><br><span class="line"># 自定义日志打印</span><br><span class="line">logMessageFormat=com.baomidou.mybatisplus.extension.p6spy.P6SpyLogger</span><br><span class="line">#日志输出到控制台</span><br><span class="line">appender=com.baomidou.mybatisplus.extension.p6spy.StdoutLogger</span><br><span class="line"># 使用日志系统记录 sql</span><br><span class="line">#appender=com.p6spy.engine.spy.appender.Slf4JLogger</span><br><span class="line"># 设置 p6spy driver 代理</span><br><span class="line">deregisterdrivers=true</span><br><span class="line"># 取消JDBC URL前缀</span><br><span class="line">useprefix=true</span><br><span class="line"># 配置记录 Log 例外,可去掉的结果集有error,info,batch,debug,statement,commit,rollback,result,resultset.</span><br><span class="line">excludecategories=info,debug,result,commit,resultset</span><br><span class="line"># 日期格式</span><br><span class="line">dateformat=yyyy-MM-dd HH:mm:ss</span><br><span class="line"># 实际驱动可多个</span><br><span class="line">#driverlist=org.h2.Driver</span><br><span class="line"># 是否开启慢SQL记录</span><br><span class="line">outagedetection=true</span><br><span class="line"># 慢SQL记录标准 2 秒</span><br><span class="line">outagedetectioninterval=2</span><br></pre></td></tr></table></figure><p>这样就大功告成了，我们在运行项目的时候就可以在控制台中看到具体的sql语句了。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Consume Time：0 ms 2021-08-05 11:16:24</span><br><span class="line">Execute SQL：SELECT * FROM tb_data_info WHERE datasource_id = 74</span><br></pre></td></tr></table></figure><hr><p>The end…</p>]]></content>
     
@@ -37,7 +64,7 @@
       <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
     
     
-      <category term="pringboot2" scheme="http://www.devcheng.net/tags/pringboot2/"/>
+      <category term="springboot2" scheme="http://www.devcheng.net/tags/springboot2/"/>
     
       <category term="p6spy" scheme="http://www.devcheng.net/tags/p6spy/"/>
     
@@ -530,33 +557,6 @@
       <category term="乐观锁" scheme="http://www.devcheng.net/tags/%E4%B9%90%E8%A7%82%E9%94%81/"/>
     
       <category term="悲观锁" scheme="http://www.devcheng.net/tags/%E6%82%B2%E8%A7%82%E9%94%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如果面试官问你“你有什么问题问我吗？”时，你该如何回答</title>
-    <link href="http://www.devcheng.net/post/185dcb3e.html"/>
-    <id>http://www.devcheng.net/post/185dcb3e.html</id>
-    <published>2020-09-22T13:35:33.000Z</published>
-    <updated>2020-09-22T14:05:06.212Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>又是一年一度的“金九银十”跳槽季，我还记得当时我去参加面试的时候，几乎每一场面试，特别是HR面和高管面的时候，面试官总是会在结尾问我:“问了你这么多问题了，你有什么问题问我吗？”。</p><p>这个时候很多人内心就会陷入短暂的纠结中：我该问吗？不问的话面试官会不会对我影响不好？问什么问题？问这个问题会不会让面试官对我的影响不好啊？</p><h2 id="这个问题对最终面试结果的影响到底大不大"><a href="#这个问题对最终面试结果的影响到底大不大" class="headerlink" title="这个问题对最终面试结果的影响到底大不大?"></a>这个问题对最终面试结果的影响到底大不大?</h2><p>就技术面试而言，回答这个问题的时候，只要你不是触碰到你所面试的公司的雷区，那么我觉得这对你能不能拿到最终offer来说影响确实是不大的。</p><p>我说这些并不代表你就可以直接对面试官说：“我没问题了。”，个人当时面试的时候确实也说过挺多次“没问题要问了。”，最终也没有导致笔主被pass掉（可能是前面表现比较好，哈哈，自恋一下）。我现在回想起来，觉得自己当时做法其实挺不对的。</p><p>面试本身就是一个双向选择的过程，你对这个问题的回答也会侧面反映出你对这次面试的上心程度，你的问题是否有价值，也影响了你最终的选择与公司是否选择你。</p><p>面试官在技术面试中主要考察的还是你这样个人到底有没有胜任这个工作的能力以及你是否适合公司未来的发展需要，很多公司还需要你认同它的文化。</p><p>我觉得你只要不是太笨，应该不会栽在这里。除非你和另外一个人在能力上相同，但是只能在你们两个人中选一个，那么这个问题才对你能不能拿到offer至关重要。有准备总比没准备好，给面试官留一个好的影响总归是没错的。</p><p>但是，就非技术面试来说，我觉得好好回答这个问题对你最终的结果还是比较重要的。</p><p>总的来说不管是技术面试还是非技术面试，如果你想赢得公司的青睐和尊重，我觉得我们都应该重视这个问题。</p><h2 id="真诚一点-不要问太-Low-的问题"><a href="#真诚一点-不要问太-Low-的问题" class="headerlink" title="真诚一点,不要问太 Low 的问题"></a>真诚一点,不要问太 Low 的问题</h2><p>回答这个问题很重要的一点就是你没有必要放低自己的姿态问一些很虚或者故意讨好面试官的问题，也不要把自己从面经上学到的东西照搬下来使用。</p><p>面试官也不是傻子，特别是那种特别有经验的面试官，你是真心诚意的问问题，还是从别处照搬问题来讨好面试官，人家可能一听就听出来了。</p><p>总的来说，还是要真诚。</p><p>除此之外，不要问太 Low 的问题，会显得你整个人格局比较小或者说你根本没有准备（侧面反映你对这家公司不上心，既然你不上心，为什么要要你呢）。</p><p>举例几个比较 Low 的问题，大家看看自己有没有问过其中的问题：</p><ul><li>贵公司的主要业务是什么？（面试之前自己不知道提前网上查一下吗？）</li><li>贵公司的男女比例如何？（考虑脱单？记住你是来工作的！）</li><li>贵公司一年搞几次外出旅游？（你是来工作的，这些娱乐活动先别放在心上！）</li><li>……</li></ul><h2 id="有哪些有价值的问题值得问"><a href="#有哪些有价值的问题值得问" class="headerlink" title="有哪些有价值的问题值得问?"></a>有哪些有价值的问题值得问?</h2><p>针对这个问题。笔主专门找了几个专门做HR工作的小哥哥小姐姐们询问并且查阅了挺多前辈们的回答，然后结合自己的实际经历，我概括了下面几个比较适合问的问题。</p><p><strong>面对HR或者其他Level比较低的面试官时</strong></p><p><strong>1.能不能谈谈你作为一个公司老员工对公司的感受?</strong> (这个问题比较容易回答，不会让面试官陷入无话可说的尴尬境地。另外，从面试官的回答中你可以加深对这个公司的了解，让你更加清楚这个公司到底是不是你想的那样或者说你是否能适应这个公司的文化。除此之外，这样的问题在某种程度上还可以拉进你与面试官的距离。)</p><p><strong>2.能不能问一下，你当时因为什么原因选择加入这家公司的呢或者说这家公司有哪些地方吸引你？有什么地方你觉得还不太好或者可以继续完善吗？</strong> （类似第一个问题，都是问面试官个人对于公司的看法。）</p><p><strong>3.我觉得我这次表现的不是太好，你有什么建议或者评价给我吗？</strong>(这个是我常问的。我觉得说自己表现不好只是这个语境需要这样来说，这样可以显的你比较谦虚好学上进。)</p><p><strong>4.接下来我会有一段空档期，有什么值得注意或者建议学习的吗？</strong> （体现出你对工作比较上心，自助学习意识比较强。）</p><p><strong>5.这个岗位为什么还在招人？</strong> (岗位真实性和价值咨询)</p><p><strong>6.大概什么时候能给我回复呢？</strong>(终面的时候，如果面试官没有说的话，可以问一下)</p><p><strong>7…….</strong></p><p><strong>面对部门领导</strong></p><p><strong>1.部门的主要人员分配以及对应的主要工作能简单介绍一下吗？</strong></p><p><strong>2.未来如果我要加入这个团队，你对我的期望是什么？</strong> （部门领导一般情况下是你的直属上级了，你以后和他打交道的机会应该是最多的。你问这个问题，会让他感觉你是一个对他的部门比较上心，比较有团体意识，并且愿意倾听的候选人。）</p><p><strong>3.公司对新入职的员工的培养机制是什么样的呢？</strong>（正规的公司一般都有培养机制，提前问一下是对你自己的负责也会显的你比较上心）</p><p><strong>4.以您来看，这个岗位未来在公司内部的发展如何？</strong> (在我看来，问这个问题也是对你自己的负责吧，谁不想发展前景更好的岗位呢？)</p><p><strong>5.团队现在面临的最大挑战是什么？</strong> (这样的问题不会暴露你对公司的不了解，并且也能让你对未来工作的挑战或困难有一个提前的预期。)</p><p><strong>面对Level比较高的(比如总裁,老板)</strong></p><p><strong>1.贵公司的发展目标和方向是什么？</strong> （看下公司的发展是否满足自己的期望）</p><p><strong>2.与同行业的竞争者相比，贵公司的核心竞争优势在什么地方？</strong> （充分了解自己的优势和劣势）</p><p><strong>3.公司现在面临的最大挑战是什么？</strong></p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>薪酬待遇和相关福利问题一般在终面的时候（最好不要在前面几面的时候就问到这个问题），面试官会提出来或者在面试完之后以邮件的形式告知你。一般来说，如果面试官很愿意为你回答问题，对你的问题也比较上心的话，那他肯定是觉得你就是他们要招的人。</p><p>大家在面试的时候，可以根据自己对于公司或者岗位的了解程度，对上面提到的问题进行适当修饰或者修改。</p><p>上面提到的一些问题只是给没有经验的朋友一个参考，如果你还有其他比较好的问题的话，那当然也更好啦！</p><hr><p><strong>The End</strong></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;又是一年一度的“金九银十”跳槽季，我还记得当时我去参加面试的时候，几乎每一场面试，特别是HR面和高管面的时候，面试官总是会在结尾问我:“问了
-      
-    
-    </summary>
-    
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
-    
-    
-      <category term="面试" scheme="http://www.devcheng.net/tags/%E9%9D%A2%E8%AF%95/"/>
-    
-      <category term="面试经验" scheme="http://www.devcheng.net/tags/%E9%9D%A2%E8%AF%95%E7%BB%8F%E9%AA%8C/"/>
     
   </entry>
   
