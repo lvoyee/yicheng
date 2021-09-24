@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.devcheng.net/"/>
-  <updated>2021-08-31T12:07:27.254Z</updated>
+  <updated>2021-09-24T01:37:05.614Z</updated>
   <id>http://www.devcheng.net/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>jenkins打包前端项目</title>
+    <link href="http://www.devcheng.net/post/92a007c9.html"/>
+    <id>http://www.devcheng.net/post/92a007c9.html</id>
+    <published>2021-09-24T01:27:47.000Z</published>
+    <updated>2021-09-24T01:37:05.614Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>这里我的 Jenkins版本是：2.303.1</p><p><img src="/images/image-20210923153840448.png" alt="“伊成博客”"></p><h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><p>点击 左边菜单栏中 “Manage Jenkins”  –&gt; “Manager Plugins”。</p><p><img src="/images/image-20210923153947249.png" alt="“伊成博客”"></p><p>在输入框中输入 nodeJS,搜索安装即可（我这里是已经安装过了的截图）</p><p><img src="/images/image-20210923154210082.png" alt="“伊成博客”"></p><h2 id="全局工具配置"><a href="#全局工具配置" class="headerlink" title="全局工具配置"></a>全局工具配置</h2><p><img src="/images/image-20210923154511889.png" alt="“伊成博客”"></p><p>选择对应的版本，点击 保存 和 应用 按钮即可。</p><p><img src="/images/image-20210923154603315.png" alt="“伊成博客”"></p><p>做到这，准备工作都已经作完了，接着就是创建一个任务。</p><h2 id="新建任务"><a href="#新建任务" class="headerlink" title="新建任务"></a>新建任务</h2><p>输入名称，选择一个自由风格的项目。</p><p><img src="/images/image-20210923154808081.png" alt="“伊成博客”"></p><p>配置General(我这里保持构建的最大个数写的是 10，大家可以按需配置)</p><p><img src="/images/image-20210923154921941.png" alt="“伊成博客”"></p><p>配置 源码管理，填写对应的项目gitlab地址。</p><p><img src="/images/image-20210923155040885.png" alt="“伊成博客”"></p><p>配置构建环境</p><p><img src="/images/image-20210923155138628.png" alt="“伊成博客”"></p><p>配置构建</p><p>在构建中选择执行shell</p><p><img src="/images/image-20210923155213737.png" alt="“伊成博客”"></p><p>对应的命令如下：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">echo $PATH </span><br><span class="line">node -v  </span><br><span class="line">npm -v   </span><br><span class="line">npm install chromedriver --chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver</span><br><span class="line">npm install</span><br><span class="line">npm run build</span><br></pre></td></tr></table></figure><p>执行成功后可以看到控制台输出</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> DONE  Build complete. The dist directory is ready to be deployed.</span><br><span class="line"> INFO  Check out deployment instructions at https://cli.vuejs.org/guide/deployment.html</span><br><span class="line">      </span><br><span class="line">Finished: SUCCESS</span><br></pre></td></tr></table></figure><p><img src="/images/image-20210923155740843.png" alt="“伊成博客”"></p><hr><p>The end …</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot; class=&quot;headerlink&quot; title=&quot;准备工作&quot;&gt;&lt;/a&gt;准备工作&lt;/h2&gt;&lt;p&gt;这里我的 Jenkins版本是：2.303.1&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/image-2021092
+      
+    
+    </summary>
+    
+      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+    
+    
+      <category term="jenkins" scheme="http://www.devcheng.net/tags/jenkins/"/>
+    
+      <category term="jenkins打包" scheme="http://www.devcheng.net/tags/jenkins%E6%89%93%E5%8C%85/"/>
+    
+  </entry>
   
   <entry>
     <title>如何配置虚拟机互相免密ssh登录</title>
@@ -529,32 +557,6 @@
       <category term="图书管理系统" scheme="http://www.devcheng.net/tags/%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
     
       <category term="在线图书管理系统" scheme="http://www.devcheng.net/tags/%E5%9C%A8%E7%BA%BF%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Class org.springframework.util.ReflectionUtils can not access a member of class异常</title>
-    <link href="http://www.devcheng.net/post/50c55201.html"/>
-    <id>http://www.devcheng.net/post/50c55201.html</id>
-    <published>2020-09-28T09:34:25.000Z</published>
-    <updated>2020-09-28T09:57:08.461Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近，工作中多个地方用到了Java反射调用私有方法，但如果不小心很容易出错，下面看看异常信息</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">2020-09-25 14:02:03.393 ERROR 13920 --- [nio-8400-exec-3] c.s.b.d.support.utils.ExceptionUtils :</span><br><span class="line"> Could not access method: </span><br><span class="line"> Class org.springframework.util.ReflectionUtils can not access a member of class com.xxx.model.entity.XxxEntity with modifiers &quot;private&quot;; </span><br><span class="line"> nested exception is java.lang.IllegalStateException: Could not access method: </span><br><span class="line"> Class org.springframework.util.ReflectionUtils can not access a member of </span><br><span class="line"> class com.xxx.Entity with modifiers &quot;private&quot;</span><br></pre></td></tr></table></figure><h2 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h2><p>为了完整的说明这个异常，简单的看一下代码：</p><p><strong>Entity 类</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">package com.xxx.reflect;</span><br><span class="line"></span><br><span class="line">public class Student &#123;</span><br><span class="line"></span><br><span class="line">    private void add()&#123;</span><br><span class="line">        System.out.println(&quot;add method...&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private int id;</span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line">    public int getId() &#123;</span><br><span class="line">        return id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setId(int id) &#123;</span><br><span class="line">        this.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Student(int id, String name) &#123;</span><br><span class="line">        super();</span><br><span class="line">        this.id = id;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Student() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p><strong>Main类</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">        Class c1=Student.class;</span><br><span class="line">        Object obj=(Object)c1.newInstance();</span><br><span class="line"></span><br><span class="line">        Method  method = c1.getDeclaredMethod(&quot;add&quot;);</span><br><span class="line">        method.invoke((Student)obj);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p>直接运行 main 方法则会报这个异常 Class . can not access a member of class . with modifiers “private” 。</p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>设置Field对象的Accessible的访问标志位为Ture，就可以通过反射获取私有变量的值，在访问时会忽略访问修饰符的检查。</p><p>所以只需要加上这行代码即可！</p><p><strong>Main类</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">        Class c1=Student.class;</span><br><span class="line">        Object obj=(Object)c1.newInstance();</span><br><span class="line"></span><br><span class="line">        Method  method = c1.getDeclaredMethod(&quot;add&quot;);</span><br><span class="line">method.setAccessible(true); // 加上这句即可解决问题！</span><br><span class="line">        method.invoke((Student)obj);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><hr><p>The end</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;最近，工作中多个地方用到了Java反射调用私有方法，但如果不小心很容易出错，下面看看异常信息&lt;/p&gt;
-&lt;figure class=&quot;high
-      
-    
-    </summary>
-    
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
-    
-    
-      <category term="异常" scheme="http://www.devcheng.net/tags/%E5%BC%82%E5%B8%B8/"/>
     
   </entry>
   
