@@ -1,0 +1,451 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="伊成个人站-热衷于技术分享，源码分享的个人网站">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+	<!--baidu tongji-->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?11f6f08fada932368f71e76bd659b783";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
+    <link rel="dns-prefetch" href="http://www.devcheng.net">
+    <!--SEO-->
+
+<meta name="description" content="伊成个人站 www.devcheng.net 一个致力于技术分享，源码分享及工作经历分享的个人网站">
+
+
+
+<meta name="keywords" content="伊成个人站,技术分享,源码分享,代码分享,java代码,源代码">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+<title>	JAVA之UML类图学习笔记-伊成个人站</title>
+
+    <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人网站" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+       ◉◡◉ 您好，欢迎到访伊成个人站!
+    </div>
+</header>
+    
+<nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.devcheng.net">伊成个人站-热衷于技术分享，源码分享的个人网站</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">				
+                    <ul class="menu">						
+						<a href="/"><img border="0" src="/img/logo2020.png" alt="伊成个人站" title="伊成个人站"></a>						
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa fa-home"></i>&nbsp;首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/blogshare/"><i class="fa fa-codepen"></i>&nbsp;技术分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codeshare/"><i class="fa fa-code"></i>&nbsp;源码分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codelife/"><i class="fa fa-pagelines"></i>&nbsp;程序人生</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives"><i class="fa fa-history"></i>&nbsp;时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about"><i class="fa fa-connectdevelop"></i>&nbsp;关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="JAVA之UML类图学习笔记">
+            
+	            JAVA之UML类图学习笔记
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/blogshare">
+            blogshare
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/UML类图" title="UML类图">
+                        UML类图
+                    </a>
+                
+                    <a href="/tags/类图" title="类图">
+                        类图
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2021/11/16</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="JAVA之UML类图学习笔记"><a href="#JAVA之UML类图学习笔记" class="headerlink" title="JAVA之UML类图学习笔记"></a>JAVA之UML类图学习笔记</h2><p>学习设计模式必不可少需要了解熟悉各个模式的UML类图，为了了解每个设计模式之间各个类的关系和结构很有必要学习一下UML类图。</p>
+<h3 id="UML"><a href="#UML" class="headerlink" title="UML"></a>UML</h3><p>统一建模语言（Unified Modeling Language，UML）是用来设计软件蓝图的可视化建模语言，1997 年被国际对象管理组织（OMG）采纳为面向对象的建模语言的国际标准。它的特点是简单、统一、图形化、能表达软件设计中的动态与静态信息。</p>
+<p>统一建模语言能为软件开发的所有阶段提供模型化和可视化支持。而且融入了软件工程领域的新思想、新方法和新技术，使软件设计人员沟通更简明，进一步缩短了设计时间，减少开发成本。它的应用领域很宽，不仅适合于一般系统的开发，而且适合于并行与分布式系统的建模。</p>
+<p>UML 从目标系统的不同角度出发，定义了<strong>用例图、类图、对象图、状态图、活动图、时序图、协作图、构件图、部署图</strong>等9种图。</p>
+<h3 id="类和接口"><a href="#类和接口" class="headerlink" title="类和接口"></a>类和接口</h3><h4 id="类（Class）"><a href="#类（Class）" class="headerlink" title="类（Class）"></a>类（Class）</h4><p>指具有相同属性、方法和关系的对象的抽象，它封装了数据和行为，是面向对象程序设计（OOP）的基础，具有封装性、继承性和多态性等三大特性。</p>
+<p>在UML中，类使用包含类名、属性和操作且带有分隔线的矩形来表示。</p>
+<p>(1) 类名（Name）是一个字符串，例如，School。</p>
+<p>(2) 属性（Attribute）是指类的特性，即类的成员变量。UML 按以下格式表示：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[可见性]属性名:类型[=默认值]</span><br></pre></td></tr></table></figure>
+<p>举个栗子： -name:String</p>
+<p><strong>tips:</strong>  “可见性” 指的是该属性对类外的元素是否可见。</p>
+<p>类图中表示可见性的符号如下：</p>
+<table>
+<thead>
+<tr>
+<th><strong>+</strong></th>
+<th><strong>public</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>-</strong></td>
+<td><strong>private</strong></td>
+</tr>
+<tr>
+<td>#</td>
+<td><strong>protected</strong></td>
+</tr>
+<tr>
+<td><strong>~</strong></td>
+<td><strong>package</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>(3) 操作（Operations）是类的任意一个实例对象都可以使用的行为，是类的成员方法。UML 按以下格式表示</strong></p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[可见性]名称(参数列表)[:返回类型]</span><br></pre></td></tr></table></figure>
+<p><strong>举个栗子，类的表示参考下图：</strong></p>
+<p><img src="/images/leitu_20211116103518.png" alt="“伊成博客”"></p>
+<h4 id="接口-（interface）"><a href="#接口-（interface）" class="headerlink" title="接口 （interface）"></a>接口 （interface）</h4><p>接口是指对象行为的描述，一个类可有一个或多个接口。</p>
+<p><img src="/images/leitu_20211116104822.png" alt="“伊成博客”"></p>
+<h3 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h3><p>类图（ClassDiagram）是用来显示系统中的类、接口、协作以及它们之间的静态结构和关系的一种静态模型。它主要用于描述软件系统的结构化设计，帮助人们简化对软件系统的理解，它是系统分析与设计阶段的重要产物，也是系统编码与测试的重要模型依据。</p>
+<p><img src="/images/leitu_gx_001.jpg" alt="“伊成博客”"></p>
+<h4 id="类之间的关系"><a href="#类之间的关系" class="headerlink" title="类之间的关系"></a>类之间的关系</h4><p>UML 中的类图有以下几种关系：</p>
+<p><strong>依赖关系（<em>Dependency</em>）、关联关系（Association）、聚合关系（Aggregation）、组合关系（Composition）、泛化关系（Generalization）和实现关系 (Realization)</strong>。</p>
+<p>其中泛化和实现的耦合度相等，它们是最强的。</p>
+<h5 id="依赖关系"><a href="#依赖关系" class="headerlink" title="依赖关系"></a>依赖关系</h5><p>依赖（Dependency）关系是一种使用关系，它是对象之间耦合度最弱的一种关联方式，是临时性的关联。在代码中，某个类的方法通过局部变量、方法的参数或者对静态方法的调用来访问另一个类（被依赖类）中的某些方法来完成一些职责。</p>
+<p>在 UML 类图中，依赖关系使用带箭头的虚线来表示，箭头从使用类指向被依赖的类。图所示是人与手机的关系图，人通过手机的语音传送方法打电话。</p>
+<p><img src="/images/leitu_gx_002.jpg" alt="“伊成博客”"></p>
+<h5 id="关联关系"><a href="#关联关系" class="headerlink" title="关联关系"></a>关联关系</h5><p>关联（Association）关系是对象之间的一种引用关系，用于表示一类对象与另一类对象之间的联系，如老师和学生、师傅和徒弟、丈夫和妻子等。关联关系是类与类之间最常用的一种关系，分为一般关联关系、聚合关系和组合关系。我们先介绍一般关联。</p>
+<p>关联可以是双向的，也可以是单向的。在 UML 类图中，双向的关联可以用带两个箭头或者没有箭头的实线来表示，单向的关联用带一个箭头的实线来表示，箭头从使用类指向被关联的类。也可以在关联线的两端标注角色名，代表两种不同的角色。</p>
+<p>在代码中通常将一个类的对象作为另一个类的成员变量来实现关联关系。图 5 所示是老师和学生的关系图，每个老师可以教多个学生，每个学生也可向多个老师学，他们是双向关联。</p>
+<p><img src="/images/leitu_gx_003.jpg" alt="“伊成博客”"></p>
+<h5 id="聚合关系"><a href="#聚合关系" class="headerlink" title="聚合关系"></a>聚合关系</h5><p>聚合（Aggregation）关系是关联关系的一种，是强关联关系，是整体和部分之间的关系，是 has-a 的关系。</p>
+<p>聚合关系也是通过成员对象来实现的，其中成员对象是整体对象的一部分，但是成员对象可以脱离整体对象而独立存在。例如，学校与老师的关系，学校包含老师，但如果学校停办了，老师依然存在。</p>
+<p>在 UML 类图中，聚合关系可以用带空心菱形的实线来表示，菱形指向整体。图所示是大学和教师的关系图。</p>
+<p><img src="/images/leitu_gx_004.jpg" alt="“伊成博客”"></p>
+<h5 id="组合关系"><a href="#组合关系" class="headerlink" title="组合关系"></a>组合关系</h5><p>组合（Composition）关系也是关联关系的一种，也表示类之间的整体与部分的关系，但它是一种更强烈的聚合关系，是 contains-a 关系。</p>
+<p>在组合关系中，整体对象可以控制部分对象的生命周期，一旦整体对象不存在，部分对象也将不存在，部分对象不能脱离整体对象而存在。例如，头和嘴的关系，没有了头，嘴也就不存在了。</p>
+<p>在 UML 类图中，组合关系用带实心菱形的实线来表示，菱形指向整体。图所示是头和嘴的关系图。</p>
+<p><img src="/images/leitu_gx_005.jpg" alt="“伊成博客”"></p>
+<h5 id="泛化关系"><a href="#泛化关系" class="headerlink" title="泛化关系"></a>泛化关系</h5><p>泛化（Generalization）关系是对象之间耦合度最大的一种关系，表示一般与特殊的关系，是父类与子类之间的关系，是一种继承关系，是 is-a 的关系。</p>
+<p>在 UML 类图中，泛化关系用带空心三角箭头的实线来表示，箭头从子类指向父类。在代码实现时，使用面向对象的继承机制来实现泛化关系。例如，Student 类和 Teacher 类都是 Person 类的子类，其类图如图所示。</p>
+<p><img src="/images/leitu_gx_006.jpg" alt="“伊成博客”"></p>
+<h5 id="实现关系"><a href="#实现关系" class="headerlink" title="实现关系"></a>实现关系</h5><p>实现（Realization）关系是接口与实现类之间的关系。在这种关系中，类实现了接口，类中的操作实现了接口中所声明的所有的抽象操作。</p>
+<p>在 UML 类图中，实现关系使用带空心三角箭头的虚线来表示，箭头从实现类指向接口。例如，汽车和船实现了交通工具，其类图如图所示。</p>
+<p><img src="/images/leitu_gx_007.jpg" alt="“伊成博客”"></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>便于记忆，特此绘制一个表格记录类之间的关系。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">类关系</th>
+<th>说明</th>
+<th>代码表现</th>
+<th>箭头及指向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>依赖关系</strong></td>
+<td>是一种使用的关系,尽量不使用双向的互相依赖</td>
+<td>局部变量、方法的参数或者对静态方法的调用</td>
+<td>带箭头的虚线，指向被使用者</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>关联关系</strong></td>
+<td>是一种拥有的关系,它使一个类知道另一个类的属性和方法</td>
+<td>成员变量</td>
+<td>带普通箭头的实心线，指向被拥有者</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>聚合关系</strong></td>
+<td>是整体与部分的关系</td>
+<td>成员变量</td>
+<td>带空心菱形的实心线，菱形指向整体</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>组合关系</strong></td>
+<td>是整体与部分的关系</td>
+<td>成员变量</td>
+<td>带实心菱形的实线，菱形指向整体</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>泛化关系</strong></td>
+<td>是一种继承关系,它指定了子类如何特化父类的所有特征和行为</td>
+<td>——</td>
+<td>带三角箭头的实线，箭头指向父类</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>实现关系</strong></td>
+<td>一种类与接口的关系，表示类是接口所有特征和行为的实现</td>
+<td>——</td>
+<td>带三角箭头的虚线，箭头指向接口</td>
+</tr>
+</tbody>
+</table>
+<p>各种关系的强弱顺序：</p>
+<p><strong>泛化 = 实现 &gt; 组合 &gt; 聚合 &gt; 关联 &gt; 依赖</strong></p>
+<p>看完这些脑袋是不是嗡嗡的啊，少年，还有一个速记表格如下：</p>
+<p><img src="/images/leitu_zj_20211116144939.png" alt="“伊成博客”"></p>
+<p>看以上表格可快速看懂类和类之间的关系图，学会了你也可以快速绘制UML类图了，分享到此结束！</p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/reward-alipay.png"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/reward-wepay.png"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip"></p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处！
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/post/506c22fa.html" class="next-post btn btn-default" title="MySQL性能优化命令Explain使用介绍">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">MySQL性能优化命令Explain使用介绍</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({           
+            el: '#vcomments',
+            appId: 'sbQDWnkLFsRjJS2BGzfKc4rL-gzGzoHsz',
+            appKey: '5u9C0UUmzRe3unr9iLzheHjk',
+            placeholder: '文明社会,理性评论留言 ^_^……',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JAVA之UML类图学习笔记"><span class="toc-text">JAVA之UML类图学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#UML"><span class="toc-text">UML</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类和接口"><span class="toc-text">类和接口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#类（Class）"><span class="toc-text">类（Class）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#接口-（interface）"><span class="toc-text">接口 （interface）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类图"><span class="toc-text">类图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#类之间的关系"><span class="toc-text">类之间的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#依赖关系"><span class="toc-text">依赖关系</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#关联关系"><span class="toc-text">关联关系</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#聚合关系"><span class="toc-text">聚合关系</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#组合关系"><span class="toc-text">组合关系</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#泛化关系"><span class="toc-text">泛化关系</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#实现关系"><span class="toc-text">实现关系</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018 - 2021
+                </span> | .<font color="#f1607d">伊</font><font color="#ffa500">成</font><font color="#e5e802">个</font><font color="#3bff23">人</font><font color="#ffa503">站</font><font color="#29c8ec"> devcheng</font><font color="#4f9cfa">.net</font>. |
+                <span>
+                    网站基于Hexo搭建
+                </span> |
+                <span>
+                     <a href="/sitemap.xml" class="copyright-links" target="_blank" rel="nofollow">本站地图</a>
+                </span> |
+				<span>
+					 <a href="/atom.xml" class="copyright-links" target="_blank" rel="nofollow">RSS订阅</a> 
+				</span> |
+				<span>
+                    <a href="https://beian.miit.gov.cn/" class="copyright-links" target="_blank" rel="nofollow">湘ICP备20010839号</a> 
+                </span>
+				<span>
+                    <a href="https://beian.miit.gov.cn/" class="copyright-links" target="_blank" rel="nofollow">湘ICP备20010839号-1</a> 
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>
