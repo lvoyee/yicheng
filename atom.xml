@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.devcheng.net/"/>
-  <updated>2021-12-29T01:33:48.655Z</updated>
+  <updated>2021-12-29T02:00:15.458Z</updated>
   <id>http://www.devcheng.net/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://www.devcheng.net/post/f563b3cc.html"/>
     <id>http://www.devcheng.net/post/f563b3cc.html</id>
     <published>2021-12-29T01:16:41.000Z</published>
-    <updated>2021-12-29T01:33:48.655Z</updated>
+    <updated>2021-12-29T02:00:15.458Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>本项目是基于Spring Boot 2.x 开发的，新闻发布管理系统分为前台和后台两个部分。本项目可以当作毕业设计，期末课程作业等，也可以当作学习、进阶Spring Boot 的资料。</p><h2 id="功能描述"><a href="#功能描述" class="headerlink" title="功能描述"></a><strong>功能描述</strong></h2><p>本项目前台系统主要是新闻数据展示，便于用户阅读对应的新闻，支持用户阅读新闻后留言和打赏的功能；后台新闻发布管理系统提供给管理员新增、编辑以及删除新闻等操作，同时支持新闻分类，新闻标签等功能操作。</p><h2 id="主要功能有："><a href="#主要功能有：" class="headerlink" title="主要功能有："></a><strong>主要功能有：</strong></h2><ul><li>新闻搜索</li><li>新闻留言</li><li>新闻打赏</li><li>管理员登录</li><li>新闻管理</li><li>分类管理</li><li>标签管理</li><li>管理员退出</li><li>…</li></ul><h2 id="开发环境（运行环境）"><a href="#开发环境（运行环境）" class="headerlink" title="开发环境（运行环境）"></a><strong>开发环境（运行环境）</strong></h2><ul><li>系统环境：Windows 10</li><li>开发工具：IntelliJ IDEA 2020.3</li><li>Java版本：JDK 1.8</li><li>Mysql版本：5.7</li><li>Maven版本：3.6.3</li></ul><h2 id="项目技术栈"><a href="#项目技术栈" class="headerlink" title="项目技术栈"></a><strong>项目技术栈</strong></h2><ul><li>Spring Boot 2.3.X.RELEASE</li><li>Spring Boot JPA</li><li>Maven 3.X</li><li>Mysql</li><li>thymeleaf</li><li>Semantic UI 2.4.2</li><li>Jquery</li><li>…</li></ul><h2 id="登录地址"><a href="#登录地址" class="headerlink" title="登录地址"></a><strong>登录地址</strong></h2><p>访问路径：<a href="http://localhost:8082" target="_blank" rel="noopener">http://localhost:8082</a></p><p>管理员登录路径：<a href="http://localhost:8082/admin" target="_blank" rel="noopener">http://localhost:8082/admin</a><br>管理员账号： admin<br>管理员密码： 123456</p><h2 id="项目截图"><a href="#项目截图" class="headerlink" title="项目截图"></a><strong>项目截图</strong></h2><p><img src="/images/devcheng_net_new0001.png" alt="“伊成博客”"></p><p><img src="/images/devcheng_net_new0002.png" alt="“伊成博客”"></p><p><img src="/images/devcheng_net_new0003.png" alt="“伊成博客”"></p><p><img src="/images/devcheng_net_new0004.png" alt="“伊成博客”"></p><p><img src="/images/devcheng_net_new0005.png" alt="“伊成博客”"></p><p><img src="/images/devcheng_net_new0006.png" alt="“伊成博客”"></p><p><img src="/images/devcheng_net_new0007.png" alt="“伊成博客”"></p><p><img src="/images/devcheng_net_new0008.png" alt="“伊成博客”"></p><p><img src="/images/devcheng_net_new0009.png" alt="“伊成博客”"></p><h2 id="联系我们"><a href="#联系我们" class="headerlink" title="联系我们"></a><strong>联系我们</strong></h2><p>如有需要源码可以通过QQ 搜索：792435323联系我！<br>请备注：新闻发布系统</p><h2 id="项目演示视频"><a href="#项目演示视频" class="headerlink" title="项目演示视频"></a><strong>项目演示视频</strong></h2><p>链接: <a href="https://pan.baidu.com/s/1VAnfIm4UnZ2gwZJvjWRTyQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1VAnfIm4UnZ2gwZJvjWRTyQ</a><br>提取码: gjk2</p><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a><strong>注意事项</strong></h2><p>获取代码之后，使用IDEA导入本项目前，请确保你本地环境是已经含有代码所需要运行环境的条件了。</p><p>接着找到对应的sql文件，将其导入到你本地的数据库即可。</p><p>最后修改项目中配置文件中的数据库对应的信息，确认修改完毕，找到对应的NewsApplication直接运行吧！</p><h2 id="其它说明"><a href="#其它说明" class="headerlink" title="其它说明"></a><strong>其它说明</strong></h2><p>白嫖怪请绕道！</p>]]></content>
     
