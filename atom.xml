@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.devcheng.net/"/>
-  <updated>2021-12-16T12:04:46.600Z</updated>
+  <updated>2021-12-29T01:33:48.655Z</updated>
   <id>http://www.devcheng.net/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>基于SpringBoot开发的新闻发布管理系统源码分享</title>
+    <link href="http://www.devcheng.net/post/f563b3cc.html"/>
+    <id>http://www.devcheng.net/post/f563b3cc.html</id>
+    <published>2021-12-29T01:16:41.000Z</published>
+    <updated>2021-12-29T01:33:48.655Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>本项目是基于Spring Boot 2.x 开发的，新闻发布管理系统分为前台和后台两个部分。本项目可以当作毕业设计，期末课程作业等，也可以当作学习、进阶Spring Boot 的资料。</p><h2 id="功能描述"><a href="#功能描述" class="headerlink" title="功能描述"></a><strong>功能描述</strong></h2><p>本项目前台系统主要是新闻数据展示，便于用户阅读对应的新闻，支持用户阅读新闻后留言和打赏的功能；后台新闻发布管理系统提供给管理员新增、编辑以及删除新闻等操作，同时支持新闻分类，新闻标签等功能操作。</p><h2 id="主要功能有："><a href="#主要功能有：" class="headerlink" title="主要功能有："></a><strong>主要功能有：</strong></h2><ul><li>新闻搜索</li><li>新闻留言</li><li>新闻打赏</li><li>管理员登录</li><li>新闻管理</li><li>分类管理</li><li>标签管理</li><li>管理员退出</li><li>…</li></ul><h2 id="开发环境（运行环境）"><a href="#开发环境（运行环境）" class="headerlink" title="开发环境（运行环境）"></a><strong>开发环境（运行环境）</strong></h2><ul><li>系统环境：Windows 10</li><li>开发工具：IntelliJ IDEA 2020.3</li><li>Java版本：JDK 1.8</li><li>Mysql版本：5.7</li><li>Maven版本：3.6.3</li></ul><h2 id="项目技术栈"><a href="#项目技术栈" class="headerlink" title="项目技术栈"></a><strong>项目技术栈</strong></h2><ul><li>Spring Boot 2.3.X.RELEASE</li><li>Spring Boot JPA</li><li>Maven 3.X</li><li>Mysql</li><li>thymeleaf</li><li>Semantic UI 2.4.2</li><li>Jquery</li><li>…</li></ul><h2 id="登录地址"><a href="#登录地址" class="headerlink" title="登录地址"></a><strong>登录地址</strong></h2><p>访问路径：<a href="http://localhost:8082" target="_blank" rel="noopener">http://localhost:8082</a></p><p>管理员登录路径：<a href="http://localhost:8082/admin" target="_blank" rel="noopener">http://localhost:8082/admin</a><br>管理员账号： admin<br>管理员密码： 123456</p><h2 id="项目截图"><a href="#项目截图" class="headerlink" title="项目截图"></a><strong>项目截图</strong></h2><p><img src="/images/devcheng_net_new0001.png" alt="“伊成博客”"></p><p><img src="/images/devcheng_net_new0002.png" alt="“伊成博客”"></p><p><img src="/images/devcheng_net_new0003.png" alt="“伊成博客”"></p><p><img src="/images/devcheng_net_new0004.png" alt="“伊成博客”"></p><p><img src="/images/devcheng_net_new0005.png" alt="“伊成博客”"></p><p><img src="/images/devcheng_net_new0006.png" alt="“伊成博客”"></p><p><img src="/images/devcheng_net_new0007.png" alt="“伊成博客”"></p><p><img src="/images/devcheng_net_new0008.png" alt="“伊成博客”"></p><p><img src="/images/devcheng_net_new0009.png" alt="“伊成博客”"></p><h2 id="联系我们"><a href="#联系我们" class="headerlink" title="联系我们"></a><strong>联系我们</strong></h2><p>如有需要源码可以通过QQ 搜索：792435323联系我！<br>请备注：新闻发布系统</p><h2 id="项目演示视频"><a href="#项目演示视频" class="headerlink" title="项目演示视频"></a><strong>项目演示视频</strong></h2><p>链接: <a href="https://pan.baidu.com/s/1VAnfIm4UnZ2gwZJvjWRTyQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1VAnfIm4UnZ2gwZJvjWRTyQ</a><br>提取码: gjk2</p><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a><strong>注意事项</strong></h2><p>获取代码之后，使用IDEA导入本项目前，请确保你本地环境是已经含有代码所需要运行环境的条件了。</p><p>接着找到对应的sql文件，将其导入到你本地的数据库即可。</p><p>最后修改项目中配置文件中的数据库对应的信息，确认修改完毕，找到对应的NewsApplication直接运行吧！</p><h2 id="其它说明"><a href="#其它说明" class="headerlink" title="其它说明"></a><strong>其它说明</strong></h2><p>白嫖怪请绕道！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;本项目是基于Spring Boot 2.x 开发的，新闻发布管理系统分为前台和后台两个部分。本项目可以当作
+      
+    
+    </summary>
+    
+      <category term="codeshare" scheme="http://www.devcheng.net/categories/codeshare/"/>
+    
+    
+      <category term="新闻发布管理系统" scheme="http://www.devcheng.net/tags/%E6%96%B0%E9%97%BB%E5%8F%91%E5%B8%83%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
+    
+      <category term="毕设" scheme="http://www.devcheng.net/tags/%E6%AF%95%E8%AE%BE/"/>
+    
+      <category term="springboot" scheme="http://www.devcheng.net/tags/springboot/"/>
+    
+  </entry>
   
   <entry>
     <title>基于SpringBoot开发的宠物管理系统源码分享</title>
@@ -534,36 +563,6 @@
       <category term="职场" scheme="http://www.devcheng.net/tags/%E8%81%8C%E5%9C%BA/"/>
     
       <category term="猪队友" scheme="http://www.devcheng.net/tags/%E7%8C%AA%E9%98%9F%E5%8F%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ETL入门系列 03</title>
-    <link href="http://www.devcheng.net/post/bb6a7fde.html"/>
-    <id>http://www.devcheng.net/post/bb6a7fde.html</id>
-    <published>2021-03-15T13:33:32.000Z</published>
-    <updated>2021-03-16T12:52:46.467Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a><strong>背景</strong></h2><p>结合前面两篇博文，这篇博文进行一次实战案例，用于介绍如何使用Ckettle做数据集成。</p><p><strong>实战需求</strong>：<br>某公司新人试用期为3个月，现在需要对职称为P3的为转正的员工实施转正考核，需要从现有的一张员工信息表格中提取并筛选未转正的员工数据，然后转存到考核系统的数据库中，每个月的1号执行一次。</p><p><strong>技术需求</strong></p><ul><li>源数据：Excel   目标数据：MySql</li></ul><p><img src="/images/ETL_20210315093800.png" alt="“伊成博客”"></p><p><strong>业务分析</strong></p><ul><li>试用期：3个月    职称：P3    转正状态:未转正</li></ul><p><strong>技术概要分析</strong></p><p>识别源和目标数据库，数据存储表</p><p><strong>操作概要分析</strong></p><ul><li>数据处理类型：定时调用</li><li>调度频率：每个一次</li></ul><p><img src="/images/ETL_20210315101321.png" alt="“伊成博客”"></p><h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a><strong>操作步骤</strong></h2><h3 id="数据抽取"><a href="#数据抽取" class="headerlink" title="数据抽取"></a><strong>数据抽取</strong></h3><p>1.找到CKettle安装完成目录中的 ‘Spoon.bat’ 双击打开即可。</p><p>2.点击 ‘新建’，选择 ‘转换’ 选项。</p><p><img src="/images/ETL_20210315101939.png" alt="“伊成博客”"></p><p>3.点击 ‘输入’插件中，拖拽 ‘Excel输入’ 插件到右边。</p><p><img src="/images/ETL_20210315102217.png" alt="“伊成博客”"></p><p>4.选择存于你本地的excel文件，点击 ‘添加’按钮。</p><p><img src="/images/ETL_20210315102608.png" alt="“伊成博客”"></p><p>5.切换到 ‘工作表’选项，点击 ‘获选工作表名称’选择数据对应的sheet，完成后点击确定按钮。</p><p><img src="/images/ETL_20210315103026.png" alt="“伊成博客”"></p><p>6.继续切换到 ‘字段’选项，点击 ‘选择来自头部数据的字段’，如无需修改各个字段的类型点击确定按钮。</p><p><img src="/images/ETL_20210315103130.png" alt="“伊成博客”"></p><p>tips:到此第一步的数据抽取的工作就完成了。</p><h3 id="数据转换"><a href="#数据转换" class="headerlink" title="数据转换"></a><strong>数据转换</strong></h3><p>1.接着需要筛选出职称为P3的员工，需要’过滤记录’插件。</p><p><img src="/images/ETL_20210315103509.png" alt="“伊成博客”"></p><p>2.按住shift键把两个插件用数据线连接在一块，然后进行数据过来的配置。</p><p><img src="/images/ETL_20210315103725.png" alt="“伊成博客”"></p><p>3.接着筛选出未转正的数据，在步骤2中同理操作一次即可。</p><p><img src="/images/ETL_20210315104250.png" alt="“伊成博客”"></p><p>tips：做好以上的步骤，我们可以试着点击’运行’按钮，查看一下流程是否有问题，如果配置都没问题的情况下我们可以查看到数据过滤后的结果。</p><p><img src="/images/ETL_20210315111418.png" alt="“伊成博客”"></p><p>4.添加一个常量用于比较出是否已经满了入职三个月的需求，这里需要一个 ‘增加常量’插件。</p><p><img src="/images/ETL_20210315204407.png" alt="“伊成博客”"></p><p>5.添加一个’计算器’ 插件，把入职时间加上刚刚设置的常量得到一个应该转正日期。</p><p><img src="/images/ETL_20210315204920.png" alt="“伊成博客”"></p><p>6.添加一个 ‘获取系统信息’ 插件，选择系统时间固定值。</p><p><img src="/images/ETL_20210315205318.png" alt="“伊成博客”"></p><p>7.由以上步骤，可以用当前时间和应该转正日期做比较从而筛选出符合条件的数据。</p><p><img src="/images/ETL_20210315205627.png" alt="“伊成博客”"></p><p>做到这一步，点击运行查看一下被筛选后的数据。</p><p><img src="/images/ETL_20210315205917.png" alt="“伊成博客”"></p><p>8.由上一步得知有重复数据，需要借助 ‘去除重复记录’ 插件。</p><p><img src="/images/ETL_20210315210420.png" alt="“伊成博客”"></p><h3 id="数据转载"><a href="#数据转载" class="headerlink" title="数据转载"></a><strong>数据转载</strong></h3><p>1.添加 ‘插入/更新’ 插件，配置数据库连接信息。</p><p><img src="/images/ETL_20210315210849.png" alt="“伊成博客”"></p><p>设置好用来查询的关键字字段，这一步是用来当成数据查询的条件。<br>更新字段这一项是获取数据之后需要更新哪一些字段。</p><p><img src="/images/ETL_20210315211529.png" alt="“伊成博客”"></p><p>配置完成之后可以点击运行按钮，接着查看数据库对应的表是否存放了符合条件的数据。</p><p><img src="/images/ETL_20210315211802.png" alt="“伊成博客”"></p><p>数据成功存入到对应数据库表中，到此数据抽取，转换，装载都完成了。<br>但每个月1号需要执行一次这个涉及到定时调度，我们后续再出对应博文讲解！</p><h2 id="其它说明"><a href="#其它说明" class="headerlink" title="其它说明"></a><strong>其它说明</strong></h2><p><a href="http://www.devcheng.net/post/53978f67.html">《ETL入门系列01》</a></p><p><a href="http://www.devcheng.net/post/cc6d4f48.html">《ETL入门系列02》</a></p><p><a href="http://www.devcheng.net/post/bb6a7fde.html">《ETL入门系列03》</a></p><p>ETL入门系列到此结束！</p><p>本案例中涉及的execl文档和ktr文件有需要的可以加QQ群：816175200<br>备注: ckettle</p><hr><p>The end.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;&lt;strong&gt;背景&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;结合前面两篇博文，这篇博文进行一次实战案例，用于介绍如何使用Ckettle做数据集成。&lt;/p&gt;
-&lt;p&gt;&lt;s
-      
-    
-    </summary>
-    
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
-    
-    
-      <category term="ETL" scheme="http://www.devcheng.net/tags/ETL/"/>
-    
-      <category term="数据集成" scheme="http://www.devcheng.net/tags/%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/"/>
-    
-      <category term="实战案例" scheme="http://www.devcheng.net/tags/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"/>
     
   </entry>
   
