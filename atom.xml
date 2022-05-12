@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.devcheng.net/"/>
-  <updated>2022-04-30T06:28:57.557Z</updated>
+  <updated>2022-05-12T12:50:25.534Z</updated>
   <id>http://www.devcheng.net/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MindManager2018试用期过后破解使用</title>
+    <link href="http://www.devcheng.net/post/a39ed45b.html"/>
+    <id>http://www.devcheng.net/post/a39ed45b.html</id>
+    <published>2022-05-12T12:28:35.000Z</published>
+    <updated>2022-05-12T12:50:25.534Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>前段时间无意入坑 MindManager 2018 ，可以免费体验一个月没来的及用几次一个月就过去了，再次打开就提示 “你的30天评估期已结束” 。瞬间觉得失去了几百万，急得直拍大腿啊，无奈从网上找到了破解之法，遂记录一下。（还是得说一句违心的话，如果你是土豪就买正版支持一下吧。）</p><p><img src="/images/微信截图_20220512163726.png" alt="“伊成博客”"></p><h2 id="破解方法"><a href="#破解方法" class="headerlink" title="破解方法"></a>破解方法</h2><h3 id="步骤一："><a href="#步骤一：" class="headerlink" title="步骤一："></a><strong>步骤一：</strong></h3><p>根据路径：C:\Users\<font color="red">xxx</font>\AppData\Roaming\MindManager\MindManager2018.ini<br>找到MindManager2018.ini文件，使用任意编辑器打开。</p><p><font color="red">tips:</font> C:\Users\xxx 这里的 xxx 每个人的都不一样的 替换成自己的哦！</p><p>MindManager2018.ini<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[MindManager]</span><br><span class="line">InstallTime=1537004338</span><br><span class="line">LastLoading=1537004338</span><br></pre></td></tr></table></figure></p><p>InstallTime代表安装时间，LastLoading记录最后一次启动时间。</p><h3 id="步骤二："><a href="#步骤二：" class="headerlink" title="步骤二："></a><strong>步骤二：</strong></h3><p>使用 win+R 接着输入 regedit ，找到路径<br>HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Mindjet\MindManager\18\Installer</p><p><img src="/images/微信截图_20220512200639.png" alt="“伊成博客”"></p><p>找到项Install，修改里面的InstallTime的值。<br>记住修改的这个时间，接着 可以使用计算时间戳的<a href="https://tool.lu/timestamp/" target="_blank" rel="noopener">网址</a></p><p><img src="/images/微信截图_20220512201019.png" alt="“伊成博客”"></p><p>使用在线计算时间戳的网站 ，把转换后的时间戳复制到 MindManager2018.ini 文件中的InstallTime中，保存重新打开MindManager即可。</p><h2 id="小小的总结"><a href="#小小的总结" class="headerlink" title="小小的总结"></a>小小的总结</h2><p>以上的方法也不是完全之策，修改之后也是只能使用30天，到时间后还是会提示30天评估期结束的话语，如果你不嫌弃这样的方法，可以继续使用这个方法。如果家中有矿，正好你也喜欢拿就可以使用 钞能力 解决！</p><hr><p>The end.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h2&gt;&lt;p&gt;前段时间无意入坑 MindManager 2018 ，可以免费体验一个月没来的及用几次一个月就过去了，再次打开就提示 “你的
+      
+    
+    </summary>
+    
+      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+    
+    
+      <category term="MindManager2018" scheme="http://www.devcheng.net/tags/MindManager2018/"/>
+    
+      <category term="过期破解" scheme="http://www.devcheng.net/tags/%E8%BF%87%E6%9C%9F%E7%A0%B4%E8%A7%A3/"/>
+    
+  </entry>
   
   <entry>
     <title>面试题：int(1)和int(10)有区别吗</title>
@@ -535,34 +562,6 @@
       <category term="springboot2" scheme="http://www.devcheng.net/tags/springboot2/"/>
     
       <category term="p6spy" scheme="http://www.devcheng.net/tags/p6spy/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>微信小程序使用async提示regeneratorRuntime is not defined异常</title>
-    <link href="http://www.devcheng.net/post/12b3c63e.html"/>
-    <id>http://www.devcheng.net/post/12b3c63e.html</id>
-    <published>2021-07-07T14:31:14.000Z</published>
-    <updated>2021-07-07T14:34:49.053Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>微信小程序使用async提示regeneratorRuntime is not defined异常。</p><p><img src="/images/wxmini1.png" alt="“伊成博客”"></p><h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>新版本的小程序支持async / await。勾选下面选项后重新编译程序即可</p><p>点击 ‘详情’ – ‘本地设置’ – 勾选 ‘ES6转ES5’ 和 ‘增强编译’，然后重新编译即可。</p><p><img src="/images/wxmini2.png" alt="“伊成博客”"></p><p>完美解决问题！</p><p>更新时间：2021-7-7</p><hr><p>The end…</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h1&gt;&lt;p&gt;微信小程序使用async提示regeneratorRuntime is not defined异常。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/i
-      
-    
-    </summary>
-    
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
-    
-    
-      <category term="微信小程序" scheme="http://www.devcheng.net/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
-    
-      <category term="regeneratorRuntime is not defined" scheme="http://www.devcheng.net/tags/regeneratorRuntime-is-not-defined/"/>
     
   </entry>
   
