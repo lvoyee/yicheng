@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.devcheng.net/"/>
-  <updated>2022-05-28T02:44:04.665Z</updated>
+  <updated>2022-06-15T05:26:05.256Z</updated>
   <id>http://www.devcheng.net/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何将 swagger接口导出成PDF、markdown</title>
+    <link href="http://www.devcheng.net/post/76a1c264.html"/>
+    <id>http://www.devcheng.net/post/76a1c264.html</id>
+    <published>2022-06-15T05:05:15.000Z</published>
+    <updated>2022-06-15T05:26:05.256Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>swagger提供了UI页面，假如需要给合作伙伴对应的开发者，一般都需要提供一份接口PDF文件或是对应的markdown文件，这个时候就需要将对应swagger接口进行导出操作了。</p><h1 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h1><h2 id="第一步：准备swagger-json文件"><a href="#第一步：准备swagger-json文件" class="headerlink" title="第一步：准备swagger json文件"></a>第一步：准备swagger json文件</h2><p>1.打开 swagger ui 的页面</p><p>2.点击 swagger json 的链接，具体如下图：<br><img src="/images/微信截图_20220614123402_001.png" alt="“伊成博客”"></p><p>tips：如果你没有看到这个链接，使用F12打开开发者工具重新刷新后，复制 api-docs 的响应内容。</p><p>一定要保存成 json 文件。</p><h2 id="第二步：-把swagger-json文件导入-docway"><a href="#第二步：-把swagger-json文件导入-docway" class="headerlink" title="第二步： 把swagger json文件导入 docway"></a>第二步： 把swagger json文件导入 docway</h2><p>1.登录 <a href="http://docway.net" target="_blank" rel="noopener">http://docway.net</a> （如果第一次使用，需要注册）</p><p>2.在控制台中，新增项目，选择 导入<br><img src="/images/微信截图_20220614123402_002.png" alt="“伊成博客”"></p><p>3.选择 swagger 导入，并根据自己的 swagger json 选择是“上传文件方式”还是“粘贴json方式”<br><img src="/images/微信截图_20220614123402_003.png" alt="“伊成博客”"></p><p>4.导入成功后，就可以看到对应的信息了<br><img src="/images/微信截图_20220614123402_004.png" alt="“伊成博客”"></p><h2 id="第三步：导出PDF或markdown"><a href="#第三步：导出PDF或markdown" class="headerlink" title="第三步：导出PDF或markdown"></a>第三步：导出PDF或markdown</h2><p>1.在项目的“更多设置”中，找到“项目导出”功能。可以选择 PDF或Markdown 导出即可<br><img src="/images/微信截图_20220614123402_005.png" alt="“伊成博客”"></p><h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>总体来说docway导出的PDF接口文件还是不错的，如果选择 PDF(浏览器版)对应的接口文件则是带有颜色的。如果选择的是 仅仅 PDF生成的接口文件页脚是带有docway的网站链接的。</p><p>docway除了 PDF、markdown 导出， 还支持接口设计、接口分享、接口mock、接口历史记录、接口版本管理、团队管理等功能。</p><hr><p>The end.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;swagger提供了UI页面，假如需要给合作伙伴对应的开发者，一般都需要提供一份接口PDF文件或是对应的markdown文件
+      
+    
+    </summary>
+    
+      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+    
+    
+      <category term="swagger2" scheme="http://www.devcheng.net/tags/swagger2/"/>
+    
+      <category term="导出PDF" scheme="http://www.devcheng.net/tags/%E5%AF%BC%E5%87%BAPDF/"/>
+    
+  </entry>
   
   <entry>
     <title>分享一个Joda-Time日期时间工具类</title>
@@ -535,33 +562,6 @@
     
     
       <category term="ssh免密登陆" scheme="http://www.devcheng.net/tags/ssh%E5%85%8D%E5%AF%86%E7%99%BB%E9%99%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何批量添加单引号(逗号)</title>
-    <link href="http://www.devcheng.net/post/79b571d7.html"/>
-    <id>http://www.devcheng.net/post/79b571d7.html</id>
-    <published>2021-08-17T12:56:24.000Z</published>
-    <updated>2021-08-17T13:01:22.234Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在工作中可能会遇到这样的需求，客户（领导、同事）给你很多数据，你需要添加对应的单引号(or逗号)。数据量少的情况可以采用笨方法一个一个的处理，<br>但是数据量大的时候那怎么办呢？</p><p>借助一个神器，它就是 “Visual Studio Code”！</p><p><img src="/images/devcheng_net_vscode10001.png" alt="“伊成博客”"></p><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p><img src="/images/devcheng_net_vscode10002.png" alt="“伊成博客”"></p><p>假如客户（领导、同事）给你的是这样的一个txt文件，这个文件里面有很多数据。</p><h2 id="解决方法-vsCode方案"><a href="#解决方法-vsCode方案" class="headerlink" title="解决方法(vsCode方案)"></a>解决方法(vsCode方案)</h2><h3 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h3><p>这里我们借助 vsCode ,先打开 vsCode 。</p><p>接着双击编辑区，看下图：</p><p><img src="/images/devcheng_net_vscode10003.png" alt="“伊成博客”"></p><h3 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h3><p>把准备工作中的txt文件里面的数据复制进去。</p><p><img src="/images/devcheng_net_vscode10004.png" alt="“伊成博客”"></p><h3 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h3><p>鼠标放在文件最开始的地方，然后 ‘Alt + Shift’ 按住鼠标左键往下滑。然后你就可以输入你想要的符号了，例如我这里第一行我输入单引号，然后再最后一行我也输入一个单引号<br>并且加了一个逗号。</p><p>如下图：</p><p><img src="/images/devcheng_net_vscode10005.gif" alt="“伊成博客”"></p><h2 id="解决方法-notepad-方案"><a href="#解决方法-notepad-方案" class="headerlink" title="解决方法(notepad++方案)"></a>解决方法(notepad++方案)</h2><p>步骤和上述 vsCode 操作很类似，不一样的地方就是快捷键不一样了，在 notepad++ 里面 ‘Ctrl + Alt + Shift’ 按住鼠标左键往下滑。</p><p><img src="/images/devcheng_net_pad10006.gif" alt="“伊成博客”"></p><p>以上两种解决方案，任君选择。</p><p>好风凭借力，扶摇上青云。</p><p>收藏小技巧，包你事倍功半!</p><hr><p>The end…</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;在工作中可能会遇到这样的需求，客户（领导、同事）给你很多数据，你需要添加对应的单引号(or逗号)。数据量少的情况可以采用笨方法一个一个的处理
-      
-    
-    </summary>
-    
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
-    
-    
-      <category term="批量添加单引号" scheme="http://www.devcheng.net/tags/%E6%89%B9%E9%87%8F%E6%B7%BB%E5%8A%A0%E5%8D%95%E5%BC%95%E5%8F%B7/"/>
-    
-      <category term="vscode" scheme="http://www.devcheng.net/tags/vscode/"/>
     
   </entry>
   
