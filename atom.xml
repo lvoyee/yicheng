@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.devcheng.net/"/>
-  <updated>2022-06-15T05:26:05.256Z</updated>
+  <updated>2022-06-17T03:44:39.616Z</updated>
   <id>http://www.devcheng.net/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>解决github无法访问的方法之修改hosts文件</title>
+    <link href="http://www.devcheng.net/post/768a5c50.html"/>
+    <id>http://www.devcheng.net/post/768a5c50.html</id>
+    <published>2022-06-17T03:23:41.000Z</published>
+    <updated>2022-06-17T03:44:39.616Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>github有的朋友访问不了，今天就介绍一种解决方法。</p><h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>根据修改hosts文件，配置github 对应ip从而达到可以访问github的目的，所以前提条件需要可以修改hosts文件。</p><p>hosts文件路径： C:\Windows\System32\drivers\etc</p><p>假如你无法修改对应的这个hosts文件，请移步百度一波先解决这个问题。</p><p>1.输入网站 <a href="https://www.ipaddress.com/" target="_blank" rel="noopener">https://www.ipaddress.com/</a> </p><p>2.按照下列清单在以上网站输入对于网址，得到的对应IP写入hosts文件即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">github.global.ssl.fastly.net</span><br><span class="line">github.com</span><br><span class="line">assets-cdn.github.com</span><br><span class="line">documentcloud.github.com</span><br><span class="line">gist.github.com</span><br><span class="line">help.github.com</span><br><span class="line">nodeload.github.com</span><br><span class="line">raw.github.com</span><br><span class="line">status.github.com</span><br><span class="line">training.github.com</span><br><span class="line">www.github.com</span><br><span class="line">avatars0.githubusercontent.com</span><br><span class="line">avatars1.githubusercontent.com</span><br><span class="line">codeload.github.com</span><br></pre></td></tr></table></figure></p><p>如果你嫌麻烦你可以直接复制下面的内容到你的hosts文件。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">146.75.77.194 github.global.ssl.fastly.net</span><br><span class="line">140.82.113.4 github.com</span><br><span class="line">185.199.109.153 assets-cdn.github.com</span><br><span class="line">185.199.109.153 documentcloud.github.com</span><br><span class="line">140.82.114.3 gist.github.com</span><br><span class="line">140.82.112.17 help.github.com</span><br><span class="line">140.82.112.10 nodeload.github.com</span><br><span class="line">185.199.108.133 raw.github.com</span><br><span class="line">140.82.114.18 status.github.com</span><br><span class="line">185.199.108.153 training.github.com</span><br><span class="line">140.82.113.4 www.github.com</span><br><span class="line">185.199.108.133 avatars0.githubusercontent.com</span><br><span class="line">185.199.109.133 avatars1.githubusercontent.com</span><br><span class="line">140.82.114.9 codeload.github.com</span><br></pre></td></tr></table></figure><p>如果发现哪一天，这个不可用了，可以留言评论告知我！</p><hr><p>The end.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;github有的朋友访问不了，今天就介绍一种解决方法。&lt;/p&gt;
+&lt;h1 id=&quot;解决方法&quot;&gt;&lt;a href=&quot;#解决方法&quot; 
+      
+    
+    </summary>
+    
+      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+    
+    
+      <category term="github无法访问" scheme="http://www.devcheng.net/tags/github%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>如何将 swagger接口导出成PDF、markdown</title>
@@ -536,32 +562,6 @@
       <category term="jenkins" scheme="http://www.devcheng.net/tags/jenkins/"/>
     
       <category term="jenkins打包" scheme="http://www.devcheng.net/tags/jenkins%E6%89%93%E5%8C%85/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何配置虚拟机互相免密ssh登录</title>
-    <link href="http://www.devcheng.net/post/3ab16e7d.html"/>
-    <id>http://www.devcheng.net/post/3ab16e7d.html</id>
-    <published>2021-08-31T12:02:25.000Z</published>
-    <updated>2021-08-31T12:07:27.254Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>如何让多台虚拟机之间免密互相可登录，接下来我们实战演示一下。</p><p>实现准备2台服务器，各自的IP分别为 192.168.191.128 和 192.168.191.129 。</p><h3 id="①-查看ssh-server状态"><a href="#①-查看ssh-server状态" class="headerlink" title="① 查看ssh server状态"></a>① 查看ssh server状态</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[root@jenkins ~]# systemctl status sshd</span><br><span class="line">● sshd.service - OpenSSH server daemon</span><br><span class="line">   Loaded: loaded (/usr/lib/systemd/system/sshd.service; enabled; vendor preset: enabled)</span><br><span class="line">   Active: active (running) since 二 2021-08-31 15:13:37 CST; 23min ago</span><br><span class="line">     Docs: man:sshd(8)</span><br><span class="line">           man:sshd_config(5)</span><br><span class="line"> Main PID: 1082 (sshd)</span><br><span class="line">    Tasks: 1</span><br><span class="line">   CGroup: /system.slice/sshd.service</span><br><span class="line">           └─1082 /usr/sbin/sshd -D</span><br><span class="line"></span><br><span class="line">8月 31 15:13:37 jenkins systemd[1]: Starting OpenSSH server daemon...</span><br><span class="line">8月 31 15:13:37 jenkins sshd[1082]: Server listening on 0.0.0.0 port 22.</span><br><span class="line">8月 31 15:13:37 jenkins sshd[1082]: Server listening on :: port 22.</span><br><span class="line">8月 31 15:13:37 jenkins systemd[1]: Started OpenSSH server daemon.</span><br><span class="line">8月 31 15:14:48 jenkins sshd[3227]: Accepted password for root from 192.168.191.1 port 53268 ssh2</span><br><span class="line">8月 31 15:33:28 jenkins sshd[27315]: Connection closed by 192.168.191.128 port 35046 [preauth]</span><br><span class="line">8月 31 15:33:28 jenkins sshd[27382]: Connection closed by 192.168.191.128 port 35048 [preauth]</span><br></pre></td></tr></table></figure><p>由以上信息得知，这台服务器以及安装了对应ssh server 。 </p><p>如果没有安装请点击 这个连接<br><a href="https://www.cnblogs.com/liuhouhou/p/8975812.html" target="_blank" rel="noopener">安装ssh-server传送门</a></p><h3 id="②-开始配置root用户ssh免密登录"><a href="#②-开始配置root用户ssh免密登录" class="headerlink" title="② 开始配置root用户ssh免密登录"></a>② 开始配置root用户ssh免密登录</h3><p>执行 ssh-keygen -t rsa 命令。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[root@jenkins ~]# ssh-keygen -t rsa</span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file in which to save the key (/root/.ssh/id_rsa): </span><br><span class="line">Enter passphrase (empty for no passphrase): </span><br><span class="line">Enter same passphrase again: </span><br><span class="line">Your identification has been saved in /root/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved in /root/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">SHA256:mrzfLe+SUFFjuDmXsasdwX173L+j2fgqhI8jJagQ root@jenkins</span><br><span class="line">The key&apos;s randomart image is:</span><br><span class="line">+---[RSA 2048]----+</span><br><span class="line">|           o+    |</span><br><span class="line">|          o. .   |</span><br><span class="line">|           + .   |</span><br><span class="line">|  E       * o    |</span><br><span class="line">|   .  .  S. *. . |</span><br><span class="line">|    .+ =. +...o =|</span><br><span class="line">|   .  O ..o+.B .*|</span><br><span class="line">|    .. . o+oo.* =|</span><br><span class="line">|   .. ... .B=o+=o|</span><br><span class="line">+----[SHA256]-----+</span><br></pre></td></tr></table></figure></p><p>接着继续执行 ssh-copy-id -i ~/.ssh/id_rsa.pub <a href="mailto:root@192.168.191.128" target="_blank" rel="noopener">root@192.168.191.128</a> 命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@jenkins ~]# ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.191.128</span><br><span class="line">/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: &quot;/root/.ssh/id_rsa.pub&quot;</span><br><span class="line">/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed</span><br><span class="line">/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys</span><br><span class="line">root@192.168.191.128&apos;s password: //输入对应的root密码</span><br><span class="line"></span><br><span class="line">Number of key(s) added: 1</span><br><span class="line"></span><br><span class="line">Now try logging into the machine, with:   &quot;ssh &apos;root@192.168.191.128&apos;&quot;</span><br><span class="line">and check to make sure that only the key(s) you wanted were added.</span><br></pre></td></tr></table></figure></p><p>看到以上提示信息，就成功了。可以使用 ssh <a href="mailto:&#39;root@192.168.191.128" target="_blank" rel="noopener">&#39;root@192.168.191.128</a>‘ 免密登录对应服务器了。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@jenkins ~]# ssh &apos;root@192.168.191.128&apos;</span><br><span class="line">Last login: Tue Aug 31 15:34:01 2021 from 192.168.191.1</span><br><span class="line">[root@gitlab ~]#</span><br></pre></td></tr></table></figure><p>对应的原理再另外一台服务器也这么操作即可。</p><p>这样就实现了这2台服务器互相免密可ssh 登录了！</p><hr><p>The end…</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;如何让多台虚拟机之间免密互相可登录，接下来我们实战演示一下。&lt;/p&gt;
-&lt;p&gt;实现准备2台服务器，各自的IP分别为 192.168.191.1
-      
-    
-    </summary>
-    
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
-    
-    
-      <category term="ssh免密登陆" scheme="http://www.devcheng.net/tags/ssh%E5%85%8D%E5%AF%86%E7%99%BB%E9%99%86/"/>
     
   </entry>
   
