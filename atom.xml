@@ -153,6 +153,33 @@
   </entry>
   
   <entry>
+    <title>程序员如何走出自己的安逸环境</title>
+    <link href="http://www.devcheng.net/post/c0cb035d.html"/>
+    <id>http://www.devcheng.net/post/c0cb035d.html</id>
+    <published>2022-04-17T07:24:55.000Z</published>
+    <updated>2022-06-17T07:34:08.031Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>过去的几个月里发生的几件事情，让给政府做软件开发的人感受到压力的陡增，从奥巴马的医保网站饱受诟病到美国退伍军人事务部官方网站的预约系统从1985年起就没有更新过，这些事情让我回忆起曾经作为政府程序员的经历，以及这段经历如何变成一种一直督促我努力工作的思想动力。</p><p>我曾在某个政府部门维护过一个写于1990年代的老系统。当一个新的系统启动开发来替代部分的老系统功能时，很多的程序员对开发新系统的工作产生的严重的抵制心里。起初，我并不知道为什么他们会有这么大的反感。对这个系统维护一段时间之后，我才慢慢明白，有些程序员是专门维护系统，时间长达15年之久。当被邀请开发新系统时，他们对新事物和新技术都感到心里没底。</p><p>这让我警醒：这种事情也会很容易发生在我的职业生涯中。我可能会安逸的干着某一种工作，安逸的年年维护着某个系统。当这个系统长岁数时，我对它也变的更有价值，我的角色会最终变成专职维护它。我的余生也就整天执行相同的任务，直到退休。而当有一天，当这个系统不再被人需要时，我会发现外面的世界已经日新月异，我需要从头学起。</p><p>这可不是我希望的生活轨迹；我作为程序员喜欢的方式是学习新思路来解决新问题，而不是安于现状。我们程序员很容易迷住某一项技术而将全部精力都放在上面，对于其它的毫不关心。虽然这样可以让你在某一个领域成为专家，但你却得不到探索其它领域获得的更多好处。当意识到这种目光狭窄会扼杀我的进取心后，我开始避免让所有鸡蛋都放到一个篮子里，我开始走出自己职业仕途中的安逸环境。</p><h2 id="学习新技术"><a href="#学习新技术" class="headerlink" title="学习新技术"></a>学习新技术</h2><p>你一直在用PHP编程吗？尝试一下使用Rails或ASP.NET。也许尝试一种新的语言或框架会让你感到受挫和沮丧，但探索的趣味也就在这里。至少，你应该看看同一种功能用其它语言是如何实现的。如何你只会用锤子，那你眼里所有的东西看起来都像钉子。</p><h2 id="不惧怕老代码"><a href="#不惧怕老代码" class="headerlink" title="不惧怕老代码"></a>不惧怕老代码</h2><p>虽然上面我举例的那个老代码的例子有些极致，但我并不认为所有的老代码都应该立刻替换掉、删掉。在如今的软件中，有很多稳固的、良好设计的程序代码，它们对那些只会使用集成开发组件的现代程序员来说是很好的学习教材。如果你的公司里有老项目、老代码需要你去维护，研究一下！你会吃惊于从中学到那么多的编程知识以及公司的业务规则。还会发现一些当前正在研究的问题，其实几年以前就有人已经解决了。</p><h2 id="了解你的敌人"><a href="#了解你的敌人" class="headerlink" title="了解你的敌人"></a>了解你的敌人</h2><p>程序员很容易对某种语言或框架产生宗教式的虔诚。如果你发现自己曾经痛恨或鄙视某种技术(参看JeffAtwood的一篇经典文章)，也许你应该强迫自己去研究一下它们。<br>最不济，至少你能证明讨厌它们是有理由的。最好的情况是，你会从它们中学到很多东西。不要让你的偏见阻挡了你的探索道路。</p><h2 id="不要太贪心"><a href="#不要太贪心" class="headerlink" title="不要太贪心"></a>不要太贪心</h2><p>程序员很容易被各种层出不穷的新平台、新语言、新工具、新类库吓倒。你很容易产生一种恐惧心理，感觉自己已经落后——那些程序员谈论的技术我怎么从来没有听说过？当你发现一种新技术看起来很有用或很有趣时，做个笔记，几周或几月后在回来看看它，如果人们还在谈论它，那么，你就应该进一步研究它。事实上很多热门新技术都是昙花一现，你完全可以忽略它，不要让它们浪费了你的大脑。</p><h2 id="学无止境"><a href="#学无止境" class="headerlink" title="学无止境"></a>学无止境</h2><p>程序员都有着一种天生的好奇心，这种好奇心引导着我们的编程生涯。写几行代码，装载到计算机里，让它按照你的思路工作，这是非常有趣的事情。但随着开发的东西越来越多，我们变的越来越忙，这种好奇心会慢慢的减退。我们应该时不时的用一些新思路挑战自己，让自己的思想保持锋锐和专注，提醒自己为什么当初选择码农这条道路。</p><p>英文原文：Getting Out Of Your Comfort Zone</p><hr><p>The end.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;过去的几个月里发生的几件事情，让给政府做软件开发的人感受到压力的陡增，从奥巴马的医保网站饱受诟病到美国退伍军人事务部官方网站的预约系统从19
+      
+    
+    </summary>
+    
+      <category term="codelife" scheme="http://www.devcheng.net/categories/codelife/"/>
+    
+    
+      <category term="程序员" scheme="http://www.devcheng.net/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    
+      <category term="职业规划" scheme="http://www.devcheng.net/tags/%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92/"/>
+    
+  </entry>
+  
+  <entry>
     <title>java设计模式之组合模式</title>
     <link href="http://www.devcheng.net/post/d4faf60.html"/>
     <id>http://www.devcheng.net/post/d4faf60.html</id>
@@ -534,34 +561,6 @@
       <category term="手绘流程图" scheme="http://www.devcheng.net/tags/%E6%89%8B%E7%BB%98%E6%B5%81%E7%A8%8B%E5%9B%BE/"/>
     
       <category term="draw.io" scheme="http://www.devcheng.net/tags/draw-io/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>jenkins打包前端项目</title>
-    <link href="http://www.devcheng.net/post/92a007c9.html"/>
-    <id>http://www.devcheng.net/post/92a007c9.html</id>
-    <published>2021-09-24T01:27:47.000Z</published>
-    <updated>2021-09-24T01:37:05.614Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>这里我的 Jenkins版本是：2.303.1</p><p><img src="/images/image-20210923153840448.png" alt="“伊成博客”"></p><h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><p>点击 左边菜单栏中 “Manage Jenkins”  –&gt; “Manager Plugins”。</p><p><img src="/images/image-20210923153947249.png" alt="“伊成博客”"></p><p>在输入框中输入 nodeJS,搜索安装即可（我这里是已经安装过了的截图）</p><p><img src="/images/image-20210923154210082.png" alt="“伊成博客”"></p><h2 id="全局工具配置"><a href="#全局工具配置" class="headerlink" title="全局工具配置"></a>全局工具配置</h2><p><img src="/images/image-20210923154511889.png" alt="“伊成博客”"></p><p>选择对应的版本，点击 保存 和 应用 按钮即可。</p><p><img src="/images/image-20210923154603315.png" alt="“伊成博客”"></p><p>做到这，准备工作都已经作完了，接着就是创建一个任务。</p><h2 id="新建任务"><a href="#新建任务" class="headerlink" title="新建任务"></a>新建任务</h2><p>输入名称，选择一个自由风格的项目。</p><p><img src="/images/image-20210923154808081.png" alt="“伊成博客”"></p><p>配置General(我这里保持构建的最大个数写的是 10，大家可以按需配置)</p><p><img src="/images/image-20210923154921941.png" alt="“伊成博客”"></p><p>配置 源码管理，填写对应的项目gitlab地址。</p><p><img src="/images/image-20210923155040885.png" alt="“伊成博客”"></p><p>配置构建环境</p><p><img src="/images/image-20210923155138628.png" alt="“伊成博客”"></p><p>配置构建</p><p>在构建中选择执行shell</p><p><img src="/images/image-20210923155213737.png" alt="“伊成博客”"></p><p>对应的命令如下：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">echo $PATH </span><br><span class="line">node -v  </span><br><span class="line">npm -v   </span><br><span class="line">npm install chromedriver --chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver</span><br><span class="line">npm install</span><br><span class="line">npm run build</span><br></pre></td></tr></table></figure><p>执行成功后可以看到控制台输出</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> DONE  Build complete. The dist directory is ready to be deployed.</span><br><span class="line"> INFO  Check out deployment instructions at https://cli.vuejs.org/guide/deployment.html</span><br><span class="line">      </span><br><span class="line">Finished: SUCCESS</span><br></pre></td></tr></table></figure><p><img src="/images/image-20210923155740843.png" alt="“伊成博客”"></p><hr><p>The end …</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot; class=&quot;headerlink&quot; title=&quot;准备工作&quot;&gt;&lt;/a&gt;准备工作&lt;/h2&gt;&lt;p&gt;这里我的 Jenkins版本是：2.303.1&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/images/image-2021092
-      
-    
-    </summary>
-    
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
-    
-    
-      <category term="jenkins" scheme="http://www.devcheng.net/tags/jenkins/"/>
-    
-      <category term="jenkins打包" scheme="http://www.devcheng.net/tags/jenkins%E6%89%93%E5%8C%85/"/>
     
   </entry>
   
