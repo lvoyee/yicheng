@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.devcheng.net/"/>
-  <updated>2022-06-17T03:44:39.616Z</updated>
+  <updated>2022-07-08T07:19:05.514Z</updated>
   <id>http://www.devcheng.net/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>基于SpringBoot开发的家庭财务管理系统</title>
+    <link href="http://www.devcheng.net/post/fb09f6bd.html"/>
+    <id>http://www.devcheng.net/post/fb09f6bd.html</id>
+    <published>2022-07-08T07:12:55.000Z</published>
+    <updated>2022-07-08T07:19:05.514Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>本项目是基于Spring Boot 2.x 开发的，家庭财务管理系统分三种角色，分别是：系统管理员，家主，用户。本项目可以当作毕业设计也有对应的毕业论文可参考<strong>(毕业论文不是免费的)</strong>，期末课程作业等，也可以当作学习、进阶Spring Boot 的资料。</p><h2 id="功能描述"><a href="#功能描述" class="headerlink" title="功能描述"></a><strong>功能描述</strong></h2><p>本项目通过不同的角色登录显示不同角色对应的菜单，不用角色之间查看到对应的功能菜单数据。其中系统管理员拥有系统所有菜单和功能，其次是家主，家主下拥有的是用户。</p><h2 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a><strong>主要功能</strong></h2><ul><li>收支管理（支出详情，收入详情）</li><li>理财管理（活期资产，理财详情，负债详情，理财产品）</li><li>财务统计（统计报表）</li><li>系统管理（用户管理，角色管理）</li><li>我的主页</li><li>安全退出</li><li>修改密码</li></ul><h2 id="开发环境（运行环境）"><a href="#开发环境（运行环境）" class="headerlink" title="开发环境（运行环境）"></a><strong>开发环境（运行环境）</strong></h2><ul><li>系统环境：Windows 11</li><li>开发工具：IntelliJ IDEA 2020.3</li><li>Java版本：JDK 1.8</li><li>Mysql版本：5.7</li><li>Maven版本：3.6.3</li></ul><h2 id="项目技术栈"><a href="#项目技术栈" class="headerlink" title="项目技术栈"></a><strong>项目技术栈</strong></h2><ul><li>Spring Boot 2.1.X.RELEASE</li><li>Spring Boot JPA</li><li>Maven 3.X</li><li>Mysql</li><li>thymeleaf</li><li>layui</li><li>Jquery</li><li>…</li></ul><h2 id="登录地址"><a href="#登录地址" class="headerlink" title="登录地址"></a><strong>登录地址</strong></h2><p>访问路径：<a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a></p><p>管理员账号/密码： admin / admin</p><p>家主账号/密码：house1 / 123456</p><p>用户账号/密码：yangtwo / 123456</p><h2 id="项目演示视频"><a href="#项目演示视频" class="headerlink" title="项目演示视频"></a><strong>项目演示视频</strong></h2><p>视频链接：</p><p>链接: <a href="https://pan.baidu.com/s/1ttuRq_9vkfjq320MarTFIA?pwd=fptq" target="_blank" rel="noopener">https://pan.baidu.com/s/1ttuRq_9vkfjq320MarTFIA?pwd=fptq</a></p><p>提取码: fptq</p><h2 id="项目截图"><a href="#项目截图" class="headerlink" title="项目截图"></a><strong>项目截图</strong></h2><p><img src="https://fynotefile.oss-cn-zhangjiakou.aliyuncs.com/fynote/fyfile/12498/1656984558090/847c9e0de7f946628c0966831500d8ba.png" alt="image.png"></p><p><img src="https://fynotefile.oss-cn-zhangjiakou.aliyuncs.com/fynote/fyfile/12498/1656984558090/b50b753aaed748ebaae5596290ebdd36.png" alt="image.png"></p><p><img src="https://fynotefile.oss-cn-zhangjiakou.aliyuncs.com/fynote/fyfile/12498/1656984558090/b18206992bb448c099ee608fcd60c523.png" alt="image.png"></p><p><img src="https://fynotefile.oss-cn-zhangjiakou.aliyuncs.com/fynote/fyfile/12498/1656984558090/a602946b21d642c5a94c3c32bf7de941.png" alt="image.png"></p><p><img src="https://fynotefile.oss-cn-zhangjiakou.aliyuncs.com/fynote/fyfile/12498/1656984558090/293b76a7a9e6476f8f7f5a39a5bfdd65.png" alt="image.png"></p><h2 id="联系我们"><a href="#联系我们" class="headerlink" title="联系我们"></a><strong>联系我们</strong></h2><p>如有需要源码可以通过QQ 搜索：792435323联系我！<br>请备注：源码</p><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a><strong>注意事项</strong></h2><p>获取代码之后，使用IDEA导入本项目前，请确保你本地环境是已经含有代码所需要运行环境的条件了。</p><p>接着找到对应的sql文件，将其导入到你本地的数据库即可。</p><p>最后修改项目中配置文件中的数据库对应的信息，确认修改完毕，找到对应的FfmsApplication直接运行吧！</p><h2 id="其它说明"><a href="#其它说明" class="headerlink" title="其它说明"></a><strong>其它说明</strong></h2><p>白嫖怪（伸手党）请绕道！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;本项目是基于Spring Boot 2.x 开发的，家庭财务管理系统分三种角色，分别是：系统管理员，家主，
+      
+    
+    </summary>
+    
+      <category term="codeshare" scheme="http://www.devcheng.net/categories/codeshare/"/>
+    
+    
+      <category term="SpringBoot" scheme="http://www.devcheng.net/tags/SpringBoot/"/>
+    
+      <category term="家庭财务管理系统" scheme="http://www.devcheng.net/tags/%E5%AE%B6%E5%BA%AD%E8%B4%A2%E5%8A%A1%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>解决github无法访问的方法之修改hosts文件</title>
@@ -534,33 +561,6 @@
       <category term="MySQL优化" scheme="http://www.devcheng.net/tags/MySQL%E4%BC%98%E5%8C%96/"/>
     
       <category term="Explain" scheme="http://www.devcheng.net/tags/Explain/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>来一波安利手绘流程图神器，亲测好用</title>
-    <link href="http://www.devcheng.net/post/70b4b9af.html"/>
-    <id>http://www.devcheng.net/post/70b4b9af.html</id>
-    <published>2021-10-17T08:31:24.000Z</published>
-    <updated>2021-10-17T08:46:49.342Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>前几天在gitee无意浏览其它小伙伴分享源码时，我惊奇的发现人家写的md文档里面的流程图（配图）和一般的不太一样，常规的线条都是规规矩矩，四四方方的。可能是看多了常规的流程图的原因，让我才如此惊奇，</p><p><strong>常规的图如下</strong>：</p><p><img src="https://pic2.zhimg.com/v2-46b50a7988961668d1e064db6ab30451_r.jpg" alt="preview"></p><p><strong>不一样的风格流程图如下</strong>：</p><p><img src="/images/image-20211017152014148.png" alt="“伊成博客”"></p><p>网上查询了一下，这不一样的风格流程图叫 手绘流程图。顾名思义就是类似徒手绘画出来的，继续查询了一番，终于在某乎上发现了一个不错的神器。</p><p><img src="/images/image-20211017152633838.png" alt="“伊成博客”"></p><h1 id="神器之draw-io"><a href="#神器之draw-io" class="headerlink" title="神器之draw.io"></a>神器之draw.io</h1><h2 id="draw-io-是啥玩意"><a href="#draw-io-是啥玩意" class="headerlink" title="draw.io 是啥玩意"></a>draw.io 是啥玩意</h2><p>百度了一番，才知道<em>draw.io</em> 是一款免费的在线图表编辑工具, 可以用来编辑工作流, BPM, org charts, UML, ER图, 网络拓朴图等.</p><p><img src="/images/image-20211017152910249.png" alt="“伊成博客”"></p><h1 id="如何使用draw-io-绘制手绘风格的图"><a href="#如何使用draw-io-绘制手绘风格的图" class="headerlink" title="如何使用draw.io 绘制手绘风格的图"></a>如何使用draw.io 绘制手绘风格的图</h1><p>访问draw.io 之后就可以开始画图了，但是我拖了一个椭圆出来之后发现还是常规的圆，这和我期望的不一致啊，后来一顿操作摸索下来，需要在勾选 Sketch 。</p><p>接着就可以愉快的绘制你想要的手绘风格的各种图了。</p><p><img src="/images/image-20211017153439685.png" alt="“伊成博客”"></p><p>欣赏几张我绘制的吧！</p><hr><h4 id="JDBC执行流程"><a href="#JDBC执行流程" class="headerlink" title="JDBC执行流程"></a>JDBC执行流程</h4><p><img src="/images/devcheng_net_jdbc6.png" alt="“伊成博客”"></p><hr><h4 id="TCP三次握手，四次挥手"><a href="#TCP三次握手，四次挥手" class="headerlink" title="TCP三次握手，四次挥手"></a>TCP三次握手，四次挥手</h4><p><img src="/images/image-20211017162547007.png" alt="“伊成博客”"></p><p>以上分享到此结束！</p><p>draw.io地址： <a href="https://app.diagrams.net/" target="_blank" rel="noopener">https://app.diagrams.net/</a></p><hr><p>The end…</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;前几天在gitee无意浏览其它小伙伴分享源码时，我惊奇的发现人家写的md文档里面的流程图（配图）和一般的不太一样，常规的线条
-      
-    
-    </summary>
-    
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
-    
-    
-      <category term="手绘流程图" scheme="http://www.devcheng.net/tags/%E6%89%8B%E7%BB%98%E6%B5%81%E7%A8%8B%E5%9B%BE/"/>
-    
-      <category term="draw.io" scheme="http://www.devcheng.net/tags/draw-io/"/>
     
   </entry>
   
