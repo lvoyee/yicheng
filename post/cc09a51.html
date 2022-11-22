@@ -1,0 +1,389 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="伊成个人站-热衷于技术分享，源码分享的个人网站">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+	<!--baidu tongji-->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?11f6f08fada932368f71e76bd659b783";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
+    <link rel="dns-prefetch" href="http://www.devcheng.net">
+    <!--SEO-->
+
+<meta name="description" content="伊成个人站 www.devcheng.net 一个致力于技术分享，源码分享及工作经历分享的个人网站">
+
+
+
+<meta name="keywords" content="伊成个人站,技术分享,源码分享,代码分享,java代码,源代码">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+<title>	基于Spring Boot开发的酒店管理系统-伊成个人站</title>
+
+    <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人网站" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+       ◉◡◉ 您好，欢迎到访伊成个人站!
+    </div>
+</header>
+    
+<nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.devcheng.net">伊成个人站-热衷于技术分享，源码分享的个人网站</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">				
+                    <ul class="menu">						
+						<a href="/"><img border="0" src="/img/logo2020.png" alt="伊成个人站" title="伊成个人站"></a>						
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa fa-home"></i>&nbsp;首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/blogshare/"><i class="fa fa-codepen"></i>&nbsp;技术分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codeshare/"><i class="fa fa-code"></i>&nbsp;源码分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codelife/"><i class="fa fa-pagelines"></i>&nbsp;程序人生</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives"><i class="fa fa-history"></i>&nbsp;时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about"><i class="fa fa-connectdevelop"></i>&nbsp;关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="基于Spring Boot开发的酒店管理系统">
+            
+	            基于Spring Boot开发的酒店管理系统
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/codeshare">
+            codeshare
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/Spring Boot" title="Spring Boot">
+                        Spring Boot
+                    </a>
+                
+                    <a href="/tags/酒店管理系统" title="酒店管理系统">
+                        酒店管理系统
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2022/11/22</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>本项目是基于Spring Boot 2.x 开发的，酒店管理系统分三种角色：经理（管理员）和员工（普通用户）两种用户， 其中经理（管理员）具有查看所有预定、删除客房、查看员工、添加员工等功能权限 员工（普通用户）具有查看空房、客户预订、修改预订、删除预订、注册新客户等功能权限。</p>
+<p>大体流程如下：</p>
+<p>1.经理（系统管理员）设置客房状态并且设置每晚价格。</p>
+<p>2.客户可以通过员工预定房间，或者自己预定房间，并且可以选择预定时间（包含钟点房）</p>
+<p>3.当客户退房后，通知保洁员进行卫生打扫，保洁员确定卫生情况后，客房重新变为可预定，并且密码重新随机生成</p>
+<p>5.老板可以设置经理，员工，保洁员的工资，根据业绩比例进行分配</p>
+<h2 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a>主要功能</h2><p><strong>预订管理</strong></p>
+<p>添加客房的预订，当客房被预定后，在预订时间到之前均显示不可用。</p>
+<p>删除客人的预订，当客人取消预定,或者到达预定保留时间后，要求取消预定。在前台管理人员确定后,系统将已经预订的房间改为空房。</p>
+<p>更改预定状态，当客人在规定的时间范围内到达，由管理员将客人所定房间的状态改为有人。</p>
+<p><strong>订房管理</strong></p>
+<p>房间查询，查询房间的状态(包括房间是否为空，以及房间的类型)。</p>
+<p>分配房间，根据查询的结果，以及客人的要求，将空房改为占用状态,并确认房间的类型。</p>
+<p>结账，先结账后付钱的客人先记录在系统中，在付钱后将纪录状态改为已经付帐。</p>
+<p>退房等。</p>
+<p><strong>客房管理</strong></p>
+<p>客房退房后，保洁阿姨打扫完房间后可设置已打扫。</p>
+<p><strong>财务管理</strong></p>
+<p>收入和房间数的统计。</p>
+<p><strong>人事管理</strong></p>
+<p>员工信息管理，包括员工工资、提成等</p>
+<h2 id="开发环境（运行环境）"><a href="#开发环境（运行环境）" class="headerlink" title="开发环境（运行环境）"></a><strong>开发环境（运行环境）</strong></h2><ul>
+<li>系统环境：Windows 11</li>
+<li>开发工具：IntelliJ IDEA 2020.3</li>
+<li>Java版本：JDK 1.8</li>
+<li>Mysql版本：5.7</li>
+<li>Maven版本：3.6.3</li>
+</ul>
+<h2 id="项目技术栈"><a href="#项目技术栈" class="headerlink" title="项目技术栈"></a><strong>项目技术栈</strong></h2><ul>
+<li>Spring Boot 2.0.X.RELEASE</li>
+<li>Bootstrap</li>
+<li>Maven 3.X</li>
+<li>Mysql</li>
+<li>thymeleaf</li>
+<li>js</li>
+<li>Jquery</li>
+<li>…</li>
+</ul>
+<h2 id="登录地址"><a href="#登录地址" class="headerlink" title="登录地址"></a><strong>登录地址</strong></h2><p>访问路径：<a href="http://localhost:8088" target="_blank" rel="noopener">http://localhost:8088</a></p>
+<p>管理员账号/密码： admin / admin</p>
+<p>员工账号/密码：<a href="mailto:tom@jiudian.com" target="_blank" rel="noopener">tom@jiudian.com</a>/ 123456</p>
+<p>保洁员账号/密码：<a href="mailto:zhangyi@clean.com" target="_blank" rel="noopener">zhangyi@clean.com</a>/ 123456</p>
+<h2 id="项目演示视频"><a href="#项目演示视频" class="headerlink" title="项目演示视频"></a><strong>项目演示视频</strong></h2><p>链接: <a href="https://pan.baidu.com/s/12qd637UuboPqVMi_1Iyjeg?pwd=m6md" target="_blank" rel="noopener">https://pan.baidu.com/s/12qd637UuboPqVMi_1Iyjeg?pwd=m6md</a> </p>
+<p>提取码: m6md </p>
+<h2 id="项目截图"><a href="#项目截图" class="headerlink" title="项目截图"></a><strong>项目截图</strong></h2><p><img src="/images/image-20221121144612793.png" alt="image-20221121144612793"></p>
+<p><img src="/images/image-20221121144636594.png" alt="image-20221121144636594"></p>
+<p><img src="/images/image-20221121144650146.png" alt="image-20221121144650146"></p>
+<p><img src="/images/image-20221121144703473.png" alt="image-20221121144703473"></p>
+<p><img src="/images/image-20221121144718469.png" alt="image-20221121144718469"></p>
+<p><img src="/images/image-20221121144828638.png" alt="image-20221121144828638"></p>
+<p><img src="/images/image-20221121144920955.png" alt="image-20221121144920955"></p>
+<h2 id="联系我们"><a href="#联系我们" class="headerlink" title="联系我们"></a><strong>联系我们</strong></h2><p>如有需要源码可以通过QQ 搜索：792435323联系我！<br>请备注：酒店源码</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a><strong>注意事项</strong></h2><p>获取代码之后，使用IDEA导入本项目前，请确保你本地环境是已经含有代码所需要运行环境的条件了。</p>
+<p>接着找到对应的sql文件，将其导入到你本地的数据库即可。</p>
+<p>最后修改项目中配置文件中的数据库对应的信息，确认修改完毕，找到对应的ManageApplication直接运行吧！</p>
+<h2 id="其它说明"><a href="#其它说明" class="headerlink" title="其它说明"></a><strong>其它说明</strong></h2><p>白嫖怪（伸手党）请绕道！</p>
+<hr>
+<p>The end.</p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/reward-alipay.png"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/reward-wepay.png"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip"></p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处！
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/post/789179de.html" class="next-post btn btn-default" title="SpringBoot统计接口请求耗时">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">SpringBoot统计接口请求耗时</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({           
+            el: '#vcomments',
+            appId: 'sbQDWnkLFsRjJS2BGzfKc4rL-gzGzoHsz',
+            appKey: '5u9C0UUmzRe3unr9iLzheHjk',
+            placeholder: '来都来了,不说两句嘛',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#主要功能"><span class="toc-text">主要功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开发环境（运行环境）"><span class="toc-text">开发环境（运行环境）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目技术栈"><span class="toc-text">项目技术栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#登录地址"><span class="toc-text">登录地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目演示视频"><span class="toc-text">项目演示视频</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目截图"><span class="toc-text">项目截图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#联系我们"><span class="toc-text">联系我们</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意事项"><span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其它说明"><span class="toc-text">其它说明</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018 - 2022
+                </span> | .<font color="#f1607d">伊</font><font color="#ffa500">成</font><font color="#e5e802">个</font><font color="#3bff23">人</font><font color="#ffa503">站</font><font color="#29c8ec"> devcheng</font><font color="#4f9cfa">.net</font>. |
+                <span>
+                    网站基于Hexo搭建
+                </span> |
+                <span>
+                     <a href="/sitemap.xml" class="copyright-links" target="_blank" rel="nofollow">本站地图</a>
+                </span> |
+				<span>
+					 <a href="/atom.xml" class="copyright-links" target="_blank" rel="nofollow">RSS订阅</a> 
+				</span> |
+				<span>
+                    <a href="https://beian.miit.gov.cn/" class="copyright-links" target="_blank" rel="nofollow">湘ICP备20010839号</a> 
+                </span>
+				<span>
+                    <a href="https://beian.miit.gov.cn/" class="copyright-links" target="_blank" rel="nofollow">湘ICP备20010839号-1</a> 
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>
