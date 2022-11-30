@@ -52,6 +52,8 @@
     
 
 
+    <link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+
 
 <link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
 <link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
@@ -260,27 +262,20 @@
 
     <div id="comments">
         
-    
-    <div id="vcomments" class="valine"></div>
-
-    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-
-    <script>
-        new Valine({           
-            el: '#vcomments',
-            appId: 'sbQDWnkLFsRjJS2BGzfKc4rL-gzGzoHsz',
-            appKey: '5u9C0UUmzRe3unr9iLzheHjk',
-            placeholder: '来都来了,不说两句嘛',
-            notify: false,
-            verify: false,
-            avatar: 'mm',
-            meta: 'nick,mail'.split(','),
-            pageSize: '10',
-            path: window.location.pathname,
-            lang: 'zh-CN'.toLowerCase()
-        })
-    </script>
-
+	<script type="text/javascript" src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+        id: window.location.pathname,
+        owner:"lvoyee",
+        repo:"lvoyee.github.io",
+        oauth: {
+          client_id:"1fa48feb0bb3b35332cb",
+          client_secret:"a55a8cd625dc5a68af09db70a1f350e182fdbe20"
+        },
+        perPage:"10",
+    });
+    gitment.render('comments');
+</script>
 
     </div>
 
