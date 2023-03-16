@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.devcheng.net/"/>
-  <updated>2023-03-06T12:09:35.525Z</updated>
+  <updated>2023-03-16T05:08:38.552Z</updated>
   <id>http://www.devcheng.net/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2023年金三银四怎么不见了？</title>
+    <link href="http://www.devcheng.net/post/408b0414.html"/>
+    <id>http://www.devcheng.net/post/408b0414.html</id>
+    <published>2023-03-16T05:03:06.000Z</published>
+    <updated>2023-03-16T05:08:38.552Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>不少人都应该发现了今年的工作不是很好找，无论是什么行业什么岗位都比之前难找了。往年的金三银四怎么不见了呢，前段时间还和朋友聊天说到，去年疫情大家几乎都被感染过了一次，今年疫情逐渐好转了许多。年后应该会好找一点，可结果却不是这样的情况。</p><h1 id="工作难找"><a href="#工作难找" class="headerlink" title="工作难找"></a>工作难找</h1><p>现状在各种招聘软件投简历基本都是石沉大海的结果，回复的寥寥无几。新开的岗位分分钟都可以收到上百份简历。</p><p>2023年有1150万的应届大学毕业生要找工作；各行各业都不景气，很多企业都在大幅裁员；物价在不断上涨等多方面原因。</p><p>2022年上半年，就有46万家企业倒闭，113万家个体工商户注销，现在的生意是越来越难做了。而即使各地放开了对疫情的防控措施，现在老百姓也都不敢去人流较多的商店或超市，所以逛街的人也越来越少。</p><p>如今很多家庭面临投资困境：一边是通货膨胀越来越厉害，另一边是银行存款利率越来越低，而各类理财品种的风险却在不断的上升。这就意味着，如果你把钱存在银行里面，就要面对货币贬值。</p><p>而如果你把资金购买股票、基金、银行理财、期权等高收益投资品，却很可能面临资产缩水的风险，投资者真的不知道该怎么办？</p><p>国内物价上涨的原因，除了输入性通胀之外，还有就是我国央行的货币政策的持续宽松，当然，也有受疫情影响，社会生产能力减弱等因素。</p><p>现在老百姓深感生活支出成本上升了，而物价上涨的情况在2023年还将会继续。</p><h1 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h1><p>金三银四看来今年不存在的，各位还是不要裸辞的好</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;不少人都应该发现了今年的工作不是很好找，无论是什么行业什么岗位都比之前难找了。往年的金三银四怎么不见了呢，前段时间还和朋友聊
+      
+    
+    </summary>
+    
+      <category term="codelife" scheme="http://www.devcheng.net/categories/codelife/"/>
+    
+    
+      <category term="工作" scheme="http://www.devcheng.net/tags/%E5%B7%A5%E4%BD%9C/"/>
+    
+      <category term="金三银四" scheme="http://www.devcheng.net/tags/%E9%87%91%E4%B8%89%E9%93%B6%E5%9B%9B/"/>
+    
+  </entry>
   
   <entry>
     <title>基于SpringBoot开发的垃圾分类回收管理系统源码分享</title>
@@ -532,37 +559,6 @@
       <category term="新闻发布管理系统" scheme="http://www.devcheng.net/tags/%E6%96%B0%E9%97%BB%E5%8F%91%E5%B8%83%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
     
       <category term="毕设" scheme="http://www.devcheng.net/tags/%E6%AF%95%E8%AE%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>基于SpringBoot开发的宠物管理系统源码分享</title>
-    <link href="http://www.devcheng.net/post/eb48f8f9.html"/>
-    <id>http://www.devcheng.net/post/eb48f8f9.html</id>
-    <published>2021-12-16T11:48:47.000Z</published>
-    <updated>2021-12-16T12:04:46.600Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>本项目是基于Spring Boot 2.x 开发的，宠物管理系统分为前台系统和后台数据管理系统，可以当作毕业设计，期末课程作业等，也可以当作学习、进阶Spring Boot 的资料。</p><h2 id="项目描述"><a href="#项目描述" class="headerlink" title="项目描述"></a><strong>项目描述</strong></h2><p>本项目前台系统主要是数据展示，提供给用户领养宠物和购买宠物用品等功能；后台数据管理系统分为普调用户和管理员两种角色。管理员可以管理用户，宠物信息，商品信息，订单信息等。</p><h2 id="主要功能有："><a href="#主要功能有：" class="headerlink" title="主要功能有："></a><strong>主要功能有：</strong></h2><ul><li>数据分析</li><li>会员管理</li><li>宠物信息管理</li><li>管理员管理</li><li>商品管理</li><li>订单管理</li><li>登录&amp;注册功能</li><li>购物车功能</li><li>个人信息功能</li><li>宠物领养功能</li><li>…</li></ul><h2 id="开发环境（运行环境）"><a href="#开发环境（运行环境）" class="headerlink" title="开发环境（运行环境）"></a><strong>开发环境（运行环境）</strong></h2><p>系统环境：Windows 10</p><ul><li>开发工具：IntelliJ IDEA 2020.3</li><li>Java版本：JDK 1.8</li><li>Mysql版本：5.7</li><li>Maven版本：3.6.3</li></ul><h2 id="项目技术栈"><a href="#项目技术栈" class="headerlink" title="项目技术栈"></a><strong>项目技术栈</strong></h2><ul><li>Spring Boot 2.3.7.RELEASE</li><li>Mybatis</li><li>Maven 3.X</li><li>Mysql</li><li>thymeleaf</li><li>Layui</li><li>Jquery</li><li>Echarts</li><li>…</li></ul><h2 id="登录地址"><a href="#登录地址" class="headerlink" title="登录地址"></a><strong>登录地址</strong></h2><p><a href="http://localhost:8081/index" target="_blank" rel="noopener">http://localhost:8081/index</a><br>管理员账号： <a href="mailto:admin@pet.com" target="_blank" rel="noopener">admin@pet.com</a><br>管理员密码： 1234qwer</p><p>其它用户账号密码默认均为：1234qwer</p><h2 id="项目截图"><a href="#项目截图" class="headerlink" title="项目截图"></a><strong>项目截图</strong></h2><p><img src="/images/devcheng_net_cwsys_001.png" alt="“伊成博客”"></p><p><img src="/images/devcheng_net_cwsys_002.png" alt="“伊成博客”"></p><p><img src="/images/devcheng_net_cwsys_003.png" alt="“伊成博客”"></p><p><img src="/images/devcheng_net_cwsys_004.png" alt="“伊成博客”"></p><p><img src="/images/devcheng_net_cwsys_005.png" alt="“伊成博客”"></p><p><img src="/images/devcheng_net_cwsys_006.png" alt="“伊成博客”"></p><p><img src="/images/devcheng_net_cwsys_007.png" alt="“伊成博客”"></p><p><img src="/images/devcheng_net_cwsys_008.png" alt="“伊成博客”"></p><h2 id="联系我们"><a href="#联系我们" class="headerlink" title="联系我们"></a><strong>联系我们</strong></h2><p>如有需要源码可以通过QQ 搜索：792435323联系我！<br>请备注：宠物管理系统</p><h2 id="项目演示视频"><a href="#项目演示视频" class="headerlink" title="项目演示视频"></a><strong>项目演示视频</strong></h2><p>链接: <a href="https://pan.baidu.com/s/1pvYZIQ3DmBqfXw13AhuhkA" target="_blank" rel="noopener">https://pan.baidu.com/s/1pvYZIQ3DmBqfXw13AhuhkA</a><br>提取码: gid8 </p><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a><strong>注意事项</strong></h2><p>获取代码之后，使用IDEA导入本项目前，请确保你本地环境是已经含有代码所需要运行环境的条件了。</p><p>接着找到对应的sql文件，将其导入到你本地的数据库即可。</p><p>最后修改项目中配置文件中的数据库对应的信息，确认修改完毕，找到对应的PetManagerApplication直接运行吧！</p><h2 id="其它说明"><a href="#其它说明" class="headerlink" title="其它说明"></a><strong>其它说明</strong></h2><p>白嫖怪请绕道！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;本项目是基于Spring Boot 2.x 开发的，宠物管理系统分为前台系统和后台数据管理系统，可以当作毕
-      
-    
-    </summary>
-    
-      <category term="codeshare" scheme="http://www.devcheng.net/categories/codeshare/"/>
-    
-    
-      <category term="SpringBoot" scheme="http://www.devcheng.net/tags/SpringBoot/"/>
-    
-      <category term="毕业设计" scheme="http://www.devcheng.net/tags/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/"/>
-    
-      <category term="宠物管理系统" scheme="http://www.devcheng.net/tags/%E5%AE%A0%E7%89%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
-    
-      <category term="源码" scheme="http://www.devcheng.net/tags/%E6%BA%90%E7%A0%81/"/>
     
   </entry>
   
