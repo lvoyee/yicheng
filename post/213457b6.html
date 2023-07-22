@@ -42,7 +42,7 @@
 
     <!--Title-->
 
-<title>	ETL入门系列 03-伊成个人站</title>
+<title>	springboot整合rabbitmq实现几种模式-伊成个人站</title>
 
     <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人网站" type="application/atom+xml">
 
@@ -138,9 +138,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="ETL入门系列 03">
+        <h1 id="springboot整合rabbitmq实现几种模式">
             
-	            ETL入门系列 03
+	            springboot整合rabbitmq实现几种模式
             
         </h1>
         <div class="post-meta">
@@ -160,16 +160,12 @@
         <span class="tags-meta">
             
                 
-                    <a href="/tags/ETL" title="ETL">
-                        ETL
+                    <a href="/tags/centos7" title="centos7">
+                        centos7
                     </a>
                 
-                    <a href="/tags/实战案例" title="实战案例">
-                        实战案例
-                    </a>
-                
-                    <a href="/tags/数据集成" title="数据集成">
-                        数据集成
+                    <a href="/tags/rabbitmq" title="rabbitmq">
+                        rabbitmq
                     </a>
                 
             
@@ -181,7 +177,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2021/03/15</span>
+            <span class="date-meta">2023/07/22</span>
         </span>
         
     
@@ -192,69 +188,48 @@
     </div>
     
     <div class="post-body post-content">
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a><strong>背景</strong></h2><p>结合前面两篇博文，这篇博文进行一次实战案例，用于介绍如何使用Ckettle做数据集成。</p>
-<p><strong>实战需求</strong>：<br>某公司新人试用期为3个月，现在需要对职称为P3的为转正的员工实施转正考核，需要从现有的一张员工信息表格中提取并筛选未转正的员工数据，然后转存到考核系统的数据库中，每个月的1号执行一次。</p>
-<p><strong>技术需求</strong></p>
-<ul>
-<li>源数据：Excel   目标数据：MySql</li>
-</ul>
-<p><img src="/images/ETL_20210315093800.png" alt="“伊成博客”"></p>
-<p><strong>业务分析</strong></p>
-<ul>
-<li>试用期：3个月    职称：P3    转正状态:未转正</li>
-</ul>
-<p><strong>技术概要分析</strong></p>
-<p>识别源和目标数据库，数据存储表</p>
-<p><strong>操作概要分析</strong></p>
-<ul>
-<li>数据处理类型：定时调用</li>
-<li>调度频率：每个一次</li>
-</ul>
-<p><img src="/images/ETL_20210315101321.png" alt="“伊成博客”"></p>
-<h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a><strong>操作步骤</strong></h2><h3 id="数据抽取"><a href="#数据抽取" class="headerlink" title="数据抽取"></a><strong>数据抽取</strong></h3><p>1.找到CKettle安装完成目录中的 ‘Spoon.bat’ 双击打开即可。</p>
-<p>2.点击 ‘新建’，选择 ‘转换’ 选项。</p>
-<p><img src="/images/ETL_20210315101939.png" alt="“伊成博客”"></p>
-<p>3.点击 ‘输入’插件中，拖拽 ‘Excel输入’ 插件到右边。</p>
-<p><img src="/images/ETL_20210315102217.png" alt="“伊成博客”"></p>
-<p>4.选择存于你本地的excel文件，点击 ‘添加’按钮。</p>
-<p><img src="/images/ETL_20210315102608.png" alt="“伊成博客”"></p>
-<p>5.切换到 ‘工作表’选项，点击 ‘获选工作表名称’选择数据对应的sheet，完成后点击确定按钮。</p>
-<p><img src="/images/ETL_20210315103026.png" alt="“伊成博客”"></p>
-<p>6.继续切换到 ‘字段’选项，点击 ‘选择来自头部数据的字段’，如无需修改各个字段的类型点击确定按钮。</p>
-<p><img src="/images/ETL_20210315103130.png" alt="“伊成博客”"></p>
-<p>tips:到此第一步的数据抽取的工作就完成了。</p>
-<h3 id="数据转换"><a href="#数据转换" class="headerlink" title="数据转换"></a><strong>数据转换</strong></h3><p>1.接着需要筛选出职称为P3的员工，需要’过滤记录’插件。</p>
-<p><img src="/images/ETL_20210315103509.png" alt="“伊成博客”"></p>
-<p>2.按住shift键把两个插件用数据线连接在一块，然后进行数据过来的配置。</p>
-<p><img src="/images/ETL_20210315103725.png" alt="“伊成博客”"></p>
-<p>3.接着筛选出未转正的数据，在步骤2中同理操作一次即可。</p>
-<p><img src="/images/ETL_20210315104250.png" alt="“伊成博客”"></p>
-<p>tips：做好以上的步骤，我们可以试着点击’运行’按钮，查看一下流程是否有问题，如果配置都没问题的情况下我们可以查看到数据过滤后的结果。</p>
-<p><img src="/images/ETL_20210315111418.png" alt="“伊成博客”"></p>
-<p>4.添加一个常量用于比较出是否已经满了入职三个月的需求，这里需要一个 ‘增加常量’插件。</p>
-<p><img src="/images/ETL_20210315204407.png" alt="“伊成博客”"></p>
-<p>5.添加一个’计算器’ 插件，把入职时间加上刚刚设置的常量得到一个应该转正日期。</p>
-<p><img src="/images/ETL_20210315204920.png" alt="“伊成博客”"></p>
-<p>6.添加一个 ‘获取系统信息’ 插件，选择系统时间固定值。</p>
-<p><img src="/images/ETL_20210315205318.png" alt="“伊成博客”"></p>
-<p>7.由以上步骤，可以用当前时间和应该转正日期做比较从而筛选出符合条件的数据。</p>
-<p><img src="/images/ETL_20210315205627.png" alt="“伊成博客”"></p>
-<p>做到这一步，点击运行查看一下被筛选后的数据。</p>
-<p><img src="/images/ETL_20210315205917.png" alt="“伊成博客”"></p>
-<p>8.由上一步得知有重复数据，需要借助 ‘去除重复记录’ 插件。</p>
-<p><img src="/images/ETL_20210315210420.png" alt="“伊成博客”"></p>
-<h3 id="数据转载"><a href="#数据转载" class="headerlink" title="数据转载"></a><strong>数据转载</strong></h3><p>1.添加 ‘插入/更新’ 插件，配置数据库连接信息。</p>
-<p><img src="/images/ETL_20210315210849.png" alt="“伊成博客”"></p>
-<p>设置好用来查询的关键字字段，这一步是用来当成数据查询的条件。<br>更新字段这一项是获取数据之后需要更新哪一些字段。</p>
-<p><img src="/images/ETL_20210315211529.png" alt="“伊成博客”"></p>
-<p>配置完成之后可以点击运行按钮，接着查看数据库对应的表是否存放了符合条件的数据。</p>
-<p><img src="/images/ETL_20210315211802.png" alt="“伊成博客”"></p>
-<p>数据成功存入到对应数据库表中，到此数据抽取，转换，装载都完成了。<br>但每个月1号需要执行一次这个涉及到定时调度，我们后续再出对应博文讲解！</p>
-<h2 id="其它说明"><a href="#其它说明" class="headerlink" title="其它说明"></a><strong>其它说明</strong></h2><p><a href="http://www.devcheng.net/post/53978f67.html">《ETL入门系列01》</a></p>
-<p><a href="http://www.devcheng.net/post/cc6d4f48.html">《ETL入门系列02》</a></p>
-<p><a href="http://www.devcheng.net/post/bb6a7fde.html">《ETL入门系列03》</a></p>
-<p>ETL入门系列到此结束！</p>
-<p>本案例中涉及的execl文档和ktr文件有需要的可以加QQ群：816175200<br>备注: ckettle</p>
+        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>如何使用springboot整合rabbitmq的几种模式，这篇就给出了对应的demo，地址放在文章后面。</p>
+<p>前提条件需要搭建好对应的rabbitmq服务，具体搭建可以参考我的上一篇 <a href="http://www.devcheng.net/post/a3a60b55.html">《centos7中安装rabbitmq》</a>。</p>
+<h2 id="7种模式"><a href="#7种模式" class="headerlink" title="7种模式"></a>7种模式</h2><p><img src="https://s3.bmp.ovh/imgs/2023/07/19/3344f6d7f1a87687.png" alt=""></p>
+<h5 id="1-简单模式"><a href="#1-简单模式" class="headerlink" title="1.简单模式"></a>1.简单模式</h5><p><img src="https://s3.bmp.ovh/imgs/2023/07/12/4241da63b7b23ea0.png" alt=""></p>
+<p>一个生产者，一个消费者，一个队列。</p>
+<p>对应代码，请查看下列几个类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SimpleQueueConfig.java</span><br><span class="line">SimpleQueueProducer.java</span><br><span class="line">SimpleQueueConsumer.java</span><br></pre></td></tr></table></figure></p>
+<h5 id="2-工作模式"><a href="#2-工作模式" class="headerlink" title="2.工作模式"></a>2.工作模式</h5><p><img src="https://s3.bmp.ovh/imgs/2023/07/13/58c10a5f770eec18.png" alt=""></p>
+<p>一个生产者，多个消费者，每个消费者获取到的消息唯一，平均消费。</p>
+<p>消息确认: 分两种自动确认 (易丢失数据)和手动确认 (不易丢失数据)</p>
+<p>手动确认: 我们通过autoAck = true 标志明确地将它们关闭。一旦我们完成任务，就应该将此标志设置为false并从工作人员发送适当的确认。若忘记返回确认会造成消息无法释放，内存堆积。</p>
+<p>消息持久性: 分消息持久化与消息非持久化</p>
+<p>消息持久化: 数据写入磁盘，数据不易丢失(队列和消息都标记为持久)</p>
+<p>消息非持久化: 数据写入内存，数据存储速度快</p>
+<p>对应代码，请查看下列几个类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">WorkQueueConfig.java</span><br><span class="line">WorkQueueProducer.java</span><br><span class="line">WorkQueueConsumer1.java</span><br><span class="line">WorkQueueConsumer2.java</span><br></pre></td></tr></table></figure></p>
+<h5 id="3-发布订阅模式"><a href="#3-发布订阅模式" class="headerlink" title="3.发布订阅模式"></a>3.发布订阅模式</h5><p><img src="https://s3.bmp.ovh/imgs/2023/07/12/f33feff3ec43b937.png" alt=""></p>
+<p>相比于上面两种模式多了一个交换机角色。</p>
+<p>Exchange有常见以下3种类型：</p>
+<p>Fanout：广播，将消息交给所有绑定到交换机的队列。</p>
+<p>Direct：定向，把消息交给符合指定routing key 的队列。</p>
+<p>Topic：通配符，把消息交给符合routing pattern（路由模式） 的队列。</p>
+<p>！注意：Exchange（交换机）只负责转发消息，不具备存储消息的能力，因此如果没有任何队列与Exchange绑定，或者没有符合路由规则的队列，那么消息会丢失！</p>
+<p>对应代码，请查看下列几个类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PublishSubscribeConfig.java</span><br><span class="line">PublishSubscribeProducer.java</span><br><span class="line">PublishSubscribeConsumer1.java</span><br><span class="line">PublishSubscribeConsumer2.java</span><br></pre></td></tr></table></figure></p>
+<h5 id="4-路由模式"><a href="#4-路由模式" class="headerlink" title="4.路由模式"></a>4.路由模式</h5><p><img src="https://s3.bmp.ovh/imgs/2023/07/13/0a739ac21728b7d5.png" alt=""></p>
+<p>交换机类型: direct</p>
+<p>直接交换背后的路由算法很简单 - 消息进入队列，其 绑定密与消息的路由密完全匹配。</p>
+<p>对应代码，请查看下列几个类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RoutingQueueConfig.java</span><br><span class="line">RoutingQueueProducer.java</span><br><span class="line">RoutingQueueConsumer1.java</span><br><span class="line">RoutingQueueConsumer2.java</span><br></pre></td></tr></table></figure></p>
+<h5 id="5-主题模式"><a href="#5-主题模式" class="headerlink" title="5.主题模式"></a>5.主题模式</h5><p><img src="https://s3.bmp.ovh/imgs/2023/07/13/5dea6f7002d3d0cc.png" alt=""></p>
+<p>交换机类型：topic</p>
+<p>发送到主题交换的消息不能具有任意 routing_key 它必须是由点分隔的单词列表。</p>
+<p>单词可以是任何内容，但通常它们指定与消息相关的一些功能。</p>
+<p>路由密钥中可以包含任意数量的单词，最多可达255个字节。</p>
+<p>绑定密钥也必须采用相同的形式。</p>
+<p>主题交换背后的逻辑 类似于直接交换 使用特定路由密钥发送的消息将被传递到与匹配绑定密钥绑定的所有队列。</p>
+<p>但是，绑定键有两个重要的特殊情况：</p>
+<p>*（星号）可以替代一个单词。</p>
+<p>＃（#号）可以替换零个或多个单词。</p>
+<h5 id="6-RPC模式"><a href="#6-RPC模式" class="headerlink" title="6.RPC模式"></a>6.RPC模式</h5><p><img src="https://s3.bmp.ovh/imgs/2023/07/17/adca74906769284b.png" alt=""></p>
+<p>客户端向一个队列中发送消息，并注册一个回调的队列用于接收服务端返回的消息，该消息需要声明一个叫做correaltionId的属性，</p>
+<p>该属性将是该次请求的唯一标识。服务端在接受到消息（在需要时可以验证correaltionId）后，处理消息，并将消息发送到客户端注册的回调队列中。</p>
+<p>对应代码，请查看下列几个类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RPCQueueConfig.java</span><br><span class="line">RPCQueueProducer.java</span><br><span class="line">RPCQueueConsumer.java</span><br></pre></td></tr></table></figure></p>
+<h5 id="7-发布确认模式"><a href="#7-发布确认模式" class="headerlink" title="7.发布确认模式"></a>7.发布确认模式</h5><p>与发布者进行可靠的发布确认，发布者确认是RabbitMQ扩展，可以实现可靠的发布。在通道上启用发布者确认后，RabbitMQ将异步确认发送者发布的消息，这意味着它们已在服务器端处理。</p>
+<h2 id="代码地址"><a href="#代码地址" class="headerlink" title="代码地址"></a>代码地址</h2><p><a href="https://gitee.com/lvoyee/springboot-rabbitmq/" target="_blank" rel="noopener">点我获取代码</a></p>
 <hr>
 <p>The end.</p>
 
@@ -292,15 +267,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/post/d7b63f4f.html" class="pre-post btn btn-default" title="工作中碰上那些给你挖坑或者带你踩坑的猪队友，你会怎么办？">
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">工作中碰上那些给你挖坑或者带你踩坑的猪队友，你会怎么办？</span>
-        </a>
     
-    
-        <a href="/post/cc6d4f48.html" class="next-post btn btn-default" title="ETL入门系列 02">
+        <a href="/post/a3a60b55.html" class="next-post btn btn-default" title="centos7中安装rabbitmq">
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">ETL入门系列 02</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">centos7中安装rabbitmq</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -338,7 +308,7 @@
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作步骤"><span class="toc-text">操作步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据抽取"><span class="toc-text">数据抽取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据转换"><span class="toc-text">数据转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据转载"><span class="toc-text">数据转载</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其它说明"><span class="toc-text">其它说明</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#写在前面"><span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7种模式"><span class="toc-text">7种模式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-简单模式"><span class="toc-text">1.简单模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-工作模式"><span class="toc-text">2.工作模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-发布订阅模式"><span class="toc-text">3.发布订阅模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-路由模式"><span class="toc-text">4.路由模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-主题模式"><span class="toc-text">5.主题模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-RPC模式"><span class="toc-text">6.RPC模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-发布确认模式"><span class="toc-text">7.发布确认模式</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#代码地址"><span class="toc-text">代码地址</span></a></li>
         
     </div>
 </aside>
