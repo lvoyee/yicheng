@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.devcheng.net/"/>
-  <updated>2023-10-16T13:30:26.001Z</updated>
+  <updated>2023-10-23T12:27:02.927Z</updated>
   <id>http://www.devcheng.net/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>对中文汉字排序的方法总结</title>
+    <link href="http://www.devcheng.net/post/74daef45.html"/>
+    <id>http://www.devcheng.net/post/74daef45.html</id>
+    <published>2023-10-23T12:25:50.000Z</published>
+    <updated>2023-10-23T12:27:02.927Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>在各个系统中，都随处可见根据某个字段进行升序(ASC)或降序(DESC)进行排序展示。但进行中文汉字排序和查找的时候，对中文汉字的排序和查找结果往往都是错误的。</p><p>为了尽量提供全面的解决方法，本文会从各个层面出发告知有需要的人对应的解决方法。</p><h1 id="场景一-在MYSQL中如何正确对中文进行排序"><a href="#场景一-在MYSQL中如何正确对中文进行排序" class="headerlink" title="场景一 在MYSQL中如何正确对中文进行排序"></a>场景一 在MYSQL中如何正确对中文进行排序</h1><p>解决方法：在查询语句的 order by 部分使用 CONVERT 函数。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 对中文排序 升序</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> tb_resource_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">CONVERT</span>(type_name <span class="keyword">USING</span> gbk)</span><br></pre></td></tr></table></figure><p><img src="https://s3.bmp.ovh/imgs/2023/10/20/e5921f064a4d32da.png" alt=""></p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 对中文排序 降序</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> tb_resource_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">CONVERT</span>(type_name <span class="keyword">USING</span> gbk) <span class="keyword">DESC</span></span><br></pre></td></tr></table></figure><p><img src="https://s3.bmp.ovh/imgs/2023/10/20/6ac52ba88f063584.png" alt=""></p><h1 id="场景二-在接口开发中如何正确对中文进行排序"><a href="#场景二-在接口开发中如何正确对中文进行排序" class="headerlink" title="场景二 在接口开发中如何正确对中文进行排序"></a>场景二 在接口开发中如何正确对中文进行排序</h1><p>使用Collections.sort()重新compare方法进行中文 升序,以下仅为代码片段，仅供参考。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Comparator comparator = Collator.getInstance(Locale.CHINA);</span><br><span class="line">    Collections.sort(codeList, <span class="keyword">new</span> Comparator&lt;TbmResourceVo&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(TbmResourceVo vo1, TbmResourceVo vo2)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> comparator.compare(vo1.getTypeName(), vo2.getTypeName());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure><p>如何在代码中进行中文倒序排序，可以在升序的基础上，利用 Collections.reverse() 即可完成。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Comparator comparator = Collator.getInstance(Locale.CHINA);</span><br><span class="line">    Collections.sort(codeList, <span class="keyword">new</span> Comparator&lt;TbmResourceVo&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(TbmResourceVo vo1, TbmResourceVo vo2)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> comparator.compare(vo1.getTypeName(), vo2.getTypeName());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    Collections.reverse(codeList);</span><br></pre></td></tr></table></figure><h1 id="其他方式"><a href="#其他方式" class="headerlink" title="其他方式"></a>其他方式</h1><p>也可以将汉字转为拼音在进行排序，添加pinyin4j的依赖。</p><pre><code>&lt;dependency&gt;  &lt;groupId&gt;com.belerweb&lt;/groupId&gt;  &lt;artifactId&gt;pinyin4j&lt;/artifactId&gt;  &lt;version&gt;2.5.0&lt;/version&gt;&lt;/dependency&gt;</code></pre><hr><p>The end.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;在各个系统中，都随处可见根据某个字段进行升序(ASC)或降序(DESC)进行排序展示。但进行中文汉字排序和查找的时候，对中文
+      
+    
+    </summary>
+    
+      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+    
+    
+      <category term="MYSQL" scheme="http://www.devcheng.net/tags/MYSQL/"/>
+    
+      <category term="中文" scheme="http://www.devcheng.net/tags/%E4%B8%AD%E6%96%87/"/>
+    
+  </entry>
   
   <entry>
     <title>Springboot项目接口报415错误怎么解决</title>
@@ -529,33 +556,6 @@
     
     
       <category term="github无法访问" scheme="http://www.devcheng.net/tags/github%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何将 swagger接口导出成PDF、markdown</title>
-    <link href="http://www.devcheng.net/post/76a1c264.html"/>
-    <id>http://www.devcheng.net/post/76a1c264.html</id>
-    <published>2022-06-15T05:05:15.000Z</published>
-    <updated>2022-06-15T05:26:05.256Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>swagger提供了UI页面，假如需要给合作伙伴对应的开发者，一般都需要提供一份接口PDF文件或是对应的markdown文件，这个时候就需要将对应swagger接口进行导出操作了。</p><h1 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h1><h2 id="第一步：准备swagger-json文件"><a href="#第一步：准备swagger-json文件" class="headerlink" title="第一步：准备swagger json文件"></a>第一步：准备swagger json文件</h2><p>1.打开 swagger ui 的页面</p><p>2.点击 swagger json 的链接，具体如下图：<br><img src="/images/微信截图_20220614123402_001.png" alt="“伊成博客”"></p><p>tips：如果你没有看到这个链接，使用F12打开开发者工具重新刷新后，复制 api-docs 的响应内容。</p><p>一定要保存成 json 文件。</p><h2 id="第二步：-把swagger-json文件导入-docway"><a href="#第二步：-把swagger-json文件导入-docway" class="headerlink" title="第二步： 把swagger json文件导入 docway"></a>第二步： 把swagger json文件导入 docway</h2><p>1.登录 <a href="http://docway.net" target="_blank" rel="noopener">http://docway.net</a> （如果第一次使用，需要注册）</p><p>2.在控制台中，新增项目，选择 导入<br><img src="/images/微信截图_20220614123402_002.png" alt="“伊成博客”"></p><p>3.选择 swagger 导入，并根据自己的 swagger json 选择是“上传文件方式”还是“粘贴json方式”<br><img src="/images/微信截图_20220614123402_003.png" alt="“伊成博客”"></p><p>4.导入成功后，就可以看到对应的信息了<br><img src="/images/微信截图_20220614123402_004.png" alt="“伊成博客”"></p><h2 id="第三步：导出PDF或markdown"><a href="#第三步：导出PDF或markdown" class="headerlink" title="第三步：导出PDF或markdown"></a>第三步：导出PDF或markdown</h2><p>1.在项目的“更多设置”中，找到“项目导出”功能。可以选择 PDF或Markdown 导出即可<br><img src="/images/微信截图_20220614123402_005.png" alt="“伊成博客”"></p><h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>总体来说docway导出的PDF接口文件还是不错的，如果选择 PDF(浏览器版)对应的接口文件则是带有颜色的。如果选择的是 仅仅 PDF生成的接口文件页脚是带有docway的网站链接的。</p><p>docway除了 PDF、markdown 导出， 还支持接口设计、接口分享、接口mock、接口历史记录、接口版本管理、团队管理等功能。</p><hr><p>The end.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;swagger提供了UI页面，假如需要给合作伙伴对应的开发者，一般都需要提供一份接口PDF文件或是对应的markdown文件
-      
-    
-    </summary>
-    
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
-    
-    
-      <category term="swagger2" scheme="http://www.devcheng.net/tags/swagger2/"/>
-    
-      <category term="导出PDF" scheme="http://www.devcheng.net/tags/%E5%AF%BC%E5%87%BAPDF/"/>
     
   </entry>
   

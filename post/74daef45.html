@@ -42,7 +42,7 @@
 
     <!--Title-->
 
-<title>	Springboot项目接口报415错误怎么解决-伊成个人站</title>
+<title>	对中文汉字排序的方法总结-伊成个人站</title>
 
     <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人网站" type="application/atom+xml">
 
@@ -138,9 +138,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="Springboot项目接口报415错误怎么解决">
+        <h1 id="对中文汉字排序的方法总结">
             
-	            Springboot项目接口报415错误怎么解决
+	            对中文汉字排序的方法总结
             
         </h1>
         <div class="post-meta">
@@ -160,12 +160,12 @@
         <span class="tags-meta">
             
                 
-                    <a href="/tags/Springboot" title="Springboot">
-                        Springboot
+                    <a href="/tags/MYSQL" title="MYSQL">
+                        MYSQL
                     </a>
                 
-                    <a href="/tags/415" title="415">
-                        415
+                    <a href="/tags/中文" title="中文">
+                        中文
                     </a>
                 
             
@@ -177,7 +177,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2023/10/16</span>
+            <span class="date-meta">2023/10/23</span>
         </span>
         
     
@@ -188,12 +188,24 @@
     </div>
     
     <div class="post-body post-content">
-        <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>接口明明用postman测试的好好怎么给前端联调的时候就提示415错误了呢?<br><img src="https://s3.bmp.ovh/imgs/2023/10/09/68ebee904cba21c4.png" alt=""></p>
-<h1 id="寻找原因"><a href="#寻找原因" class="headerlink" title="寻找原因"></a>寻找原因</h1><p>回过头看后端接口代码是如何写的，代码简要如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public Mono&lt;ResultJson&gt; editAttr(@RequestBody DeviceChannelEntity entity) &#123;</span><br><span class="line">     return ResultJson.ok(deviceChannelService.edit(entity));</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
-<p>后端接口使用了@RequestBody注解，则说明接受的参数必须是json类型的。</p>
-<p>如果前端没有指定响应的数据类型，默认会为text文本类型数据，从而会导致报错 415。</p>
-<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>在前端调用对接接口响应标头中添加json类型即可，具体如下：<br><img src="https://s3.bmp.ovh/imgs/2023/10/09/b963c42cb6f27e5f.png" alt=""></p>
-<hr>
+        <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>在各个系统中，都随处可见根据某个字段进行升序(ASC)或降序(DESC)进行排序展示。但进行中文汉字排序和查找的时候，对中文汉字的排序和查找结果往往都是错误的。</p>
+<p>为了尽量提供全面的解决方法，本文会从各个层面出发告知有需要的人对应的解决方法。</p>
+<h1 id="场景一-在MYSQL中如何正确对中文进行排序"><a href="#场景一-在MYSQL中如何正确对中文进行排序" class="headerlink" title="场景一 在MYSQL中如何正确对中文进行排序"></a>场景一 在MYSQL中如何正确对中文进行排序</h1><p>解决方法：在查询语句的 order by 部分使用 CONVERT 函数。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 对中文排序 升序</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> tb_resource_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">CONVERT</span>(type_name <span class="keyword">USING</span> gbk)</span><br></pre></td></tr></table></figure>
+<p><img src="https://s3.bmp.ovh/imgs/2023/10/20/e5921f064a4d32da.png" alt=""></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 对中文排序 降序</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> tb_resource_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">CONVERT</span>(type_name <span class="keyword">USING</span> gbk) <span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://s3.bmp.ovh/imgs/2023/10/20/6ac52ba88f063584.png" alt=""></p>
+<h1 id="场景二-在接口开发中如何正确对中文进行排序"><a href="#场景二-在接口开发中如何正确对中文进行排序" class="headerlink" title="场景二 在接口开发中如何正确对中文进行排序"></a>场景二 在接口开发中如何正确对中文进行排序</h1><p>使用Collections.sort()重新compare方法进行中文 升序,以下仅为代码片段，仅供参考。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Comparator comparator = Collator.getInstance(Locale.CHINA);</span><br><span class="line">    Collections.sort(codeList, <span class="keyword">new</span> Comparator&lt;TbmResourceVo&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(TbmResourceVo vo1, TbmResourceVo vo2)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> comparator.compare(vo1.getTypeName(), vo2.getTypeName());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<p>如何在代码中进行中文倒序排序，可以在升序的基础上，利用 Collections.reverse() 即可完成。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Comparator comparator = Collator.getInstance(Locale.CHINA);</span><br><span class="line">    Collections.sort(codeList, <span class="keyword">new</span> Comparator&lt;TbmResourceVo&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(TbmResourceVo vo1, TbmResourceVo vo2)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> comparator.compare(vo1.getTypeName(), vo2.getTypeName());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    Collections.reverse(codeList);</span><br></pre></td></tr></table></figure>
+<h1 id="其他方式"><a href="#其他方式" class="headerlink" title="其他方式"></a>其他方式</h1><p>也可以将汉字转为拼音在进行排序，添加pinyin4j的依赖。</p>
+<pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;com.belerweb&lt;/groupId&gt;
+  &lt;artifactId&gt;pinyin4j&lt;/artifactId&gt;
+  &lt;version&gt;2.5.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><hr>
 <p>The end.</p>
 
     </div>
@@ -230,15 +242,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/post/74daef45.html" class="pre-post btn btn-default" title="对中文汉字排序的方法总结">
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">对中文汉字排序的方法总结</span>
-        </a>
     
-    
-        <a href="/post/67d8f3a4.html" class="next-post btn btn-default" title="基于SpringBoot开发的医疗管理系统源码分享">
+        <a href="/post/5cfb0439.html" class="next-post btn btn-default" title="Springboot项目接口报415错误怎么解决">
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">基于SpringBoot开发的医疗管理系统源码分享</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">Springboot项目接口报415错误怎么解决</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -276,7 +283,7 @@
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#写在前面"><span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#寻找原因"><span class="toc-text">寻找原因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解决方案"><span class="toc-text">解决方案</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#写在前面"><span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#场景一-在MYSQL中如何正确对中文进行排序"><span class="toc-text">场景一 在MYSQL中如何正确对中文进行排序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#场景二-在接口开发中如何正确对中文进行排序"><span class="toc-text">场景二 在接口开发中如何正确对中文进行排序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#其他方式"><span class="toc-text">其他方式</span></a></li></ol>
         
     </div>
 </aside>
