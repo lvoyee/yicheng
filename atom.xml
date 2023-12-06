@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.devcheng.net/"/>
-  <updated>2023-10-23T12:27:02.927Z</updated>
+  <updated>2023-12-06T13:09:52.228Z</updated>
   <id>http://www.devcheng.net/</id>
   
   <author>
@@ -17,11 +17,66 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>JAVA服务器端发送邮件问题 Could not connect to SMTP host</title>
+    <link href="http://www.devcheng.net/post/25f0758b.html"/>
+    <id>http://www.devcheng.net/post/25f0758b.html</id>
+    <published>2023-12-06T13:07:08.000Z</published>
+    <updated>2023-12-06T13:09:52.228Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>在开发过程中，发送邮件经过本地测试是没有问题，部署到服务器上后，发送邮件一直报 Could not connect to SMTP host : smtp.yeah.net, port: 465，报错信息如下：</p><p><img src="https://s3.bmp.ovh/imgs/2023/12/06/3529459373b34d08.png" alt=""></p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>网上各种解决方案，都试了一遍都未能解决这个报错问题，后面回过头查看了依赖版本。</p><p>报错时使用的依赖如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;javax.mail&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mail&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.4.7&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure><p>解决方案就是提高版本，将依赖改为 1.6.2 重新打包部署到服务器则完美解决这个报错问题了。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;javax.mail&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mail&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.6.2&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure><p>如果你遇到过类似的问题也可以排查一下是否存在同样的情况，本文提供的只是一个参考解决方案。</p><hr><p>The end.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h2&gt;&lt;p&gt;在开发过程中，发送邮件经过本地测试是没有问题，部署到服务器上后，发送邮件一直报 Could not connect to S
+      
+    
+    </summary>
+    
+      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+    
+    
+      <category term="Could not connect to SMTP host" scheme="http://www.devcheng.net/tags/Could-not-connect-to-SMTP-host/"/>
+    
+      <category term="port 465" scheme="http://www.devcheng.net/tags/port-465/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>idea远程编译代码推送到私服仓库</title>
+    <link href="http://www.devcheng.net/post/f0cee554.html"/>
+    <id>http://www.devcheng.net/post/f0cee554.html</id>
+    <published>2023-12-05T13:00:30.000Z</published>
+    <updated>2023-12-06T13:06:40.808Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>如何使用idea远程编译代码并且推送到公司的私服仓库，具体参考下面的步骤。</p><h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><p>步骤一： 在idea中 找到 File –&gt; Settings –&gt; Docker –&gt; 选择+号 –&gt; 选择TCP socket</p><p>输入对应的 ip:端口进行配置，完成配置后如果在界面中显示了 Connection successful 则说明配置成功了。</p><p><img src="https://s3.bmp.ovh/imgs/2023/12/06/7061a1721d816735.png" alt="伊成博客"></p><p>步骤二：在idea中对应你的项目里面选择 dockerfile:build</p><p><img src="https://s3.bmp.ovh/imgs/2023/12/06/09cd9d97c6345aad.png" alt="![](https://s3.bmp.ovh/imgs/2023/12/06/09cd9d97c6345aad.png)"></p><p>步骤三：执行 dockerile:push 将本地镜像推送到远程私服。</p><p>就这么简单的三个步骤完成。</p><h2 id="可能遇到的问题"><a href="#可能遇到的问题" class="headerlink" title="可能遇到的问题"></a>可能遇到的问题</h2><h3 id="执行docker-build时java-io-FileNotFoundException-pipe-docker-engine-系统找不到指定的文件。"><a href="#执行docker-build时java-io-FileNotFoundException-pipe-docker-engine-系统找不到指定的文件。" class="headerlink" title="执行docker build时java.io.FileNotFoundException: \.\pipe\docker_engine (系统找不到指定的文件。)"></a>执行docker build时java.io.FileNotFoundException: \.\pipe\docker_engine (系统找不到指定的文件。)</h3><p>解决方法：</p><p>把步骤一中输入的 ip:端口 配置到环境变量里面，以及添加 docker host的环境变量。</p><p><img src="https://s3.bmp.ovh/imgs/2023/12/06/f419a3bc69b59d2e.png" alt=""></p><p><img src="https://s3.bmp.ovh/imgs/2023/12/06/b43e037b81800038.png" alt=""></p><h3 id="windows推送私仓的报unauthorized-to-access-repository的解决过程"><a href="#windows推送私仓的报unauthorized-to-access-repository的解决过程" class="headerlink" title="windows推送私仓的报unauthorized to access repository的解决过程"></a>windows推送私仓的报unauthorized to access repository的解决过程</h3><p>解决方法：</p><p>装了windows的Docker desktop，建立了Harbor私仓，奇怪的是用命令行docker login后，pull和Push均正常。</p><p>但是用maven的dockerfile-maven-plugin插件push就会报unauthorized to access repository：action:push</p><p>证书也装了，依旧是这个问题，最终发现，在 C:\Users\Your Name.docker下的config.json中，有一个auths配置：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;HttpHeaders&quot;: &#123;</span><br><span class="line">    &quot;User-Agent&quot;: &quot;Docker-Client/19.03.13 (windows)&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;auths&quot;: &#123;</span><br><span class="line">    &quot;harbor.hachi-tech.com（私仓地址）&quot;: &#123;</span><br><span class="line">      &quot;auth&quot;: &quot;这里需要username:password并用base64加密&quot;,</span><br><span class="line">      &quot;email&quot;: &quot;harbor注册时的邮箱地址&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;credStore&quot;: &quot;desktop&quot;,</span><br><span class="line">  &quot;credsStore&quot;: &quot;desktop&quot;,</span><br><span class="line">  &quot;stackOrchestrator&quot;: &quot;kubernetes&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>username:password并用base64加密这个可以自行百度在线base64加密得到对应的字符串填充进来就可以了。</p><p>配置完毕 auths后，再mvn package,整个流程顺畅无比，不再报unauthorized to access repository错误了。</p><hr><p>The end.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h2&gt;&lt;p&gt;如何使用idea远程编译代码并且推送到公司的私服仓库，具体参考下面的步骤。&lt;/p&gt;
+&lt;h2 id=&quot;操作步骤&quot;&gt;&lt;a hre
+      
+    
+    </summary>
+    
+      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+    
+    
+      <category term="idea远程编译" scheme="http://www.devcheng.net/tags/idea%E8%BF%9C%E7%A8%8B%E7%BC%96%E8%AF%91/"/>
+    
+      <category term="私服仓库" scheme="http://www.devcheng.net/tags/%E7%A7%81%E6%9C%8D%E4%BB%93%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
     <title>对中文汉字排序的方法总结</title>
     <link href="http://www.devcheng.net/post/74daef45.html"/>
     <id>http://www.devcheng.net/post/74daef45.html</id>
     <published>2023-10-23T12:25:50.000Z</published>
-    <updated>2023-10-23T12:27:02.927Z</updated>
+    <updated>2023-10-23T12:27:34.617Z</updated>
     
     <content type="html"><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>在各个系统中，都随处可见根据某个字段进行升序(ASC)或降序(DESC)进行排序展示。但进行中文汉字排序和查找的时候，对中文汉字的排序和查找结果往往都是错误的。</p><p>为了尽量提供全面的解决方法，本文会从各个层面出发告知有需要的人对应的解决方法。</p><h1 id="场景一-在MYSQL中如何正确对中文进行排序"><a href="#场景一-在MYSQL中如何正确对中文进行排序" class="headerlink" title="场景一 在MYSQL中如何正确对中文进行排序"></a>场景一 在MYSQL中如何正确对中文进行排序</h1><p>解决方法：在查询语句的 order by 部分使用 CONVERT 函数。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 对中文排序 升序</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> tb_resource_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">CONVERT</span>(type_name <span class="keyword">USING</span> gbk)</span><br></pre></td></tr></table></figure><p><img src="https://s3.bmp.ovh/imgs/2023/10/20/e5921f064a4d32da.png" alt=""></p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 对中文排序 降序</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> tb_resource_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">CONVERT</span>(type_name <span class="keyword">USING</span> gbk) <span class="keyword">DESC</span></span><br></pre></td></tr></table></figure><p><img src="https://s3.bmp.ovh/imgs/2023/10/20/6ac52ba88f063584.png" alt=""></p><h1 id="场景二-在接口开发中如何正确对中文进行排序"><a href="#场景二-在接口开发中如何正确对中文进行排序" class="headerlink" title="场景二 在接口开发中如何正确对中文进行排序"></a>场景二 在接口开发中如何正确对中文进行排序</h1><p>使用Collections.sort()重新compare方法进行中文 升序,以下仅为代码片段，仅供参考。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Comparator comparator = Collator.getInstance(Locale.CHINA);</span><br><span class="line">    Collections.sort(codeList, <span class="keyword">new</span> Comparator&lt;TbmResourceVo&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(TbmResourceVo vo1, TbmResourceVo vo2)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> comparator.compare(vo1.getTypeName(), vo2.getTypeName());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure><p>如何在代码中进行中文倒序排序，可以在升序的基础上，利用 Collections.reverse() 即可完成。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Comparator comparator = Collator.getInstance(Locale.CHINA);</span><br><span class="line">    Collections.sort(codeList, <span class="keyword">new</span> Comparator&lt;TbmResourceVo&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(TbmResourceVo vo1, TbmResourceVo vo2)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> comparator.compare(vo1.getTypeName(), vo2.getTypeName());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    Collections.reverse(codeList);</span><br></pre></td></tr></table></figure><h1 id="其他方式"><a href="#其他方式" class="headerlink" title="其他方式"></a>其他方式</h1><p>也可以将汉字转为拼音在进行排序，添加pinyin4j的依赖。</p><pre><code>&lt;dependency&gt;  &lt;groupId&gt;com.belerweb&lt;/groupId&gt;  &lt;artifactId&gt;pinyin4j&lt;/artifactId&gt;  &lt;version&gt;2.5.0&lt;/version&gt;&lt;/dependency&gt;</code></pre><hr><p>The end.</p>]]></content>
     
@@ -503,59 +558,6 @@
       <category term="职场" scheme="http://www.devcheng.net/tags/%E8%81%8C%E5%9C%BA/"/>
     
       <category term="程序人生" scheme="http://www.devcheng.net/tags/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>基于SpringBoot开发的家庭财务管理系统</title>
-    <link href="http://www.devcheng.net/post/fb09f6bd.html"/>
-    <id>http://www.devcheng.net/post/fb09f6bd.html</id>
-    <published>2022-07-08T07:12:55.000Z</published>
-    <updated>2023-05-20T11:51:43.398Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>本项目是基于Spring Boot 2.x 开发的，家庭财务管理系统分三种角色，分别是：系统管理员，家主，用户。本项目可以当作毕业设计也有对应的毕业论文可参考<strong>(毕业论文不是免费的)</strong>，期末课程作业等，也可以当作学习、进阶Spring Boot 的资料。</p><h2 id="功能描述"><a href="#功能描述" class="headerlink" title="功能描述"></a><strong>功能描述</strong></h2><p>本项目通过不同的角色登录显示不同角色对应的菜单，不用角色之间查看到对应的功能菜单数据。其中系统管理员拥有系统所有菜单和功能，其次是家主，家主下拥有的是用户。</p><h2 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a><strong>主要功能</strong></h2><ul><li>收支管理（支出详情，收入详情）</li><li>理财管理（活期资产，理财详情，负债详情，理财产品）</li><li>财务统计（统计报表）</li><li>系统管理（用户管理，角色管理）</li><li>我的主页</li><li>安全退出</li><li>修改密码</li></ul><h2 id="开发环境（运行环境）"><a href="#开发环境（运行环境）" class="headerlink" title="开发环境（运行环境）"></a><strong>开发环境（运行环境）</strong></h2><ul><li>系统环境：Windows 11</li><li>开发工具：IntelliJ IDEA 2020.3</li><li>Java版本：JDK 1.8</li><li>Mysql版本：5.7</li><li>Maven版本：3.6.3</li></ul><h2 id="项目技术栈"><a href="#项目技术栈" class="headerlink" title="项目技术栈"></a><strong>项目技术栈</strong></h2><ul><li>Spring Boot 2.1.X.RELEASE</li><li>Spring Boot JPA</li><li>Maven 3.X</li><li>Mysql</li><li>thymeleaf</li><li>layui</li><li>Jquery</li><li>…</li></ul><h2 id="登录地址"><a href="#登录地址" class="headerlink" title="登录地址"></a><strong>登录地址</strong></h2><p>访问路径：<a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a></p><p>管理员账号/密码： admin / admin</p><p>家主账号/密码：house1 / 123456</p><p>用户账号/密码：yangtwo / 123456</p><h2 id="项目演示视频"><a href="#项目演示视频" class="headerlink" title="项目演示视频"></a><strong>项目演示视频</strong></h2><p>视频链接：</p><p>链接: <a href="https://pan.baidu.com/s/1ttuRq_9vkfjq320MarTFIA?pwd=fptq" target="_blank" rel="noopener">https://pan.baidu.com/s/1ttuRq_9vkfjq320MarTFIA?pwd=fptq</a></p><p>提取码: fptq</p><h2 id="项目截图"><a href="#项目截图" class="headerlink" title="项目截图"></a><strong>项目截图</strong></h2><p><img src="/images/847c9e0de7f946628c0966831500d8ba.png" alt="“伊成博客”"></p><p><img src="/images/b50b753aaed748ebaae5596290ebdd36.png" alt="“伊成博客”"></p><p><img src="/images/b18206992bb448c099ee608fcd60c523.png" alt="“伊成博客”"></p><p><img src="/images/a602946b21d642c5a94c3c32bf7de941.png" alt="“伊成博客”"></p><p><img src="/images/293b76a7a9e6476f8f7f5a39a5bfdd65.png" alt="“伊成博客”"></p><h2 id="联系我们"><a href="#联系我们" class="headerlink" title="联系我们"></a><strong>联系我们</strong></h2><p>如有需要源码可以通过QQ 搜索：792435323联系我！<br>请备注：源码</p><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a><strong>注意事项</strong></h2><p>获取代码之后，使用IDEA导入本项目前，请确保你本地环境是已经含有代码所需要运行环境的条件了。</p><p>接着找到对应的sql文件，将其导入到你本地的数据库即可。</p><p>最后修改项目中配置文件中的数据库对应的信息，确认修改完毕，找到对应的FfmsApplication直接运行吧！</p><h2 id="其它说明"><a href="#其它说明" class="headerlink" title="其它说明"></a><strong>其它说明</strong></h2><p>白嫖怪（伸手党）请绕道！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;本项目是基于Spring Boot 2.x 开发的，家庭财务管理系统分三种角色，分别是：系统管理员，家主，
-      
-    
-    </summary>
-    
-      <category term="codeshare" scheme="http://www.devcheng.net/categories/codeshare/"/>
-    
-    
-      <category term="SpringBoot" scheme="http://www.devcheng.net/tags/SpringBoot/"/>
-    
-      <category term="家庭财务管理系统" scheme="http://www.devcheng.net/tags/%E5%AE%B6%E5%BA%AD%E8%B4%A2%E5%8A%A1%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>解决github无法访问的方法之修改hosts文件</title>
-    <link href="http://www.devcheng.net/post/768a5c50.html"/>
-    <id>http://www.devcheng.net/post/768a5c50.html</id>
-    <published>2022-06-17T03:23:41.000Z</published>
-    <updated>2022-11-30T06:02:27.508Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>github有的朋友访问不了，今天就介绍一种解决方法。</p><h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>根据修改hosts文件，配置github 对应ip从而达到可以访问github的目的，所以前提条件需要可以修改hosts文件。</p><p>hosts文件路径： C:\Windows\System32\drivers\etc</p><p>假如你无法修改对应的这个hosts文件，请移步百度一波先解决这个问题。</p><p>1.输入网站 <a href="https://www.ipaddress.com/" target="_blank" rel="noopener">https://www.ipaddress.com/</a> </p><p>2.按照下列清单在以上网站输入对于网址，得到的对应IP写入hosts文件即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">github.global.ssl.fastly.net</span><br><span class="line">github.com</span><br><span class="line">assets-cdn.github.com</span><br><span class="line">documentcloud.github.com</span><br><span class="line">gist.github.com</span><br><span class="line">help.github.com</span><br><span class="line">nodeload.github.com</span><br><span class="line">raw.github.com</span><br><span class="line">status.github.com</span><br><span class="line">training.github.com</span><br><span class="line">www.github.com</span><br><span class="line">avatars0.githubusercontent.com</span><br><span class="line">avatars1.githubusercontent.com</span><br><span class="line">codeload.github.com</span><br></pre></td></tr></table></figure></p><p>如果你嫌麻烦你可以直接复制下面的内容到你的hosts文件。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">146.75.77.194 github.global.ssl.fastly.net</span><br><span class="line">140.82.113.4 github.com</span><br><span class="line">185.199.109.153 assets-cdn.github.com</span><br><span class="line">185.199.109.153 documentcloud.github.com</span><br><span class="line">140.82.114.3 gist.github.com</span><br><span class="line">140.82.112.17 help.github.com</span><br><span class="line">140.82.112.10 nodeload.github.com</span><br><span class="line">185.199.108.133 raw.github.com</span><br><span class="line">140.82.114.18 status.github.com</span><br><span class="line">185.199.108.153 training.github.com</span><br><span class="line">140.82.113.4 www.github.com</span><br><span class="line">185.199.108.133 avatars0.githubusercontent.com</span><br><span class="line">185.199.109.133 avatars1.githubusercontent.com</span><br><span class="line">140.82.114.9 codeload.github.com</span><br></pre></td></tr></table></figure><p>如果发现哪一天，这个不可用了，可以留言评论告知我！</p><hr><p><strong>更新补充</strong></p><p>有朋友反应这么改没啥用，正好最近朋友推荐了一个新的利器！</p><p>这玩意叫 fastgithub , 有需要的自行下载即可！</p><p>链接: <a href="https://pan.baidu.com/s/1Jtl292N8XuLq_A3yCQM1TA?pwd=8ttt" target="_blank" rel="noopener">https://pan.baidu.com/s/1Jtl292N8XuLq_A3yCQM1TA?pwd=8ttt</a> 提取码: 8ttt </p><hr><p>The end.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;github有的朋友访问不了，今天就介绍一种解决方法。&lt;/p&gt;
-&lt;h1 id=&quot;解决方法&quot;&gt;&lt;a href=&quot;#解决方法&quot; 
-      
-    
-    </summary>
-    
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
-    
-    
-      <category term="github无法访问" scheme="http://www.devcheng.net/tags/github%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE/"/>
     
   </entry>
   
