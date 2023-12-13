@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.devcheng.net/"/>
-  <updated>2023-12-06T13:09:52.228Z</updated>
+  <updated>2023-12-13T13:09:34.057Z</updated>
   <id>http://www.devcheng.net/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GIT版本回退</title>
+    <link href="http://www.devcheng.net/post/19469078.html"/>
+    <id>http://www.devcheng.net/post/19469078.html</id>
+    <published>2023-12-13T12:54:08.000Z</published>
+    <updated>2023-12-13T13:09:34.057Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>在项目开发的过程中，有时候提交了不应该提交的内容或提交错分支了，需要撤回对应的提交内容。也就是需要进行版本回退操作<br>那具体怎么操作呢？</p><p>再说具体怎么操作之前，我们需要明白回退有几种情况。</p><p>第一种情况：已经commit，但未push到远程仓库。</p><p>第二种情况：已经commit，并且ush到远程仓库。</p><p>针对以上两种情况如何回退？</p><h2 id="已经commit，但未push到远程仓库，怎么回退"><a href="#已经commit，但未push到远程仓库，怎么回退" class="headerlink" title="已经commit，但未push到远程仓库，怎么回退"></a>已经commit，但未push到远程仓库，怎么回退</h2><h3 id="方法1：git-reset-–soft"><a href="#方法1：git-reset-–soft" class="headerlink" title="方法1：git reset –soft"></a>方法1：git reset –soft</h3><p>在README.md文件中模拟我们编写的代码内容，执行提交命令并提交到了本地仓库。</p><p><img src="https://s3.bmp.ovh/imgs/2023/12/13/7de27b14c6b5cd70.png" alt=""></p><p>此时回滚到上一个版本，可以通过执行以下命令可以回退到上一个commit</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --soft HEAD^</span><br></pre></td></tr></table></figure><p>执行完这个命令之后，再查看是否回退到了上一个commit<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PS D:\giteeSource\tuku&gt; git reset --soft HEAD^</span><br><span class="line">PS D:\giteeSource\tuku&gt;</span><br></pre></td></tr></table></figure></p><p><img src="https://s3.bmp.ovh/imgs/2023/12/13/e4a39f35de347ff0.png" alt=""></p><p>Tips： HEAD^的意思是上一个版本，也可以写成HEAD~1 ，如果你进行了2次commit，想都撤回，可以使用HEAD~2，这个命令仅仅是撤回commit操作，写的代码仍然保留。</p><h3 id="方法2：git-reset-–mixed"><a href="#方法2：git-reset-–mixed" class="headerlink" title="方法2：git reset –mixed"></a>方法2：git reset –mixed</h3><p>继续在README.md文件中填写一些内容模拟编写的代码，并且提交到本地仓库。</p><p><img src="https://s3.bmp.ovh/imgs/2023/12/13/cddc3a1f923ccc2c.png" alt=""></p><p>执行以下命令进行版本回退<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PS D:\giteeSource\tuku&gt; git reset --mixed HEAD^</span><br><span class="line">Unstaged changes after reset:</span><br><span class="line">M       README.md</span><br><span class="line">M       pom.xml</span><br><span class="line">PS D:\giteeSource\tuku&gt;</span><br></pre></td></tr></table></figure></p><p>经过查看确实回退到了上一个提交的commit。<br><img src="https://s3.bmp.ovh/imgs/2023/12/13/e4a39f35de347ff0.png" alt=""></p><p>小小的总结</p><p>以上的2个方法都可以回退到上一个版本，但是需要注意的是，仅仅是回退了上一个版本，你提交的内容仍存在的。</p><h2 id="已经commit，并且push到远程仓库，怎么回退"><a href="#已经commit，并且push到远程仓库，怎么回退" class="headerlink" title="已经commit，并且push到远程仓库，怎么回退"></a>已经commit，并且push到远程仓库，怎么回退</h2><p>老样子在README.md文件中填写一些内容模拟编写的代码，并且提交到本地仓库。</p><p><img src="https://s3.bmp.ovh/imgs/2023/12/13/cdb451f509cf0c4f.png" alt=""></p><h3 id="方法1：git-reset-–hard-版本号"><a href="#方法1：git-reset-–hard-版本号" class="headerlink" title="方法1：git reset –hard 版本号"></a>方法1：git reset –hard 版本号</h3><p>版本号可以通过 git log 查找</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PS D:\giteeSource\tuku&gt;  git reset --hard  f620f481a3ffc32d3d7587406eacb538dd2b5455</span><br><span class="line">HEAD is now at f620f48 up</span><br><span class="line">PS D:\giteeSource\tuku&gt;</span><br></pre></td></tr></table></figure><p>通过以上命令，确实看到版本回退到指定的版本上了。</p><p><img src="https://s3.bmp.ovh/imgs/2023/12/13/cd6820e9e809fc1e.png" alt=""></p><h3 id="方法2：git-revert-版本号"><a href="#方法2：git-revert-版本号" class="headerlink" title="方法2：git revert 版本号"></a>方法2：git revert 版本号</h3><p>事先这里已经模拟好了3次提交到远程仓库的操作了，假如现在是提交错了，需要回退到 上一个版本号，</p><p>对应的版本号 还是可以通过 git log 查找。</p><p><img src="https://s3.bmp.ovh/imgs/2023/12/13/d7ca95be7e479e25.png" alt=""></p><p>然后执行以下命令回退到上一个版本</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">PS D:\giteeSource\tuku&gt; git revert 767ecc1766dddab59504a1bb203d7ce003fff7e4</span><br><span class="line">Auto-merging README.md</span><br><span class="line">CONFLICT (content): Merge conflict in README.md</span><br><span class="line">error: could not revert 767ecc1... 模拟提交 2</span><br><span class="line">hint: after resolving the conflicts, mark the corrected paths</span><br><span class="line">hint: with &apos;git add &lt;paths&gt;&apos; or &apos;git rm &lt;paths&gt;&apos;</span><br><span class="line">hint: and commit the result with &apos;git commit&apos;</span><br><span class="line">PS D:\giteeSource\tuku&gt;</span><br></pre></td></tr></table></figure><p>Tips: 这种方式不会把版本往前回退，而是生成一个新的版本。</p><hr><p>The end.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h2&gt;&lt;p&gt;在项目开发的过程中，有时候提交了不应该提交的内容或提交错分支了，需要撤回对应的提交内容。也就是需要进行版本回退操作&lt;br&gt;那
+      
+    
+    </summary>
+    
+      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+    
+    
+      <category term="GIT" scheme="http://www.devcheng.net/tags/GIT/"/>
+    
+      <category term="版本回退" scheme="http://www.devcheng.net/tags/%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>bacnet4j依赖无法拉取下来的解决方法</title>
+    <link href="http://www.devcheng.net/post/6ac4785.html"/>
+    <id>http://www.devcheng.net/post/6ac4785.html</id>
+    <published>2023-12-12T13:05:50.000Z</published>
+    <updated>2023-12-13T13:07:25.672Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>在项目中配置了 bacnet4j 对应的依赖，具体如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.infiniteautomation&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;bacnet4j&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;6.0.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p><p>但是在idea中死活拉取不下来，不管怎么切换maven配置，一直都提示</p><p>Could not find artifact com.infiniteautomation:bacnet4j:pom:6.0. in central </p><p><img src="https://s3.bmp.ovh/imgs/2023/12/12/2423a57b0afaf1f8.png" alt=""></p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>提供最简单粗暴的方式，直接从我提供的百度网盘下载，下载后解压覆盖对应的文件夹即可。</p><p>链接：<a href="https://pan.baidu.com/s/1bge8R2r5XTF2NPIcj7_d6A?pwd=1ufl" target="_blank" rel="noopener">https://pan.baidu.com/s/1bge8R2r5XTF2NPIcj7_d6A?pwd=1ufl</a> </p><p>提取码：1ufl</p><hr><p>The end.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h2&gt;&lt;p&gt;在项目中配置了 bacnet4j 对应的依赖，具体如下：&lt;br&gt;&lt;figure class=&quot;highlight plain
+      
+    
+    </summary>
+    
+      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+    
+    
+      <category term="bacnet4j" scheme="http://www.devcheng.net/tags/bacnet4j/"/>
+    
+  </entry>
   
   <entry>
     <title>JAVA服务器端发送邮件问题 Could not connect to SMTP host</title>
@@ -502,62 +554,6 @@
       <category term="Spring Boot" scheme="http://www.devcheng.net/tags/Spring-Boot/"/>
     
       <category term="酒店管理系统" scheme="http://www.devcheng.net/tags/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SpringBoot统计接口请求耗时</title>
-    <link href="http://www.devcheng.net/post/789179de.html"/>
-    <id>http://www.devcheng.net/post/789179de.html</id>
-    <published>2022-11-19T12:24:22.000Z</published>
-    <updated>2022-11-24T02:20:27.064Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>接口请求时间的快慢就代表着获取到对应的数据的快慢，也代表着用户请求页面数据的快慢，常常可以借助接口请求快慢进行相应的优化！</p><p>以往我们的做法可能是在每一个接口的方法中的开始添加当前时间，结尾用当前时间减去开始时间就表示该接口的访问时间。</p><p>具体代码如下：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/test"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">long</span> startTime = System.currentTimeMillis();</span><br><span class="line">    <span class="comment">//此处的调用业务代码省略</span></span><br><span class="line">    System.out.println(<span class="string">"访问时间为："</span>+(System.currentTimeMillis()-startTime));</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"访问接口成功"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>那如果有几百个接口的话，每一个接口都需要统计对应的访问时间的话，那就要写几百遍，这很不符合我们的常理，所以有没有一种办法是可以不修改对应的接口方法，并且只需要写一遍就能够应用到所有的接口上面或者指定的接口上面。</p><p>我们第一时间就可以想到AOP技术，AOP是在Spring当中比较常见的技术， AOP就是在不修改原来的代码就可以对接口方法进行增强的作用，利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率。</p><h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>根据上述，我们需要到AOP,第一个不能少的则是对应的依赖。</p><h2 id="引入对应依赖"><a href="#引入对应依赖" class="headerlink" title="引入对应依赖"></a>引入对应依赖</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--aspectj--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">&lt;artifactId&gt;spring-boot-starter-aop&lt;/artifactId&gt;</span><br><span class="line">&lt;version&gt;2.7.4&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure><h2 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h2><p>统计接口的耗时和访问次数也不需要每一个接口都使用，比如说一些不经常访问的接口就没有统计他的访问次数，所以我们可以自定义一个注解，只要对应的接口方法上应用了这个注解，Spring会进行扫描，并执行对应的统计耗时操作即可。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.annotation.Documented;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.ElementType;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Retention;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.RetentionPolicy;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Target;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 统计 方法/接口耗时 注解</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> devcheng</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Target</span>(ElementType.METHOD)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> CostTime &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="定义AOP切面"><a href="#定义AOP切面" class="headerlink" title="定义AOP切面"></a>定义AOP切面</h2><p>如果接口方法上应用了自定义的注解，那么就会被Spring扫描到，这里我用的是 @Pointcut 和 @Around 配合使用。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"><span class="keyword">import</span> org.aspectj.lang.ProceedingJoinPoint;</span><br><span class="line"><span class="keyword">import</span> org.aspectj.lang.annotation.Around;</span><br><span class="line"><span class="keyword">import</span> org.aspectj.lang.annotation.Aspect;</span><br><span class="line"><span class="keyword">import</span> org.aspectj.lang.annotation.Pointcut;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 统计 方法/接口耗时 注解</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> devcheng</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CostTimeAspect</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Pointcut</span>(value = <span class="string">"@annotation(net.devcheng.www.data.annotation.CostTime)"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">costTime</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Around</span>(<span class="string">"costTime()"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">costTimeAround</span><span class="params">(ProceedingJoinPoint joinPoint)</span> </span>&#123;</span><br><span class="line">        Object obj = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">long</span> beginTime = System.currentTimeMillis();</span><br><span class="line">            obj = joinPoint.proceed();</span><br><span class="line">            <span class="comment">//获取方法名称</span></span><br><span class="line">            String method = joinPoint.getSignature().getName();</span><br><span class="line">            <span class="comment">//获取类名称</span></span><br><span class="line">            String className=joinPoint.getSignature().getDeclaringTypeName();</span><br><span class="line">            <span class="comment">//计算耗时</span></span><br><span class="line">            <span class="keyword">long</span> cost = System.currentTimeMillis() - beginTime;</span><br><span class="line">            log.error(<span class="string">"类:[&#123;&#125;]，方法:[&#123;&#125;] 接口耗时:[&#123;&#125;]"</span>, className,method, cost + <span class="string">"毫秒"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Throwable throwable) &#123;</span><br><span class="line">            throwable.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="用在统计接口上"><a href="#用在统计接口上" class="headerlink" title="用在统计接口上"></a>用在统计接口上</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/V4/getSignsPredictDetail"</span>)</span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@CostTime</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getSignsPredictDetail</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (StringUtils.isEmpty(name)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"[]"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cityBrain4Service.getSignsPredictDetailByName(name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="用在统计定时任务上"><a href="#用在统计定时任务上" class="headerlink" title="用在统计定时任务上"></a>用在统计定时任务上</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Scheduled</span>(cron = <span class="string">"55 */5 * * * ?"</span>)</span><br><span class="line"><span class="meta">@CostTime</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">scenesSignTask</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 业务逻辑</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="运行输出"><a href="#运行输出" class="headerlink" title="运行输出"></a>运行输出</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2022-11-18 10:31:51.523 [http-nio-8886-exec-8] ERROR net.devcheng.www.data.config.CostTimeAspect Line:32  - 类:[net.devcheng.www.data.controller.SpecialInterfaceController]，方法:[getWeather] 接口耗时:[0毫秒]</span><br><span class="line">2022-11-18 10:31:52.122 [http-nio-8886-exec-9] ERROR net.devcheng.www.data.config.CostTimeAspect Line:32  - 类:[net.devcheng.www.data.controller.SpecialInterfaceController]，方法:[getWeather] 接口耗时:[1毫秒]</span><br><span class="line">2022-11-18 10:31:55.073 [http-nio-8886-exec-15] ERROR net.devcheng.www.data.config.CostTimeAspect Line:32  - 类:[net.devcheng.www.data.controller.CityBrain4Controller]，方法:[getScrollingMessages] 接口耗时:[2毫秒]</span><br><span class="line">2022-11-18 10:31:55.076 [http-nio-8886-exec-3] ERROR net.devcheng.www.data.config.CostTimeAspect Line:32  - 类:[net.devcheng.www.data.controller.SpecialInterfaceController]，方法:[getWeather] 接口耗时:[1毫秒]</span><br></pre></td></tr></table></figure><hr><p>The end</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;接口请求时间的快慢就代表着获取到对应的数据的快慢，也代表着用户请求页面数据的快慢，常常可以借助接口请求快慢进行相应的优化！&lt;
-      
-    
-    </summary>
-    
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
-    
-    
-      <category term="SpringBoot" scheme="http://www.devcheng.net/tags/SpringBoot/"/>
-    
-      <category term="接口耗时统计" scheme="http://www.devcheng.net/tags/%E6%8E%A5%E5%8F%A3%E8%80%97%E6%97%B6%E7%BB%9F%E8%AE%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>努力做一个“不要脸”的人</title>
-    <link href="http://www.devcheng.net/post/633a5847.html"/>
-    <id>http://www.devcheng.net/post/633a5847.html</id>
-    <published>2022-09-04T07:16:49.000Z</published>
-    <updated>2022-09-04T07:29:05.526Z</updated>
-    
-    <content type="html"><![CDATA[<p>“你的脸还在脸上，有的人脸能放在兜里，有的人脸能撂在地下。”</p><p>这是我给一个小兄弟的建议：出来混，别太把脸当回事。当你放下面子去搞钱的时候，说明你成熟了；当你用钱挣回面子的时候，说明你成长了。</p><h2 id="“不要脸”是一种境界"><a href="#“不要脸”是一种境界" class="headerlink" title="“不要脸”是一种境界"></a>“不要脸”是一种境界</h2><p>人生的三种境界：第一，太要脸；第二，脸皮厚；第三，不要脸。</p><p>本文聊的不要脸，并非不知羞耻，指的是放下你的面子。面子是不能当饭吃的，这个世界上最不值钱的，就是所谓的面子。</p><p>比尔盖茨在一次大学毕业典礼上，讲过这样一句话：“这个世界不会在乎你的自尊，你必须先有所成就，然后再去强调自己的感受。”</p><p>乔布斯生前也说过一句很著名的话：“我特别喜欢和聪明人在一起工作，因为最大的好处是不用考虑他们的尊严。”</p><p>面子是无能者维护自己的盾牌。</p><p>你见没见过有的人明明知道自己错了，为了面子他就是死活不承认。</p><p>聪明人更关注自己的成长，他会保持开放的心态，而不是捍卫自己的面子，不是过度的自我防卫，想方设法证明“我没错”。</p><p>做到“不要脸”其实不容易，你必须内心极其强大。内心的强大来自于什么？是你的实力。只有没本事的人才会处处在乎面子，只有弱者才在乎面子，强者都活成了里子。</p><h2 id="面对批评的正确姿势"><a href="#面对批评的正确姿势" class="headerlink" title="面对批评的正确姿势"></a>面对批评的正确姿势</h2><p>闻过则喜，永远感谢愿意花时间在你身上的人。</p><p>有的人被批评了，像刺猬似的缩成一团竖起硬刺，“这不是我的错”；有的人被批评了，像鸵鸟一样把头钻进沙堆，“这和我没关系”；有的人被批评了，像寒风中哆哆嗦嗦的鹌鹑，“我也好可怜啊”；还有的人使出金蝉脱壳大法，“谁谁谁犯的错比我还大”，或是指东打西来找补，“我还干了很多好事呢”……</p><p>一味在意对方的态度，在乎自己的感受，就容易忘了事情的根本：别人为什么批评你？</p><p>一个比你更强的人批评你，你要明白一点：牛人没时间攻击你，也没时间浪费在一个他认为没有价值的人身上。牛人之所以批评你，是认为你还有潜力，他在帮助你成长。</p><p>面对批评，输球不要输姿势，你的心态应该是：把“为什么受伤的总是我”，变成“我能从这件事上学到什么”。</p><p>如果你觉得批评是一种刁难，一开始就输了；如果你觉得批评是一种雕刻，迟早都会赢的。</p><p>哪怕别人批评时严厉了点，甚至苛刻了些，你要做的不是愤怒、不是羞愧、不是执念于“我的面子啪叽掉地下了”的狭隘。错了咱就认，认了咱就改，改了就不再犯。</p><p>别人批评你不是坏事。就像情侣吵架，有的吵就挺好，说明还期望对方会改变，因为在意所以争吵，如果有一天不吵了，就是要分手了。褒贬是买主，喝彩是闲人。如果有一天老板都懒得批评你了，说明他已经放弃了。</p><h2 id="丑闻是成功者的奖励"><a href="#丑闻是成功者的奖励" class="headerlink" title="丑闻是成功者的奖励"></a>丑闻是成功者的奖励</h2><p>难听的大实话：真比你强很多的人，根本没空搭理你。</p><p>一位创业的朋友有点小郁闷，他的同行四处造谣他和公司的女性高管有事。</p><p>我和他说你应该高兴，这说明你在圈子里已经有一号了，这是一种变相的认可。你的面子不是撂地下了，是被竞争对手供起来了。如果你公司干得稀碎，同行都不带正眼瞧你的。</p><p>当一个人有了丑闻，他一定达到了相当的高度。</p><p>人们不会去毒舌一个毫无建树的人。一旦你有所成就，你的竞争对手就会乐于制造你的丑闻，而吃瓜群众也乐于把你的丑闻当做谈资，尤其是男女关系这种下三滥的东西。</p><p>没必要把别人的造谣中伤当回事，你对待丑闻的态度，决定了你职业发展的高度。</p><p>以前我写一本书，发现盗版，我会郁闷；现在我写一本书，发现盗版，我很开心。因为，这也算是一种变相的认可，多少书首印都卖不掉，盗版的人都不稀罕去盗版。</p><p>雷霆雨露，蜚短流长，俱是天恩。</p><h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>如果你想干成点什么事，给你三条建议：第一，坚持；第二，不要脸；第三，坚持不要脸！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;“你的脸还在脸上，有的人脸能放在兜里，有的人脸能撂在地下。”&lt;/p&gt;
-&lt;p&gt;这是我给一个小兄弟的建议：出来混，别太把脸当回事。当你放下面子去搞钱的时候，说明你成熟了；当你用钱挣回面子的时候，说明你成长了。&lt;/p&gt;
-&lt;h2 id=&quot;“不要脸”是一种境界&quot;&gt;&lt;a href=&quot;#
-      
-    
-    </summary>
-    
-      <category term="codelife" scheme="http://www.devcheng.net/categories/codelife/"/>
-    
-    
-      <category term="职场" scheme="http://www.devcheng.net/tags/%E8%81%8C%E5%9C%BA/"/>
-    
-      <category term="程序人生" scheme="http://www.devcheng.net/tags/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
     
   </entry>
   

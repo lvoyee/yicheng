@@ -1,0 +1,363 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="伊成个人站-热衷于技术分享，源码分享的个人网站">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+	<!--baidu tongji-->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?11f6f08fada932368f71e76bd659b783";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
+    <link rel="dns-prefetch" href="http://www.devcheng.net">
+    <!--SEO-->
+
+<meta name="description" content="伊成个人站 www.devcheng.net 一个致力于技术分享，源码分享及工作经历分享的个人网站">
+
+
+
+<meta name="keywords" content="伊成个人站,技术分享,源码分享,代码分享,java代码,源代码">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+<title>	GIT版本回退-伊成个人站</title>
+
+    <link rel="alternate" href="/atom.xml" title="伊成个人站-热衷于技术分享，源码分享的个人网站" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+       ◉◡◉ 您好，欢迎到访伊成个人站!
+    </div>
+</header>
+    
+<nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.devcheng.net">伊成个人站-热衷于技术分享，源码分享的个人网站</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">				
+                    <ul class="menu">						
+						<a href="/"><img border="0" src="/img/logo2020.png" alt="伊成个人站" title="伊成个人站"></a>						
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa fa-home"></i>&nbsp;首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/blogshare/"><i class="fa fa-codepen"></i>&nbsp;技术分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codeshare/"><i class="fa fa-code"></i>&nbsp;源码分享</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/codelife/"><i class="fa fa-pagelines"></i>&nbsp;程序人生</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives"><i class="fa fa-history"></i>&nbsp;时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about"><i class="fa fa-connectdevelop"></i>&nbsp;关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="GIT版本回退">
+            
+	            GIT版本回退
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/blogshare">
+            blogshare
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/GIT" title="GIT">
+                        GIT
+                    </a>
+                
+                    <a href="/tags/版本回退" title="版本回退">
+                        版本回退
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2023/12/13</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>在项目开发的过程中，有时候提交了不应该提交的内容或提交错分支了，需要撤回对应的提交内容。也就是需要进行版本回退操作<br>那具体怎么操作呢？</p>
+<p>再说具体怎么操作之前，我们需要明白回退有几种情况。</p>
+<p>第一种情况：已经commit，但未push到远程仓库。</p>
+<p>第二种情况：已经commit，并且ush到远程仓库。</p>
+<p>针对以上两种情况如何回退？</p>
+<h2 id="已经commit，但未push到远程仓库，怎么回退"><a href="#已经commit，但未push到远程仓库，怎么回退" class="headerlink" title="已经commit，但未push到远程仓库，怎么回退"></a>已经commit，但未push到远程仓库，怎么回退</h2><h3 id="方法1：git-reset-–soft"><a href="#方法1：git-reset-–soft" class="headerlink" title="方法1：git reset –soft"></a>方法1：git reset –soft</h3><p>在README.md文件中模拟我们编写的代码内容，执行提交命令并提交到了本地仓库。</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/12/13/7de27b14c6b5cd70.png" alt=""></p>
+<p>此时回滚到上一个版本，可以通过执行以下命令可以回退到上一个commit</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --soft HEAD^</span><br></pre></td></tr></table></figure>
+<p>执行完这个命令之后，再查看是否回退到了上一个commit<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PS D:\giteeSource\tuku&gt; git reset --soft HEAD^</span><br><span class="line">PS D:\giteeSource\tuku&gt;</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/12/13/e4a39f35de347ff0.png" alt=""></p>
+<p>Tips： HEAD^的意思是上一个版本，也可以写成HEAD~1 ，如果你进行了2次commit，想都撤回，可以使用HEAD~2，这个命令仅仅是撤回commit操作，写的代码仍然保留。</p>
+<h3 id="方法2：git-reset-–mixed"><a href="#方法2：git-reset-–mixed" class="headerlink" title="方法2：git reset –mixed"></a>方法2：git reset –mixed</h3><p>继续在README.md文件中填写一些内容模拟编写的代码，并且提交到本地仓库。</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/12/13/cddc3a1f923ccc2c.png" alt=""></p>
+<p>执行以下命令进行版本回退<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PS D:\giteeSource\tuku&gt; git reset --mixed HEAD^</span><br><span class="line">Unstaged changes after reset:</span><br><span class="line">M       README.md</span><br><span class="line">M       pom.xml</span><br><span class="line">PS D:\giteeSource\tuku&gt;</span><br></pre></td></tr></table></figure></p>
+<p>经过查看确实回退到了上一个提交的commit。<br><img src="https://s3.bmp.ovh/imgs/2023/12/13/e4a39f35de347ff0.png" alt=""></p>
+<p>小小的总结</p>
+<p>以上的2个方法都可以回退到上一个版本，但是需要注意的是，仅仅是回退了上一个版本，你提交的内容仍存在的。</p>
+<h2 id="已经commit，并且push到远程仓库，怎么回退"><a href="#已经commit，并且push到远程仓库，怎么回退" class="headerlink" title="已经commit，并且push到远程仓库，怎么回退"></a>已经commit，并且push到远程仓库，怎么回退</h2><p>老样子在README.md文件中填写一些内容模拟编写的代码，并且提交到本地仓库。</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/12/13/cdb451f509cf0c4f.png" alt=""></p>
+<h3 id="方法1：git-reset-–hard-版本号"><a href="#方法1：git-reset-–hard-版本号" class="headerlink" title="方法1：git reset –hard 版本号"></a>方法1：git reset –hard 版本号</h3><p>版本号可以通过 git log 查找</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PS D:\giteeSource\tuku&gt;  git reset --hard  f620f481a3ffc32d3d7587406eacb538dd2b5455</span><br><span class="line">HEAD is now at f620f48 up</span><br><span class="line">PS D:\giteeSource\tuku&gt;</span><br></pre></td></tr></table></figure>
+<p>通过以上命令，确实看到版本回退到指定的版本上了。</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/12/13/cd6820e9e809fc1e.png" alt=""></p>
+<h3 id="方法2：git-revert-版本号"><a href="#方法2：git-revert-版本号" class="headerlink" title="方法2：git revert 版本号"></a>方法2：git revert 版本号</h3><p>事先这里已经模拟好了3次提交到远程仓库的操作了，假如现在是提交错了，需要回退到 上一个版本号，</p>
+<p>对应的版本号 还是可以通过 git log 查找。</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/12/13/d7ca95be7e479e25.png" alt=""></p>
+<p>然后执行以下命令回退到上一个版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">PS D:\giteeSource\tuku&gt; git revert 767ecc1766dddab59504a1bb203d7ce003fff7e4</span><br><span class="line">Auto-merging README.md</span><br><span class="line">CONFLICT (content): Merge conflict in README.md</span><br><span class="line">error: could not revert 767ecc1... 模拟提交 2</span><br><span class="line">hint: after resolving the conflicts, mark the corrected paths</span><br><span class="line">hint: with &apos;git add &lt;paths&gt;&apos; or &apos;git rm &lt;paths&gt;&apos;</span><br><span class="line">hint: and commit the result with &apos;git commit&apos;</span><br><span class="line">PS D:\giteeSource\tuku&gt;</span><br></pre></td></tr></table></figure>
+<p>Tips: 这种方式不会把版本往前回退，而是生成一个新的版本。</p>
+<hr>
+<p>The end.</p>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/reward-alipay.png"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/reward-wepay.png"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip"></p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处！
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/post/6ac4785.html" class="next-post btn btn-default" title="bacnet4j依赖无法拉取下来的解决方法">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">bacnet4j依赖无法拉取下来的解决方法</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({           
+            el: '#vcomments',
+            appId: 'sbQDWnkLFsRjJS2BGzfKc4rL-gzGzoHsz',
+            appKey: '5u9C0UUmzRe3unr9iLzheHjk',
+            placeholder: '来都来了,不说两句嘛',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#写在前面"><span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#已经commit，但未push到远程仓库，怎么回退"><span class="toc-text">已经commit，但未push到远程仓库，怎么回退</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#方法1：git-reset-–soft"><span class="toc-text">方法1：git reset –soft</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法2：git-reset-–mixed"><span class="toc-text">方法2：git reset –mixed</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#已经commit，并且push到远程仓库，怎么回退"><span class="toc-text">已经commit，并且push到远程仓库，怎么回退</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#方法1：git-reset-–hard-版本号"><span class="toc-text">方法1：git reset –hard 版本号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法2：git-revert-版本号"><span class="toc-text">方法2：git revert 版本号</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018 - 2023
+                </span> | .<font color="#f1607d">伊</font><font color="#ffa500">成</font><font color="#e5e802">个</font><font color="#3bff23">人</font><font color="#ffa503">站</font><font color="#29c8ec"> devcheng</font><font color="#4f9cfa">.net</font>. |
+                <span>
+                    网站基于Hexo搭建
+                </span> |
+                <span>
+                     <a href="/sitemap.xml" class="copyright-links" target="_blank" rel="nofollow">本站地图</a>
+                </span> |
+				<span>
+					 <a href="/atom.xml" class="copyright-links" target="_blank" rel="nofollow">RSS订阅</a> 
+				</span> |
+				<span>
+                    <a href="https://beian.miit.gov.cn/" class="copyright-links" target="_blank" rel="nofollow">湘ICP备20010839号</a> 
+                </span>
+				<span>
+                    <a href="https://beian.miit.gov.cn/" class="copyright-links" target="_blank" rel="nofollow">湘ICP备20010839号-1</a> 
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>
