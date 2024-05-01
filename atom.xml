@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.devcheng.net/"/>
-  <updated>2023-12-13T13:09:34.057Z</updated>
+  <updated>2024-05-01T04:14:23.954Z</updated>
   <id>http://www.devcheng.net/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>基于Spring Boot开发的新闻管理系统源码分享</title>
+    <link href="http://www.devcheng.net/post/cee2351d.html"/>
+    <id>http://www.devcheng.net/post/cee2351d.html</id>
+    <published>2024-05-01T04:10:10.000Z</published>
+    <updated>2024-05-01T04:14:23.954Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>本项目是基于Spring Boot 2.x 开发的新闻管理系统系统，系统主要分为前台浏览页面和后台管理页面。本项目也可以当作毕业设计，期末课程作业等，也可以当作学习、进阶Spring Boot 的资料。</p><h1 id="功能描述"><a href="#功能描述" class="headerlink" title="功能描述"></a>功能描述</h1><p>本项目主要包含以下功能模块</p><ul><li>(前台)登录/注册</li><li>(前台)用户中心</li><li>(前台)发布新闻</li><li>(前台)评论、收藏新闻</li><li>(前台)评论敏感词过滤</li><li>…</li><li>(后台)新闻分类管理</li><li>(后台)新闻审核管理</li><li>(后台)新闻发布管理</li><li>(后台)新闻评论管理</li><li>(后台)用户管理</li><li>(后台)登录/登出</li><li>…</li></ul><h1 id="开发环境（运行环境）"><a href="#开发环境（运行环境）" class="headerlink" title="开发环境（运行环境）"></a>开发环境（运行环境）</h1><ul><li>系统环境：Windows 11</li><li>开发工具：IntelliJ IDEA 2023.1.2</li><li>Java版本：JDK 1.8</li><li>Mysql版本：8.0</li><li>Maven版本：3.6.3</li></ul><h1 id="项目技术栈"><a href="#项目技术栈" class="headerlink" title="项目技术栈"></a>项目技术栈</h1><ul><li>Spring Boot 2.X</li><li>Mybatis-Plus</li><li>Maven 3.X</li><li>Mysql</li><li>layui</li><li>Jquery</li><li>freemarker</li><li>…</li></ul><h1 id="登录地址"><a href="#登录地址" class="headerlink" title="登录地址"></a>登录地址</h1><p>项目访问路径：<a href="http://localhost:9999" target="_blank" rel="noopener">http://localhost:9999</a></p><p>管理员 用户名 / 密码</p><p>admin / admin123</p><p>其它用户 用户名 / 密码</p><p>test123 / admin123</p><p>test456 / admin123</p><h1 id="项目截图"><a href="#项目截图" class="headerlink" title="项目截图"></a>项目截图</h1><p><img src="https://s3.bmp.ovh/imgs/2024/04/28/a9317608976d92cd.jpg" alt="项目首页"></p><p><img src="https://s3.bmp.ovh/imgs/2024/04/28/ae2bb640a6a2ee2b.jpg" alt="登录页面"></p><p><img src="https://s3.bmp.ovh/imgs/2024/04/28/cd6bb23a7e9ca5fd.jpg" alt="注册页面"></p><p><img src="https://s3.bmp.ovh/imgs/2024/04/28/2d46a2e5e6e54c54.jpg" alt="新闻详情"></p><p><img src="https://s3.bmp.ovh/imgs/2024/04/28/9aecae6b55c4fed3.jpg" alt="后台登录"></p><p><img src="https://s3.bmp.ovh/imgs/2024/04/28/da1b2226693afaa5.jpg" alt="后台1"></p><p><img src="https://s3.bmp.ovh/imgs/2024/04/28/d341a34feccd45d7.jpg" alt="后台2"></p><p><img src="https://s3.bmp.ovh/imgs/2024/04/28/926762ba997ab03f.jpg" alt="后台3"></p><h1 id="项目演示视频"><a href="#项目演示视频" class="headerlink" title="项目演示视频"></a>项目演示视频</h1><p>链接: <a href="https://pan.baidu.com/s/1mzrckJn3RMl0_pw94VIe3w?pwd=r8pb" target="_blank" rel="noopener">https://pan.baidu.com/s/1mzrckJn3RMl0_pw94VIe3w?pwd=r8pb</a></p><p>提取码: r8pb</p><h1 id="联系我们"><a href="#联系我们" class="headerlink" title="联系我们"></a>联系我们</h1><p>如有需要源码可以通过QQ 搜索：792435323联系我！ 请备注：新闻代码24</p><h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><p>获取代码之后，使用IDEA导入本项目前，请确保你本地环境是已经含有代码所需要运行环境的条件了。</p><p>接着找到对应的sql文件，将其导入到你本地的数据库即可。</p><p>最后修改项目中配置文件中的数据库对应的信息，确认修改完毕，找到对应的Application直接运行吧！</p><h1 id="其它说明"><a href="#其它说明" class="headerlink" title="其它说明"></a>其它说明</h1><p>白嫖怪，伸手党 请绕道！！！</p><hr><p>The end.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;本项目是基于Spring Boot 2.x 开发的新闻管理系统系统，系统主要分为前台浏览页面和后台管理页面。本项目也可以当作
+      
+    
+    </summary>
+    
+      <category term="codeshare" scheme="http://www.devcheng.net/categories/codeshare/"/>
+    
+    
+      <category term="新闻管理" scheme="http://www.devcheng.net/tags/%E6%96%B0%E9%97%BB%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="源码" scheme="http://www.devcheng.net/tags/%E6%BA%90%E7%A0%81/"/>
+    
+  </entry>
   
   <entry>
     <title>GIT版本回退</title>
@@ -527,33 +554,6 @@
       <category term="MYSQL" scheme="http://www.devcheng.net/tags/MYSQL/"/>
     
       <category term="定时调用存储过程" scheme="http://www.devcheng.net/tags/%E5%AE%9A%E6%97%B6%E8%B0%83%E7%94%A8%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>基于Spring Boot开发的酒店管理系统</title>
-    <link href="http://www.devcheng.net/post/cc09a51.html"/>
-    <id>http://www.devcheng.net/post/cc09a51.html</id>
-    <published>2022-11-22T06:43:51.000Z</published>
-    <updated>2022-11-22T06:57:25.764Z</updated>
-    
-    <content type="html"><![CDATA[<p>本项目是基于Spring Boot 2.x 开发的，酒店管理系统分三种角色：经理（管理员）和员工（普通用户）两种用户， 其中经理（管理员）具有查看所有预定、删除客房、查看员工、添加员工等功能权限 员工（普通用户）具有查看空房、客户预订、修改预订、删除预订、注册新客户等功能权限。</p><p>大体流程如下：</p><p>1.经理（系统管理员）设置客房状态并且设置每晚价格。</p><p>2.客户可以通过员工预定房间，或者自己预定房间，并且可以选择预定时间（包含钟点房）</p><p>3.当客户退房后，通知保洁员进行卫生打扫，保洁员确定卫生情况后，客房重新变为可预定，并且密码重新随机生成</p><p>5.老板可以设置经理，员工，保洁员的工资，根据业绩比例进行分配</p><h2 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a>主要功能</h2><p><strong>预订管理</strong></p><p>添加客房的预订，当客房被预定后，在预订时间到之前均显示不可用。</p><p>删除客人的预订，当客人取消预定,或者到达预定保留时间后，要求取消预定。在前台管理人员确定后,系统将已经预订的房间改为空房。</p><p>更改预定状态，当客人在规定的时间范围内到达，由管理员将客人所定房间的状态改为有人。</p><p><strong>订房管理</strong></p><p>房间查询，查询房间的状态(包括房间是否为空，以及房间的类型)。</p><p>分配房间，根据查询的结果，以及客人的要求，将空房改为占用状态,并确认房间的类型。</p><p>结账，先结账后付钱的客人先记录在系统中，在付钱后将纪录状态改为已经付帐。</p><p>退房等。</p><p><strong>客房管理</strong></p><p>客房退房后，保洁阿姨打扫完房间后可设置已打扫。</p><p><strong>财务管理</strong></p><p>收入和房间数的统计。</p><p><strong>人事管理</strong></p><p>员工信息管理，包括员工工资、提成等</p><h2 id="开发环境（运行环境）"><a href="#开发环境（运行环境）" class="headerlink" title="开发环境（运行环境）"></a><strong>开发环境（运行环境）</strong></h2><ul><li>系统环境：Windows 11</li><li>开发工具：IntelliJ IDEA 2020.3</li><li>Java版本：JDK 1.8</li><li>Mysql版本：5.7</li><li>Maven版本：3.6.3</li></ul><h2 id="项目技术栈"><a href="#项目技术栈" class="headerlink" title="项目技术栈"></a><strong>项目技术栈</strong></h2><ul><li>Spring Boot 2.0.X.RELEASE</li><li>Bootstrap</li><li>Maven 3.X</li><li>Mysql</li><li>thymeleaf</li><li>js</li><li>Jquery</li><li>…</li></ul><h2 id="登录地址"><a href="#登录地址" class="headerlink" title="登录地址"></a><strong>登录地址</strong></h2><p>访问路径：<a href="http://localhost:8088" target="_blank" rel="noopener">http://localhost:8088</a></p><p>管理员账号/密码： admin / admin</p><p>员工账号/密码：<a href="mailto:tom@jiudian.com" target="_blank" rel="noopener">tom@jiudian.com</a>/ 123456</p><p>保洁员账号/密码：<a href="mailto:zhangyi@clean.com" target="_blank" rel="noopener">zhangyi@clean.com</a>/ 123456</p><h2 id="项目演示视频"><a href="#项目演示视频" class="headerlink" title="项目演示视频"></a><strong>项目演示视频</strong></h2><p>链接: <a href="https://pan.baidu.com/s/12qd637UuboPqVMi_1Iyjeg?pwd=m6md" target="_blank" rel="noopener">https://pan.baidu.com/s/12qd637UuboPqVMi_1Iyjeg?pwd=m6md</a> </p><p>提取码: m6md </p><h2 id="项目截图"><a href="#项目截图" class="headerlink" title="项目截图"></a><strong>项目截图</strong></h2><p><img src="/images/image-20221121144612793.png" alt="image-20221121144612793"></p><p><img src="/images/image-20221121144636594.png" alt="image-20221121144636594"></p><p><img src="/images/image-20221121144650146.png" alt="image-20221121144650146"></p><p><img src="/images/image-20221121144703473.png" alt="image-20221121144703473"></p><p><img src="/images/image-20221121144718469.png" alt="image-20221121144718469"></p><p><img src="/images/image-20221121144828638.png" alt="image-20221121144828638"></p><p><img src="/images/image-20221121144920955.png" alt="image-20221121144920955"></p><h2 id="联系我们"><a href="#联系我们" class="headerlink" title="联系我们"></a><strong>联系我们</strong></h2><p>如有需要源码可以通过QQ 搜索：792435323联系我！<br>请备注：酒店源码</p><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a><strong>注意事项</strong></h2><p>获取代码之后，使用IDEA导入本项目前，请确保你本地环境是已经含有代码所需要运行环境的条件了。</p><p>接着找到对应的sql文件，将其导入到你本地的数据库即可。</p><p>最后修改项目中配置文件中的数据库对应的信息，确认修改完毕，找到对应的ManageApplication直接运行吧！</p><h2 id="其它说明"><a href="#其它说明" class="headerlink" title="其它说明"></a><strong>其它说明</strong></h2><p>白嫖怪（伸手党）请绕道！</p><hr><p>The end.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;本项目是基于Spring Boot 2.x 开发的，酒店管理系统分三种角色：经理（管理员）和员工（普通用户）两种用户， 其中经理（管理员）具有查看所有预定、删除客房、查看员工、添加员工等功能权限 员工（普通用户）具有查看空房、客户预订、修改预订、删除预订、注册新客户等功能权
-      
-    
-    </summary>
-    
-      <category term="codeshare" scheme="http://www.devcheng.net/categories/codeshare/"/>
-    
-    
-      <category term="Spring Boot" scheme="http://www.devcheng.net/tags/Spring-Boot/"/>
-    
-      <category term="酒店管理系统" scheme="http://www.devcheng.net/tags/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
