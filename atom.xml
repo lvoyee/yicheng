@@ -5,9 +5,9 @@
   <subtitle>伊成个人站</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://www.devcheng.net/"/>
+  <link href="http://devcheng.site/"/>
   <updated>2024-05-01T04:14:23.954Z</updated>
-  <id>http://www.devcheng.net/</id>
+  <id>http://devcheng.site/</id>
   
   <author>
     <name>伊成</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>基于Spring Boot开发的新闻管理系统源码分享</title>
-    <link href="http://www.devcheng.net/post/cee2351d.html"/>
-    <id>http://www.devcheng.net/post/cee2351d.html</id>
+    <link href="http://devcheng.site/post/cee2351d.html"/>
+    <id>http://devcheng.site/post/cee2351d.html</id>
     <published>2024-05-01T04:10:10.000Z</published>
     <updated>2024-05-01T04:14:23.954Z</updated>
     
@@ -34,19 +34,19 @@
     
     </summary>
     
-      <category term="codeshare" scheme="http://www.devcheng.net/categories/codeshare/"/>
+      <category term="codeshare" scheme="http://devcheng.site/categories/codeshare/"/>
     
     
-      <category term="新闻管理" scheme="http://www.devcheng.net/tags/%E6%96%B0%E9%97%BB%E7%AE%A1%E7%90%86/"/>
+      <category term="新闻管理" scheme="http://devcheng.site/tags/%E6%96%B0%E9%97%BB%E7%AE%A1%E7%90%86/"/>
     
-      <category term="源码" scheme="http://www.devcheng.net/tags/%E6%BA%90%E7%A0%81/"/>
+      <category term="源码" scheme="http://devcheng.site/tags/%E6%BA%90%E7%A0%81/"/>
     
   </entry>
   
   <entry>
     <title>GIT版本回退</title>
-    <link href="http://www.devcheng.net/post/19469078.html"/>
-    <id>http://www.devcheng.net/post/19469078.html</id>
+    <link href="http://devcheng.site/post/19469078.html"/>
+    <id>http://devcheng.site/post/19469078.html</id>
     <published>2023-12-13T12:54:08.000Z</published>
     <updated>2023-12-13T13:09:34.057Z</updated>
     
@@ -61,19 +61,19 @@
     
     </summary>
     
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+      <category term="blogshare" scheme="http://devcheng.site/categories/blogshare/"/>
     
     
-      <category term="GIT" scheme="http://www.devcheng.net/tags/GIT/"/>
+      <category term="GIT" scheme="http://devcheng.site/tags/GIT/"/>
     
-      <category term="版本回退" scheme="http://www.devcheng.net/tags/%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80/"/>
+      <category term="版本回退" scheme="http://devcheng.site/tags/%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80/"/>
     
   </entry>
   
   <entry>
     <title>bacnet4j依赖无法拉取下来的解决方法</title>
-    <link href="http://www.devcheng.net/post/6ac4785.html"/>
-    <id>http://www.devcheng.net/post/6ac4785.html</id>
+    <link href="http://devcheng.site/post/6ac4785.html"/>
+    <id>http://devcheng.site/post/6ac4785.html</id>
     <published>2023-12-12T13:05:50.000Z</published>
     <updated>2023-12-13T13:07:25.672Z</updated>
     
@@ -88,17 +88,17 @@
     
     </summary>
     
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+      <category term="blogshare" scheme="http://devcheng.site/categories/blogshare/"/>
     
     
-      <category term="bacnet4j" scheme="http://www.devcheng.net/tags/bacnet4j/"/>
+      <category term="bacnet4j" scheme="http://devcheng.site/tags/bacnet4j/"/>
     
   </entry>
   
   <entry>
     <title>JAVA服务器端发送邮件问题 Could not connect to SMTP host</title>
-    <link href="http://www.devcheng.net/post/25f0758b.html"/>
-    <id>http://www.devcheng.net/post/25f0758b.html</id>
+    <link href="http://devcheng.site/post/25f0758b.html"/>
+    <id>http://devcheng.site/post/25f0758b.html</id>
     <published>2023-12-06T13:07:08.000Z</published>
     <updated>2023-12-06T13:09:52.228Z</updated>
     
@@ -113,19 +113,19 @@
     
     </summary>
     
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+      <category term="blogshare" scheme="http://devcheng.site/categories/blogshare/"/>
     
     
-      <category term="Could not connect to SMTP host" scheme="http://www.devcheng.net/tags/Could-not-connect-to-SMTP-host/"/>
+      <category term="Could not connect to SMTP host" scheme="http://devcheng.site/tags/Could-not-connect-to-SMTP-host/"/>
     
-      <category term="port 465" scheme="http://www.devcheng.net/tags/port-465/"/>
+      <category term="port 465" scheme="http://devcheng.site/tags/port-465/"/>
     
   </entry>
   
   <entry>
     <title>idea远程编译代码推送到私服仓库</title>
-    <link href="http://www.devcheng.net/post/f0cee554.html"/>
-    <id>http://www.devcheng.net/post/f0cee554.html</id>
+    <link href="http://devcheng.site/post/f0cee554.html"/>
+    <id>http://devcheng.site/post/f0cee554.html</id>
     <published>2023-12-05T13:00:30.000Z</published>
     <updated>2023-12-06T13:06:40.808Z</updated>
     
@@ -141,19 +141,19 @@
     
     </summary>
     
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+      <category term="blogshare" scheme="http://devcheng.site/categories/blogshare/"/>
     
     
-      <category term="idea远程编译" scheme="http://www.devcheng.net/tags/idea%E8%BF%9C%E7%A8%8B%E7%BC%96%E8%AF%91/"/>
+      <category term="idea远程编译" scheme="http://devcheng.site/tags/idea%E8%BF%9C%E7%A8%8B%E7%BC%96%E8%AF%91/"/>
     
-      <category term="私服仓库" scheme="http://www.devcheng.net/tags/%E7%A7%81%E6%9C%8D%E4%BB%93%E5%BA%93/"/>
+      <category term="私服仓库" scheme="http://devcheng.site/tags/%E7%A7%81%E6%9C%8D%E4%BB%93%E5%BA%93/"/>
     
   </entry>
   
   <entry>
     <title>对中文汉字排序的方法总结</title>
-    <link href="http://www.devcheng.net/post/74daef45.html"/>
-    <id>http://www.devcheng.net/post/74daef45.html</id>
+    <link href="http://devcheng.site/post/74daef45.html"/>
+    <id>http://devcheng.site/post/74daef45.html</id>
     <published>2023-10-23T12:25:50.000Z</published>
     <updated>2023-10-23T12:27:34.617Z</updated>
     
@@ -168,19 +168,19 @@
     
     </summary>
     
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+      <category term="blogshare" scheme="http://devcheng.site/categories/blogshare/"/>
     
     
-      <category term="MYSQL" scheme="http://www.devcheng.net/tags/MYSQL/"/>
+      <category term="MYSQL" scheme="http://devcheng.site/tags/MYSQL/"/>
     
-      <category term="中文" scheme="http://www.devcheng.net/tags/%E4%B8%AD%E6%96%87/"/>
+      <category term="中文" scheme="http://devcheng.site/tags/%E4%B8%AD%E6%96%87/"/>
     
   </entry>
   
   <entry>
     <title>Springboot项目接口报415错误怎么解决</title>
-    <link href="http://www.devcheng.net/post/5cfb0439.html"/>
-    <id>http://www.devcheng.net/post/5cfb0439.html</id>
+    <link href="http://devcheng.site/post/5cfb0439.html"/>
+    <id>http://devcheng.site/post/5cfb0439.html</id>
     <published>2023-10-16T13:28:36.000Z</published>
     <updated>2023-10-16T13:30:26.001Z</updated>
     
@@ -195,19 +195,19 @@
     
     </summary>
     
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+      <category term="blogshare" scheme="http://devcheng.site/categories/blogshare/"/>
     
     
-      <category term="Springboot" scheme="http://www.devcheng.net/tags/Springboot/"/>
+      <category term="Springboot" scheme="http://devcheng.site/tags/Springboot/"/>
     
-      <category term="415" scheme="http://www.devcheng.net/tags/415/"/>
+      <category term="415" scheme="http://devcheng.site/tags/415/"/>
     
   </entry>
   
   <entry>
     <title>基于SpringBoot开发的医疗管理系统源码分享</title>
-    <link href="http://www.devcheng.net/post/67d8f3a4.html"/>
-    <id>http://www.devcheng.net/post/67d8f3a4.html</id>
+    <link href="http://devcheng.site/post/67d8f3a4.html"/>
+    <id>http://devcheng.site/post/67d8f3a4.html</id>
     <published>2023-09-15T11:40:03.000Z</published>
     <updated>2023-09-15T11:45:54.592Z</updated>
     
@@ -222,19 +222,19 @@
     
     </summary>
     
-      <category term="codeshare" scheme="http://www.devcheng.net/categories/codeshare/"/>
+      <category term="codeshare" scheme="http://devcheng.site/categories/codeshare/"/>
     
     
-      <category term="医疗管理系统" scheme="http://www.devcheng.net/tags/%E5%8C%BB%E7%96%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
+      <category term="医疗管理系统" scheme="http://devcheng.site/tags/%E5%8C%BB%E7%96%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
     
-      <category term="医院管理后台系统" scheme="http://www.devcheng.net/tags/%E5%8C%BB%E9%99%A2%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0%E7%B3%BB%E7%BB%9F/"/>
+      <category term="医院管理后台系统" scheme="http://devcheng.site/tags/%E5%8C%BB%E9%99%A2%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
   <entry>
     <title>MySQL定时删除XX天数据</title>
-    <link href="http://www.devcheng.net/post/10229ee8.html"/>
-    <id>http://www.devcheng.net/post/10229ee8.html</id>
+    <link href="http://devcheng.site/post/10229ee8.html"/>
+    <id>http://devcheng.site/post/10229ee8.html</id>
     <published>2023-08-16T12:10:11.000Z</published>
     <updated>2023-08-16T12:16:29.846Z</updated>
     
@@ -249,19 +249,19 @@
     
     </summary>
     
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+      <category term="blogshare" scheme="http://devcheng.site/categories/blogshare/"/>
     
     
-      <category term="Mysql" scheme="http://www.devcheng.net/tags/Mysql/"/>
+      <category term="Mysql" scheme="http://devcheng.site/tags/Mysql/"/>
     
-      <category term="定时任务" scheme="http://www.devcheng.net/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
+      <category term="定时任务" scheme="http://devcheng.site/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
     
   </entry>
   
   <entry>
     <title>RedisDesktopManager新版本不再支持SSH连接远程redis后</title>
-    <link href="http://www.devcheng.net/post/9b0031e7.html"/>
-    <id>http://www.devcheng.net/post/9b0031e7.html</id>
+    <link href="http://devcheng.site/post/9b0031e7.html"/>
+    <id>http://devcheng.site/post/9b0031e7.html</id>
     <published>2023-08-04T13:00:18.000Z</published>
     <updated>2023-08-16T12:11:08.969Z</updated>
     
@@ -276,23 +276,23 @@
     
     </summary>
     
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+      <category term="blogshare" scheme="http://devcheng.site/categories/blogshare/"/>
     
     
-      <category term="RedisDesktopManager" scheme="http://www.devcheng.net/tags/RedisDesktopManager/"/>
+      <category term="RedisDesktopManager" scheme="http://devcheng.site/tags/RedisDesktopManager/"/>
     
-      <category term="AnotherRedisDesktopManager" scheme="http://www.devcheng.net/tags/AnotherRedisDesktopManager/"/>
+      <category term="AnotherRedisDesktopManager" scheme="http://devcheng.site/tags/AnotherRedisDesktopManager/"/>
     
   </entry>
   
   <entry>
     <title>springboot整合rabbitmq实现几种模式</title>
-    <link href="http://www.devcheng.net/post/213457b6.html"/>
-    <id>http://www.devcheng.net/post/213457b6.html</id>
+    <link href="http://devcheng.site/post/213457b6.html"/>
+    <id>http://devcheng.site/post/213457b6.html</id>
     <published>2023-07-22T04:55:05.000Z</published>
     <updated>2023-07-22T04:57:48.870Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>如何使用springboot整合rabbitmq的几种模式，这篇就给出了对应的demo，地址放在文章后面。</p><p>前提条件需要搭建好对应的rabbitmq服务，具体搭建可以参考我的上一篇 <a href="http://www.devcheng.net/post/a3a60b55.html">《centos7中安装rabbitmq》</a>。</p><h2 id="7种模式"><a href="#7种模式" class="headerlink" title="7种模式"></a>7种模式</h2><p><img src="https://s3.bmp.ovh/imgs/2023/07/19/3344f6d7f1a87687.png" alt=""></p><h5 id="1-简单模式"><a href="#1-简单模式" class="headerlink" title="1.简单模式"></a>1.简单模式</h5><p><img src="https://s3.bmp.ovh/imgs/2023/07/12/4241da63b7b23ea0.png" alt=""></p><p>一个生产者，一个消费者，一个队列。</p><p>对应代码，请查看下列几个类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SimpleQueueConfig.java</span><br><span class="line">SimpleQueueProducer.java</span><br><span class="line">SimpleQueueConsumer.java</span><br></pre></td></tr></table></figure></p><h5 id="2-工作模式"><a href="#2-工作模式" class="headerlink" title="2.工作模式"></a>2.工作模式</h5><p><img src="https://s3.bmp.ovh/imgs/2023/07/13/58c10a5f770eec18.png" alt=""></p><p>一个生产者，多个消费者，每个消费者获取到的消息唯一，平均消费。</p><p>消息确认: 分两种自动确认 (易丢失数据)和手动确认 (不易丢失数据)</p><p>手动确认: 我们通过autoAck = true 标志明确地将它们关闭。一旦我们完成任务，就应该将此标志设置为false并从工作人员发送适当的确认。若忘记返回确认会造成消息无法释放，内存堆积。</p><p>消息持久性: 分消息持久化与消息非持久化</p><p>消息持久化: 数据写入磁盘，数据不易丢失(队列和消息都标记为持久)</p><p>消息非持久化: 数据写入内存，数据存储速度快</p><p>对应代码，请查看下列几个类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">WorkQueueConfig.java</span><br><span class="line">WorkQueueProducer.java</span><br><span class="line">WorkQueueConsumer1.java</span><br><span class="line">WorkQueueConsumer2.java</span><br></pre></td></tr></table></figure></p><h5 id="3-发布订阅模式"><a href="#3-发布订阅模式" class="headerlink" title="3.发布订阅模式"></a>3.发布订阅模式</h5><p><img src="https://s3.bmp.ovh/imgs/2023/07/12/f33feff3ec43b937.png" alt=""></p><p>相比于上面两种模式多了一个交换机角色。</p><p>Exchange有常见以下3种类型：</p><p>Fanout：广播，将消息交给所有绑定到交换机的队列。</p><p>Direct：定向，把消息交给符合指定routing key 的队列。</p><p>Topic：通配符，把消息交给符合routing pattern（路由模式） 的队列。</p><p>！注意：Exchange（交换机）只负责转发消息，不具备存储消息的能力，因此如果没有任何队列与Exchange绑定，或者没有符合路由规则的队列，那么消息会丢失！</p><p>对应代码，请查看下列几个类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PublishSubscribeConfig.java</span><br><span class="line">PublishSubscribeProducer.java</span><br><span class="line">PublishSubscribeConsumer1.java</span><br><span class="line">PublishSubscribeConsumer2.java</span><br></pre></td></tr></table></figure></p><h5 id="4-路由模式"><a href="#4-路由模式" class="headerlink" title="4.路由模式"></a>4.路由模式</h5><p><img src="https://s3.bmp.ovh/imgs/2023/07/13/0a739ac21728b7d5.png" alt=""></p><p>交换机类型: direct</p><p>直接交换背后的路由算法很简单 - 消息进入队列，其 绑定密与消息的路由密完全匹配。</p><p>对应代码，请查看下列几个类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RoutingQueueConfig.java</span><br><span class="line">RoutingQueueProducer.java</span><br><span class="line">RoutingQueueConsumer1.java</span><br><span class="line">RoutingQueueConsumer2.java</span><br></pre></td></tr></table></figure></p><h5 id="5-主题模式"><a href="#5-主题模式" class="headerlink" title="5.主题模式"></a>5.主题模式</h5><p><img src="https://s3.bmp.ovh/imgs/2023/07/13/5dea6f7002d3d0cc.png" alt=""></p><p>交换机类型：topic</p><p>发送到主题交换的消息不能具有任意 routing_key 它必须是由点分隔的单词列表。</p><p>单词可以是任何内容，但通常它们指定与消息相关的一些功能。</p><p>路由密钥中可以包含任意数量的单词，最多可达255个字节。</p><p>绑定密钥也必须采用相同的形式。</p><p>主题交换背后的逻辑 类似于直接交换 使用特定路由密钥发送的消息将被传递到与匹配绑定密钥绑定的所有队列。</p><p>但是，绑定键有两个重要的特殊情况：</p><p>*（星号）可以替代一个单词。</p><p>＃（#号）可以替换零个或多个单词。</p><h5 id="6-RPC模式"><a href="#6-RPC模式" class="headerlink" title="6.RPC模式"></a>6.RPC模式</h5><p><img src="https://s3.bmp.ovh/imgs/2023/07/17/adca74906769284b.png" alt=""></p><p>客户端向一个队列中发送消息，并注册一个回调的队列用于接收服务端返回的消息，该消息需要声明一个叫做correaltionId的属性，</p><p>该属性将是该次请求的唯一标识。服务端在接受到消息（在需要时可以验证correaltionId）后，处理消息，并将消息发送到客户端注册的回调队列中。</p><p>对应代码，请查看下列几个类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RPCQueueConfig.java</span><br><span class="line">RPCQueueProducer.java</span><br><span class="line">RPCQueueConsumer.java</span><br></pre></td></tr></table></figure></p><h5 id="7-发布确认模式"><a href="#7-发布确认模式" class="headerlink" title="7.发布确认模式"></a>7.发布确认模式</h5><p>与发布者进行可靠的发布确认，发布者确认是RabbitMQ扩展，可以实现可靠的发布。在通道上启用发布者确认后，RabbitMQ将异步确认发送者发布的消息，这意味着它们已在服务器端处理。</p><h2 id="代码地址"><a href="#代码地址" class="headerlink" title="代码地址"></a>代码地址</h2><p><a href="https://gitee.com/lvoyee/springboot-rabbitmq/" target="_blank" rel="noopener">点我获取代码</a></p><hr><p>The end.</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>如何使用springboot整合rabbitmq的几种模式，这篇就给出了对应的demo，地址放在文章后面。</p><p>前提条件需要搭建好对应的rabbitmq服务，具体搭建可以参考我的上一篇 <a href="http://www.devcheng.net/post/a3a60b55.html" target="_blank" rel="noopener">《centos7中安装rabbitmq》</a>。</p><h2 id="7种模式"><a href="#7种模式" class="headerlink" title="7种模式"></a>7种模式</h2><p><img src="https://s3.bmp.ovh/imgs/2023/07/19/3344f6d7f1a87687.png" alt=""></p><h5 id="1-简单模式"><a href="#1-简单模式" class="headerlink" title="1.简单模式"></a>1.简单模式</h5><p><img src="https://s3.bmp.ovh/imgs/2023/07/12/4241da63b7b23ea0.png" alt=""></p><p>一个生产者，一个消费者，一个队列。</p><p>对应代码，请查看下列几个类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SimpleQueueConfig.java</span><br><span class="line">SimpleQueueProducer.java</span><br><span class="line">SimpleQueueConsumer.java</span><br></pre></td></tr></table></figure></p><h5 id="2-工作模式"><a href="#2-工作模式" class="headerlink" title="2.工作模式"></a>2.工作模式</h5><p><img src="https://s3.bmp.ovh/imgs/2023/07/13/58c10a5f770eec18.png" alt=""></p><p>一个生产者，多个消费者，每个消费者获取到的消息唯一，平均消费。</p><p>消息确认: 分两种自动确认 (易丢失数据)和手动确认 (不易丢失数据)</p><p>手动确认: 我们通过autoAck = true 标志明确地将它们关闭。一旦我们完成任务，就应该将此标志设置为false并从工作人员发送适当的确认。若忘记返回确认会造成消息无法释放，内存堆积。</p><p>消息持久性: 分消息持久化与消息非持久化</p><p>消息持久化: 数据写入磁盘，数据不易丢失(队列和消息都标记为持久)</p><p>消息非持久化: 数据写入内存，数据存储速度快</p><p>对应代码，请查看下列几个类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">WorkQueueConfig.java</span><br><span class="line">WorkQueueProducer.java</span><br><span class="line">WorkQueueConsumer1.java</span><br><span class="line">WorkQueueConsumer2.java</span><br></pre></td></tr></table></figure></p><h5 id="3-发布订阅模式"><a href="#3-发布订阅模式" class="headerlink" title="3.发布订阅模式"></a>3.发布订阅模式</h5><p><img src="https://s3.bmp.ovh/imgs/2023/07/12/f33feff3ec43b937.png" alt=""></p><p>相比于上面两种模式多了一个交换机角色。</p><p>Exchange有常见以下3种类型：</p><p>Fanout：广播，将消息交给所有绑定到交换机的队列。</p><p>Direct：定向，把消息交给符合指定routing key 的队列。</p><p>Topic：通配符，把消息交给符合routing pattern（路由模式） 的队列。</p><p>！注意：Exchange（交换机）只负责转发消息，不具备存储消息的能力，因此如果没有任何队列与Exchange绑定，或者没有符合路由规则的队列，那么消息会丢失！</p><p>对应代码，请查看下列几个类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PublishSubscribeConfig.java</span><br><span class="line">PublishSubscribeProducer.java</span><br><span class="line">PublishSubscribeConsumer1.java</span><br><span class="line">PublishSubscribeConsumer2.java</span><br></pre></td></tr></table></figure></p><h5 id="4-路由模式"><a href="#4-路由模式" class="headerlink" title="4.路由模式"></a>4.路由模式</h5><p><img src="https://s3.bmp.ovh/imgs/2023/07/13/0a739ac21728b7d5.png" alt=""></p><p>交换机类型: direct</p><p>直接交换背后的路由算法很简单 - 消息进入队列，其 绑定密与消息的路由密完全匹配。</p><p>对应代码，请查看下列几个类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RoutingQueueConfig.java</span><br><span class="line">RoutingQueueProducer.java</span><br><span class="line">RoutingQueueConsumer1.java</span><br><span class="line">RoutingQueueConsumer2.java</span><br></pre></td></tr></table></figure></p><h5 id="5-主题模式"><a href="#5-主题模式" class="headerlink" title="5.主题模式"></a>5.主题模式</h5><p><img src="https://s3.bmp.ovh/imgs/2023/07/13/5dea6f7002d3d0cc.png" alt=""></p><p>交换机类型：topic</p><p>发送到主题交换的消息不能具有任意 routing_key 它必须是由点分隔的单词列表。</p><p>单词可以是任何内容，但通常它们指定与消息相关的一些功能。</p><p>路由密钥中可以包含任意数量的单词，最多可达255个字节。</p><p>绑定密钥也必须采用相同的形式。</p><p>主题交换背后的逻辑 类似于直接交换 使用特定路由密钥发送的消息将被传递到与匹配绑定密钥绑定的所有队列。</p><p>但是，绑定键有两个重要的特殊情况：</p><p>*（星号）可以替代一个单词。</p><p>＃（#号）可以替换零个或多个单词。</p><h5 id="6-RPC模式"><a href="#6-RPC模式" class="headerlink" title="6.RPC模式"></a>6.RPC模式</h5><p><img src="https://s3.bmp.ovh/imgs/2023/07/17/adca74906769284b.png" alt=""></p><p>客户端向一个队列中发送消息，并注册一个回调的队列用于接收服务端返回的消息，该消息需要声明一个叫做correaltionId的属性，</p><p>该属性将是该次请求的唯一标识。服务端在接受到消息（在需要时可以验证correaltionId）后，处理消息，并将消息发送到客户端注册的回调队列中。</p><p>对应代码，请查看下列几个类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RPCQueueConfig.java</span><br><span class="line">RPCQueueProducer.java</span><br><span class="line">RPCQueueConsumer.java</span><br></pre></td></tr></table></figure></p><h5 id="7-发布确认模式"><a href="#7-发布确认模式" class="headerlink" title="7.发布确认模式"></a>7.发布确认模式</h5><p>与发布者进行可靠的发布确认，发布者确认是RabbitMQ扩展，可以实现可靠的发布。在通道上启用发布者确认后，RabbitMQ将异步确认发送者发布的消息，这意味着它们已在服务器端处理。</p><h2 id="代码地址"><a href="#代码地址" class="headerlink" title="代码地址"></a>代码地址</h2><p><a href="https://gitee.com/lvoyee/springboot-rabbitmq/" target="_blank" rel="noopener">点我获取代码</a></p><hr><p>The end.</p>]]></content>
     
     <summary type="html">
     
@@ -304,19 +304,19 @@
     
     </summary>
     
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+      <category term="blogshare" scheme="http://devcheng.site/categories/blogshare/"/>
     
     
-      <category term="centos7" scheme="http://www.devcheng.net/tags/centos7/"/>
+      <category term="centos7" scheme="http://devcheng.site/tags/centos7/"/>
     
-      <category term="rabbitmq" scheme="http://www.devcheng.net/tags/rabbitmq/"/>
+      <category term="rabbitmq" scheme="http://devcheng.site/tags/rabbitmq/"/>
     
   </entry>
   
   <entry>
     <title>centos7中安装rabbitmq</title>
-    <link href="http://www.devcheng.net/post/a3a60b55.html"/>
-    <id>http://www.devcheng.net/post/a3a60b55.html</id>
+    <link href="http://devcheng.site/post/a3a60b55.html"/>
+    <id>http://devcheng.site/post/a3a60b55.html</id>
     <published>2023-07-18T13:03:22.000Z</published>
     <updated>2023-07-18T13:06:49.796Z</updated>
     
@@ -332,19 +332,19 @@
     
     </summary>
     
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+      <category term="blogshare" scheme="http://devcheng.site/categories/blogshare/"/>
     
     
-      <category term="centos7" scheme="http://www.devcheng.net/tags/centos7/"/>
+      <category term="centos7" scheme="http://devcheng.site/tags/centos7/"/>
     
-      <category term="rabbitmq" scheme="http://www.devcheng.net/tags/rabbitmq/"/>
+      <category term="rabbitmq" scheme="http://devcheng.site/tags/rabbitmq/"/>
     
   </entry>
   
   <entry>
     <title>细说Spring Boot核心配置文件 bootstrap</title>
-    <link href="http://www.devcheng.net/post/e8487bff.html"/>
-    <id>http://www.devcheng.net/post/e8487bff.html</id>
+    <link href="http://devcheng.site/post/e8487bff.html"/>
+    <id>http://devcheng.site/post/e8487bff.html</id>
     <published>2023-05-31T13:15:12.000Z</published>
     <updated>2023-05-31T13:23:37.048Z</updated>
     
@@ -360,19 +360,19 @@
     
     </summary>
     
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+      <category term="blogshare" scheme="http://devcheng.site/categories/blogshare/"/>
     
     
-      <category term="Spring Boot核心配置文件" scheme="http://www.devcheng.net/tags/Spring-Boot%E6%A0%B8%E5%BF%83%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"/>
+      <category term="Spring Boot核心配置文件" scheme="http://devcheng.site/tags/Spring-Boot%E6%A0%B8%E5%BF%83%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"/>
     
-      <category term="bootstrap" scheme="http://www.devcheng.net/tags/bootstrap/"/>
+      <category term="bootstrap" scheme="http://devcheng.site/tags/bootstrap/"/>
     
   </entry>
   
   <entry>
     <title>Dockerfile构建SpringBoot镜像并推送到docker公共镜像仓库Dockerhub</title>
-    <link href="http://www.devcheng.net/post/7b83f9aa.html"/>
-    <id>http://www.devcheng.net/post/7b83f9aa.html</id>
+    <link href="http://devcheng.site/post/7b83f9aa.html"/>
+    <id>http://devcheng.site/post/7b83f9aa.html</id>
     <published>2023-04-29T06:44:43.000Z</published>
     <updated>2023-05-31T13:16:19.004Z</updated>
     
@@ -388,17 +388,17 @@
     
     </summary>
     
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+      <category term="blogshare" scheme="http://devcheng.site/categories/blogshare/"/>
     
     
-      <category term="Dockerfile" scheme="http://www.devcheng.net/tags/Dockerfile/"/>
+      <category term="Dockerfile" scheme="http://devcheng.site/tags/Dockerfile/"/>
     
   </entry>
   
   <entry>
     <title>docker开启和关闭容器自启动</title>
-    <link href="http://www.devcheng.net/post/50c46cfa.html"/>
-    <id>http://www.devcheng.net/post/50c46cfa.html</id>
+    <link href="http://devcheng.site/post/50c46cfa.html"/>
+    <id>http://devcheng.site/post/50c46cfa.html</id>
     <published>2023-04-29T06:40:12.000Z</published>
     <updated>2023-04-29T06:43:24.928Z</updated>
     
@@ -415,17 +415,17 @@
     
     </summary>
     
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+      <category term="blogshare" scheme="http://devcheng.site/categories/blogshare/"/>
     
     
-      <category term="docker容器自启动" scheme="http://www.devcheng.net/tags/docker%E5%AE%B9%E5%99%A8%E8%87%AA%E5%90%AF%E5%8A%A8/"/>
+      <category term="docker容器自启动" scheme="http://devcheng.site/tags/docker%E5%AE%B9%E5%99%A8%E8%87%AA%E5%90%AF%E5%8A%A8/"/>
     
   </entry>
   
   <entry>
     <title>2023年金三银四怎么不见了？</title>
-    <link href="http://www.devcheng.net/post/408b0414.html"/>
-    <id>http://www.devcheng.net/post/408b0414.html</id>
+    <link href="http://devcheng.site/post/408b0414.html"/>
+    <id>http://devcheng.site/post/408b0414.html</id>
     <published>2023-03-16T05:03:06.000Z</published>
     <updated>2023-03-16T05:08:38.552Z</updated>
     
@@ -440,19 +440,19 @@
     
     </summary>
     
-      <category term="codelife" scheme="http://www.devcheng.net/categories/codelife/"/>
+      <category term="codelife" scheme="http://devcheng.site/categories/codelife/"/>
     
     
-      <category term="工作" scheme="http://www.devcheng.net/tags/%E5%B7%A5%E4%BD%9C/"/>
+      <category term="工作" scheme="http://devcheng.site/tags/%E5%B7%A5%E4%BD%9C/"/>
     
-      <category term="金三银四" scheme="http://www.devcheng.net/tags/%E9%87%91%E4%B8%89%E9%93%B6%E5%9B%9B/"/>
+      <category term="金三银四" scheme="http://devcheng.site/tags/%E9%87%91%E4%B8%89%E9%93%B6%E5%9B%9B/"/>
     
   </entry>
   
   <entry>
     <title>基于SpringBoot开发的垃圾分类回收管理系统源码分享</title>
-    <link href="http://www.devcheng.net/post/2a7e1341.html"/>
-    <id>http://www.devcheng.net/post/2a7e1341.html</id>
+    <link href="http://devcheng.site/post/2a7e1341.html"/>
+    <id>http://devcheng.site/post/2a7e1341.html</id>
     <published>2023-03-06T12:04:50.000Z</published>
     <updated>2023-03-06T12:09:35.525Z</updated>
     
@@ -467,19 +467,19 @@
     
     </summary>
     
-      <category term="codeshare" scheme="http://www.devcheng.net/categories/codeshare/"/>
+      <category term="codeshare" scheme="http://devcheng.site/categories/codeshare/"/>
     
     
-      <category term="垃圾分类系统" scheme="http://www.devcheng.net/tags/%E5%9E%83%E5%9C%BE%E5%88%86%E7%B1%BB%E7%B3%BB%E7%BB%9F/"/>
+      <category term="垃圾分类系统" scheme="http://devcheng.site/tags/%E5%9E%83%E5%9C%BE%E5%88%86%E7%B1%BB%E7%B3%BB%E7%BB%9F/"/>
     
-      <category term="垃圾分类回收管理系统" scheme="http://www.devcheng.net/tags/%E5%9E%83%E5%9C%BE%E5%88%86%E7%B1%BB%E5%9B%9E%E6%94%B6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
+      <category term="垃圾分类回收管理系统" scheme="http://devcheng.site/tags/%E5%9E%83%E5%9C%BE%E5%88%86%E7%B1%BB%E5%9B%9E%E6%94%B6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
   <entry>
     <title>springboot项目对数据库密码加解密</title>
-    <link href="http://www.devcheng.net/post/1663aa3c.html"/>
-    <id>http://www.devcheng.net/post/1663aa3c.html</id>
+    <link href="http://devcheng.site/post/1663aa3c.html"/>
+    <id>http://devcheng.site/post/1663aa3c.html</id>
     <published>2023-02-18T01:41:46.000Z</published>
     <updated>2023-02-18T01:59:09.296Z</updated>
     
@@ -495,19 +495,19 @@
     
     </summary>
     
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+      <category term="blogshare" scheme="http://devcheng.site/categories/blogshare/"/>
     
     
-      <category term="springboot" scheme="http://www.devcheng.net/tags/springboot/"/>
+      <category term="springboot" scheme="http://devcheng.site/tags/springboot/"/>
     
-      <category term="数据库加密解密" scheme="http://www.devcheng.net/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/"/>
+      <category term="数据库加密解密" scheme="http://devcheng.site/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/"/>
     
   </entry>
   
   <entry>
     <title>IDEA 高频实用快捷键</title>
-    <link href="http://www.devcheng.net/post/8666c7d8.html"/>
-    <id>http://www.devcheng.net/post/8666c7d8.html</id>
+    <link href="http://devcheng.site/post/8666c7d8.html"/>
+    <id>http://devcheng.site/post/8666c7d8.html</id>
     <published>2022-12-16T02:27:13.000Z</published>
     <updated>2022-12-16T02:34:52.633Z</updated>
     
@@ -523,17 +523,17 @@
     
     </summary>
     
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+      <category term="blogshare" scheme="http://devcheng.site/categories/blogshare/"/>
     
     
-      <category term="IDEA快捷键" scheme="http://www.devcheng.net/tags/IDEA%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+      <category term="IDEA快捷键" scheme="http://devcheng.site/tags/IDEA%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
     
   </entry>
   
   <entry>
     <title>MYSQL中如何调用存储过程</title>
-    <link href="http://www.devcheng.net/post/c68e4207.html"/>
-    <id>http://www.devcheng.net/post/c68e4207.html</id>
+    <link href="http://devcheng.site/post/c68e4207.html"/>
+    <id>http://devcheng.site/post/c68e4207.html</id>
     <published>2022-11-24T02:17:03.000Z</published>
     <updated>2022-11-24T02:33:26.367Z</updated>
     
@@ -548,12 +548,12 @@
     
     </summary>
     
-      <category term="blogshare" scheme="http://www.devcheng.net/categories/blogshare/"/>
+      <category term="blogshare" scheme="http://devcheng.site/categories/blogshare/"/>
     
     
-      <category term="MYSQL" scheme="http://www.devcheng.net/tags/MYSQL/"/>
+      <category term="MYSQL" scheme="http://devcheng.site/tags/MYSQL/"/>
     
-      <category term="定时调用存储过程" scheme="http://www.devcheng.net/tags/%E5%AE%9A%E6%97%B6%E8%B0%83%E7%94%A8%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/"/>
+      <category term="定时调用存储过程" scheme="http://devcheng.site/tags/%E5%AE%9A%E6%97%B6%E8%B0%83%E7%94%A8%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/"/>
     
   </entry>
   
